@@ -1,89 +1,100 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
-import { Award, Trophy, Medal, GraduationCap, Building, Sprout, Rocket, Search, TreePine, Flame, Mountain, Shield, Leaf } from "lucide-react"
-
-const alliances = [
-  { name: "Forestal Argentina", icon: TreePine },
-  { name: "Bomberos de San Rafael", icon: Flame },
-  { name: "Fundación Patagonia Natural", icon: Mountain },
-  { name: "Municipalidad de San Rafael", icon: Building },
-  { name: "UBA Facultad de Cs. Económicas", icon: Shield },
-  { name: "Endeavor Cuyo", icon: Leaf },
-]
 
 const awards = [
   {
-    icon: Trophy,
-    year: "2025",
-    title: "ILAN–UTN 2025",
-    description: "Ganadores — Solución tecnológica más innovadora. Viaje a Israel.",
-    color: "text-yellow-500",
-    bgColor: "bg-yellow-500/10",
-    borderColor: "border-t-yellow-500",
+    logo: "ILAN",
+    logoSubtext: "ISRAEL+LATIN AMERICAN\nNETWORK",
+    title: "ILAN–UTN 2025 – Ganadores",
+    description: "Premiados como la solución tecnológica más innovadora del certamen, con viaje a Israel para una misión de innovación.",
+    bgColor: "bg-[#1a1c18]",
   },
   {
-    icon: Award,
-    year: "2025",
-    title: "Premios Sadosky 2025",
-    description: "Finalistas Mejor Startup del Año y Solución Innovadora.",
-    color: "text-blue-500",
-    bgColor: "bg-blue-500/10",
-    borderColor: "border-t-blue-500",
+    logo: "sadosky",
+    logoImage: true,
+    title: "Premios Sadosky 2025 – Startup del Año (Finalistas)",
+    description: "Finalistas en la categoría Mejor Startup del Año 2025 y Solución Innovadora, uno de los reconocimientos más prestigiosos del sector tecnológico argentino. Este logro valida la solidez técnica, el impacto y la innovación del modelo de Sentinel.",
+    bgColor: "bg-[#1a1c18]",
   },
   {
-    icon: Medal,
-    year: "2024",
-    title: "Usina de Emprendedores",
-    description: "3° Puesto Nacional entre emprendimientos de alto potencial.",
-    color: "text-orange-500",
-    bgColor: "bg-orange-500/10",
-    borderColor: "border-t-orange-500",
+    logo: "UE",
+    logoImage: true,
+    title: "Usina de Emprendedores – 3° Puesto Nacional",
+    description: "Tercer lugar entre emprendimientos de alto potencial elegidos a nivel nacional. Destaca nuestra propuesta de valor, escalabilidad y viabilidad dentro del ecosistema emprendedor argentino.",
+    bgColor: "bg-[#1a1c18]",
   },
   {
-    icon: Trophy,
-    year: "2025",
-    title: "JIJE 2025",
-    description: "Ganadores — Mejor Modelo de Negocio.",
-    color: "text-[#004f39]",
-    bgColor: "bg-[#004f39]/20",
-    borderColor: "border-t-[#004f39]",
+    logo: "prendete",
+    logoImage: true,
+    title: "Premios Prendete 2025 – Finalistas (Categoría Jump)",
+    description: "Seleccionados como finalistas en la categoría Jump, que premia soluciones innovadoras con potencial de crecimiento acelerado. Este reconocimiento refuerza la validación de Sentinel como plataforma tecnológica escalable y de impacto regional.",
+    bgColor: "bg-[#1a1c18]",
   },
   {
-    icon: GraduationCap,
-    year: "2025",
+    logo: "BNA",
+    logoImage: true,
+    title: "Concurso Soluciones Innovadoras BNA 2025",
+    description: "¡Nuestro proyecto fue seleccionado entre más de 700 propuestas para avanzar a la segunda etapa del Concurso Soluciones Innovadoras BNA 2025! Participaremos del Proceso de Formación y Asistencia, con 8 encuentros diseñados para potenciar proyectos con impacto. Gracias al Banco Nación por esta oportunidad.",
+    bgColor: "bg-[#1a1c18]",
+  },
+  {
+    logo: "JIJE",
+    logoImage: true,
+    title: "JIJE 2025 – Mejor Modelo de Negocio (Ganadores)",
+    description: "Reconocidos como el modelo de mayor impacto entre decenas de iniciativas innovadoras, reforzando la escalabilidad y el fit de nuestro negocio.",
+    bgColor: "bg-[#1a1c18]",
+  },
+]
+
+const alliances = [
+  {
+    logo: "forestal",
+    logoImage: true,
+    title: "FORESTAL ARGENTINA",
+    description: "Esta empresa nos proporcionó más de 40 registros históricos de incendios forestales, incluyendo ubicación, imágenes y cronologías de propagación. Esta información fue clave para validar la precisión del sistema y ajustar nuestra IA a los patrones reales del territorio.",
+  },
+  {
+    logo: "bomberos",
+    logoImage: true,
+    title: "BOMBEROS DE SAN RAFAEL",
+    description: "Trabajamos junto al cuerpo de bomberos local en pruebas de campo con escenarios reales. Gracias a su colaboración, obtuvimos más de 100 imágenes térmicas que fueron utilizadas para entrenar nuestros algoritmos de detección de humo y fuego. Esta validación técnica es clave para garantizar que Sentinel funcione en situaciones reales.",
+  },
+  {
+    logo: "patagonia",
+    logoImage: true,
+    title: "Fundación Patagonia Natural",
+    description: "ONG reconocida por su compromiso ambiental, que nos acompaña en la construcción de una propuesta coherente con criterios de sostenibilidad y conservación. Su aval respalda nuestra misión de actuar en defensa de los ecosistemas vulnerables.",
+  },
+  {
+    logo: "sanrafael",
+    logoImage: true,
+    title: "Municipalidad de San Rafael",
+    description: "Establecimos una relación directa con la Dirección de Espacios Verdes y Medio Ambiente, quienes nos brindaron respaldo institucional y acceso a áreas protegidas para patrullaje experimental. Este vínculo demuestra el interés local por adoptar soluciones tecnológicas en la gestión de riesgos.",
+  },
+  {
+    logo: "uba",
+    logoImage: true,
+    title: "Universidad de Buenos Aires – Facultad de Ciencias Económicas",
+    description: "Sentinel fue uno de los casos presentados en el Kick Off de la materia Plan de Marketing Digital del Máster de la UBA, en una actividad organizada por Movistar Argentina. Llevamos nuestra propuesta de tecnología para la prevención de incendios al aula, conectando innovación y educación.",
+  },
+  {
+    logo: "endeavor",
+    logoImage: true,
+    title: "Endeavor – Meet the Companies",
+    description: "Seleccionados por Endeavor Cuyo para mentoría y apoyo estratégico, validando nuestro potencial de crecimiento regional e internacional.",
+  },
+  {
+    logo: "naves",
+    logoImage: true,
     title: "NAVES – IAE Business School",
-    description: "Seleccionados para el principal programa de aceleración de Argentina.",
-    color: "text-purple-500",
-    bgColor: "bg-purple-500/10",
-    borderColor: "border-t-purple-500",
+    description: "Seleccionados para participar en el principal programa de aceleración empresarial de Argentina, validando nuestro modelo de negocio, impacto y escalabilidad.",
   },
   {
-    icon: Building,
-    year: "2025",
-    title: "BNA 2025",
-    description: "Seleccionados entre +700 propuestas para el Concurso Soluciones Innovadoras.",
-    color: "text-cyan-500",
-    bgColor: "bg-cyan-500/10",
-    borderColor: "border-t-cyan-500",
-  },
-  {
-    icon: Sprout,
-    year: "2024",
-    title: "Incubación UNCUYO",
-    description: "Programa de Incubación — mentoría y desarrollo tecnológico.",
-    color: "text-[#004f39]",
-    bgColor: "bg-[#004f39]/20",
-    borderColor: "border-t-[#004f39]",
-  },
-  {
-    icon: Search,
-    year: "2025",
-    title: "Premios Prendete 2025",
-    description: "Finalistas categoría Jump — soluciones de crecimiento acelerado.",
-    color: "text-pink-500",
-    bgColor: "bg-pink-500/10",
-    borderColor: "border-t-pink-500",
+    logo: "uncuyo",
+    logoImage: true,
+    title: "Programa de Incubación UNCUYO",
+    description: "Seleccionados para incubación y mentoría por la Universidad Nacional de Cuyo, fortaleciendo nuestro desarrollo tecnológico y estrategia de go-to-market.",
   },
 ]
 
@@ -127,40 +138,10 @@ export function Awards() {
           </h2>
         </div>
 
-        {/* Alliances Section */}
+        {/* Premios Section */}
         <div className="mb-20">
           <h3
-            className={`text-xl font-semibold text-[#FFFACA]/80 mb-8 text-center transition-all duration-700 delay-100 ${
-              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-            }`}
-          >
-            Alianzas Estratégicas
-          </h3>
-          <div
-            className={`grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 transition-all duration-700 delay-200 ${
-              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-            }`}
-          >
-            {alliances.map((alliance, index) => (
-              <div
-                key={index}
-                className="bg-[#1a1c18] border border-[#FFFACA]/10 rounded-xl p-4 hover:border-[#004f39]/50 transition-all group flex flex-col items-center text-center"
-              >
-                <div className="w-12 h-12 bg-[#FFFACA]/5 rounded-xl flex items-center justify-center mb-3 group-hover:bg-[#004f39]/20 transition-colors">
-                  <alliance.icon className="w-6 h-6 text-[#FFFACA]/70 group-hover:text-[#004f39] transition-colors" />
-                </div>
-                <span className="text-[#FFFACA]/70 text-sm font-medium leading-tight">
-                  {alliance.name}
-                </span>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Awards Section */}
-        <div>
-          <h3
-            className={`text-3xl sm:text-4xl font-bold text-[#FFFACA] mb-8 transition-all duration-700 delay-300 ${
+            className={`text-3xl sm:text-4xl font-bold text-[#FFFACA] mb-8 transition-all duration-700 delay-100 ${
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
             }`}
             style={{ fontFamily: "var(--font-heading)" }}
@@ -168,48 +149,200 @@ export function Awards() {
             Premios
           </h3>
           
-          {/* Scrollable Awards */}
-          <div className="relative">
-            <div className="flex gap-4 overflow-x-auto pb-4 scrollbar-hide snap-x snap-mandatory">
-              {awards.map((award, index) => (
-                <div
-                  key={index}
-                  className={`group flex-shrink-0 w-72 bg-[#1a1c18] border border-[#FFFACA]/10 rounded-xl overflow-hidden hover:border-[#004f39]/50 transition-all duration-700 snap-start ${
-                    isVisible
-                      ? "opacity-100 translate-y-0"
-                      : "opacity-0 translate-y-4"
-                  } ${award.borderColor} border-t-2`}
-                  style={{ transitionDelay: `${400 + index * 50}ms` }}
-                >
-                  <div className="p-5">
-                    <div className="flex items-center justify-between mb-4">
-                      <div
-                        className={`w-10 h-10 ${award.bgColor} rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform`}
-                      >
-                        <award.icon className={`w-5 h-5 ${award.color}`} />
-                      </div>
-                      <span className={`text-xs font-semibold px-2 py-1 rounded-full ${award.bgColor} ${award.color}`}>
-                        {award.year}
-                      </span>
+          <div
+            className={`grid md:grid-cols-2 lg:grid-cols-3 gap-6 transition-all duration-700 delay-200 ${
+              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+            }`}
+          >
+            {awards.map((award, index) => (
+              <div
+                key={index}
+                className="bg-[#0a0c0a] border border-[#004f39]/30 rounded-2xl p-6 hover:border-[#004f39]/60 transition-all"
+              >
+                {/* Logo Area */}
+                <div className="h-24 flex items-center justify-start mb-4">
+                  {award.logo === "ILAN" ? (
+                    <div className="bg-white rounded-lg px-4 py-3">
+                      <div className="text-2xl font-bold text-black tracking-wider">ILAN</div>
+                      <div className="text-[8px] text-gray-600 whitespace-pre-line leading-tight">ISRAEL+LATIN AMERICAN{"\n"}NETWORK</div>
                     </div>
-                    <h4 className="font-semibold text-[#FFFACA] text-base mb-2">
-                      {award.title}
-                    </h4>
-                    <p className="text-[#FFFACA]/50 text-sm leading-relaxed">{award.description}</p>
-                  </div>
+                  ) : award.logo === "sadosky" ? (
+                    <div className="bg-white rounded-lg px-4 py-3 flex items-center gap-2">
+                      <div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center">
+                        <span className="text-white font-bold text-lg">S</span>
+                      </div>
+                      <div>
+                        <div className="text-lg font-bold text-gray-800">Premios</div>
+                        <div className="text-lg font-bold text-blue-600">Sadosky</div>
+                      </div>
+                    </div>
+                  ) : award.logo === "UE" ? (
+                    <div className="bg-white rounded-lg px-4 py-3">
+                      <div className="flex items-center gap-1">
+                        <span className="text-2xl font-bold text-teal-600">U</span>
+                        <span className="text-2xl font-bold text-orange-500">E</span>
+                        <div className="text-xs text-gray-600 ml-2">
+                          <div>Usina de</div>
+                          <div className="font-semibold">Emprendedores</div>
+                        </div>
+                      </div>
+                    </div>
+                  ) : award.logo === "prendete" ? (
+                    <div className="bg-gradient-to-r from-cyan-400 to-blue-500 rounded-lg px-4 py-3">
+                      <div className="text-white font-bold text-xl">Prendete</div>
+                      <div className="text-white/80 text-xs">IMPULSA TU IDEA AL EXITO</div>
+                    </div>
+                  ) : award.logo === "BNA" ? (
+                    <div className="bg-white rounded-full w-20 h-20 flex items-center justify-center">
+                      <div className="text-center">
+                        <div className="text-xs text-gray-500">Banco Nación</div>
+                      </div>
+                    </div>
+                  ) : award.logo === "JIJE" ? (
+                    <div className="bg-[#1a3a5c] rounded-lg px-6 py-4">
+                      <div className="text-white font-bold text-2xl">JIJE</div>
+                      <div className="text-yellow-400 text-sm">20 años</div>
+                    </div>
+                  ) : null}
                 </div>
-              ))}
-            </div>
-            
-            {/* Scroll Indicators */}
-            <div className="absolute right-0 top-0 bottom-4 w-20 bg-gradient-to-l from-[#151613] to-transparent pointer-events-none" />
+                
+                <h4 className="font-bold text-[#FFFACA] text-lg mb-3">
+                  {award.title}
+                </h4>
+                <p className="text-[#FFFACA]/60 text-sm leading-relaxed">
+                  {award.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Alianzas Section */}
+        <div>
+          <h3
+            className={`text-3xl sm:text-4xl font-bold text-[#FFFACA] mb-8 transition-all duration-700 delay-300 ${
+              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+            }`}
+            style={{ fontFamily: "var(--font-heading)" }}
+          >
+            Alianzas Estratégicas
+          </h3>
+          
+          <div
+            className={`grid md:grid-cols-2 lg:grid-cols-3 gap-6 transition-all duration-700 delay-400 ${
+              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+            }`}
+          >
+            {alliances.slice(0, 6).map((alliance, index) => (
+              <div
+                key={index}
+                className="bg-[#0a0c0a] border border-[#004f39]/30 rounded-2xl p-6 hover:border-[#004f39]/60 transition-all"
+              >
+                {/* Logo Area */}
+                <div className="h-20 flex items-center justify-start mb-4">
+                  {alliance.logo === "forestal" ? (
+                    <div className="flex items-center gap-2">
+                      <div className="w-8 h-10 bg-green-600 rounded-sm" />
+                      <div>
+                        <div className="text-green-500 font-script text-xl italic">Forestal</div>
+                        <div className="text-orange-500 font-script text-xl italic">Argentina</div>
+                      </div>
+                    </div>
+                  ) : alliance.logo === "bomberos" ? (
+                    <div className="w-16 h-16 bg-gradient-to-b from-red-600 to-red-800 rounded-full flex items-center justify-center">
+                      <span className="text-yellow-400 text-2xl">🔥</span>
+                    </div>
+                  ) : alliance.logo === "patagonia" ? (
+                    <div className="flex items-center gap-2">
+                      <div className="w-10 h-12 bg-yellow-600 rounded" />
+                      <div className="text-[#FFFACA]/80 text-sm">
+                        <div className="font-bold">FUNDACIÓN</div>
+                        <div className="font-bold">PATAGONIA</div>
+                        <div className="font-bold">NATURAL</div>
+                      </div>
+                    </div>
+                  ) : alliance.logo === "sanrafael" ? (
+                    <div className="flex items-center gap-2">
+                      <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold">SR</div>
+                      <div className="text-[#FFFACA]/80 text-sm">
+                        <div>Tu</div>
+                        <div className="font-bold">Municipio</div>
+                        <div className="text-green-500">San Rafael</div>
+                      </div>
+                    </div>
+                  ) : alliance.logo === "uba" ? (
+                    <div className="bg-white rounded-full w-16 h-16 flex items-center justify-center">
+                      <div className="text-center">
+                        <div className="text-blue-800 font-bold text-lg">.UBA</div>
+                        <div className="text-[6px] text-gray-600">Universidad de<br/>Buenos Aires</div>
+                      </div>
+                    </div>
+                  ) : alliance.logo === "endeavor" ? (
+                    <div>
+                      <div className="text-red-500 font-bold text-2xl italic">endeavor</div>
+                    </div>
+                  ) : null}
+                </div>
+                
+                <h4 className="font-bold text-[#FFFACA] text-lg mb-3">
+                  {alliance.title}
+                </h4>
+                <p className="text-[#FFFACA]/60 text-sm leading-relaxed">
+                  {alliance.description}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          {/* Last 2 alliances - centered */}
+          <div
+            className={`grid md:grid-cols-2 gap-6 max-w-3xl mx-auto mt-6 transition-all duration-700 delay-500 ${
+              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+            }`}
+          >
+            {alliances.slice(6).map((alliance, index) => (
+              <div
+                key={index}
+                className="bg-[#0a0c0a] border border-[#004f39]/30 rounded-2xl p-6 hover:border-[#004f39]/60 transition-all"
+              >
+                {/* Logo Area */}
+                <div className="h-20 flex items-center justify-start mb-4">
+                  {alliance.logo === "naves" ? (
+                    <div>
+                      <div className="text-2xl font-bold">
+                        <span className="text-gray-400">NA</span>
+                        <span className="text-green-500">V</span>
+                        <span className="text-gray-400">ES</span>
+                      </div>
+                    </div>
+                  ) : alliance.logo === "uncuyo" ? (
+                    <div className="flex items-center gap-2">
+                      <div className="w-12 h-12 rounded-full border-2 border-red-600 flex items-center justify-center">
+                        <span className="text-red-600 text-xs">🎓</span>
+                      </div>
+                      <div className="text-[#FFFACA]/80">
+                        <div className="text-xl font-bold">UNCUYO</div>
+                        <div className="text-[8px]">UNIVERSIDAD<br/>NACIONAL DE CUYO</div>
+                      </div>
+                    </div>
+                  ) : null}
+                </div>
+                
+                <h4 className="font-bold text-[#FFFACA] text-lg mb-3">
+                  {alliance.title}
+                </h4>
+                <p className="text-[#FFFACA]/60 text-sm leading-relaxed">
+                  {alliance.description}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
 
         {/* Nuestros Logros - Full Width Image */}
         <div className="mt-16">
           <div
-            className={`relative rounded-2xl overflow-hidden transition-all duration-700 delay-500 ${
+            className={`relative rounded-2xl overflow-hidden transition-all duration-700 delay-600 ${
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
             }`}
           >
@@ -224,7 +357,7 @@ export function Awards() {
         {/* Event Photo */}
         <div className="mt-8">
           <div
-            className={`relative rounded-2xl overflow-hidden aspect-video max-w-4xl mx-auto transition-all duration-700 delay-600 ${
+            className={`relative rounded-2xl overflow-hidden aspect-video max-w-4xl mx-auto transition-all duration-700 delay-700 ${
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
             }`}
           >
