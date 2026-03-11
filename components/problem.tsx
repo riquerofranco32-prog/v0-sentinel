@@ -31,8 +31,9 @@ export function Problem() {
       <div className="relative h-[70vh] min-h-[500px] overflow-hidden">
         <img
           src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/267-OTOcu9EUVLZS8Z5p5N46egBZitm0qj.jpg"
-          alt="Bomberos enfrentando incendio forestal masivo en la Patagonia"
+          alt="Bomberos enfrentando incendio forestal en la Patagonia argentina"
           className="w-full h-full object-cover"
+          loading="lazy"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-[#151613] via-[#151613]/30 to-transparent" />
         
@@ -76,22 +77,22 @@ export function Problem() {
           <div className="grid lg:grid-cols-2 gap-12 items-start">
             {/* Left Content */}
             <div>
-              <h2
-                className={`text-3xl sm:text-4xl lg:text-5xl font-bold text-[#FFFACA] mb-2 transition-all duration-700 delay-100 ${
-                  isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-                }`}
-                style={{ fontFamily: "var(--font-heading)" }}
-              >
-                Hoy la Patagonia duele.
-              </h2>
-              <h3
-                className={`text-2xl sm:text-3xl lg:text-4xl font-bold text-red-400 mb-6 transition-all duration-700 delay-150 ${
-                  isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-                }`}
-                style={{ fontFamily: "var(--font-heading)" }}
-              >
-                Pero hay una realidad que debemos enfrentar.
-              </h3>
+            <h3
+              className={`text-3xl sm:text-4xl lg:text-5xl font-bold text-[#FFFACA] mb-2 transition-all duration-700 delay-100 ${
+                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+              }`}
+              style={{ fontFamily: "var(--font-heading)" }}
+            >
+              Hoy la Patagonia duele.
+            </h3>
+            <p
+              className={`text-2xl sm:text-3xl lg:text-4xl font-bold text-red-400 mb-6 transition-all duration-700 delay-150 ${
+                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+              }`}
+              style={{ fontFamily: "var(--font-heading)" }}
+            >
+              Pero hay una realidad que debemos enfrentar.
+            </p>
               <p
                 className={`text-[#FFFACA]/70 text-lg leading-relaxed mb-8 transition-all duration-700 delay-200 ${
                   isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
@@ -140,16 +141,18 @@ export function Problem() {
                 <div className="relative overflow-hidden rounded-xl aspect-[4/5]">
                   <img
                     src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/a2-sCSrBbHtMQFzFqp4eBBIvUs8dgnrEh.jpg"
-                    alt="Incendio forestal nocturno con llamas reflejándose en el lago"
+                    alt="Incendio forestal nocturno con llamas reflejándose en el lago patagónico"
                     className="w-full h-full object-cover"
+                    loading="lazy"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                 </div>
                 <div className="relative overflow-hidden rounded-xl aspect-[4/5]">
                   <img
                     src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/a-ctE13dVLBzJmNQfjnPbHhp9EhxtVRw.jpg"
-                    alt="Vista aérea de incendio forestal masivo"
+                    alt="Vista aérea de incendio forestal masivo en Argentina"
                     className="w-full h-full object-cover"
+                    loading="lazy"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                 </div>
@@ -158,14 +161,16 @@ export function Problem() {
                     src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/a3-oiXPvEaaqCu4FDqlu6UlcDIRhaaex6.jpg"
                     alt="Incendio forestal avanzando sobre montañas patagónicas"
                     className="w-full h-full object-cover"
+                    loading="lazy"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                 </div>
                 <div className="relative overflow-hidden rounded-xl aspect-[4/5]">
                   <img
                     src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/a1-dL77IHIBwasbZgslhBmZWAQ2XQHJdk.jpg"
-                    alt="Múltiples perspectivas de incendios forestales devastadores"
+                    alt="Múltiples perspectivas de incendios forestales devastadores en la Patagonia"
                     className="w-full h-full object-cover"
+                    loading="lazy"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                 </div>

@@ -2,7 +2,7 @@
 
 import { useEffect, useState, useRef } from "react"
 import { Button } from "@/components/ui/button"
-import { ArrowRight, Sparkles, TreePine, Flame, Building, Shield, Leaf, Mountain } from "lucide-react"
+import { ArrowRight, TreePine, Flame, Building, Shield, Leaf, Mountain } from "lucide-react"
 
 const partners = [
   { name: "Forestal Argentina", icon: TreePine, color: "bg-emerald-500/20 text-emerald-400" },
@@ -104,108 +104,100 @@ export function Hero() {
   return (
     <section
       id="inicio"
-      className="relative min-h-screen flex flex-col justify-center overflow-hidden"
+      className="relative min-h-screen flex flex-col justify-end overflow-hidden"
     >
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <img
           src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/3-wMoLWM6ee43OTLxdif9ekqEJu7qlet.png"
-          alt="Paisaje montañoso con volcán nevado y bosque patagónico"
+          alt="Vista del territorio patagónico que Sentinel protege contra incendios forestales"
           className="w-full h-full object-cover scale-105"
+          fetchPriority="high"
         />
-        {/* Multi-layer gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#004f39]/20 to-[#151613]" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#151613] via-transparent to-[#151613]/40" />
+        {/* Enhanced bottom gradient overlay for text legibility */}
+        <div 
+          className="absolute inset-0" 
+          style={{ 
+            background: "linear-gradient(to top, rgba(21,22,19,1) 0%, rgba(21,22,19,0.7) 30%, transparent 70%)" 
+          }} 
+        />
+        {/* Subtle top vignette */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#151613]/40 via-transparent to-transparent" />
       </div>
 
       {/* Particle Canvas */}
       <canvas
         ref={canvasRef}
-        className="absolute inset-0 z-[1] pointer-events-none opacity-40"
+        className="absolute inset-0 z-[1] pointer-events-none opacity-30"
       />
 
-      {/* Main Content - Centered Wordmark */}
-      <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4">
-        {/* Badge */}
+      {/* ZONA SUPERIOR - Centered Wordmark */}
+      <div className="absolute inset-0 z-10 flex flex-col items-center justify-center pointer-events-none">
+        {/* Giant Wordmark - decorative, not a heading */}
         <div
-          className={`inline-flex items-center gap-2 bg-[#004f39]/30 border border-[#004f39]/50 rounded-full px-4 py-2 mb-8 transition-all duration-700 ${
-            mounted ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4"
-          }`}
-        >
-          <Sparkles className="w-4 h-4 text-[#FFFACA]" />
-          <span className="text-sm text-[#FFFACA] font-medium tracking-wider uppercase">
-            NEW — Sentinel Cloud v2.0
-          </span>
-        </div>
-
-        {/* Giant Wordmark */}
-        <h1
-          className={`text-[clamp(5rem,18vw,16rem)] font-bold leading-none tracking-tight text-center ${
+          className={`text-[clamp(4rem,16vw,14rem)] font-bold leading-none tracking-tight text-center ${
             mounted ? "animate-hero-fade-in" : "opacity-0"
           }`}
           style={{ 
             fontFamily: "var(--font-heading)",
             color: "rgba(255, 250, 202, 0.93)",
           }}
+          aria-hidden="true"
         >
           SENTINEL
-        </h1>
+        </div>
 
-        {/* Tagline */}
+        {/* Tagline - below wordmark */}
         <p
-          className={`text-sm md:text-base tracking-[0.4em] uppercase mt-4 transition-all duration-700 delay-300 ${
+          className={`text-xs sm:text-sm tracking-[0.35em] uppercase mt-4 transition-all duration-700 delay-300 ${
             mounted ? "opacity-100" : "opacity-0"
           }`}
-          style={{ color: "rgba(255, 250, 202, 0.45)" }}
+          style={{ color: "rgba(255, 250, 202, 0.4)" }}
         >
           TECNOLOGÍA · TERRITORIO · PREVENCIÓN
         </p>
-
-        {/* Scroll Indicator */}
-        <div 
-          className={`absolute bottom-32 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 transition-all duration-700 delay-700 ${
-            mounted ? "opacity-100" : "opacity-0"
-          }`}
-        >
-          <div className="w-px h-12 bg-[#FFFACA]/30 animate-scroll-indicator" />
-        </div>
       </div>
 
-      {/* Bottom Left Content */}
-      <div 
-        className={`absolute bottom-24 left-0 z-10 max-w-xl px-6 md:px-12 transition-all duration-700 delay-500 ${
-          mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-        }`}
-      >
-        <h2 
-          className="text-2xl md:text-3xl lg:text-4xl font-bold text-[#FFFACA] mb-4"
-          style={{ fontFamily: "var(--font-heading)" }}
+      {/* ZONA INFERIOR - Left-aligned content */}
+      <div className="relative z-10 pb-24 px-6 md:px-12 lg:px-16">
+        <div 
+          className={`max-w-md transition-all duration-700 delay-500 ${
+            mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+          }`}
         >
-          Tecnología que protege tu TERRITORIO
-        </h2>
-        <p className="text-[#FFFACA]/60 text-sm md:text-base mb-6 leading-relaxed">
-          Tecnología aérea e inteligencia artificial para la detección temprana
-          de incendios y el monitoreo ambiental.
-        </p>
-        <div className="flex flex-col sm:flex-row gap-3">
-          <Button
-            asChild
-            size="lg"
-            className="bg-[#004f39] hover:bg-[#003d2c] text-[#FFFACA] font-semibold rounded-full px-6 h-11 text-sm"
+          <h1 
+            className="text-[clamp(1.6rem,3vw,2.4rem)] font-normal text-[#FFFACA] mb-4 leading-tight"
+            style={{ fontFamily: "var(--font-heading)" }}
           >
-            <a href="#nosotros">
-              Quiero saber más
-              <ArrowRight className="w-4 h-4 ml-2" />
-            </a>
-          </Button>
-          <Button
-            asChild
-            variant="outline"
-            size="lg"
-            className="border-[#FFFACA]/30 bg-transparent text-[#FFFACA] hover:bg-[#FFFACA]/10 rounded-full px-6 h-11 text-sm"
+            Tecnología que protege tu Territorio
+          </h1>
+          <p 
+            className="text-sm md:text-base mb-6 leading-relaxed max-w-[420px]"
+            style={{ color: "rgba(255, 250, 202, 0.55)" }}
           >
-            <a href="#servicios">Ver Servicios</a>
-          </Button>
+            Tecnología aérea e inteligencia artificial para la detección temprana
+            de incendios y el monitoreo ambiental.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-3">
+            <Button
+              asChild
+              size="lg"
+              className="bg-[#004f39] hover:bg-[#003d2c] text-[#FFFACA] font-semibold rounded-full px-6 h-11 text-sm"
+            >
+              <a href="#nosotros">
+                Quiero saber más
+                <ArrowRight className="w-4 h-4 ml-2" />
+              </a>
+            </Button>
+            <Button
+              asChild
+              variant="outline"
+              size="lg"
+              className="border-[#FFFACA]/30 bg-transparent text-[#FFFACA] hover:bg-[#FFFACA]/10 rounded-full px-6 h-11 text-sm"
+            >
+              <a href="#servicios">Ver Servicios</a>
+            </Button>
+          </div>
         </div>
       </div>
 

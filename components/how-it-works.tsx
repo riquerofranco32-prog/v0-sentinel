@@ -95,7 +95,7 @@ export function HowItWorks() {
                 </div>
               )}
 
-              <div className="bg-gradient-to-br from-[#1a1c18] to-[#151613] border border-[#FFFACA]/10 rounded-2xl p-8 h-full hover:border-[#004f39]/50 transition-all group">
+                <div className="bg-gradient-to-br from-[#1a1c18] to-[#151613] border border-[#FFFACA]/10 rounded-2xl p-8 h-full hover:border-[#004f39]/50 transition-all group card-hover">
                 <div className="flex items-center gap-4 mb-6">
                   <div className="w-14 h-14 bg-[#004f39] rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
                     <step.icon className="w-7 h-7 text-[#FFFACA]" />

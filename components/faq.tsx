@@ -58,12 +58,12 @@ export function FAQ() {
   }, [])
 
   return (
-    <section ref={sectionRef} id="faq" className="py-24 lg:py-32 bg-[#0f1a0f]">
+    <section ref={sectionRef} id="faq" className="py-24 lg:py-32 bg-[#151613]">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-12">
           <h2
-            className={`text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4 transition-all duration-700 ${
+            className={`text-3xl sm:text-4xl lg:text-5xl font-bold text-[#FFFACA] mb-4 transition-all duration-700 ${
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
             }`}
             style={{ fontFamily: "var(--font-heading)" }}
@@ -83,12 +83,12 @@ export function FAQ() {
               <AccordionItem
                 key={index}
                 value={`item-${index}`}
-                className="bg-[#080c08] border border-white/10 rounded-xl px-6 data-[state=open]:border-[#22c55e]/30"
+                className="bg-[#1a1c18] border border-[#FFFACA]/10 rounded-xl px-6 data-[state=open]:border-[#004f39]/50"
               >
-                <AccordionTrigger className="text-left text-white hover:text-[#22c55e] hover:no-underline py-5 [&[data-state=open]>svg]:text-[#22c55e]">
+                <AccordionTrigger className="text-left text-[#FFFACA] hover:text-[#FFFACA]/80 hover:no-underline py-5 [&[data-state=open]>svg]:text-[#004f39]">
                   <span className="font-medium pr-4">{faq.question}</span>
                 </AccordionTrigger>
-                <AccordionContent className="text-white/60 pb-5 leading-relaxed">
+                <AccordionContent className="text-[#FFFACA]/60 pb-5 leading-relaxed">
                   {faq.answer}
                 </AccordionContent>
               </AccordionItem>
