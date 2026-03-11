@@ -38,9 +38,9 @@ export function Navbar() {
           {/* Logo */}
           <a href="#inicio" className="flex items-center group">
             <img 
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Frame%2021194-k6hU84GAip59uIWqPEZ6KChrYPREFZ.jpg"
+              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Frame_21182-removebg-preview-Q9PqutytyhFKLcvcQSqD5w23pcSGRV.png"
               alt="Sentinel"
-              className="h-8 md:h-10 w-auto object-contain"
+              className="h-8 md:h-10 w-auto object-contain brightness-0 invert"
             />
           </a>
 

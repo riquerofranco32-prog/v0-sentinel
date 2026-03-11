@@ -66,9 +66,9 @@ export function Footer() {
           <div className="lg:col-span-2">
             <div className="mb-6">
               <img 
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Frame%2021194-k6hU84GAip59uIWqPEZ6KChrYPREFZ.jpg"
+                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Frame_21182-removebg-preview-Q9PqutytyhFKLcvcQSqD5w23pcSGRV.png"
                 alt="Sentinel"
-                className="h-10 w-auto object-contain"
+                className="h-10 w-auto object-contain brightness-0 invert"
               />
             </div>
             <p className="text-[#FFFACA]/70 mb-6 max-w-sm leading-relaxed text-sm">
