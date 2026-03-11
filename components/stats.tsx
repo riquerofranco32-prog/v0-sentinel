@@ -111,10 +111,10 @@ export function Stats() {
   return (
     <section
       ref={sectionRef}
-      className="relative py-16 lg:py-24 bg-[#004f39]"
+      className="relative py-12 sm:py-16 lg:py-24 bg-[#004f39]"
     >
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-8 lg:gap-12">
           {stats.map((stat, index) => (
             <div
               key={index}
@@ -125,13 +125,13 @@ export function Stats() {
               }`}
               style={{ transitionDelay: `${index * 100}ms` }}
             >
-              <div className="flex justify-center mb-4">
-                <div className="w-12 h-12 bg-[#FFFACA]/10 rounded-xl flex items-center justify-center">
-                  <stat.icon className="w-6 h-6 text-[#FFFACA]" />
+              <div className="flex justify-center mb-2 sm:mb-4">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-[#FFFACA]/10 rounded-xl flex items-center justify-center">
+                  <stat.icon className="w-5 h-5 sm:w-6 sm:h-6 text-[#FFFACA]" />
                 </div>
               </div>
               <div
-                className="text-4xl sm:text-5xl lg:text-6xl font-bold text-[#FFFACA] mb-2"
+                className="text-2xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-[#FFFACA] mb-1 sm:mb-2"
                 style={{ fontFamily: "var(--font-heading)" }}
               >
                 <AnimatedCounter
@@ -140,7 +140,7 @@ export function Stats() {
                   isVisible={isVisible}
                 />
               </div>
-              <p className="text-[#FFFACA]/70 text-sm sm:text-base">{stat.label}</p>
+              <p className="text-[#FFFACA]/70 text-[10px] sm:text-sm lg:text-base leading-tight">{stat.label}</p>
             </div>
           ))}
         </div>

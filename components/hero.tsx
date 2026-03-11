@@ -132,10 +132,10 @@ export function Hero() {
       />
 
       {/* ZONA SUPERIOR - Centered Wordmark */}
-      <div className="absolute inset-0 z-10 flex flex-col items-center justify-center pointer-events-none">
+      <div className="absolute inset-0 z-10 flex flex-col items-center justify-center pointer-events-none px-4">
         {/* Giant Wordmark - decorative, not a heading */}
         <div
-          className={`text-[clamp(4rem,16vw,14rem)] font-bold leading-none tracking-tight text-center ${
+          className={`text-[clamp(3rem,14vw,14rem)] font-bold leading-none tracking-tight text-center ${
             mounted ? "animate-hero-fade-in" : "opacity-0"
           }`}
           style={{ 
@@ -149,7 +149,7 @@ export function Hero() {
 
         {/* Tagline - below wordmark */}
         <p
-          className={`text-xs sm:text-sm tracking-[0.35em] uppercase mt-4 transition-all duration-700 delay-300 ${
+          className={`text-[10px] sm:text-sm tracking-[0.2em] sm:tracking-[0.35em] uppercase mt-2 sm:mt-4 transition-all duration-700 delay-300 text-center ${
             mounted ? "opacity-100" : "opacity-0"
           }`}
           style={{ color: "rgba(255, 250, 202, 0.4)" }}
@@ -159,30 +159,30 @@ export function Hero() {
       </div>
 
       {/* ZONA INFERIOR - Left-aligned content */}
-      <div className="relative z-10 pb-24 px-6 md:px-12 lg:px-16">
+      <div className="relative z-10 pb-20 sm:pb-24 px-4 sm:px-6 md:px-12 lg:px-16">
         <div 
           className={`max-w-md transition-all duration-700 delay-500 ${
             mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
           }`}
         >
           <h1 
-            className="text-[clamp(1.6rem,3vw,2.4rem)] font-normal text-[#FFFACA] mb-4 leading-tight"
+            className="text-xl sm:text-2xl md:text-3xl font-normal text-[#FFFACA] mb-3 sm:mb-4 leading-tight"
             style={{ fontFamily: "var(--font-heading)" }}
           >
             Tecnología que protege tu Territorio
           </h1>
           <p 
-            className="text-sm md:text-base mb-6 leading-relaxed max-w-[420px]"
+            className="text-xs sm:text-sm md:text-base mb-5 sm:mb-6 leading-relaxed max-w-[420px]"
             style={{ color: "rgba(255, 250, 202, 0.55)" }}
           >
             Tecnología aérea e inteligencia artificial para la detección temprana
             de incendios y el monitoreo ambiental.
           </p>
-          <div className="flex flex-col sm:flex-row gap-3">
+          <div className="flex flex-col sm:flex-row gap-2 sm:gap-3">
             <Button
               asChild
               size="lg"
-              className="bg-[#004f39] hover:bg-[#003d2c] text-[#FFFACA] font-semibold rounded-full px-6 h-11 text-sm"
+              className="bg-[#004f39] hover:bg-[#003d2c] text-[#FFFACA] font-semibold rounded-full px-5 sm:px-6 h-10 sm:h-11 text-xs sm:text-sm"
             >
               <a href="#nosotros">
                 Quiero saber más
@@ -193,7 +193,7 @@ export function Hero() {
               asChild
               variant="outline"
               size="lg"
-              className="border-[#FFFACA]/30 bg-transparent text-[#FFFACA] hover:bg-[#FFFACA]/10 rounded-full px-6 h-11 text-sm"
+              className="border-[#FFFACA]/30 bg-transparent text-[#FFFACA] hover:bg-[#FFFACA]/10 rounded-full px-5 sm:px-6 h-10 sm:h-11 text-xs sm:text-sm"
             >
               <a href="#servicios">Ver Servicios</a>
             </Button>
@@ -202,15 +202,15 @@ export function Hero() {
       </div>
 
       {/* Partner Marquee */}
-      <div className="absolute bottom-0 left-0 right-0 z-10 bg-[#151613]/95 backdrop-blur-sm border-t border-[#FFFACA]/10 py-3 overflow-hidden">
+      <div className="absolute bottom-0 left-0 right-0 z-10 bg-[#151613]/95 backdrop-blur-sm border-t border-[#FFFACA]/10 py-2 sm:py-3 overflow-hidden">
         <div className="flex animate-marquee whitespace-nowrap">
           {[...partners, ...partners, ...partners].map((partner, index) => (
             <div
               key={index}
-              className={`inline-flex items-center gap-2 mx-4 px-3 py-1.5 rounded-full ${partner.color} border border-[#FFFACA]/5`}
+              className={`inline-flex items-center gap-1.5 sm:gap-2 mx-2 sm:mx-4 px-2 sm:px-3 py-1 sm:py-1.5 rounded-full ${partner.color} border border-[#FFFACA]/5`}
             >
-              <partner.icon className="w-3.5 h-3.5" />
-              <span className="text-xs font-medium">{partner.name}</span>
+              <partner.icon className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
+              <span className="text-[10px] sm:text-xs font-medium">{partner.name}</span>
             </div>
           ))}
         </div>
