@@ -221,10 +221,10 @@ export function Awards() {
           </div>
         </div>
 
-        {/* Event Photos */}
-        <div className="mt-8 grid md:grid-cols-2 gap-6">
+        {/* Event Photo */}
+        <div className="mt-8">
           <div
-            className={`relative rounded-2xl overflow-hidden aspect-video transition-all duration-700 delay-600 ${
+            className={`relative rounded-2xl overflow-hidden aspect-video max-w-4xl mx-auto transition-all duration-700 delay-600 ${
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
             }`}
           >
@@ -236,21 +236,6 @@ export function Awards() {
             <div className="absolute inset-0 bg-gradient-to-t from-[#151613]/80 to-transparent" />
             <div className="absolute bottom-4 left-4">
               <span className="text-[#FFFACA]/80 text-sm font-medium">Prendete & Premios Sadosky</span>
-            </div>
-          </div>
-          <div
-            className={`relative rounded-2xl overflow-hidden aspect-video transition-all duration-700 delay-700 ${
-              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-            }`}
-          >
-            <img
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/dd-KDbXSa5p7bnuJI26cfg55wfRiFCcbI.jpg"
-              alt="Nuestro sistema integral de detección con drones, sensores y satélites"
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#151613]/80 to-transparent" />
-            <div className="absolute bottom-4 left-4">
-              <span className="text-[#FFFACA]/80 text-sm font-medium">Nuestro Sistema Integral</span>
             </div>
           </div>
         </div>
