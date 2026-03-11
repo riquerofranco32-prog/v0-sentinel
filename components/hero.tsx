@@ -73,7 +73,7 @@ export function Hero() {
 
         ctx.beginPath()
         ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2)
-        ctx.fillStyle = `rgba(34, 197, 94, ${p.opacity})`
+        ctx.fillStyle = `rgba(0, 79, 57, ${p.opacity})`
         ctx.fill()
 
         // Draw connections
@@ -85,7 +85,7 @@ export function Hero() {
             ctx.beginPath()
             ctx.moveTo(p.x, p.y)
             ctx.lineTo(p2.x, p2.y)
-            ctx.strokeStyle = `rgba(34, 197, 94, ${0.1 * (1 - dist / 100)})`
+            ctx.strokeStyle = `rgba(0, 79, 57, ${0.1 * (1 - dist / 100)})`
             ctx.stroke()
           }
         })
@@ -110,11 +110,11 @@ export function Hero() {
       {/* Background Image with Parallax effect */}
       <div className="absolute inset-0 z-0">
         <img
-          src="https://images.unsplash.com/photo-1448375240586-882707db888b?w=1920&q=80"
-          alt="Lush green forest with sunlight rays"
+          src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/3-wMoLWM6ee43OTLxdif9ekqEJu7qlet.png"
+          alt="Paisaje montañoso con volcán nevado y bosque patagónico"
           className="w-full h-full object-cover scale-105"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#080c08]/70 via-[#080c08]/50 to-[#080c08]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#151613]/60 via-[#151613]/40 to-[#151613]" />
       </div>
 
       {/* Particle Canvas */}
@@ -127,12 +127,12 @@ export function Hero() {
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-20">
         {/* Floating Badge */}
         <div
-          className={`inline-flex items-center gap-2 bg-[#22c55e]/10 border border-[#22c55e]/30 rounded-full px-4 py-2 mb-8 transition-all duration-700 ${
+          className={`inline-flex items-center gap-2 bg-[#004f39]/20 border border-[#004f39]/40 rounded-full px-4 py-2 mb-8 transition-all duration-700 ${
             mounted ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4"
           }`}
         >
-          <Sparkles className="w-4 h-4 text-[#22c55e]" />
-          <span className="text-sm text-[#22c55e] font-medium">
+          <Sparkles className="w-4 h-4 text-[#FFFACA]" />
+          <span className="text-sm text-[#FFFACA] font-medium">
             NEW — Sentinel Cloud v2.0
           </span>
         </div>
@@ -168,7 +168,7 @@ export function Hero() {
           <Button
             asChild
             size="lg"
-            className="bg-[#22c55e] hover:bg-[#16a34a] text-[#080c08] font-semibold rounded-full px-8 h-12 text-base"
+            className="bg-[#004f39] hover:bg-[#003d2c] text-[#FFFACA] font-semibold rounded-full px-8 h-12 text-base"
           >
             <a href="#nosotros">
               Quiero saber más
@@ -179,7 +179,7 @@ export function Hero() {
             asChild
             variant="outline"
             size="lg"
-            className="border-white/30 bg-transparent text-white hover:bg-white/10 hover:text-white rounded-full px-8 h-12 text-base"
+            className="border-[#FFFACA]/40 bg-transparent text-[#FFFACA] hover:bg-[#FFFACA]/10 hover:text-[#FFFACA] rounded-full px-8 h-12 text-base"
           >
             <a href="#servicios">Ver Servicios</a>
           </Button>
@@ -187,7 +187,7 @@ export function Hero() {
       </div>
 
       {/* Partner Marquee with styled badges */}
-      <div className="absolute bottom-0 left-0 right-0 z-10 bg-[#080c08]/90 backdrop-blur-sm border-t border-white/10 py-4 overflow-hidden">
+      <div className="absolute bottom-0 left-0 right-0 z-10 bg-[#151613]/90 backdrop-blur-sm border-t border-[#FFFACA]/10 py-4 overflow-hidden">
         <div className="flex animate-marquee whitespace-nowrap">
           {[...partners, ...partners, ...partners].map((partner, index) => (
             <div
