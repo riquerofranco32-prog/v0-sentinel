@@ -27,6 +27,37 @@ export function Problem() {
 
   return (
     <section ref={sectionRef} className="relative">
+      {/* Hero Image - Firefighters */}
+      <div className="relative h-[70vh] min-h-[500px] overflow-hidden">
+        <img
+          src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/267-OTOcu9EUVLZS8Z5p5N46egBZitm0qj.jpg"
+          alt="Bomberos enfrentando incendio forestal masivo en la Patagonia"
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#151613] via-[#151613]/30 to-transparent" />
+        
+        {/* Overlay Content */}
+        <div className="absolute bottom-0 left-0 right-0 p-8 md:p-16">
+          <div className="max-w-4xl">
+            <h2
+              className={`text-4xl sm:text-5xl lg:text-6xl font-bold text-[#FFFACA] mb-4 transition-all duration-700 ${
+                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+              }`}
+              style={{ fontFamily: "var(--font-heading)" }}
+            >
+              Hoy la Patagonia duele.
+            </h2>
+            <p
+              className={`text-xl sm:text-2xl text-[#FFFACA]/80 transition-all duration-700 delay-100 ${
+                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+              }`}
+            >
+              No es solo bosque lo que se quema. Es el futuro de nuestras economías.
+            </p>
+          </div>
+        </div>
+      </div>
+
       {/* Block 1 - Emergency Hook */}
       <div className="py-20 lg:py-28 bg-gradient-to-b from-[#151613] via-[#1a0a0a] to-[#1a0a0a]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

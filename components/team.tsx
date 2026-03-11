@@ -27,20 +27,20 @@ export function Team() {
     <section 
       ref={sectionRef}
       id="equipo"
-      className="relative py-24 lg:py-32 bg-[#080c08]"
+      className="relative py-24 lg:py-32 bg-[#151613]"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="mb-12">
           <h2
-            className={`text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-2 transition-all duration-700 ${
+            className={`text-3xl sm:text-4xl lg:text-5xl font-bold text-[#FFFACA] mb-2 transition-all duration-700 ${
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
             }`}
             style={{ fontFamily: "var(--font-heading)" }}
           >
             Nuestro equipo.
           </h2>
-          <div className={`w-48 h-0.5 bg-[#22c55e]/50 transition-all duration-700 delay-100 ${
+          <div className={`w-48 h-0.5 bg-[#004f39]/70 transition-all duration-700 delay-100 ${
             isVisible ? "opacity-100" : "opacity-0"
           }`} />
         </div>
