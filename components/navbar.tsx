@@ -36,18 +36,12 @@ export function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
-          <a href="#inicio" className="flex items-center gap-3 group">
-            {/* Pulsing dot */}
-            <span className="relative flex h-2.5 w-2.5">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#004f39] opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#004f39]"></span>
-            </span>
-            <span 
-              className="text-xl font-bold text-[#FFFACA] tracking-[0.2em]"
-              style={{ fontFamily: "var(--font-heading)" }}
-            >
-              SENTINEL
-            </span>
+          <a href="#inicio" className="flex items-center group">
+            <img 
+              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Frame%2021194-k6hU84GAip59uIWqPEZ6KChrYPREFZ.jpg"
+              alt="Sentinel"
+              className="h-8 md:h-10 w-auto object-contain"
+            />
           </a>
 
           {/* Desktop Navigation */}
