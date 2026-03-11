@@ -14,10 +14,10 @@ const awards = [
   {
     logo: "sadosky",
     logoImage: true,
-    title: "Premios Sadosky 2025 – Startup del Año (Finalistas)",
-    description: "Finalistas en la categoría Mejor Startup del Año 2025 y Solución Innovadora, uno de los reconocimientos más prestigiosos del sector tecnológico argentino. Este logro valida la solidez técnica, el impacto y la innovación del modelo de Sentinel.",
+    title: "Premios Sadosky 2025 – Startup del Año (Ganadores)",
+    description: "Ganadores en la categoría Mejor Startup del Año 2025 y Solución Innovadora, uno de los reconocimientos más prestigiosos del sector tecnológico argentino. Este logro valida la solidez técnica, el impacto y la innovación del modelo de Sentinel.",
     bgColor: "bg-[#1a1c18]",
-    badge: "finalista",
+    badge: "ganador",
   },
   {
     logo: "UE",
