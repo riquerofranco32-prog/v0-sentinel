@@ -3,7 +3,6 @@
 import { useState, useEffect } from "react"
 import { Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { SentinelLogoIcon } from "@/components/sentinel-logo"
 
 const navLinks = [
   { href: "#inicio", label: "INICIO" },
@@ -28,22 +27,26 @@ export function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         isScrolled
-          ? "bg-[#080c08]/95 backdrop-blur-xl border-b border-white/10"
-          : "bg-transparent"
+          ? "bg-[#151613]/95 backdrop-blur-xl border-b border-[#FFFACA]/10"
+          : "bg-gradient-to-b from-[#151613]/60 to-transparent"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
           <a href="#inicio" className="flex items-center gap-3 group">
-            <SentinelLogoIcon className="w-10 h-10 transition-transform group-hover:scale-110" />
+            {/* Pulsing dot */}
+            <span className="relative flex h-2.5 w-2.5">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#004f39] opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#004f39]"></span>
+            </span>
             <span 
-              className="text-lg font-medium text-white tracking-[0.3em]"
+              className="text-xl font-bold text-[#FFFACA] tracking-[0.2em]"
               style={{ fontFamily: "var(--font-heading)" }}
             >
-              S E N T I N E L
+              SENTINEL
             </span>
           </a>
 
@@ -53,7 +56,10 @@ export function Navbar() {
               <a
                 key={link.href}
                 href={link.href}
-                className="text-sm text-white/70 hover:text-white transition-colors font-medium tracking-wide"
+                className="text-xs tracking-[0.15em] transition-colors font-medium"
+                style={{ color: "rgba(255, 250, 202, 0.6)" }}
+                onMouseEnter={(e) => e.currentTarget.style.color = "rgba(255, 250, 202, 1)"}
+                onMouseLeave={(e) => e.currentTarget.style.color = "rgba(255, 250, 202, 0.6)"}
               >
                 {link.label}
               </a>
@@ -64,21 +70,21 @@ export function Navbar() {
           <div className="hidden md:block">
             <Button
               asChild
-              className="bg-[#22c55e] hover:bg-[#16a34a] text-[#080c08] font-semibold rounded-full px-6"
+              className="bg-[#004f39] hover:bg-[#003d2c] text-[#FFFACA] font-semibold rounded-full px-6 text-xs tracking-wider"
             >
               <a
                 href="https://linktr.ee/sentinelarg"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Solicitar reunión
+                SOLICITAR REUNIÓN
               </a>
             </Button>
           </div>
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden text-white p-2"
+            className="md:hidden text-[#FFFACA] p-2"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle menu"
           >
@@ -97,12 +103,13 @@ export function Navbar() {
           isMobileMenuOpen ? "max-h-[500px]" : "max-h-0"
         }`}
       >
-        <div className="bg-[#080c08]/95 backdrop-blur-xl border-t border-white/10 px-4 py-4 space-y-4">
+        <div className="bg-[#151613]/98 backdrop-blur-xl border-t border-[#FFFACA]/10 px-4 py-4 space-y-4">
           {navLinks.map((link) => (
             <a
               key={link.href}
               href={link.href}
-              className="block text-sm text-white/70 hover:text-white transition-colors font-medium tracking-wide py-2"
+              className="block text-xs tracking-[0.15em] font-medium py-2"
+              style={{ color: "rgba(255, 250, 202, 0.6)" }}
               onClick={() => setIsMobileMenuOpen(false)}
             >
               {link.label}
@@ -110,14 +117,14 @@ export function Navbar() {
           ))}
           <Button
             asChild
-            className="w-full bg-[#22c55e] hover:bg-[#16a34a] text-[#080c08] font-semibold rounded-full"
+            className="w-full bg-[#004f39] hover:bg-[#003d2c] text-[#FFFACA] font-semibold rounded-full text-xs tracking-wider"
           >
             <a
               href="https://linktr.ee/sentinelarg"
               target="_blank"
               rel="noopener noreferrer"
             >
-              Solicitar reunión
+              SOLICITAR REUNIÓN
             </a>
           </Button>
         </div>

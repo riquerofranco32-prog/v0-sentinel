@@ -217,55 +217,57 @@ export function Problem() {
       </div>
 
       {/* Block 2 - Economic Reality */}
-      <div className="py-20 lg:py-28 bg-gradient-to-b from-[#1a0a0a] to-[#1a0808]">
+      <div className="py-20 lg:py-28 bg-[#151613]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h3
-            className={`text-2xl sm:text-3xl lg:text-4xl font-bold text-[#FFFACA] mb-12 text-center transition-all duration-700 ${
-              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-            }`}
-            style={{ fontFamily: "var(--font-heading)" }}
-          >
-            Lo Irrecuperable
-          </h3>
+          <div className="border-l-4 border-[#004f39] pl-8">
+            <h3
+              className={`text-3xl sm:text-4xl lg:text-5xl font-bold text-[#FFFACA] mb-12 transition-all duration-700 ${
+                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+              }`}
+              style={{ fontFamily: "var(--font-heading)" }}
+            >
+              Lo Irrecuperable
+            </h3>
 
-          <div className="grid md:grid-cols-3 gap-6">
-            <div className={`bg-[#0a0808] border border-red-500/20 rounded-xl p-6 transition-all duration-700 delay-100 ${
-              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-            }`}>
-              <div className="inline-block bg-red-500 text-[#FFFACA] text-sm font-semibold px-3 py-1 rounded mb-4">
-                Valor Pre-Incendio:
+            <div className="space-y-0">
+              <div className={`py-8 border-b border-[#FFFACA]/10 transition-all duration-700 delay-100 ${
+                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+              }`}>
+                <div className="inline-block bg-[#004f39] text-[#FFFACA] text-xs font-semibold px-3 py-1 rounded-full mb-4 tracking-wider">
+                  VALOR PRE-INCENDIO
+                </div>
+                <p className="text-[#FFFACA]/60 mb-2">Una chacra en Puerto Patriada cotiza entre</p>
+                <p className="text-4xl sm:text-5xl lg:text-6xl font-bold text-[#FFFACA]" style={{ fontFamily: "var(--font-heading)" }}>
+                  $47,000 - $130,000 USD
+                </p>
+                <p className="text-[#FFFACA]/50 text-sm mt-2">por hectárea.</p>
               </div>
-              <p className="text-[#FFFACA]/70 mb-2">Una chacra en Puerto Patriada cotiza entre</p>
-              <p className="text-2xl font-bold text-[#FFFACA]" style={{ fontFamily: "var(--font-heading)" }}>
-                <span className="text-[#004f39]">$47,000</span> y <span className="text-[#004f39]">$130,000 USD</span>
-              </p>
-              <p className="text-[#FFFACA]/50 text-sm">por hectárea.</p>
-            </div>
 
-            <div className={`bg-[#0a0808] border border-red-500/20 rounded-xl p-6 transition-all duration-700 delay-200 ${
-              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-            }`}>
-              <div className="inline-block bg-red-500 text-[#FFFACA] text-sm font-semibold px-3 py-1 rounded mb-4">
-                Valor Post-Incendio:
+              <div className={`py-8 border-b border-[#FFFACA]/10 transition-all duration-700 delay-200 ${
+                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+              }`}>
+                <div className="inline-block bg-red-500 text-[#FFFACA] text-xs font-semibold px-3 py-1 rounded-full mb-4 tracking-wider">
+                  VALOR POST-INCENDIO
+                </div>
+                <p className="text-[#FFFACA]/60 mb-2">El valor cae entre un</p>
+                <p className="text-4xl sm:text-5xl lg:text-6xl font-bold text-red-400" style={{ fontFamily: "var(--font-heading)" }}>
+                  40% - 60%
+                </p>
+                <p className="text-[#FFFACA]/50 text-sm mt-2">USD $18,000 - $40,000 / ha</p>
               </div>
-              <p className="text-[#FFFACA]/70 mb-2">El valor cae entre un</p>
-              <p className="text-2xl font-bold text-[#FFFACA]" style={{ fontFamily: "var(--font-heading)" }}>
-                <span className="text-red-400">40%</span> y un <span className="text-red-400">60%</span>
-              </p>
-              <p className="text-[#FFFACA]/50 text-sm">USD $18,000 - $40,000 / ha</p>
-            </div>
 
-            <div className={`bg-[#0a0808] border border-red-500/20 rounded-xl p-6 transition-all duration-700 delay-300 ${
-              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-            }`}>
-              <div className="inline-block bg-red-500 text-[#FFFACA] text-sm font-semibold px-3 py-1 rounded mb-4">
-                La cuenta:
+              <div className={`py-8 transition-all duration-700 delay-300 ${
+                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+              }`}>
+                <div className="inline-block bg-red-500 text-[#FFFACA] text-xs font-semibold px-3 py-1 rounded-full mb-4 tracking-wider">
+                  LA CUENTA
+                </div>
+                <p className="text-[#FFFACA]/60 mb-2">La quema de 100 hectáreas significa una pérdida patrimonial de</p>
+                <p className="text-5xl sm:text-6xl lg:text-7xl font-bold text-[#FFFACA]" style={{ fontFamily: "var(--font-heading)" }}>
+                  $5,000,000 USD
+                </p>
+                <p className="text-[#FFFACA]/50 text-sm mt-2">25% del presupuesto nacional de manejo del fuego.</p>
               </div>
-              <p className="text-[#FFFACA]/70 mb-2">La quema de 100 hectáreas significa una pérdida patrimonial de</p>
-              <p className="text-2xl font-bold text-red-400" style={{ fontFamily: "var(--font-heading)" }}>
-                ~$5,000,000 USD
-              </p>
-              <p className="text-[#FFFACA]/50 text-sm">25% del presupuesto nacional de manejo del fuego.</p>
             </div>
           </div>
         </div>

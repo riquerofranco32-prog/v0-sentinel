@@ -1,14 +1,16 @@
 import type { Metadata, Viewport } from 'next'
-import { Space_Grotesk, Inter } from 'next/font/google'
+import { Bebas_Neue, DM_Mono } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 
-const spaceGrotesk = Space_Grotesk({ 
+const bebasNeue = Bebas_Neue({ 
+  weight: '400',
   subsets: ["latin"],
   variable: '--font-heading'
 });
 
-const inter = Inter({ 
+const dmMono = DM_Mono({ 
+  weight: ['400', '500'],
   subsets: ["latin"],
   variable: '--font-sans'
 });
@@ -30,7 +32,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" className="scroll-smooth">
-      <body className={`${inter.variable} ${spaceGrotesk.variable} font-sans antialiased bg-[#151613] text-[#FFFACA]`}>
+      <body className={`${dmMono.variable} ${bebasNeue.variable} font-sans antialiased bg-[#151613] text-[#FFFACA]`}>
         {children}
         <Analytics />
       </body>

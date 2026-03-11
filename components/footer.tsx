@@ -1,6 +1,5 @@
 "use client"
 
-import { SentinelLogoIcon } from "@/components/sentinel-logo"
 import { Mail, MapPin } from "lucide-react"
 
 const footerLinks = {
@@ -44,34 +43,53 @@ const socialLinks = [
 
 export function Footer() {
   return (
-    <footer id="contacto" className="bg-[#080c08] border-t border-white/10">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <footer id="contacto" className="relative bg-[#004f39] overflow-hidden">
+      {/* Watermark */}
+      <div 
+        className="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden"
+        aria-hidden="true"
+      >
+        <span 
+          className="text-[20vw] font-bold tracking-wider whitespace-nowrap"
+          style={{ 
+            fontFamily: "var(--font-heading)",
+            color: "rgba(255, 250, 202, 0.05)",
+          }}
+        >
+          SENTINEL
+        </span>
+      </div>
+
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 lg:gap-8">
           {/* Brand Column */}
           <div className="lg:col-span-2">
             <div className="flex items-center gap-3 mb-6">
-              <SentinelLogoIcon className="w-10 h-10" />
+              <span className="relative flex h-2.5 w-2.5">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#FFFACA] opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#FFFACA]"></span>
+              </span>
               <span
-                className="text-lg font-medium text-white tracking-[0.2em]"
+                className="text-xl font-bold text-[#FFFACA] tracking-[0.2em]"
                 style={{ fontFamily: "var(--font-heading)" }}
               >
                 SENTINEL
               </span>
             </div>
-            <p className="text-white/60 mb-6 max-w-sm leading-relaxed">
+            <p className="text-[#FFFACA]/70 mb-6 max-w-sm leading-relaxed text-sm">
               Tecnología aérea e inteligencia artificial para la detección temprana 
               de incendios y el monitoreo ambiental en Argentina.
             </p>
             
             {/* Contact Info */}
             <div className="space-y-3 mb-6">
-              <div className="flex items-center gap-3 text-white/60">
-                <Mail className="w-4 h-4 text-[#22c55e]" />
-                <span className="text-sm">sentinelproyecto@gmail.com</span>
+              <div className="flex items-center gap-3">
+                <Mail className="w-4 h-4 text-[#FFFACA]" />
+                <span className="text-sm text-[#FFFACA]/80">sentinelproyecto@gmail.com</span>
               </div>
-              <div className="flex items-center gap-3 text-white/60">
-                <MapPin className="w-4 h-4 text-[#22c55e]" />
-                <span className="text-sm">Mendoza, Argentina</span>
+              <div className="flex items-center gap-3">
+                <MapPin className="w-4 h-4 text-[#FFFACA]" />
+                <span className="text-sm text-[#FFFACA]/80">Mendoza, Argentina</span>
               </div>
             </div>
 
@@ -83,7 +101,7 @@ export function Footer() {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 bg-white/5 rounded-lg flex items-center justify-center text-white/60 hover:bg-[#22c55e]/20 hover:text-[#22c55e] transition-all"
+                  className="w-10 h-10 bg-[#FFFACA]/10 rounded-lg flex items-center justify-center text-[#FFFACA]/70 hover:bg-[#FFFACA]/20 hover:text-[#FFFACA] transition-all"
                   aria-label={social.label}
                 >
                   {social.icon}
@@ -94,13 +112,13 @@ export function Footer() {
 
           {/* Links Columns */}
           <div>
-            <h4 className="text-white font-semibold mb-4">Producto</h4>
+            <h4 className="text-[#FFFACA] font-semibold mb-4 text-sm tracking-wider uppercase">Producto</h4>
             <ul className="space-y-3">
               {footerLinks.producto.map((link, index) => (
                 <li key={index}>
                   <a
                     href={link.href}
-                    className="text-white/60 hover:text-white transition-colors text-sm"
+                    className="text-[#FFFACA]/60 hover:text-[#FFFACA] transition-colors text-sm"
                   >
                     {link.label}
                   </a>
@@ -110,13 +128,13 @@ export function Footer() {
           </div>
 
           <div>
-            <h4 className="text-white font-semibold mb-4">Empresa</h4>
+            <h4 className="text-[#FFFACA] font-semibold mb-4 text-sm tracking-wider uppercase">Empresa</h4>
             <ul className="space-y-3">
               {footerLinks.empresa.map((link, index) => (
                 <li key={index}>
                   <a
                     href={link.href}
-                    className="text-white/60 hover:text-white transition-colors text-sm"
+                    className="text-[#FFFACA]/60 hover:text-[#FFFACA] transition-colors text-sm"
                   >
                     {link.label}
                   </a>
@@ -126,13 +144,13 @@ export function Footer() {
           </div>
 
           <div>
-            <h4 className="text-white font-semibold mb-4">Soporte</h4>
+            <h4 className="text-[#FFFACA] font-semibold mb-4 text-sm tracking-wider uppercase">Soporte</h4>
             <ul className="space-y-3">
               {footerLinks.soporte.map((link, index) => (
                 <li key={index}>
                   <a
                     href={link.href}
-                    className="text-white/60 hover:text-white transition-colors text-sm"
+                    className="text-[#FFFACA]/60 hover:text-[#FFFACA] transition-colors text-sm"
                   >
                     {link.label}
                   </a>
@@ -143,15 +161,15 @@ export function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-16 pt-8 border-t border-white/10 flex flex-col sm:flex-row justify-between items-center gap-4">
-          <p className="text-white/40 text-sm">
+        <div className="mt-16 pt-8 border-t border-[#FFFACA]/20 flex flex-col sm:flex-row justify-between items-center gap-4">
+          <p className="text-[#FFFACA]/50 text-xs">
             All copyrights @sentinel.arg · Visioned and Crafted by Sentinel
           </p>
           <div className="flex gap-6">
-            <a href="#" className="text-white/40 hover:text-white/60 text-sm transition-colors">
+            <a href="#" className="text-[#FFFACA]/50 hover:text-[#FFFACA]/70 text-xs transition-colors">
               Términos
             </a>
-            <a href="#" className="text-white/40 hover:text-white/60 text-sm transition-colors">
+            <a href="#" className="text-[#FFFACA]/50 hover:text-[#FFFACA]/70 text-xs transition-colors">
               Privacidad
             </a>
           </div>

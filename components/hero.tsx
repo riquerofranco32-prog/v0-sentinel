@@ -3,7 +3,6 @@
 import { useEffect, useState, useRef } from "react"
 import { Button } from "@/components/ui/button"
 import { ArrowRight, Sparkles, TreePine, Flame, Building, Shield, Leaf, Mountain } from "lucide-react"
-import { RotatingWord } from "@/components/rotating-word"
 
 const partners = [
   { name: "Forestal Argentina", icon: TreePine, color: "bg-emerald-500/20 text-emerald-400" },
@@ -107,95 +106,119 @@ export function Hero() {
       id="inicio"
       className="relative min-h-screen flex flex-col justify-center overflow-hidden"
     >
-      {/* Background Image with Parallax effect */}
+      {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <img
           src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/3-wMoLWM6ee43OTLxdif9ekqEJu7qlet.png"
           alt="Paisaje montañoso con volcán nevado y bosque patagónico"
           className="w-full h-full object-cover scale-105"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#151613]/60 via-[#151613]/40 to-[#151613]" />
+        {/* Multi-layer gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#004f39]/20 to-[#151613]" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#151613] via-transparent to-[#151613]/40" />
       </div>
 
       {/* Particle Canvas */}
       <canvas
         ref={canvasRef}
-        className="absolute inset-0 z-[1] pointer-events-none opacity-60"
+        className="absolute inset-0 z-[1] pointer-events-none opacity-40"
       />
 
-      {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-20">
-        {/* Floating Badge */}
+      {/* Main Content - Centered Wordmark */}
+      <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4">
+        {/* Badge */}
         <div
-          className={`inline-flex items-center gap-2 bg-[#004f39]/20 border border-[#004f39]/40 rounded-full px-4 py-2 mb-8 transition-all duration-700 ${
+          className={`inline-flex items-center gap-2 bg-[#004f39]/30 border border-[#004f39]/50 rounded-full px-4 py-2 mb-8 transition-all duration-700 ${
             mounted ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4"
           }`}
         >
           <Sparkles className="w-4 h-4 text-[#FFFACA]" />
-          <span className="text-sm text-[#FFFACA] font-medium">
+          <span className="text-sm text-[#FFFACA] font-medium tracking-wider uppercase">
             NEW — Sentinel Cloud v2.0
           </span>
         </div>
 
-        {/* Headline */}
+        {/* Giant Wordmark */}
         <h1
-          className={`text-5xl md:text-7xl lg:text-8xl font-black text-white text-center leading-tight mb-8 transition-all duration-700 delay-100 ${
-            mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+          className={`text-[clamp(5rem,18vw,16rem)] font-bold leading-none tracking-tight text-center ${
+            mounted ? "animate-hero-fade-in" : "opacity-0"
           }`}
-          style={{ fontFamily: "var(--font-heading)" }}
+          style={{ 
+            fontFamily: "var(--font-heading)",
+            color: "rgba(255, 250, 202, 0.93)",
+          }}
         >
-          Tecnología que protege tu
-          <br />
-          <RotatingWord />
+          SENTINEL
         </h1>
 
-        {/* Subtext */}
+        {/* Tagline */}
         <p
-          className={`text-lg sm:text-xl text-white/70 max-w-2xl mb-10 leading-relaxed transition-all duration-700 delay-500 ${
-            mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+          className={`text-sm md:text-base tracking-[0.4em] uppercase mt-4 transition-all duration-700 delay-300 ${
+            mounted ? "opacity-100" : "opacity-0"
+          }`}
+          style={{ color: "rgba(255, 250, 202, 0.45)" }}
+        >
+          TECNOLOGÍA · TERRITORIO · PREVENCIÓN
+        </p>
+
+        {/* Scroll Indicator */}
+        <div 
+          className={`absolute bottom-32 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 transition-all duration-700 delay-700 ${
+            mounted ? "opacity-100" : "opacity-0"
           }`}
         >
+          <div className="w-px h-12 bg-[#FFFACA]/30 animate-scroll-indicator" />
+        </div>
+      </div>
+
+      {/* Bottom Left Content */}
+      <div 
+        className={`absolute bottom-24 left-0 z-10 max-w-xl px-6 md:px-12 transition-all duration-700 delay-500 ${
+          mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+        }`}
+      >
+        <h2 
+          className="text-2xl md:text-3xl lg:text-4xl font-bold text-[#FFFACA] mb-4"
+          style={{ fontFamily: "var(--font-heading)" }}
+        >
+          Tecnología que protege tu TERRITORIO
+        </h2>
+        <p className="text-[#FFFACA]/60 text-sm md:text-base mb-6 leading-relaxed">
           Tecnología aérea e inteligencia artificial para la detección temprana
           de incendios y el monitoreo ambiental.
         </p>
-
-        {/* CTA Buttons */}
-        <div
-          className={`flex flex-col sm:flex-row gap-4 transition-all duration-700 delay-700 ${
-            mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-          }`}
-        >
+        <div className="flex flex-col sm:flex-row gap-3">
           <Button
             asChild
             size="lg"
-            className="bg-[#004f39] hover:bg-[#003d2c] text-[#FFFACA] font-semibold rounded-full px-8 h-12 text-base"
+            className="bg-[#004f39] hover:bg-[#003d2c] text-[#FFFACA] font-semibold rounded-full px-6 h-11 text-sm"
           >
             <a href="#nosotros">
               Quiero saber más
-              <ArrowRight className="w-5 h-5 ml-2" />
+              <ArrowRight className="w-4 h-4 ml-2" />
             </a>
           </Button>
           <Button
             asChild
             variant="outline"
             size="lg"
-            className="border-[#FFFACA]/40 bg-transparent text-[#FFFACA] hover:bg-[#FFFACA]/10 hover:text-[#FFFACA] rounded-full px-8 h-12 text-base"
+            className="border-[#FFFACA]/30 bg-transparent text-[#FFFACA] hover:bg-[#FFFACA]/10 rounded-full px-6 h-11 text-sm"
           >
             <a href="#servicios">Ver Servicios</a>
           </Button>
         </div>
       </div>
 
-      {/* Partner Marquee with styled badges */}
-      <div className="absolute bottom-0 left-0 right-0 z-10 bg-[#151613]/90 backdrop-blur-sm border-t border-[#FFFACA]/10 py-4 overflow-hidden">
+      {/* Partner Marquee */}
+      <div className="absolute bottom-0 left-0 right-0 z-10 bg-[#151613]/95 backdrop-blur-sm border-t border-[#FFFACA]/10 py-3 overflow-hidden">
         <div className="flex animate-marquee whitespace-nowrap">
           {[...partners, ...partners, ...partners].map((partner, index) => (
             <div
               key={index}
-              className={`inline-flex items-center gap-2 mx-4 px-4 py-2 rounded-full ${partner.color} border border-white/10`}
+              className={`inline-flex items-center gap-2 mx-4 px-3 py-1.5 rounded-full ${partner.color} border border-[#FFFACA]/5`}
             >
-              <partner.icon className="w-4 h-4" />
-              <span className="text-sm font-medium">{partner.name}</span>
+              <partner.icon className="w-3.5 h-3.5" />
+              <span className="text-xs font-medium">{partner.name}</span>
             </div>
           ))}
         </div>
