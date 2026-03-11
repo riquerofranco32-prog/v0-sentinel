@@ -4,7 +4,6 @@ import { Problem } from "@/components/problem"
 import { Features } from "@/components/features"
 import { HowItWorks } from "@/components/how-it-works"
 import { Stats } from "@/components/stats"
-import { UseCases } from "@/components/use-cases"
 import { Team } from "@/components/team"
 import { Awards } from "@/components/awards"
 import { FAQ } from "@/components/faq"
@@ -15,7 +14,7 @@ import { WhatsAppButton } from "@/components/whatsapp-button"
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[#080c08]">
+    <main className="min-h-screen bg-[#151613]">
       <ScrollProgress />
       <Navbar />
       <Hero />
@@ -23,7 +22,6 @@ export default function Home() {
       <Features />
       <HowItWorks />
       <Stats />
-      <UseCases />
       <Team />
       <Awards />
       <FAQ />
