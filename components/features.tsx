@@ -54,8 +54,9 @@ export function Features() {
           <div className="relative rounded-2xl overflow-hidden">
             <img
               src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/d-0eY1XCgdCNJr5FWwE0WfHb4VdN6lFe.jpg"
-              alt="Nuestra solución - Sistema inmunitario planetario que fusiona IoT, drones y satélites con IA"
+              alt="Sistema de drones Sentinel para detección temprana de incendios con inteligencia artificial"
               className="w-full h-auto object-cover"
+              loading="lazy"
             />
           </div>
         </div>
@@ -69,8 +70,9 @@ export function Features() {
           <div className="relative rounded-2xl overflow-hidden">
             <img
               src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/dd-5FM9OcJbCEu1IatjOnmcjtjnVYhTem.jpg"
-              alt="Nuestro sistema integral - Monitoreo con drones, sensores y satélites para detección de incendios"
+              alt="Sistema integral de monitoreo con drones, sensores IoT y satélites para detección de incendios forestales"
               className="w-full h-auto object-cover"
+              loading="lazy"
             />
           </div>
         </div>

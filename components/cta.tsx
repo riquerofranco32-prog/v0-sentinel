@@ -71,6 +71,7 @@ export function CTA() {
               href="https://linktr.ee/sentinelarg"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Solicitar una reunión con el equipo de Sentinel"
             >
               Solicitar una Reunión
               <ArrowRight className="w-5 h-5 ml-2" />

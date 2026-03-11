@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://v0-sentinel-smoky.vercel.app/sitemap.xml

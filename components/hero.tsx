@@ -110,8 +110,9 @@ export function Hero() {
       <div className="absolute inset-0 z-0">
         <img
           src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/3-wMoLWM6ee43OTLxdif9ekqEJu7qlet.png"
-          alt="Paisaje montañoso con volcán nevado y bosque patagónico"
+          alt="Vista del territorio patagónico que Sentinel protege contra incendios forestales"
           className="w-full h-full object-cover scale-105"
+          fetchPriority="high"
         />
         {/* Enhanced bottom gradient overlay for text legibility */}
         <div 
@@ -132,8 +133,8 @@ export function Hero() {
 
       {/* ZONA SUPERIOR - Centered Wordmark */}
       <div className="absolute inset-0 z-10 flex flex-col items-center justify-center pointer-events-none">
-        {/* Giant Wordmark */}
-        <h1
+        {/* Giant Wordmark - decorative, not a heading */}
+        <div
           className={`text-[clamp(4rem,16vw,14rem)] font-bold leading-none tracking-tight text-center ${
             mounted ? "animate-hero-fade-in" : "opacity-0"
           }`}
@@ -141,9 +142,10 @@ export function Hero() {
             fontFamily: "var(--font-heading)",
             color: "rgba(255, 250, 202, 0.93)",
           }}
+          aria-hidden="true"
         >
           SENTINEL
-        </h1>
+        </div>
 
         {/* Tagline - below wordmark */}
         <p
@@ -163,12 +165,12 @@ export function Hero() {
             mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
           }`}
         >
-          <h2 
+          <h1 
             className="text-[clamp(1.6rem,3vw,2.4rem)] font-normal text-[#FFFACA] mb-4 leading-tight"
             style={{ fontFamily: "var(--font-heading)" }}
           >
             Tecnología que protege tu Territorio
-          </h2>
+          </h1>
           <p 
             className="text-sm md:text-base mb-6 leading-relaxed max-w-[420px]"
             style={{ color: "rgba(255, 250, 202, 0.55)" }}

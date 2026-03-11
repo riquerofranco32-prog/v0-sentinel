@@ -366,8 +366,9 @@ export function Awards() {
           >
             <img
               src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ccc-gALQ3KWjawlF9rnPDmzFmx33ahTdAz.png"
-              alt="Nuestros logros - Ganadores de premios ILAN, JIJE, Sadosky, Usina Emprendedores"
+              alt="Sentinel ganadores de premios ILAN, JIJE, Sadosky 2025 y Usina de Emprendedores"
               className="w-full h-auto object-cover"
+              loading="lazy"
             />
           </div>
         </div>
@@ -381,8 +382,9 @@ export function Awards() {
           >
             <img
               src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/AGRADECIMIENTOS.png-5OTA6U7D0gfG9BTAJJXyKQwQIhtxO1.jpeg"
-              alt="Equipo Sentinel en Prendete y Premios Sadosky"
+              alt="Equipo Sentinel recibiendo premios en Prendete y Premios Sadosky 2025"
               className="w-full h-full object-cover"
+              loading="lazy"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-[#151613]/80 to-transparent" />
             <div className="absolute bottom-4 left-4">

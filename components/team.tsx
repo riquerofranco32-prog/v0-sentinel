@@ -53,8 +53,9 @@ export function Team() {
         >
           <img
             src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/dddd-M6Ef54CFMRyZqIfjY2lUznWajCrIGK.jpg"
-            alt="Equipo Sentinel - Nuestro equipo de fundadores"
+            alt="Equipo fundador de Sentinel, startup argentina de tecnología ambiental para detección de incendios"
             className="w-full h-auto object-cover"
+            loading="lazy"
           />
         </div>
       </div>
