@@ -9,6 +9,7 @@ const awards = [
     title: "ILAN–UTN 2025 – Ganadores",
     description: "Premiados como la solución tecnológica más innovadora del certamen, con viaje a Israel para una misión de innovación.",
     bgColor: "bg-[#1a1c18]",
+    badge: "ganador",
   },
   {
     logo: "sadosky",
@@ -16,6 +17,7 @@ const awards = [
     title: "Premios Sadosky 2025 – Startup del Año (Finalistas)",
     description: "Finalistas en la categoría Mejor Startup del Año 2025 y Solución Innovadora, uno de los reconocimientos más prestigiosos del sector tecnológico argentino. Este logro valida la solidez técnica, el impacto y la innovación del modelo de Sentinel.",
     bgColor: "bg-[#1a1c18]",
+    badge: "finalista",
   },
   {
     logo: "UE",
@@ -23,6 +25,7 @@ const awards = [
     title: "Usina de Emprendedores – 3° Puesto Nacional",
     description: "Tercer lugar entre emprendimientos de alto potencial elegidos a nivel nacional. Destaca nuestra propuesta de valor, escalabilidad y viabilidad dentro del ecosistema emprendedor argentino.",
     bgColor: "bg-[#1a1c18]",
+    badge: "ganador",
   },
   {
     logo: "prendete",
@@ -30,6 +33,7 @@ const awards = [
     title: "Premios Prendete 2025 – Finalistas (Categoría Jump)",
     description: "Seleccionados como finalistas en la categoría Jump, que premia soluciones innovadoras con potencial de crecimiento acelerado. Este reconocimiento refuerza la validación de Sentinel como plataforma tecnológica escalable y de impacto regional.",
     bgColor: "bg-[#1a1c18]",
+    badge: "finalista",
   },
   {
     logo: "BNA",
@@ -37,6 +41,7 @@ const awards = [
     title: "Concurso Soluciones Innovadoras BNA 2025",
     description: "¡Nuestro proyecto fue seleccionado entre más de 700 propuestas para avanzar a la segunda etapa del Concurso Soluciones Innovadoras BNA 2025! Participaremos del Proceso de Formación y Asistencia, con 8 encuentros diseñados para potenciar proyectos con impacto. Gracias al Banco Nación por esta oportunidad.",
     bgColor: "bg-[#1a1c18]",
+    badge: "finalista",
   },
   {
     logo: "JIJE",
@@ -44,6 +49,7 @@ const awards = [
     title: "JIJE 2025 – Mejor Modelo de Negocio (Ganadores)",
     description: "Reconocidos como el modelo de mayor impacto entre decenas de iniciativas innovadoras, reforzando la escalabilidad y el fit de nuestro negocio.",
     bgColor: "bg-[#1a1c18]",
+    badge: "ganador",
   },
 ]
 
@@ -157,8 +163,20 @@ export function Awards() {
             {awards.map((award, index) => (
               <div
                 key={index}
-                className="bg-[#0a0c0a] border border-[#004f39]/30 rounded-2xl p-6 hover:border-[#004f39]/60 transition-all"
+                className="relative bg-[rgba(0,79,57,0.08)] border border-[#FFFACA]/10 rounded-2xl p-6 hover:border-[#004f39]/60 transition-all card-hover"
               >
+                {/* Badge */}
+                {award.badge && (
+                  <div className="absolute top-4 right-4">
+                    <span className={`text-xs font-semibold px-3 py-1 rounded-full tracking-wider uppercase ${
+                      award.badge === "ganador" 
+                        ? "bg-[#004f39] text-[#FFFACA]" 
+                        : "bg-[#FFFACA]/10 text-[#FFFACA]/70"
+                    }`}>
+                      {award.badge === "ganador" ? "Ganadores" : "Finalistas"}
+                    </span>
+                  </div>
+                )}
                 {/* Logo Area */}
                 <div className="h-24 flex items-center justify-start mb-4">
                   {award.logo === "ILAN" ? (
@@ -236,7 +254,7 @@ export function Awards() {
             {alliances.slice(0, 6).map((alliance, index) => (
               <div
                 key={index}
-                className="bg-[#0a0c0a] border border-[#004f39]/30 rounded-2xl p-6 hover:border-[#004f39]/60 transition-all"
+                className="bg-[rgba(0,79,57,0.08)] border border-[#FFFACA]/10 rounded-2xl p-6 hover:border-[#004f39]/60 transition-all card-hover"
               >
                 {/* Logo Area */}
                 <div className="h-20 flex items-center justify-start mb-4">
@@ -303,7 +321,7 @@ export function Awards() {
             {alliances.slice(6).map((alliance, index) => (
               <div
                 key={index}
-                className="bg-[#0a0c0a] border border-[#004f39]/30 rounded-2xl p-6 hover:border-[#004f39]/60 transition-all"
+                className="bg-[rgba(0,79,57,0.08)] border border-[#FFFACA]/10 rounded-2xl p-6 hover:border-[#004f39]/60 transition-all card-hover"
               >
                 {/* Logo Area */}
                 <div className="h-20 flex items-center justify-start mb-4">
