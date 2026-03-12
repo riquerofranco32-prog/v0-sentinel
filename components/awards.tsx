@@ -5,42 +5,42 @@ import { useEffect, useRef, useState } from "react"
 const awards = [
   {
     logo: "ILAN",
-    logoSubtext: "ISRAEL+LATIN AMERICAN\nNETWORK",
+    logoUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-FbhxBpUrczxoVxCvvgu18wYEHsffZT.png",
     title: "ILAN–UTN 2025 – Ganadores",
     description: "Premiados como la solución tecnológica más innovadora del certamen, con viaje a Israel para una misión de innovación.",
     bgColor: "bg-[#1a1c18]",
   },
   {
     logo: "sadosky",
-    logoImage: true,
+    logoUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-OlQRPIjilvD7DCsYlwTYG8K1fTFOAW.png",
     title: "Premios Sadosky 2025 – Startup del Año (Finalistas)",
     description: "Finalistas en la categoría Mejor Startup del Año 2025 y Solución Innovadora, uno de los reconocimientos más prestigiosos del sector tecnológico argentino. Este logro valida la solidez técnica, el impacto y la innovación del modelo de Sentinel.",
     bgColor: "bg-[#1a1c18]",
   },
   {
     logo: "UE",
-    logoImage: true,
+    logoUrl: "/images/usina-emprendedores.png",
     title: "Usina de Emprendedores – 3° Puesto Nacional",
     description: "Tercer lugar entre emprendimientos de alto potencial elegidos a nivel nacional. Destaca nuestra propuesta de valor, escalabilidad y viabilidad dentro del ecosistema emprendedor argentino.",
     bgColor: "bg-[#1a1c18]",
   },
   {
     logo: "prendete",
-    logoImage: true,
+    logoUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-6R61i0qgkLFn7dgeVBp8FeqFpk1tGH.png",
     title: "Premios Prendete 2025 – Finalistas (Categoría Jump)",
     description: "Seleccionados como finalistas en la categoría Jump, que premia soluciones innovadoras con potencial de crecimiento acelerado. Este reconocimiento refuerza la validación de Sentinel como plataforma tecnológica escalable y de impacto regional.",
     bgColor: "bg-[#1a1c18]",
   },
   {
     logo: "BNA",
-    logoImage: true,
+    logoUrl: "/images/banco-nacion.png",
     title: "Concurso Soluciones Innovadoras BNA 2025",
     description: "¡Nuestro proyecto fue seleccionado entre más de 700 propuestas para avanzar a la segunda etapa del Concurso Soluciones Innovadoras BNA 2025! Participaremos del Proceso de Formación y Asistencia, con 8 encuentros diseñados para potenciar proyectos con impacto. Gracias al Banco Nación por esta oportunidad.",
     bgColor: "bg-[#1a1c18]",
   },
   {
     logo: "JIJE",
-    logoImage: true,
+    logoUrl: "/images/jije.png",
     title: "JIJE 2025 – Mejor Modelo de Negocio (Ganadores)",
     description: "Reconocidos como el modelo de mayor impacto entre decenas de iniciativas innovadoras, reforzando la escalabilidad y el fit de nuestro negocio.",
     bgColor: "bg-[#1a1c18]",
@@ -50,49 +50,49 @@ const awards = [
 const alliances = [
   {
     logo: "forestal",
-    logoImage: true,
+    logoUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-LBLZI8wQAHgIHdM0dePvMxHiu9itDd.png",
     title: "FORESTAL ARGENTINA",
     description: "Esta empresa nos proporcionó más de 40 registros históricos de incendios forestales, incluyendo ubicación, imágenes y cronologías de propagación. Esta información fue clave para validar la precisión del sistema y ajustar nuestra IA a los patrones reales del territorio.",
   },
   {
     logo: "bomberos",
-    logoImage: true,
+    logoUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-wnFztR7AmvzL7yfAesx0WInxKV78y7.png",
     title: "BOMBEROS DE SAN RAFAEL",
     description: "Trabajamos junto al cuerpo de bomberos local en pruebas de campo con escenarios reales. Gracias a su colaboración, obtuvimos más de 100 imágenes térmicas que fueron utilizadas para entrenar nuestros algoritmos de detección de humo y fuego. Esta validación técnica es clave para garantizar que Sentinel funcione en situaciones reales.",
   },
   {
     logo: "patagonia",
-    logoImage: true,
+    logoUrl: "/images/fundacion-patagonia.png",
     title: "Fundación Patagonia Natural",
     description: "ONG reconocida por su compromiso ambiental, que nos acompaña en la construcción de una propuesta coherente con criterios de sostenibilidad y conservación. Su aval respalda nuestra misión de actuar en defensa de los ecosistemas vulnerables.",
   },
   {
     logo: "sanrafael",
-    logoImage: true,
+    logoUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-jbF8OT2TdgOSxqsCo1K53IO6LezhGl.png",
     title: "Municipalidad de San Rafael",
     description: "Establecimos una relación directa con la Dirección de Espacios Verdes y Medio Ambiente, quienes nos brindaron respaldo institucional y acceso a áreas protegidas para patrullaje experimental. Este vínculo demuestra el interés local por adoptar soluciones tecnológicas en la gestión de riesgos.",
   },
   {
     logo: "uba",
-    logoImage: true,
+    logoUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-pfFAV3OybYvGE77kv4YtwR5kUoQnKH.png",
     title: "Universidad de Buenos Aires – Facultad de Ciencias Económicas",
     description: "Sentinel fue uno de los casos presentados en el Kick Off de la materia Plan de Marketing Digital del Máster de la UBA, en una actividad organizada por Movistar Argentina. Llevamos nuestra propuesta de tecnología para la prevención de incendios al aula, conectando innovación y educación.",
   },
   {
     logo: "endeavor",
-    logoImage: true,
+    logoUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-djt9o0pbHI6wT0lB1WQnGc7Neqm112.png",
     title: "Endeavor – Meet the Companies",
     description: "Seleccionados por Endeavor Cuyo para mentoría y apoyo estratégico, validando nuestro potencial de crecimiento regional e internacional.",
   },
   {
     logo: "naves",
-    logoImage: true,
+    logoUrl: "/images/naves.png",
     title: "NAVES – IAE Business School",
     description: "Seleccionados para participar en el principal programa de aceleración empresarial de Argentina, validando nuestro modelo de negocio, impacto y escalabilidad.",
   },
   {
     logo: "uncuyo",
-    logoImage: true,
+    logoUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-f2aKShLLfBgotbD3g3nvZ3BUVMUdL0.png",
     title: "Programa de Incubación UNCUYO",
     description: "Seleccionados para incubación y mentoría por la Universidad Nacional de Cuyo, fortaleciendo nuestro desarrollo tecnológico y estrategia de go-to-market.",
   },
@@ -161,49 +161,13 @@ export function Awards() {
               >
                 {/* Logo Area */}
                 <div className="h-24 flex items-center justify-start mb-4">
-                  {award.logo === "ILAN" ? (
-                    <div className="bg-white rounded-lg px-4 py-3">
-                      <div className="text-2xl font-bold text-black tracking-wider">ILAN</div>
-                      <div className="text-[8px] text-gray-600 whitespace-pre-line leading-tight">ISRAEL+LATIN AMERICAN{"\n"}NETWORK</div>
-                    </div>
-                  ) : award.logo === "sadosky" ? (
-                    <div className="bg-white rounded-lg px-4 py-3 flex items-center gap-2">
-                      <div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center">
-                        <span className="text-white font-bold text-lg">S</span>
-                      </div>
-                      <div>
-                        <div className="text-lg font-bold text-gray-800">Premios</div>
-                        <div className="text-lg font-bold text-blue-600">Sadosky</div>
-                      </div>
-                    </div>
-                  ) : award.logo === "UE" ? (
-                    <div className="bg-white rounded-lg px-4 py-3">
-                      <div className="flex items-center gap-1">
-                        <span className="text-2xl font-bold text-teal-600">U</span>
-                        <span className="text-2xl font-bold text-orange-500">E</span>
-                        <div className="text-xs text-gray-600 ml-2">
-                          <div>Usina de</div>
-                          <div className="font-semibold">Emprendedores</div>
-                        </div>
-                      </div>
-                    </div>
-                  ) : award.logo === "prendete" ? (
-                    <div className="bg-gradient-to-r from-cyan-400 to-blue-500 rounded-lg px-4 py-3">
-                      <div className="text-white font-bold text-xl">Prendete</div>
-                      <div className="text-white/80 text-xs">IMPULSA TU IDEA AL EXITO</div>
-                    </div>
-                  ) : award.logo === "BNA" ? (
-                    <div className="bg-white rounded-full w-20 h-20 flex items-center justify-center">
-                      <div className="text-center">
-                        <div className="text-xs text-gray-500">Banco Nación</div>
-                      </div>
-                    </div>
-                  ) : award.logo === "JIJE" ? (
-                    <div className="bg-[#1a3a5c] rounded-lg px-6 py-4">
-                      <div className="text-white font-bold text-2xl">JIJE</div>
-                      <div className="text-yellow-400 text-sm">20 años</div>
-                    </div>
-                  ) : null}
+                  <div className="bg-white rounded-lg p-3 h-20 flex items-center justify-center">
+                    <img
+                      src={award.logoUrl}
+                      alt={award.title}
+                      className="max-h-14 max-w-[180px] w-auto object-contain"
+                    />
+                  </div>
                 </div>
                 
                 <h4 className="font-bold text-[#FFFACA] text-lg mb-3">
@@ -240,48 +204,13 @@ export function Awards() {
               >
                 {/* Logo Area */}
                 <div className="h-20 flex items-center justify-start mb-4">
-                  {alliance.logo === "forestal" ? (
-                    <div className="flex items-center gap-2">
-                      <div className="w-8 h-10 bg-green-600 rounded-sm" />
-                      <div>
-                        <div className="text-green-500 font-script text-xl italic">Forestal</div>
-                        <div className="text-orange-500 font-script text-xl italic">Argentina</div>
-                      </div>
-                    </div>
-                  ) : alliance.logo === "bomberos" ? (
-                    <div className="w-16 h-16 bg-gradient-to-b from-red-600 to-red-800 rounded-full flex items-center justify-center">
-                      <span className="text-yellow-400 text-2xl">🔥</span>
-                    </div>
-                  ) : alliance.logo === "patagonia" ? (
-                    <div className="flex items-center gap-2">
-                      <div className="w-10 h-12 bg-yellow-600 rounded" />
-                      <div className="text-[#FFFACA]/80 text-sm">
-                        <div className="font-bold">FUNDACIÓN</div>
-                        <div className="font-bold">PATAGONIA</div>
-                        <div className="font-bold">NATURAL</div>
-                      </div>
-                    </div>
-                  ) : alliance.logo === "sanrafael" ? (
-                    <div className="flex items-center gap-2">
-                      <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold">SR</div>
-                      <div className="text-[#FFFACA]/80 text-sm">
-                        <div>Tu</div>
-                        <div className="font-bold">Municipio</div>
-                        <div className="text-green-500">San Rafael</div>
-                      </div>
-                    </div>
-                  ) : alliance.logo === "uba" ? (
-                    <div className="bg-white rounded-full w-16 h-16 flex items-center justify-center">
-                      <div className="text-center">
-                        <div className="text-blue-800 font-bold text-lg">.UBA</div>
-                        <div className="text-[6px] text-gray-600">Universidad de<br/>Buenos Aires</div>
-                      </div>
-                    </div>
-                  ) : alliance.logo === "endeavor" ? (
-                    <div>
-                      <div className="text-red-500 font-bold text-2xl italic">endeavor</div>
-                    </div>
-                  ) : null}
+                  <div className="bg-white rounded-lg p-3 h-16 flex items-center justify-center">
+                    <img
+                      src={alliance.logoUrl}
+                      alt={alliance.title}
+                      className="max-h-12 max-w-[160px] w-auto object-contain"
+                    />
+                  </div>
                 </div>
                 
                 <h4 className="font-bold text-[#FFFACA] text-lg mb-3">
@@ -307,25 +236,13 @@ export function Awards() {
               >
                 {/* Logo Area */}
                 <div className="h-20 flex items-center justify-start mb-4">
-                  {alliance.logo === "naves" ? (
-                    <div>
-                      <div className="text-2xl font-bold">
-                        <span className="text-gray-400">NA</span>
-                        <span className="text-green-500">V</span>
-                        <span className="text-gray-400">ES</span>
-                      </div>
-                    </div>
-                  ) : alliance.logo === "uncuyo" ? (
-                    <div className="flex items-center gap-2">
-                      <div className="w-12 h-12 rounded-full border-2 border-red-600 flex items-center justify-center">
-                        <span className="text-red-600 text-xs">🎓</span>
-                      </div>
-                      <div className="text-[#FFFACA]/80">
-                        <div className="text-xl font-bold">UNCUYO</div>
-                        <div className="text-[8px]">UNIVERSIDAD<br/>NACIONAL DE CUYO</div>
-                      </div>
-                    </div>
-                  ) : null}
+                  <div className="bg-white rounded-lg p-3 h-16 flex items-center justify-center">
+                    <img
+                      src={alliance.logoUrl}
+                      alt={alliance.title}
+                      className="max-h-12 max-w-[160px] w-auto object-contain"
+                    />
+                  </div>
                 </div>
                 
                 <h4 className="font-bold text-[#FFFACA] text-lg mb-3">
