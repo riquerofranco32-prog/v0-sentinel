@@ -226,7 +226,7 @@ export function Awards() {
                     <div className="rounded-lg overflow-hidden h-20 flex items-center">
                       <img 
                         src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-YPNhlbesfbm8ahhUfnTwRlcLrXMkKW.png" 
-                        alt="JIJE - Jornadas Internacionales de Jovenes Emprendedores 20 anos" 
+                        alt="JIJE - Jornadas Internacionales de Jóvenes Emprendedores 20 Años" 
                         className="h-full w-auto object-contain"
                       />
                     </div>
@@ -412,14 +412,14 @@ export function Awards() {
             >
               <img
                 src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/a.png-sV2KmnIrJF6CaHh1Wko7f3VyZtf53g.jpeg"
-                alt="Equipo Sentinel en ceremonia de premiacion y presentacion en JIJE 20 anos"
+                alt="Equipo Sentinel en ceremonia de premiación y presentación en JIJE 20 Años"
                 className="w-full h-auto object-cover rounded-2xl"
                 loading="lazy"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#151613]/80 via-transparent to-transparent" />
               <div className="absolute bottom-6 left-6">
                 <span className="bg-[#004f39] text-[#FFFACA] text-sm font-semibold px-4 py-2 rounded-full">
-                  JIJE 20 Anos & Premiacion
+                  JIJE 20 Años & Premiación
                 </span>
               </div>
             </div>
