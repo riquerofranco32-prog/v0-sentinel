@@ -215,10 +215,12 @@ export function Awards() {
                       />
                     </div>
                   ) : award.logo === "BNA" ? (
-                    <div className="bg-white rounded-full w-20 h-20 flex items-center justify-center">
-                      <div className="text-center">
-                        <div className="text-xs text-gray-500">Banco Nacion</div>
-                      </div>
+                    <div className="bg-white rounded-lg p-2 h-20 flex items-center">
+                      <img 
+                        src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-Lpglp1MasxEDLphITuVBeSkq6id7Vg.png" 
+                        alt="Banco Nacion" 
+                        className="h-full w-auto object-contain"
+                      />
                     </div>
                   ) : award.logo === "JIJE" ? (
                     <div className="bg-[#1a3a5c] rounded-lg px-6 py-4">
@@ -279,13 +281,12 @@ export function Awards() {
                       />
                     </div>
                   ) : alliance.logo === "patagonia" ? (
-                    <div className="flex items-center gap-2">
-                      <div className="w-10 h-12 bg-yellow-600 rounded" />
-                      <div className="text-[#FFFACA]/80 text-sm">
-                        <div className="font-bold">FUNDACION</div>
-                        <div className="font-bold">PATAGONIA</div>
-                        <div className="font-bold">NATURAL</div>
-                      </div>
+                    <div className="bg-white rounded-lg p-2 h-16 flex items-center">
+                      <img 
+                        src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-7Vp1BIgvEcOTF9lgbKEzOXIW3OvWeC.png" 
+                        alt="Fundacion Patagonia Natural" 
+                        className="h-full w-auto object-contain"
+                      />
                     </div>
                   ) : alliance.logo === "sanrafael" ? (
                     <div className="bg-[#e5e5e5] rounded-lg p-2 h-16 flex items-center">
