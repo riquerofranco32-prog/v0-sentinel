@@ -30,10 +30,10 @@ const awards = [
   {
     logo: "prendete",
     logoImage: true,
-    title: "Premios Prendete 2025 – Finalistas (Categoría Jump)",
-    description: "Seleccionados como finalistas en la categoría Jump, que premia soluciones innovadoras con potencial de crecimiento acelerado. Este reconocimiento refuerza la validación de Sentinel como plataforma tecnológica escalable y de impacto regional.",
+    title: "Premios Prendete 2025 – Ganadores (Categoría Jump)",
+    description: "Ganadores en la categoría Jump, que premia soluciones innovadoras con potencial de crecimiento acelerado. Este reconocimiento refuerza la validación de Sentinel como plataforma tecnológica escalable y de impacto regional.",
     bgColor: "bg-[#1a1c18]",
-    badge: "finalista",
+    badge: "ganador",
   },
   {
     logo: "BNA",
