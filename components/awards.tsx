@@ -223,9 +223,12 @@ export function Awards() {
                       />
                     </div>
                   ) : award.logo === "JIJE" ? (
-                    <div className="bg-[#1a3a5c] rounded-lg px-6 py-4">
-                      <div className="text-white font-bold text-2xl">JIJE</div>
-                      <div className="text-yellow-400 text-sm">20 anos</div>
+                    <div className="rounded-lg overflow-hidden h-20 flex items-center">
+                      <img 
+                        src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-YPNhlbesfbm8ahhUfnTwRlcLrXMkKW.png" 
+                        alt="JIJE - Jornadas Internacionales de Jovenes Emprendedores 20 anos" 
+                        className="h-full w-auto object-contain"
+                      />
                     </div>
                   ) : null}
                 </div>
