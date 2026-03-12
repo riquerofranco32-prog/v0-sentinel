@@ -30,10 +30,10 @@ const awards = [
   {
     logo: "prendete",
     logoImage: true,
-    title: "Premios Prendete 2025 – Finalistas (Categoría Jump)",
-    description: "Seleccionados como finalistas en la categoría Jump, que premia soluciones innovadoras con potencial de crecimiento acelerado. Este reconocimiento refuerza la validación de Sentinel como plataforma tecnológica escalable y de impacto regional.",
+    title: "Premios Prendete 2025 – Ganadores (Categoría Jump)",
+    description: "Ganadores en la categoría Jump, que premia soluciones innovadoras con potencial de crecimiento acelerado. Este reconocimiento refuerza la validación de Sentinel como plataforma tecnológica escalable y de impacto regional.",
     bgColor: "bg-[#1a1c18]",
-    badge: "finalista",
+    badge: "ganador",
   },
   {
     logo: "BNA",
@@ -180,19 +180,20 @@ export function Awards() {
                 {/* Logo Area */}
                 <div className="h-24 flex items-center justify-start mb-4">
                   {award.logo === "ILAN" ? (
-                    <div className="bg-white rounded-lg px-4 py-3">
-                      <div className="text-2xl font-bold text-black tracking-wider">ILAN</div>
-                      <div className="text-[8px] text-gray-600 whitespace-pre-line leading-tight">ISRAEL+LATIN AMERICAN{"\n"}NETWORK</div>
+                    <div className="bg-white rounded-lg p-2 h-20 flex items-center">
+                      <img 
+                        src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-mIq8y4N1ZE0TlcMVzuVVRd9fkU0eOQ.png" 
+                        alt="ILAN - Israel+Latin American Network" 
+                        className="h-full w-auto object-contain"
+                      />
                     </div>
                   ) : award.logo === "sadosky" ? (
-                    <div className="bg-white rounded-lg px-4 py-3 flex items-center gap-2">
-                      <div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center">
-                        <span className="text-white font-bold text-lg">S</span>
-                      </div>
-                      <div>
-                        <div className="text-lg font-bold text-gray-800">Premios</div>
-                        <div className="text-lg font-bold text-blue-600">Sadosky</div>
-                      </div>
+                    <div className="bg-white rounded-lg p-2 h-20 flex items-center">
+                      <img 
+                        src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-O2jrcTC0dEtLWElzxkW4b9bRtM6ol2.png" 
+                        alt="Premios Sadosky 20 Aniversario" 
+                        className="h-full w-auto object-contain"
+                      />
                     </div>
                   ) : award.logo === "UE" ? (
                     <div className="bg-white rounded-lg px-4 py-3">
@@ -206,20 +207,28 @@ export function Awards() {
                       </div>
                     </div>
                   ) : award.logo === "prendete" ? (
-                    <div className="bg-gradient-to-r from-cyan-400 to-blue-500 rounded-lg px-4 py-3">
-                      <div className="text-white font-bold text-xl">Prendete</div>
-                      <div className="text-white/80 text-xs">IMPULSA TU IDEA AL EXITO</div>
+                    <div className="bg-white rounded-lg p-2 h-20 flex items-center">
+                      <img 
+                        src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-gyNye74f9lUS067E5CLCLSSSXElw4c.png" 
+                        alt="Prendete - Impulsa tu idea al exito" 
+                        className="h-full w-auto object-contain"
+                      />
                     </div>
                   ) : award.logo === "BNA" ? (
-                    <div className="bg-white rounded-full w-20 h-20 flex items-center justify-center">
-                      <div className="text-center">
-                        <div className="text-xs text-gray-500">Banco Nación</div>
-                      </div>
+                    <div className="bg-white rounded-lg p-2 h-20 flex items-center">
+                      <img 
+                        src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-Lpglp1MasxEDLphITuVBeSkq6id7Vg.png" 
+                        alt="Banco Nacion" 
+                        className="h-full w-auto object-contain"
+                      />
                     </div>
                   ) : award.logo === "JIJE" ? (
-                    <div className="bg-[#1a3a5c] rounded-lg px-6 py-4">
-                      <div className="text-white font-bold text-2xl">JIJE</div>
-                      <div className="text-yellow-400 text-sm">20 años</div>
+                    <div className="rounded-lg overflow-hidden h-20 flex items-center">
+                      <img 
+                        src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-YPNhlbesfbm8ahhUfnTwRlcLrXMkKW.png" 
+                        alt="JIJE - Jornadas Internacionales de Jóvenes Emprendedores 20 Años" 
+                        className="h-full w-auto object-contain"
+                      />
                     </div>
                   ) : null}
                 </div>
@@ -259,45 +268,52 @@ export function Awards() {
                 {/* Logo Area */}
                 <div className="h-20 flex items-center justify-start mb-4">
                   {alliance.logo === "forestal" ? (
-                    <div className="flex items-center gap-2">
-                      <div className="w-8 h-10 bg-green-600 rounded-sm" />
-                      <div>
-                        <div className="text-green-500 font-script text-xl italic">Forestal</div>
-                        <div className="text-orange-500 font-script text-xl italic">Argentina</div>
-                      </div>
+                    <div className="bg-[#d5e6c8] rounded-lg p-2 h-16 flex items-center">
+                      <img 
+                        src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-zrY7C8R93knZCuLejkVzdVbtnjsKfc.png" 
+                        alt="Forestal Argentina" 
+                        className="h-full w-auto object-contain"
+                      />
                     </div>
                   ) : alliance.logo === "bomberos" ? (
-                    <div className="w-16 h-16 bg-gradient-to-b from-red-600 to-red-800 rounded-full flex items-center justify-center">
-                      <span className="text-yellow-400 text-2xl">🔥</span>
+                    <div className="bg-white rounded-lg p-1 h-16 flex items-center">
+                      <img 
+                        src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-vKImrd4CDZbzl3Zd4NUAjrORxRZ59j.png" 
+                        alt="Cuerpo de Bomberos San Rafael" 
+                        className="h-full w-auto object-contain"
+                      />
                     </div>
                   ) : alliance.logo === "patagonia" ? (
-                    <div className="flex items-center gap-2">
-                      <div className="w-10 h-12 bg-yellow-600 rounded" />
-                      <div className="text-[#FFFACA]/80 text-sm">
-                        <div className="font-bold">FUNDACIÓN</div>
-                        <div className="font-bold">PATAGONIA</div>
-                        <div className="font-bold">NATURAL</div>
-                      </div>
+                    <div className="bg-white rounded-lg p-2 h-16 flex items-center">
+                      <img 
+                        src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-7Vp1BIgvEcOTF9lgbKEzOXIW3OvWeC.png" 
+                        alt="Fundacion Patagonia Natural" 
+                        className="h-full w-auto object-contain"
+                      />
                     </div>
                   ) : alliance.logo === "sanrafael" ? (
-                    <div className="flex items-center gap-2">
-                      <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold">SR</div>
-                      <div className="text-[#FFFACA]/80 text-sm">
-                        <div>Tu</div>
-                        <div className="font-bold">Municipio</div>
-                        <div className="text-green-500">San Rafael</div>
-                      </div>
+                    <div className="bg-[#e5e5e5] rounded-lg p-2 h-16 flex items-center">
+                      <img 
+                        src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-61NujLdy4AazxCgi3hla5t1yGbQkYO.png" 
+                        alt="Tu! Municipio San Rafael" 
+                        className="h-full w-auto object-contain"
+                      />
                     </div>
                   ) : alliance.logo === "uba" ? (
-                    <div className="bg-white rounded-full w-16 h-16 flex items-center justify-center">
-                      <div className="text-center">
-                        <div className="text-blue-800 font-bold text-lg">.UBA</div>
-                        <div className="text-[6px] text-gray-600">Universidad de<br/>Buenos Aires</div>
-                      </div>
+                    <div className="bg-white rounded-lg p-2 h-16 flex items-center">
+                      <img 
+                        src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-Rn9528hvohsjWGcqYfTnr49k3X4Koe.png" 
+                        alt="Universidad de Buenos Aires" 
+                        className="h-full w-auto object-contain"
+                      />
                     </div>
                   ) : alliance.logo === "endeavor" ? (
-                    <div>
-                      <div className="text-red-500 font-bold text-2xl italic">endeavor</div>
+                    <div className="bg-[#00d6b4] rounded-lg p-2 h-16 flex items-center">
+                      <img 
+                        src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-9SSdLDTJcH90NdLAJkCh9t8BxfCYs0.png" 
+                        alt="Endeavor" 
+                        className="h-full w-auto object-contain"
+                      />
                     </div>
                   ) : null}
                 </div>
@@ -334,14 +350,12 @@ export function Awards() {
                       </div>
                     </div>
                   ) : alliance.logo === "uncuyo" ? (
-                    <div className="flex items-center gap-2">
-                      <div className="w-12 h-12 rounded-full border-2 border-red-600 flex items-center justify-center">
-                        <span className="text-red-600 text-xs">🎓</span>
-                      </div>
-                      <div className="text-[#FFFACA]/80">
-                        <div className="text-xl font-bold">UNCUYO</div>
-                        <div className="text-[8px]">UNIVERSIDAD<br/>NACIONAL DE CUYO</div>
-                      </div>
+                    <div className="bg-white rounded-lg p-2 h-16 flex items-center">
+                      <img 
+                        src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-cldm2Prrkr7lI6DOCRfHHnv09FCAlF.png" 
+                        alt="Incubadora UNCUYO Real Impact" 
+                        className="h-full w-auto object-contain"
+                      />
                     </div>
                   ) : null}
                 </div>
@@ -357,38 +371,77 @@ export function Awards() {
           </div>
         </div>
 
-        {/* Nuestros Logros - Full Width Image */}
-        <div className="mt-16">
-          <div
-            className={`relative rounded-2xl overflow-hidden transition-all duration-700 delay-600 ${
+        {/* Galeria de Logros */}
+        <div className="mt-20">
+          <h3
+            className={`text-3xl sm:text-4xl font-bold text-[#FFFACA] mb-8 transition-all duration-700 delay-500 ${
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
             }`}
+            style={{ fontFamily: "var(--font-heading)" }}
           >
-            <img
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ccc-gALQ3KWjawlF9rnPDmzFmx33ahTdAz.png"
-              alt="Sentinel ganadores de premios ILAN, JIJE, Sadosky 2025 y Usina de Emprendedores"
-              className="w-full h-auto object-cover"
-              loading="lazy"
-            />
-          </div>
-        </div>
+            Nuestros Logros en Imagenes
+          </h3>
 
-        {/* Event Photo */}
-        <div className="mt-8">
+          {/* Main Featured Image - Prendete & Sadosky */}
           <div
-            className={`relative rounded-2xl overflow-hidden aspect-video max-w-4xl mx-auto transition-all duration-700 delay-700 ${
+            className={`relative rounded-2xl overflow-hidden mb-8 transition-all duration-700 delay-600 ${
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
             }`}
           >
             <img
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/AGRADECIMIENTOS.png-5OTA6U7D0gfG9BTAJJXyKQwQIhtxO1.jpeg"
-              alt="Equipo Sentinel recibiendo premios en Prendete y Premios Sadosky 2025"
-              className="w-full h-full object-cover"
+              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/AGRADECIMIENTOS.png-RKj8ZwFvVm1htaOUrB36I39sl85Del.jpeg"
+              alt="Equipo Sentinel ganadores en Premios Prendete 2025 y ceremonia Premios Sadosky"
+              className="w-full h-auto object-cover rounded-2xl"
               loading="lazy"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#151613]/80 to-transparent" />
-            <div className="absolute bottom-4 left-4">
-              <span className="text-[#FFFACA]/80 text-sm font-medium">Prendete & Premios Sadosky</span>
+            <div className="absolute inset-0 bg-gradient-to-t from-[#151613]/80 via-transparent to-transparent" />
+            <div className="absolute bottom-6 left-6">
+              <span className="bg-[#004f39] text-[#FFFACA] text-sm font-semibold px-4 py-2 rounded-full">
+                Prendete & Premios Sadosky 2025
+              </span>
+            </div>
+          </div>
+
+          {/* Two Column Grid for Other Images */}
+          <div className="grid md:grid-cols-2 gap-8">
+            {/* JIJE & Award Ceremony */}
+            <div
+              className={`relative rounded-2xl overflow-hidden transition-all duration-700 delay-700 ${
+                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+              }`}
+            >
+              <img
+                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/a.png-sV2KmnIrJF6CaHh1Wko7f3VyZtf53g.jpeg"
+                alt="Equipo Sentinel en ceremonia de premiación y presentación en JIJE 20 Años"
+                className="w-full h-auto object-cover rounded-2xl"
+                loading="lazy"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#151613]/80 via-transparent to-transparent" />
+              <div className="absolute bottom-6 left-6">
+                <span className="bg-[#004f39] text-[#FFFACA] text-sm font-semibold px-4 py-2 rounded-full">
+                  JIJE 20 Años & Premiación
+                </span>
+              </div>
+            </div>
+
+            {/* Endeavor UNCUYO */}
+            <div
+              className={`relative rounded-2xl overflow-hidden transition-all duration-700 delay-800 ${
+                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+              }`}
+            >
+              <img
+                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/aa.png-4GoJJL0KZMX5f9ujAZWi6OwfQcC1GA.jpeg"
+                alt="Equipo Sentinel en Endeavor UNCUYO - mentoria y networking"
+                className="w-full h-auto object-cover rounded-2xl"
+                loading="lazy"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#151613]/80 via-transparent to-transparent" />
+              <div className="absolute bottom-6 left-6">
+                <span className="bg-[#004f39] text-[#FFFACA] text-sm font-semibold px-4 py-2 rounded-full">
+                  Endeavor UNCUYO
+                </span>
+              </div>
             </div>
           </div>
         </div>
