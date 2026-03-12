@@ -371,38 +371,77 @@ export function Awards() {
           </div>
         </div>
 
-        {/* Nuestros Logros - Full Width Image */}
-        <div className="mt-16">
-          <div
-            className={`relative rounded-2xl overflow-hidden transition-all duration-700 delay-600 ${
+        {/* Galeria de Logros */}
+        <div className="mt-20">
+          <h3
+            className={`text-3xl sm:text-4xl font-bold text-[#FFFACA] mb-8 transition-all duration-700 delay-500 ${
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
             }`}
+            style={{ fontFamily: "var(--font-heading)" }}
           >
-            <img
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ccc-gALQ3KWjawlF9rnPDmzFmx33ahTdAz.png"
-              alt="Sentinel ganadores de premios ILAN, JIJE, Sadosky 2025 y Usina de Emprendedores"
-              className="w-full h-auto object-cover"
-              loading="lazy"
-            />
-          </div>
-        </div>
+            Nuestros Logros en Imagenes
+          </h3>
 
-        {/* Event Photo */}
-        <div className="mt-8">
+          {/* Main Featured Image - Prendete & Sadosky */}
           <div
-            className={`relative rounded-2xl overflow-hidden aspect-video max-w-4xl mx-auto transition-all duration-700 delay-700 ${
+            className={`relative rounded-2xl overflow-hidden mb-8 transition-all duration-700 delay-600 ${
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
             }`}
           >
             <img
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/AGRADECIMIENTOS.png-5OTA6U7D0gfG9BTAJJXyKQwQIhtxO1.jpeg"
-              alt="Equipo Sentinel recibiendo premios en Prendete y Premios Sadosky 2025"
-              className="w-full h-full object-cover"
+              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/AGRADECIMIENTOS.png-RKj8ZwFvVm1htaOUrB36I39sl85Del.jpeg"
+              alt="Equipo Sentinel ganadores en Premios Prendete 2025 y ceremonia Premios Sadosky"
+              className="w-full h-auto object-cover rounded-2xl"
               loading="lazy"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#151613]/80 to-transparent" />
-            <div className="absolute bottom-4 left-4">
-              <span className="text-[#FFFACA]/80 text-sm font-medium">Prendete & Premios Sadosky</span>
+            <div className="absolute inset-0 bg-gradient-to-t from-[#151613]/80 via-transparent to-transparent" />
+            <div className="absolute bottom-6 left-6">
+              <span className="bg-[#004f39] text-[#FFFACA] text-sm font-semibold px-4 py-2 rounded-full">
+                Prendete & Premios Sadosky 2025
+              </span>
+            </div>
+          </div>
+
+          {/* Two Column Grid for Other Images */}
+          <div className="grid md:grid-cols-2 gap-8">
+            {/* JIJE & Award Ceremony */}
+            <div
+              className={`relative rounded-2xl overflow-hidden transition-all duration-700 delay-700 ${
+                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+              }`}
+            >
+              <img
+                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/a.png-sV2KmnIrJF6CaHh1Wko7f3VyZtf53g.jpeg"
+                alt="Equipo Sentinel en ceremonia de premiacion y presentacion en JIJE 20 anos"
+                className="w-full h-auto object-cover rounded-2xl"
+                loading="lazy"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#151613]/80 via-transparent to-transparent" />
+              <div className="absolute bottom-6 left-6">
+                <span className="bg-[#004f39] text-[#FFFACA] text-sm font-semibold px-4 py-2 rounded-full">
+                  JIJE 20 Anos & Premiacion
+                </span>
+              </div>
+            </div>
+
+            {/* Endeavor UNCUYO */}
+            <div
+              className={`relative rounded-2xl overflow-hidden transition-all duration-700 delay-800 ${
+                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+              }`}
+            >
+              <img
+                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/aa.png-4GoJJL0KZMX5f9ujAZWi6OwfQcC1GA.jpeg"
+                alt="Equipo Sentinel en Endeavor UNCUYO - mentoria y networking"
+                className="w-full h-auto object-cover rounded-2xl"
+                loading="lazy"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#151613]/80 via-transparent to-transparent" />
+              <div className="absolute bottom-6 left-6">
+                <span className="bg-[#004f39] text-[#FFFACA] text-sm font-semibold px-4 py-2 rounded-full">
+                  Endeavor UNCUYO
+                </span>
+              </div>
             </div>
           </div>
         </div>
