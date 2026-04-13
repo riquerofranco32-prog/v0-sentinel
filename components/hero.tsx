@@ -72,10 +72,8 @@ function ParticleCanvas() {
     let frame = 0
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height)
-
-      // Spawn particles
       if (frame % 3 === 0) spawnParticle()
-      if (frame % 8 === 0) spawnParticle() // extra smoke
+      if (frame % 8 === 0) spawnParticle()
       frame++
 
       particlesRef.current = particlesRef.current.filter(p => p.life < p.maxLife)
@@ -85,7 +83,6 @@ function ParticleCanvas() {
         p.x += p.speedX
         p.y += p.speedY
         p.speedX += (Math.random() - 0.5) * 0.1
-
         const progress = p.life / p.maxLife
 
         if (p.type === "ember") {
@@ -93,7 +90,6 @@ function ParticleCanvas() {
           const flicker = 0.7 + Math.random() * 0.3
           ctx.beginPath()
           ctx.arc(p.x, p.y, p.size * flicker, 0, Math.PI * 2)
-          // Ember glow
           const grad = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.size * 2)
           grad.addColorStop(0, `rgba(255, 180, 50, ${alpha})`)
           grad.addColorStop(0.4, `rgba(255, 80, 10, ${alpha * 0.6})`)
@@ -101,7 +97,6 @@ function ParticleCanvas() {
           ctx.fillStyle = grad
           ctx.fill()
         } else {
-          // Smoke — rises and fades
           const alpha = p.opacity * (progress < 0.2 ? progress / 0.2 : 1 - (progress - 0.2) / 0.8)
           const radius = p.size * (1 + progress * 1.5)
           const grad = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, radius)
@@ -152,8 +147,8 @@ export function Hero() {
           alt="Incendio forestal Patagonia"
           className="w-full h-full object-cover scale-105"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0c0b09]/50 via-[#0c0b09]/30 to-[#0c0b09]" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0c0b09] via-transparent to-[#0c0b09]/60" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0c0b09]/60 via-[#0c0b09]/40 to-[#0c0b09]" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0c0b09] via-transparent to-[#0c0b09]/70" />
       </div>
 
       {/* Particle effect */}
@@ -162,36 +157,43 @@ export function Hero() {
       {/* Main Content */}
       <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-6 pb-32">
 
-        {/* Tag */}
+        {/* Marca chica arriba */}
         <div
-          className={`inline-flex items-center gap-2 mb-10 transition-all duration-700 ${
+          className={`inline-flex items-center gap-2 mb-8 transition-all duration-700 ${
             mounted ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-3"
           }`}
         >
+          <span className="relative flex h-1.5 w-1.5">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#94f1be] opacity-60"></span>
+            <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-[#94f1be]"></span>
+          </span>
           <span
-            className="text-[11px] font-medium tracking-[0.3em] uppercase"
+            className="text-[11px] font-semibold tracking-[0.35em] uppercase"
             style={{
-              fontFamily: "'Inter', sans-serif",
-              color: "rgba(240,234,216,0.6)",
+              fontFamily: "'Jura', sans-serif",
+              color: "#94f1be",
             }}
           >
-            Detección temprana de incendios
+            Sentinel
           </span>
         </div>
 
-        {/* Wordmark */}
+        {/* Headline principal */}
         <h1
-          className={`leading-none tracking-tight text-center transition-all duration-700 delay-100 ${
+          className={`leading-tight tracking-tight text-center transition-all duration-700 delay-100 ${
             mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
           }`}
           style={{
             fontFamily: "'Jura', sans-serif",
             fontWeight: 700,
-            fontSize: "clamp(5rem, 20vw, 17rem)",
-            color: "#FFFFFF",
+            fontSize: "clamp(2.8rem, 7vw, 6rem)",
+            color: "rgba(240,234,216,0.95)",
+            maxWidth: "820px",
           }}
         >
-          SENTINEL
+          Plataforma de prevención
+          <br />
+          <span style={{ color: "#94f1be" }}>de incendios forestales</span>
         </h1>
 
         {/* Divider */}
@@ -204,19 +206,19 @@ export function Hero() {
 
         {/* Tagline */}
         <p
-          className={`text-center max-w-sm transition-all duration-700 delay-300 ${
+          className={`text-center max-w-md transition-all duration-700 delay-300 ${
             mounted ? "opacity-100" : "opacity-0"
           }`}
           style={{
             fontFamily: "'Inter', sans-serif",
             fontWeight: 300,
-            fontSize: "15px",
+            fontSize: "16px",
             lineHeight: 1.7,
-            color: "rgba(240,234,216,0.85)",
+            color: "rgba(240,234,216,0.75)",
           }}
         >
-          Tecnología aérea e inteligencia artificial para la detección temprana
-          de incendios en la Patagonia.
+          Tecnología aérea e inteligencia artificial para detectar incendios
+          en minutos, no en horas.
         </p>
 
         {/* CTAs */}
@@ -230,17 +232,17 @@ export function Hero() {
             className="inline-flex items-center gap-2 px-7 py-3 rounded-sm text-[13px] font-medium transition-all"
             style={{
               fontFamily: "'Inter', sans-serif",
-              background: "rgba(240,234,216,0.08)",
-              border: "0.5px solid rgba(240,234,216,0.2)",
-              color: "rgba(240,234,216,0.9)",
+              background: "rgba(148,241,190,0.1)",
+              border: "0.5px solid rgba(148,241,190,0.35)",
+              color: "#94f1be",
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.background = "rgba(240,234,216,0.13)"
-              e.currentTarget.style.borderColor = "rgba(240,234,216,0.4)"
+              e.currentTarget.style.background = "rgba(148,241,190,0.18)"
+              e.currentTarget.style.borderColor = "rgba(148,241,190,0.6)"
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.background = "rgba(240,234,216,0.08)"
-              e.currentTarget.style.borderColor = "rgba(240,234,216,0.2)"
+              e.currentTarget.style.background = "rgba(148,241,190,0.1)"
+              e.currentTarget.style.borderColor = "rgba(148,241,190,0.35)"
             }}
           >
             Quiero saber más
@@ -251,13 +253,13 @@ export function Hero() {
             className="inline-flex items-center justify-center px-7 py-3 rounded-sm text-[13px] font-light transition-all"
             style={{
               fontFamily: "'Inter', sans-serif",
-              color: "rgba(240,234,216,0.4)",
+              color: "rgba(240,234,216,0.45)",
             }}
             onMouseEnter={(e) =>
-              (e.currentTarget.style.color = "rgba(240,234,216,0.7)")
+              (e.currentTarget.style.color = "rgba(240,234,216,0.8)")
             }
             onMouseLeave={(e) =>
-              (e.currentTarget.style.color = "rgba(240,234,216,0.4)")
+              (e.currentTarget.style.color = "rgba(240,234,216,0.45)")
             }
           >
             Ver servicios
