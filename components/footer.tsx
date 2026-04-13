@@ -6,17 +6,14 @@ const footerLinks = {
   Producto: [
     { label: "Cómo funciona", href: "#servicios" },
     { label: "Casos de uso", href: "#casos" },
-    { label: "Precios", href: "#contacto" },
   ],
   Empresa: [
     { label: "Nosotros", href: "#nosotros" },
     { label: "Equipo", href: "#equipo" },
-    { label: "Noticias", href: "#noticias" },
   ],
   Soporte: [
     { label: "Contacto", href: "#contacto" },
     { label: "FAQ", href: "#faq" },
-    { label: "Documentación", href: "#" },
   ],
 }
 
@@ -54,6 +51,36 @@ export function Footer() {
         style={{ background: "linear-gradient(to right, transparent, rgba(74,222,128,0.3), rgba(251,146,60,0.3), transparent)" }}
       />
 
+      {/* Foto de fondo */}
+      <div
+        className="absolute bottom-0 left-0 right-0"
+        style={{
+          height: "70%",
+          backgroundImage: "url('/fot.jpg')",
+          backgroundSize: "cover",
+          backgroundPosition: "center top",
+          opacity: 0.22,
+        }}
+      />
+
+      {/* Overlay degradado sobre la foto */}
+      <div
+        className="absolute bottom-0 left-0 right-0"
+        style={{
+          height: "70%",
+          background: "linear-gradient(to top, rgba(7,8,6,0.98) 0%, rgba(7,8,6,0.65) 45%, transparent 100%)",
+        }}
+      />
+
+      {/* Degradado superior */}
+      <div
+        className="absolute top-0 left-0 right-0"
+        style={{
+          height: "35%",
+          background: "linear-gradient(to bottom, rgba(7,8,6,1) 0%, transparent 100%)",
+        }}
+      />
+
       {/* Watermark */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden select-none">
         <span
@@ -75,7 +102,7 @@ export function Footer() {
 
           {/* Brand */}
           <div className="lg:col-span-2">
-            <div className="flex items-center gap-3 mb-6">
+            <div className="flex items-center gap-3 mb-4">
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#4ade80] opacity-60"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-[#4ade80]"></span>
@@ -88,18 +115,32 @@ export function Footer() {
               </span>
             </div>
 
+            {/* Badge región */}
+            <div
+              className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full mb-5"
+              style={{ border: "0.5px solid rgba(74,222,128,0.2)" }}
+            >
+              <span className="w-1.5 h-1.5 rounded-full bg-[#4ade80]" />
+              <span
+                className="text-[10px] tracking-widest uppercase"
+                style={{ fontFamily: "'Inter', sans-serif", color: "rgba(74,222,128,0.7)" }}
+              >
+                Patagonia · Argentina
+              </span>
+            </div>
+
             <p
               className="text-[13px] leading-relaxed mb-7 max-w-xs"
               style={{ fontFamily: "'Inter', sans-serif", fontWeight: 300, color: "rgba(240,234,216,0.4)" }}
             >
               Tecnología aérea e inteligencia artificial para la detección
-              temprana de incendios y el monitoreo ambiental en Argentina.
+              temprana de incendios y el monitoreo ambiental.
             </p>
 
             <div className="space-y-2.5 mb-7">
               {[
                 { icon: Mail, text: "sentinelproyecto@gmail.com" },
-                { icon: MapPin, text: "Mendoza, Argentina" },
+                { icon: MapPin, text: "San Rafael, Mendoza — Argentina" },
               ].map((item) => (
                 <div key={item.text} className="flex items-center gap-2.5">
                   <item.icon className="w-3.5 h-3.5 flex-shrink-0" style={{ color: "#4ade80", opacity: 0.7 }} />
