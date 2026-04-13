@@ -46,7 +46,7 @@ export function Hero() {
       </div>
 
       {/* Main Content */}
-      <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-6">
+      <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-6 pb-32">
 
         {/* Tag */}
         <div
@@ -149,31 +149,30 @@ export function Hero() {
             Ver servicios
           </a>
         </div>
-
-        {/* Scroll indicator */}
-        <div
-          className={`absolute bottom-28 left-1/2 -translate-x-1/2 transition-all duration-700 delay-700 ${
-            mounted ? "opacity-100" : "opacity-0"
-          }`}
-        >
-          <div className="w-px h-10 bg-gradient-to-b from-transparent to-[rgba(240,234,216,0.2)]" />
-        </div>
       </div>
 
       {/* Logo marquee */}
-      <div className="absolute bottom-0 left-0 right-0 z-10 border-t border-white/5 py-4 overflow-hidden">
+      <div className="absolute bottom-0 left-0 right-0 z-10 border-t border-white/5 py-8 overflow-hidden"
+        style={{ background: "rgba(12,11,9,0.7)", backdropFilter: "blur(8px)" }}
+      >
+        <p
+          className="text-center mb-5 text-[10px] tracking-[0.25em] uppercase"
+          style={{ color: "rgba(240,234,216,0.2)", fontFamily: "'Inter', sans-serif" }}
+        >
+          Nos acompañan
+        </p>
         <div className="flex animate-marquee whitespace-nowrap">
           {[...logos, ...logos, ...logos].map((logo, i) => (
             <div
               key={i}
-              className="inline-flex items-center justify-center mx-8 shrink-0"
-              style={{ height: "36px" }}
+              className="inline-flex items-center justify-center mx-10 shrink-0"
+              style={{ height: "52px" }}
             >
               <img
                 src={logo.src}
                 alt={logo.alt}
                 className="h-full w-auto object-contain"
-                style={{ filter: "brightness(0) invert(1)", opacity: 0.35 }}
+                style={{ opacity: 0.8 }}
               />
             </div>
           ))}
