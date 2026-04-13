@@ -188,7 +188,7 @@ export function Hero() {
             fontFamily: "'Jura', sans-serif",
             fontWeight: 700,
             fontSize: "clamp(5rem, 20vw, 17rem)",
-            color: "#94f1be",
+            color: "#2C6E49",
           }}
         >
           SENTINEL
