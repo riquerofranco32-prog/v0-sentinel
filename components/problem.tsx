@@ -65,36 +65,64 @@ export function Problem() {
                   color: "rgba(240,234,216,0.55)",
                 }}
               >
-                No es solo bosque lo que se quema. Es el futuro de nuestras economías.
-                Más de 1 millón de hectáreas perdidas en Corrientes. Bosques milenarios
-                desapareciendo en la Patagonia. No son solo árboles: son hogares,
-                biodiversidad única y el futuro económico de nuestras provincias.
+                No es solo bosque lo que se quema. Es el futuro de nuestras economías.{" "}
+                <span style={{ color: "#f03c3c", fontWeight: 400 }}>
+                  Más de 1 millón de hectáreas perdidas en Corrientes.
+                </span>{" "}
+                Bosques milenarios desapareciendo en la Patagonia. No son solo árboles: son
+                hogares, biodiversidad única y el futuro económico de nuestras provincias.
               </p>
 
-              {/* Stats */}
-              <div className={`grid grid-cols-3 gap-8 ${fadeIn(200)}`}>
+              {/* Stats — rediseñados con rojo */}
+              <div className={`grid grid-cols-3 gap-4 ${fadeIn(200)}`}>
                 {[
                   { value: "1M+", label: "Hectáreas quemadas" },
                   { value: "95%", label: "Causa humana" },
                   { value: "∞", label: "Daño a fauna" },
                 ].map((stat) => (
-                  <div key={stat.label}>
+                  <div
+                    key={stat.label}
+                    style={{
+                      background: "rgba(220,30,30,0.07)",
+                      border: "0.5px solid rgba(220,30,30,0.25)",
+                      borderRadius: "6px",
+                      padding: "20px 16px",
+                      position: "relative",
+                      overflow: "hidden",
+                    }}
+                  >
+                    {/* Barra lateral roja */}
                     <div
-                      className="text-3xl sm:text-4xl mb-1"
+                      style={{
+                        position: "absolute",
+                        top: 0,
+                        left: 0,
+                        width: "3px",
+                        height: "100%",
+                        background: "#dc1e1e",
+                      }}
+                    />
+                    <div
                       style={{
                         fontFamily: "'Syne', sans-serif",
                         fontWeight: 800,
-                        color: "rgba(240,234,216,0.85)",
+                        fontSize: "clamp(28px, 4vw, 40px)",
+                        lineHeight: 1,
+                        color: "#f03c3c",
+                        letterSpacing: "-1px",
+                        marginBottom: "6px",
                       }}
                     >
                       {stat.value}
                     </div>
                     <div
-                      className="text-[11px] tracking-wider uppercase"
                       style={{
+                        fontSize: "11px",
+                        letterSpacing: "0.2em",
+                        textTransform: "uppercase",
                         fontFamily: "'Inter', sans-serif",
                         fontWeight: 300,
-                        color: "rgba(240,234,216,0.3)",
+                        color: "rgba(240,234,216,0.35)",
                       }}
                     >
                       {stat.label}
@@ -103,28 +131,105 @@ export function Problem() {
                 ))}
               </div>
 
-              {/* Problem list */}
-              <div className={`mt-12 space-y-6 ${fadeIn(300)}`}>
+              {/* Barras de progreso */}
+              <div className={`mt-8 space-y-4 ${fadeIn(250)}`}>
+                {[
+                  { label: "Superficie afectada", value: "1.000.000 ha", pct: 100 },
+                  { label: "Causa humana", value: "95%", pct: 95 },
+                  { label: "Fauna afectada irreversiblemente", value: "100%", pct: 100 },
+                ].map((bar) => (
+                  <div key={bar.label}>
+                    <div className="flex justify-between mb-1">
+                      <span
+                        style={{
+                          fontSize: "11px",
+                          letterSpacing: "0.15em",
+                          textTransform: "uppercase",
+                          fontFamily: "'Inter', sans-serif",
+                          color: "rgba(240,234,216,0.3)",
+                        }}
+                      >
+                        {bar.label}
+                      </span>
+                      <span
+                        style={{
+                          fontSize: "11px",
+                          fontFamily: "'Inter', sans-serif",
+                          fontWeight: 500,
+                          color: "rgba(240,234,216,0.55)",
+                        }}
+                      >
+                        {bar.value}
+                      </span>
+                    </div>
+                    <div
+                      style={{
+                        background: "rgba(240,234,216,0.06)",
+                        borderRadius: "2px",
+                        height: "3px",
+                        width: "100%",
+                        overflow: "hidden",
+                      }}
+                    >
+                      <div
+                        style={{
+                          height: "100%",
+                          width: `${bar.pct}%`,
+                          background: "#dc1e1e",
+                          borderRadius: "2px",
+                        }}
+                      />
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Problem list — dots rojos */}
+              <div className={`mt-12 space-y-0 ${fadeIn(300)}`}>
                 {[
                   { title: "Pulmón verde en riesgo", body: "Bosques nativos que tardan décadas en regenerarse se pierden en horas." },
                   { title: "Comunidades amenazadas", body: "Familias enteras pierden sus hogares y su sustento económico." },
                   { title: "Respuesta insuficiente", body: "Los brigadistas arriesgan su vida con recursos limitados." },
-                ].map((item) => (
-                  <div key={item.title} className="flex gap-5 items-start">
+                ].map((item, i) => (
+                  <div
+                    key={item.title}
+                    className="flex gap-4 items-start py-4"
+                    style={{
+                      borderBottom: i < 2 ? "0.5px solid rgba(240,234,216,0.06)" : "none",
+                    }}
+                  >
+                    {/* Dot rojo con glow */}
                     <div
-                      className="w-px h-12 mt-1 flex-shrink-0"
-                      style={{ background: "rgba(240,234,216,0.12)" }}
+                      style={{
+                        width: "8px",
+                        height: "8px",
+                        background: "#dc1e1e",
+                        borderRadius: "50%",
+                        marginTop: "5px",
+                        flexShrink: 0,
+                        boxShadow: "0 0 8px rgba(220,30,30,0.6)",
+                      }}
                     />
                     <div>
                       <p
-                        className="text-[13px] font-medium mb-1"
-                        style={{ fontFamily: "'Inter', sans-serif", color: "rgba(240,234,216,0.7)" }}
+                        style={{
+                          fontSize: "13px",
+                          fontFamily: "'Inter', sans-serif",
+                          fontWeight: 500,
+                          color: "rgba(240,234,216,0.75)",
+                          marginBottom: "3px",
+                        }}
                       >
                         {item.title}
                       </p>
                       <p
-                        className="text-[13px]"
-                        style={{ fontFamily: "'Inter', sans-serif", fontWeight: 300, color: "rgba(240,234,216,0.35)" }}
+                        style={{
+                          fontSize: "13px",
+                          fontFamily: "'Inter', sans-serif",
+                          fontWeight: 300,
+                          color: "rgba(240,234,216,0.35)",
+                          lineHeight: 1.5,
+                        }}
                       >
                         {item.body}
                       </p>
@@ -179,18 +284,24 @@ export function Problem() {
                 label: "Una chacra en Puerto Patriada cotiza entre",
                 value: "$47,000 – $130,000 USD",
                 sub: "por hectárea",
+                red: false,
+                badge: null,
               },
               {
                 tag: "Valor post-incendio",
                 label: "El valor cae entre un",
-                value: "40% – 60%",
+                value: "–40% / –60%",
                 sub: "USD $18,000 – $40,000 / ha",
+                red: true,
+                badge: "Caída patrimonial crítica",
               },
               {
                 tag: "La cuenta",
                 label: "La quema de 100 hectáreas significa una pérdida patrimonial de",
                 value: "$5,000,000 USD",
                 sub: "25% del presupuesto nacional de manejo del fuego",
+                red: true,
+                badge: "Equivale al presupuesto anual del SNMF",
               },
             ].map((item, i) => (
               <div
@@ -199,33 +310,70 @@ export function Problem() {
                 style={{ borderColor: "rgba(240,234,216,0.06)" }}
               >
                 <p
-                  className="text-[11px] tracking-[0.25em] uppercase mb-3"
-                  style={{ fontFamily: "'Inter', sans-serif", color: "rgba(240,234,216,0.25)" }}
+                  style={{
+                    fontSize: "11px",
+                    letterSpacing: "0.25em",
+                    textTransform: "uppercase",
+                    fontFamily: "'Inter', sans-serif",
+                    color: item.red ? "#f03c3c" : "rgba(240,234,216,0.25)",
+                    marginBottom: "6px",
+                  }}
                 >
                   {item.tag}
                 </p>
                 <p
-                  className="text-[13px] mb-2"
-                  style={{ fontFamily: "'Inter', sans-serif", fontWeight: 300, color: "rgba(240,234,216,0.4)" }}
+                  style={{
+                    fontSize: "13px",
+                    fontFamily: "'Inter', sans-serif",
+                    fontWeight: 300,
+                    color: "rgba(240,234,216,0.4)",
+                    marginBottom: "8px",
+                  }}
                 >
                   {item.label}
                 </p>
                 <p
-                  className="text-4xl sm:text-5xl lg:text-6xl"
                   style={{
                     fontFamily: "'Syne', sans-serif",
                     fontWeight: 800,
-                    color: "rgba(240,234,216,0.88)",
+                    fontSize: "clamp(32px, 5vw, 56px)",
+                    lineHeight: 1,
+                    letterSpacing: "-2px",
+                    color: item.red ? "#f03c3c" : "rgba(240,234,216,0.88)",
                   }}
                 >
                   {item.value}
                 </p>
                 <p
-                  className="text-[12px] mt-2"
-                  style={{ fontFamily: "'Inter', sans-serif", fontWeight: 300, color: "rgba(240,234,216,0.3)" }}
+                  style={{
+                    fontSize: "12px",
+                    marginTop: "8px",
+                    fontFamily: "'Inter', sans-serif",
+                    fontWeight: 300,
+                    color: "rgba(240,234,216,0.3)",
+                  }}
                 >
                   {item.sub}
                 </p>
+                {item.badge && (
+                  <span
+                    style={{
+                      display: "inline-block",
+                      marginTop: "12px",
+                      fontSize: "10px",
+                      letterSpacing: "0.15em",
+                      textTransform: "uppercase",
+                      background: "rgba(220,30,30,0.12)",
+                      border: "0.5px solid rgba(220,30,30,0.3)",
+                      color: "#f06060",
+                      padding: "3px 10px",
+                      borderRadius: "3px",
+                      fontFamily: "'Inter', sans-serif",
+                    }}
+                  >
+                    {item.badge}
+                  </span>
+                )}
               </div>
             ))}
           </div>
@@ -255,16 +403,19 @@ export function Problem() {
           <div className={`grid md:grid-cols-3 gap-px ${fadeIn(200)}`} style={{ background: "rgba(240,234,216,0.06)" }}>
             {[
               {
-                tag: "Recorte del 78%",
+                num: "–78%",
+                tag: "Recorte del presupuesto",
                 body: "El presupuesto 2026 del Servicio Nacional de Manejo del Fuego se redujo drásticamente en términos reales.",
               },
               {
+                num: "25%",
                 tag: "Dinero sin usar",
                 body: "En 2025, el 25% del presupuesto asignado no se ejecutó. La plata estaba, pero no se usó.",
               },
               {
+                num: "$20.131M",
                 tag: "Presupuesto 2026",
-                body: "El SNMF opera con $ 20.131 millones — insuficiente para la escala del problema.",
+                body: "El SNMF opera con pesos insuficientes para la escala real del problema.",
               },
             ].map((item) => (
               <div
@@ -272,15 +423,40 @@ export function Problem() {
                 className="p-8"
                 style={{ background: "#0c0b09" }}
               >
+                {/* Número grande en rojo */}
                 <p
-                  className="text-[11px] tracking-[0.2em] uppercase mb-4"
-                  style={{ fontFamily: "'Inter', sans-serif", color: "rgba(240,234,216,0.25)" }}
+                  style={{
+                    fontFamily: "'Syne', sans-serif",
+                    fontWeight: 800,
+                    fontSize: "32px",
+                    color: "#f03c3c",
+                    letterSpacing: "-1px",
+                    lineHeight: 1,
+                    marginBottom: "8px",
+                  }}
+                >
+                  {item.num}
+                </p>
+                <p
+                  style={{
+                    fontSize: "10px",
+                    letterSpacing: "0.25em",
+                    textTransform: "uppercase",
+                    fontFamily: "'Inter', sans-serif",
+                    color: "rgba(240,234,216,0.25)",
+                    marginBottom: "12px",
+                  }}
                 >
                   {item.tag}
                 </p>
                 <p
-                  className="text-[14px] leading-relaxed"
-                  style={{ fontFamily: "'Inter', sans-serif", fontWeight: 300, color: "rgba(240,234,216,0.5)" }}
+                  style={{
+                    fontSize: "14px",
+                    fontFamily: "'Inter', sans-serif",
+                    fontWeight: 300,
+                    color: "rgba(240,234,216,0.5)",
+                    lineHeight: 1.6,
+                  }}
                 >
                   {item.body}
                 </p>
