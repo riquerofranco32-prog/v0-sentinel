@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState, useRef } from "react"
+import { useEffect, useState } from "react"
 import { ArrowRight } from "lucide-react"
 
 const partners = [
@@ -71,7 +71,7 @@ export function Hero() {
           SENTINEL
         </h1>
 
-        {/* Divider line */}
+        {/* Divider */}
         <div
           className={`w-16 h-px my-8 transition-all duration-700 delay-200 ${
             mounted ? "opacity-100" : "opacity-0"
@@ -102,7 +102,7 @@ export function Hero() {
             mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
           }`}
         >
-          
+          <a
             href="#nosotros"
             className="inline-flex items-center gap-2 px-7 py-3 rounded-sm text-[13px] font-medium transition-all"
             style={{
@@ -123,7 +123,7 @@ export function Hero() {
             Quiero saber más
             <ArrowRight className="w-3.5 h-3.5" />
           </a>
-          
+          <a
             href="#servicios"
             className="inline-flex items-center justify-center px-7 py-3 rounded-sm text-[13px] font-light transition-all"
             style={{

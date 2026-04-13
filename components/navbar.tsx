@@ -50,7 +50,7 @@ export function Navbar() {
           {/* Desktop Nav */}
           <div className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
-              
+              <a
                 key={link.href}
                 href={link.href}
                 className="text-[13px] font-light transition-colors"
@@ -72,7 +72,7 @@ export function Navbar() {
 
           {/* CTA */}
           <div className="hidden md:block">
-            
+            <a
               href="https://linktr.ee/sentinelarg"
               target="_blank"
               rel="noopener noreferrer"
@@ -115,7 +115,7 @@ export function Navbar() {
       >
         <div className="bg-[#0c0b09]/98 backdrop-blur-xl border-t border-white/5 px-6 py-5 space-y-5">
           {navLinks.map((link) => (
-            
+            <a
               key={link.href}
               href={link.href}
               className="block text-[13px] font-light"
@@ -128,7 +128,7 @@ export function Navbar() {
               {link.label}
             </a>
           ))}
-          
+          <a
             href="https://linktr.ee/sentinelarg"
             target="_blank"
             rel="noopener noreferrer"
