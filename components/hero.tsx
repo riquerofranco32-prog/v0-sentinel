@@ -28,8 +28,8 @@ export function Hero() {
       {/* Background */}
       <div className="absolute inset-0 z-0">
         <img
-          src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/3-wMoLWM6ee43OTLxdif9ekqEJu7qlet.png"
-          alt="Paisaje patagónico"
+          src="/Component_16.jpg"
+          alt="Incendio forestal Patagonia"
           className="w-full h-full object-cover scale-105"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-[#0c0b09]/50 via-[#0c0b09]/30 to-[#0c0b09]" />
