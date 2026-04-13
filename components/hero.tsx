@@ -28,7 +28,7 @@ export function Hero() {
       {/* Background */}
       <div className="absolute inset-0 z-0">
         <img
-          src="/Component_16.jpg"
+          src="/aaa.jpg"
           alt="Incendio forestal Patagonia"
           className="w-full h-full object-cover scale-105"
         />
