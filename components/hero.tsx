@@ -3,14 +3,23 @@
 import { useEffect, useState } from "react"
 import { ArrowRight } from "lucide-react"
 
-const partners = [
-  "Forestal Argentina",
-  "Bomberos San Rafael",
-  "Fundación Patagonia Natural",
-  "Municipalidad San Rafael",
-  "UBA",
-  "Endeavor",
-  "BNA",
+const logos = [
+  { src: "/20220609002317_uba.png", alt: "UBA" },
+  { src: "/aiweken.png", alt: "Aiweken" },
+  { src: "/cice.png", alt: "CICE" },
+  { src: "/cuerpo_San_Rafael_2138338625.jpg", alt: "Bomberos San Rafael" },
+  { src: "/empretec.png", alt: "Empretec" },
+  { src: "/endeavor.png", alt: "Endeavor" },
+  { src: "/FPN2.webp", alt: "Fundación Patagonia Natural" },
+  { src: "/ilan.png", alt: "ILAN" },
+  { src: "/movistar-3.svg", alt: "Movistar" },
+  { src: "/portada-forestal.jpg", alt: "Forestal Argentina" },
+  { src: "/sadosky.png", alt: "Sadosky" },
+  { src: "/scale.png", alt: "Scale" },
+  { src: "/ue.png", alt: "UE" },
+  { src: "/uncuyo.png", alt: "UNCUYO" },
+  { src: "/unl.png", alt: "UNL" },
+  { src: "/utn.png", alt: "UTN" },
 ]
 
 export function Hero() {
@@ -151,24 +160,22 @@ export function Hero() {
         </div>
       </div>
 
-      {/* Partner strip */}
-      <div className="absolute bottom-0 left-0 right-0 z-10 border-t border-white/5 py-3 overflow-hidden">
+      {/* Logo marquee */}
+      <div className="absolute bottom-0 left-0 right-0 z-10 border-t border-white/5 py-4 overflow-hidden">
         <div className="flex animate-marquee whitespace-nowrap">
-          {[...partners, ...partners, ...partners].map((name, i) => (
-            <span
+          {[...logos, ...logos, ...logos].map((logo, i) => (
+            <div
               key={i}
-              className="inline-flex items-center mx-6 gap-3"
-              style={{
-                fontFamily: "'Inter', sans-serif",
-                fontSize: "11px",
-                fontWeight: 300,
-                color: "rgba(240,234,216,0.3)",
-                letterSpacing: "0.08em",
-              }}
+              className="inline-flex items-center justify-center mx-8 shrink-0"
+              style={{ height: "36px" }}
             >
-              {name}
-              <span style={{ color: "rgba(240,234,216,0.1)" }}>·</span>
-            </span>
+              <img
+                src={logo.src}
+                alt={logo.alt}
+                className="h-full w-auto object-contain"
+                style={{ filter: "brightness(0) invert(1)", opacity: 0.35 }}
+              />
+            </div>
           ))}
         </div>
       </div>
