@@ -35,16 +35,11 @@ export function Navbar() {
 
           {/* Logo */}
           <a href="#inicio" className="flex items-center gap-3 group">
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#004f39] opacity-60"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-[#004f39]"></span>
-            </span>
-            <span
-              className="text-lg font-extrabold text-[#f0ead8] tracking-tight"
-              style={{ fontFamily: "'Syne', sans-serif" }}
-            >
-              SENTINEL
-            </span>
+            <img
+              src="/logo.png"
+              alt="Sentinel Logo"
+              className="h-8 w-auto object-contain"
+            />
           </a>
 
           {/* Desktop Nav */}
