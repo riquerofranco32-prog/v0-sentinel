@@ -14,21 +14,13 @@ const logros = [
   { bold: "Finalistas",    rest: "de la Impact Startup Competition Perú 2026 by Scale.", highlight: "Impact Startup Competition" },
 ]
 
-const supporters = [
-  "ILAN", "Gobierno de Salta", "endeavor", "Premios Sadosky",
-  "CESSI", "UTN San Rafael", "Bomberos", "Embajada Arg. en China",
-  "XAG", "Incubadora UNCUYO", "UNL", "Patagonia Natural", ".UBA", "Movistar",
-]
-
 const gridBg = [
   "repeating-linear-gradient(0deg,  transparent, transparent 47px, rgba(74,222,128,0.04) 47px, rgba(74,222,128,0.04) 48px)",
   "repeating-linear-gradient(90deg, transparent, transparent 47px, rgba(74,222,128,0.04) 47px, rgba(74,222,128,0.04) 48px)",
 ].join(", ")
 
 function HighlightText({ text, highlight }: { text: string; highlight?: string }) {
-  if (!highlight || !text.includes(highlight)) {
-    return <>{text}</>
-  }
+  if (!highlight || !text.includes(highlight)) return <>{text}</>
   const parts = text.split(highlight)
   return (
     <>
@@ -58,12 +50,12 @@ export function Awards() {
       id="noticias"
       style={{
         background: `${gridBg}, #0b1610`,
-        padding: "96px 0 88px",
+        padding: "88px 0",
         position: "relative",
         overflow: "hidden",
       }}
     >
-      {/* Glow ambiental fondo */}
+      {/* Glow fondo */}
       <div style={{
         position: "absolute", inset: 0, pointerEvents: "none",
         background: "radial-gradient(ellipse 55% 55% at 78% 38%, rgba(10,55,28,0.6) 0%, transparent 68%)",
@@ -76,10 +68,10 @@ export function Awards() {
           style={{
             fontFamily: "'Syne', sans-serif",
             fontWeight: 800,
-            fontSize: "clamp(42px, 5.5vw, 72px)",
+            fontSize: "clamp(36px, 5vw, 60px)",
             color: "rgba(240,234,216,0.92)",
             lineHeight: 1.05,
-            marginBottom: "44px",
+            marginBottom: "40px",
             opacity: isVisible ? 1 : 0,
             transform: isVisible ? "none" : "translateY(16px)",
             transition: "all 700ms",
@@ -88,22 +80,18 @@ export function Awards() {
           Nuestros{" "}
           <em style={{ fontStyle: "italic" }}>logros.</em>
           <span style={{
-            display: "block",
-            width: "48px", height: "2px",
-            background: "#4ade80",
-            marginTop: "12px",
-            opacity: 0.6,
+            display: "block", width: "48px", height: "2px",
+            background: "#4ade80", marginTop: "12px", opacity: 0.6,
           }} />
         </h2>
 
-        {/* Caja de logros */}
+        {/* Lista de logros */}
         <div
           style={{
             background: "rgba(6,18,10,0.85)",
             border: "1px solid rgba(74,222,128,0.14)",
-            borderRadius: "18px",
-            padding: "36px 44px",
-            marginBottom: "60px",
+            borderRadius: "16px",
+            padding: "28px 40px",
             position: "relative",
             overflow: "hidden",
             opacity: isVisible ? 1 : 0,
@@ -111,11 +99,11 @@ export function Awards() {
             transition: "all 700ms 80ms",
           }}
         >
-          {/* Glow interior derecha */}
+          {/* Glow interior */}
           <div style={{
             position: "absolute", top: "-60px", right: "-60px",
-            width: "320px", height: "320px", pointerEvents: "none",
-            background: "radial-gradient(circle, rgba(74,222,128,0.2) 0%, transparent 62%)",
+            width: "280px", height: "280px", pointerEvents: "none",
+            background: "radial-gradient(circle, rgba(74,222,128,0.18) 0%, transparent 62%)",
           }} />
 
           {logros.map((l, i) => (
@@ -124,21 +112,20 @@ export function Awards() {
               style={{
                 display: "flex",
                 alignItems: "baseline",
-                gap: "20px",
-                padding: "14px 0",
+                gap: "16px",
+                padding: "11px 0",
                 borderBottom: i < logros.length - 1
                   ? "0.5px solid rgba(74,222,128,0.07)"
                   : "none",
                 opacity: isVisible ? 1 : 0,
                 transform: isVisible ? "none" : "translateX(-10px)",
-                transition: `all 550ms ${160 + i * 55}ms`,
+                transition: `all 500ms ${160 + i * 50}ms`,
               }}
             >
-              {/* Asterisco estilo slide */}
               <span style={{
                 fontFamily: "'Syne', sans-serif",
                 fontWeight: 800,
-                fontSize: "22px",
+                fontSize: "18px",
                 color: "#4ade80",
                 flexShrink: 0,
                 lineHeight: 1,
@@ -146,10 +133,9 @@ export function Awards() {
               }}>
                 ✳
               </span>
-
               <p style={{
                 fontFamily: "'Inter', sans-serif",
-                fontSize: "clamp(14px, 1.35vw, 17px)",
+                fontSize: "clamp(13px, 1.2vw, 16px)",
                 fontWeight: 300,
                 color: "rgba(240,234,216,0.6)",
                 margin: 0,
@@ -163,50 +149,6 @@ export function Awards() {
             </div>
           ))}
         </div>
-
-        {/* Apoyo */}
-        <div style={{
-          opacity: isVisible ? 1 : 0,
-          transition: "opacity 700ms 680ms",
-        }}>
-          <p style={{
-            fontFamily: "'Syne', sans-serif",
-            fontWeight: 800,
-            fontSize: "clamp(26px, 3vw, 40px)",
-            color: "rgba(240,234,216,0.85)",
-            marginBottom: "28px",
-          }}>
-            Apoyo:
-          </p>
-
-          <div style={{
-            display: "flex",
-            flexWrap: "wrap",
-            alignItems: "center",
-            gap: "10px 0",
-          }}>
-            {supporters.map((name, i) => (
-              <span
-                key={name}
-                style={{
-                  fontFamily: "'Inter', sans-serif",
-                  fontSize: "clamp(12px, 1.05vw, 15px)",
-                  fontWeight: 400,
-                  color: "rgba(240,234,216,0.48)",
-                  paddingLeft: "16px",
-                  paddingRight: "16px",
-                  borderRight: "0.5px solid rgba(74,222,128,0.2)",
-                  lineHeight: 1,
-                  opacity: isVisible ? 1 : 0,
-                  transition: `opacity 400ms ${700 + i * 28}ms`,
-                }}
-              >
-                {name}
-              </span>
-            ))}
-          </div>
-        </div>
-
       </div>
     </section>
   )
