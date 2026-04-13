@@ -36,7 +36,7 @@ export function Navbar() {
           {/* Logo */}
           <a href="#inicio" className="flex items-center gap-3 group">
             <img
-              src="/Frame_21182-removebg-preview.png"
+              src="/logoo.png"
               alt="Sentinel Logo"
               className="h-8 w-auto object-contain"
             />
