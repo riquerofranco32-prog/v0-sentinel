@@ -3,17 +3,17 @@
 import { Mail, MapPin } from "lucide-react"
 
 const footerLinks = {
-  producto: [
-    { label: "Cómo Funciona", href: "#servicios" },
-    { label: "Casos de Uso", href: "#casos" },
+  Producto: [
+    { label: "Cómo funciona", href: "#servicios" },
+    { label: "Casos de uso", href: "#casos" },
     { label: "Precios", href: "#contacto" },
   ],
-  empresa: [
+  Empresa: [
     { label: "Nosotros", href: "#nosotros" },
     { label: "Equipo", href: "#equipo" },
     { label: "Noticias", href: "#noticias" },
   ],
-  soporte: [
+  Soporte: [
     { label: "Contacto", href: "#contacto" },
     { label: "FAQ", href: "#faq" },
     { label: "Documentación", href: "#" },
@@ -25,7 +25,7 @@ const socialLinks = [
     href: "https://instagram.com/sentinel.arg",
     label: "Instagram",
     icon: (
-      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+      <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
         <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
       </svg>
     ),
@@ -34,7 +34,7 @@ const socialLinks = [
     href: "https://linkedin.com/company/sentinelarg",
     label: "LinkedIn",
     icon: (
-      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+      <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
         <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
       </svg>
     ),
@@ -43,135 +43,159 @@ const socialLinks = [
 
 export function Footer() {
   return (
-    <footer id="contacto" className="relative bg-[#004f39] overflow-hidden">
+    <footer
+      id="contacto"
+      className="relative overflow-hidden"
+      style={{ background: "#070806" }}
+    >
+      {/* Top border gradient */}
+      <div
+        className="absolute top-0 left-0 right-0 h-px"
+        style={{ background: "linear-gradient(to right, transparent, rgba(74,222,128,0.3), rgba(251,146,60,0.3), transparent)" }}
+      />
+
       {/* Watermark */}
-      <div 
-        className="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden"
-        aria-hidden="true"
-      >
-        <span 
-          className="text-[20vw] font-bold tracking-wider whitespace-nowrap"
-          style={{ 
-            fontFamily: "var(--font-heading)",
-            color: "rgba(255, 250, 202, 0.05)",
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden select-none">
+        <span
+          style={{
+            fontFamily: "'Syne', sans-serif",
+            fontWeight: 800,
+            fontSize: "18vw",
+            color: "rgba(240,234,216,0.02)",
+            letterSpacing: "0.1em",
+            whiteSpace: "nowrap",
           }}
         >
           SENTINEL
         </span>
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 lg:gap-8">
-          {/* Brand Column */}
+      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-10 pt-16 pb-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 lg:gap-8 mb-14">
+
+          {/* Brand */}
           <div className="lg:col-span-2">
             <div className="flex items-center gap-3 mb-6">
-              <span className="relative flex h-2.5 w-2.5">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#FFFACA] opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#FFFACA]"></span>
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#4ade80] opacity-60"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-[#4ade80]"></span>
               </span>
               <span
-                className="text-xl font-bold text-[#FFFACA] tracking-[0.2em]"
-                style={{ fontFamily: "var(--font-heading)" }}
+                className="text-lg font-extrabold tracking-tight"
+                style={{ fontFamily: "'Syne', sans-serif", color: "rgba(240,234,216,0.9)" }}
               >
                 SENTINEL
               </span>
             </div>
-            <p className="text-[#FFFACA]/70 mb-6 max-w-sm leading-relaxed text-sm">
-              Tecnología aérea e inteligencia artificial para la detección temprana 
-              de incendios y el monitoreo ambiental en Argentina.
+
+            <p
+              className="text-[13px] leading-relaxed mb-7 max-w-xs"
+              style={{ fontFamily: "'Inter', sans-serif", fontWeight: 300, color: "rgba(240,234,216,0.4)" }}
+            >
+              Tecnología aérea e inteligencia artificial para la detección
+              temprana de incendios y el monitoreo ambiental en Argentina.
             </p>
-            
-            {/* Contact Info */}
-            <div className="space-y-3 mb-6">
-              <div className="flex items-center gap-3">
-                <Mail className="w-4 h-4 text-[#FFFACA]" />
-                <span className="text-sm text-[#FFFACA]/80">sentinelproyecto@gmail.com</span>
-              </div>
-              <div className="flex items-center gap-3">
-                <MapPin className="w-4 h-4 text-[#FFFACA]" />
-                <span className="text-sm text-[#FFFACA]/80">Mendoza, Argentina</span>
-              </div>
+
+            <div className="space-y-2.5 mb-7">
+              {[
+                { icon: Mail, text: "sentinelproyecto@gmail.com" },
+                { icon: MapPin, text: "Mendoza, Argentina" },
+              ].map((item) => (
+                <div key={item.text} className="flex items-center gap-2.5">
+                  <item.icon className="w-3.5 h-3.5 flex-shrink-0" style={{ color: "#4ade80", opacity: 0.7 }} />
+                  <span
+                    className="text-[12px]"
+                    style={{ fontFamily: "'Inter', sans-serif", fontWeight: 300, color: "rgba(240,234,216,0.45)" }}
+                  >
+                    {item.text}
+                  </span>
+                </div>
+              ))}
             </div>
 
-            {/* Social Links */}
-            <div className="flex gap-4">
-              {socialLinks.map((social, index) => (
+            <div className="flex gap-3">
+              {socialLinks.map((s) => (
                 <a
-                  key={index}
-                  href={social.href}
+                  key={s.label}
+                  href={s.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 bg-[#FFFACA]/10 rounded-lg flex items-center justify-center text-[#FFFACA]/70 hover:bg-[#FFFACA]/20 hover:text-[#FFFACA] transition-all"
-                  aria-label={social.label}
+                  aria-label={s.label}
+                  className="w-8 h-8 rounded-sm flex items-center justify-center transition-all duration-200"
+                  style={{
+                    background: "rgba(240,234,216,0.05)",
+                    border: "0.5px solid rgba(240,234,216,0.1)",
+                    color: "rgba(240,234,216,0.4)",
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.borderColor = "rgba(74,222,128,0.4)"
+                    e.currentTarget.style.color = "#4ade80"
+                    e.currentTarget.style.background = "rgba(74,222,128,0.08)"
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.borderColor = "rgba(240,234,216,0.1)"
+                    e.currentTarget.style.color = "rgba(240,234,216,0.4)"
+                    e.currentTarget.style.background = "rgba(240,234,216,0.05)"
+                  }}
                 >
-                  {social.icon}
+                  {s.icon}
                 </a>
               ))}
             </div>
           </div>
 
-          {/* Links Columns */}
-          <div>
-            <h4 className="text-[#FFFACA] font-semibold mb-4 text-sm tracking-wider uppercase">Producto</h4>
-            <ul className="space-y-3">
-              {footerLinks.producto.map((link, index) => (
-                <li key={index}>
-                  <a
-                    href={link.href}
-                    className="text-[#FFFACA]/60 hover:text-[#FFFACA] transition-colors text-sm"
-                  >
-                    {link.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="text-[#FFFACA] font-semibold mb-4 text-sm tracking-wider uppercase">Empresa</h4>
-            <ul className="space-y-3">
-              {footerLinks.empresa.map((link, index) => (
-                <li key={index}>
-                  <a
-                    href={link.href}
-                    className="text-[#FFFACA]/60 hover:text-[#FFFACA] transition-colors text-sm"
-                  >
-                    {link.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="text-[#FFFACA] font-semibold mb-4 text-sm tracking-wider uppercase">Soporte</h4>
-            <ul className="space-y-3">
-              {footerLinks.soporte.map((link, index) => (
-                <li key={index}>
-                  <a
-                    href={link.href}
-                    className="text-[#FFFACA]/60 hover:text-[#FFFACA] transition-colors text-sm"
-                  >
-                    {link.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
+          {/* Links */}
+          {Object.entries(footerLinks).map(([section, links]) => (
+            <div key={section}>
+              <p
+                className="text-[11px] tracking-[0.2em] uppercase mb-5"
+                style={{ fontFamily: "'Inter', sans-serif", color: "rgba(240,234,216,0.25)" }}
+              >
+                {section}
+              </p>
+              <ul className="space-y-3">
+                {links.map((link) => (
+                  <li key={link.label}>
+                    <a
+                      href={link.href}
+                      className="text-[13px] transition-colors duration-200"
+                      style={{ fontFamily: "'Inter', sans-serif", fontWeight: 300, color: "rgba(240,234,216,0.4)" }}
+                      onMouseEnter={(e) => (e.currentTarget.style.color = "rgba(240,234,216,0.8)")}
+                      onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(240,234,216,0.4)")}
+                    >
+                      {link.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
 
-        {/* Bottom Bar */}
-        <div className="mt-16 pt-8 border-t border-[#FFFACA]/20 flex flex-col sm:flex-row justify-between items-center gap-4">
-          <p className="text-[#FFFACA]/50 text-xs">
-            All copyrights @sentinel.arg · Visioned and Crafted by Sentinel
+        {/* Bottom */}
+        <div
+          className="pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 border-t"
+          style={{ borderColor: "rgba(240,234,216,0.06)" }}
+        >
+          <p
+            className="text-[11px]"
+            style={{ fontFamily: "'Inter', sans-serif", fontWeight: 300, color: "rgba(240,234,216,0.25)" }}
+          >
+            © 2025 Sentinel · Visioned and Crafted by Sentinel
           </p>
           <div className="flex gap-6">
-            <a href="#" className="text-[#FFFACA]/50 hover:text-[#FFFACA]/70 text-xs transition-colors">
-              Términos
-            </a>
-            <a href="#" className="text-[#FFFACA]/50 hover:text-[#FFFACA]/70 text-xs transition-colors">
-              Privacidad
-            </a>
+            {["Términos", "Privacidad"].map((label) => (
+              <a
+                key={label}
+                href="#"
+                className="text-[11px] transition-colors duration-200"
+                style={{ fontFamily: "'Inter', sans-serif", fontWeight: 300, color: "rgba(240,234,216,0.25)" }}
+                onMouseEnter={(e) => (e.currentTarget.style.color = "rgba(240,234,216,0.55)")}
+                onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(240,234,216,0.25)")}
+              >
+                {label}
+              </a>
+            ))}
           </div>
         </div>
       </div>
