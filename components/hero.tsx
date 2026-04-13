@@ -172,7 +172,7 @@ export function Hero() {
             className="text-[11px] font-medium tracking-[0.3em] uppercase"
             style={{
               fontFamily: "'Inter', sans-serif",
-              color: "rgba(240,234,216,0.35)",
+              color: "rgba(240,234,216,0.6)",
             }}
           >
             Detección temprana de incendios
@@ -188,7 +188,7 @@ export function Hero() {
             fontFamily: "'Jura', sans-serif",
             fontWeight: 700,
             fontSize: "clamp(5rem, 20vw, 17rem)",
-            color: "rgba(240,234,216,0.92)",
+            color: "#94f1be",
           }}
         >
           SENTINEL
@@ -212,7 +212,7 @@ export function Hero() {
             fontWeight: 300,
             fontSize: "15px",
             lineHeight: 1.7,
-            color: "rgba(240,234,216,0.5)",
+            color: "rgba(240,234,216,0.85)",
           }}
         >
           Tecnología aérea e inteligencia artificial para la detección temprana
