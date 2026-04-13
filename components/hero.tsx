@@ -174,7 +174,7 @@ export function Hero() {
               color: "#94f1be",
             }}
           >
-            Sentinel
+            
           </span>
         </div>
 
