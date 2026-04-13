@@ -25,7 +25,7 @@ export function Problem() {
       {/* Hero image */}
       <div className="relative h-[65vh] min-h-[480px] overflow-hidden">
         <img
-          src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/267-OTOcu9EUVLZS8Z5p5N46egBZitm0qj.jpg"
+          src="/a3.jpg"
           alt="Bomberos enfrentando incendio forestal en la Patagonia"
           className="w-full h-full object-cover"
         />
@@ -73,7 +73,7 @@ export function Problem() {
                 hogares, biodiversidad única y el futuro económico de nuestras provincias.
               </p>
 
-              {/* Stats — rediseñados con rojo */}
+              {/* Stats */}
               <div className={`grid grid-cols-3 gap-4 ${fadeIn(200)}`}>
                 {[
                   { value: "1M+", label: "Hectáreas quemadas" },
@@ -91,7 +91,6 @@ export function Problem() {
                       overflow: "hidden",
                     }}
                   >
-                    {/* Barra lateral roja */}
                     <div
                       style={{
                         position: "absolute",
@@ -184,7 +183,7 @@ export function Problem() {
                 ))}
               </div>
 
-              {/* Problem list — dots rojos */}
+              {/* Problem list */}
               <div className={`mt-12 space-y-0 ${fadeIn(300)}`}>
                 {[
                   { title: "Pulmón verde en riesgo", body: "Bosques nativos que tardan décadas en regenerarse se pierden en horas." },
@@ -198,7 +197,6 @@ export function Problem() {
                       borderBottom: i < 2 ? "0.5px solid rgba(240,234,216,0.06)" : "none",
                     }}
                   >
-                    {/* Dot rojo con glow */}
                     <div
                       style={{
                         width: "8px",
@@ -423,7 +421,6 @@ export function Problem() {
                 className="p-8"
                 style={{ background: "#0c0b09" }}
               >
-                {/* Número grande en rojo */}
                 <p
                   style={{
                     fontFamily: "'Syne', sans-serif",
