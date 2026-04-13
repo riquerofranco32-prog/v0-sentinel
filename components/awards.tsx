@@ -2,94 +2,22 @@
 
 import { useEffect, useRef, useState } from "react"
 
-const awards = [
-  {
-    tag: "Ganadores",
-    winner: true,
-    title: "ILAN–UTN 2025",
-    description: "Premiados como la solución tecnológica más innovadora del certamen, con viaje a Israel para una misión de innovación.",
-  },
-  {
-    tag: "Finalistas",
-    winner: false,
-    title: "Premios Sadosky 2025 — Startup del Año",
-    description: "Finalistas en la categoría Mejor Startup del Año 2025 y Solución Innovadora, uno de los reconocimientos más prestigiosos del sector tecnológico argentino.",
-  },
-  {
-    tag: "3° Puesto Nacional",
-    winner: false,
-    title: "Usina de Emprendedores",
-    description: "Tercer lugar entre emprendimientos de alto potencial elegidos a nivel nacional. Destaca nuestra propuesta de valor, escalabilidad y viabilidad.",
-  },
-  {
-    tag: "Finalistas",
-    winner: false,
-    title: "Premios Prendete 2025 — Categoría Jump",
-    description: "Seleccionados en la categoría Jump, que premia soluciones innovadoras con potencial de crecimiento acelerado.",
-  },
-  {
-    tag: "Top 700+",
-    winner: false,
-    title: "Concurso Soluciones Innovadoras BNA 2025",
-    description: "Seleccionados entre más de 700 propuestas para avanzar a la segunda etapa, con 8 encuentros de formación y asistencia.",
-  },
-  {
-    tag: "Ganadores",
-    winner: true,
-    title: "JIJE 2025 — Mejor Modelo de Negocio",
-    description: "Reconocidos como el modelo de mayor impacto entre decenas de iniciativas innovadoras.",
-  },
+const achievements = [
+  { tag: "Ganadores", highlight: true,  title: "Premios ILAN 2025",                       detail: "Viaje a Israel · Misión de innovación" },
+  { tag: "Ganadores", highlight: true,  title: "JIJE 2025 — UNL",                          detail: "Mejor Modelo de Negocio · 20 años del certamen" },
+  { tag: "Ganadores", highlight: true,  title: "Premios Sadosky 2025 — CESSI",             detail: "Startup del Año · Solución Innovadora" },
+  { tag: "Ganadores", highlight: true,  title: "Usina Emprendedores — CAC",                detail: "1° Puesto Nacional · Alto potencial" },
+  { tag: "Ganadores", highlight: true,  title: "Prendete Pitch Day — CICE SV",             detail: "Categoría Jump · Crecimiento acelerado" },
+  { tag: "Seleccionados", highlight: false, title: "Softlanding en Europa",                detail: "Por Piensas.xyz · Internacionalización" },
+  { tag: "Inversión",    highlight: false, title: "Gobierno de Mendoza",                   detail: "$3.000 USD · Primer capital público" },
+  { tag: "Seleccionados", highlight: false, title: "Emprelatam + Draper House Americas",   detail: "Red internacional de inversión" },
+  { tag: "Finalistas",   highlight: false, title: "Impact Startup Competition Perú 2026",  detail: "By Scale · Expansión regional" },
 ]
 
-const alliances = [
-  {
-    title: "Forestal Argentina",
-    stat: "40+",
-    statLabel: "registros históricos",
-    description: "Registros históricos de incendios forestales con ubicación, imágenes y cronologías de propagación para validar la precisión del sistema.",
-  },
-  {
-    title: "Bomberos de San Rafael",
-    stat: "100+",
-    statLabel: "imágenes térmicas",
-    description: "Imágenes térmicas obtenidas en pruebas de campo con escenarios reales, usadas para entrenar los algoritmos de detección.",
-  },
-  {
-    title: "Fundación Patagonia Natural",
-    stat: "ONG",
-    statLabel: "aval ambiental",
-    description: "Acompañamiento en la construcción de una propuesta coherente con criterios de sostenibilidad y conservación de ecosistemas vulnerables.",
-  },
-  {
-    title: "Municipalidad de San Rafael",
-    stat: "Gov",
-    statLabel: "respaldo institucional",
-    description: "Acceso a áreas protegidas para patrullaje experimental a través de la Dirección de Espacios Verdes y Medio Ambiente.",
-  },
-  {
-    title: "UBA — Ciencias Económicas",
-    stat: "UBA",
-    statLabel: "caso de estudio",
-    description: "Sentinel fue caso de estudio en el Kick Off de la materia Plan de Marketing Digital del Máster de la UBA.",
-  },
-  {
-    title: "Endeavor Cuyo",
-    stat: "Red",
-    statLabel: "mentoría estratégica",
-    description: "Seleccionados para mentoría y apoyo estratégico, validando el potencial de crecimiento regional e internacional.",
-  },
-  {
-    title: "NAVES — IAE Business School",
-    stat: "#1",
-    statLabel: "aceleradora argentina",
-    description: "Seleccionados para participar en el principal programa de aceleración empresarial de Argentina.",
-  },
-  {
-    title: "UNCUYO — Incubación",
-    stat: "I+D",
-    statLabel: "desarrollo tecnológico",
-    description: "Seleccionados para incubación y mentoría por la Universidad Nacional de Cuyo, fortaleciendo el desarrollo y la estrategia de go-to-market.",
-  },
+const supporters = [
+  "ILAN", "Gobierno de Salta", "endeavor", "Premios Sadosky", "CESSI", "UTN San Rafael",
+  "Bomberos", "Embajada Argentina en China", "XAG", "Incubadora UNCUYO",
+  "UNL", "Fundación Patagonia Natural", "UBA", "Movistar",
 ]
 
 export function Awards() {
@@ -105,294 +33,327 @@ export function Awards() {
     return () => observer.disconnect()
   }, [])
 
+  const winners = achievements.filter((a) => a.highlight)
+  const others  = achievements.filter((a) => !a.highlight)
+
   return (
     <section
       ref={sectionRef}
       id="noticias"
-      className="py-24 lg:py-32 bg-[#0c0b09]"
+      style={{ background: "#0c0b09", padding: "96px 0 80px" }}
     >
-      <div className="max-w-7xl mx-auto px-6 lg:px-10">
+      <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 40px" }}>
 
         {/* Header */}
-        <div className="mb-20">
+        <div
+          style={{
+            marginBottom: "64px",
+            opacity: isVisible ? 1 : 0,
+            transform: isVisible ? "none" : "translateY(16px)",
+            transition: "all 700ms",
+          }}
+        >
           <p
-            className="text-[11px] tracking-[0.3em] uppercase mb-6"
             style={{
-              fontFamily: "'Inter', sans-serif",
+              fontFamily: "'Inter',sans-serif",
+              fontSize: "11px",
+              letterSpacing: "0.3em",
+              textTransform: "uppercase",
               color: "rgba(240,234,216,0.3)",
-              opacity: isVisible ? 1 : 0,
-              transition: "opacity 700ms",
+              marginBottom: "16px",
             }}
           >
             Reconocimientos
           </p>
           <h2
             style={{
-              fontFamily: "'Syne', sans-serif",
+              fontFamily: "'Syne',sans-serif",
               fontWeight: 800,
-              fontSize: "clamp(36px, 6vw, 64px)",
+              fontSize: "clamp(36px,5vw,60px)",
               color: "rgba(240,234,216,0.92)",
-              opacity: isVisible ? 1 : 0,
-              transform: isVisible ? "translateY(0)" : "translateY(16px)",
-              transition: "all 700ms 100ms",
+              lineHeight: 1.05,
+              margin: 0,
             }}
           >
-            Nuestra validación
+            Nuestros logros.
           </h2>
         </div>
 
-        {/* Contador de premios destacado */}
-        <div
-          className="grid grid-cols-3 gap-px mb-20"
+        {/* Label ganadores */}
+        <p
           style={{
-            background: "rgba(240,234,216,0.06)",
+            fontFamily: "'Inter',sans-serif",
+            fontSize: "11px",
+            letterSpacing: "0.3em",
+            textTransform: "uppercase",
+            color: "rgba(100,210,140,0.5)",
+            marginBottom: "20px",
             opacity: isVisible ? 1 : 0,
-            transform: isVisible ? "translateY(0)" : "translateY(16px)",
-            transition: "all 700ms 150ms",
+            transition: "opacity 600ms 100ms",
           }}
         >
-          {[
-            { value: "2", label: "Premios ganados" },
-            { value: "4", label: "Premios finalistas" },
-            { value: "8", label: "Alianzas estratégicas" },
-          ].map((item) => (
-            <div key={item.label} className="p-8 text-center" style={{ background: "#0c0b09" }}>
+          Ganadores
+        </p>
+
+        {/* Tarjetas verdes — ganadores */}
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fill, minmax(210px, 1fr))",
+            gap: "2px",
+          }}
+        >
+          {winners.map((a, i) => (
+            <div
+              key={a.title}
+              style={{
+                background: "rgba(20,70,42,0.4)",
+                border: "0.5px solid rgba(74,222,128,0.18)",
+                padding: "28px 22px",
+                position: "relative",
+                overflow: "hidden",
+                opacity: isVisible ? 1 : 0,
+                transform: isVisible ? "none" : "translateY(12px)",
+                transition: `all 700ms ${150 + i * 60}ms`,
+              }}
+            >
+              {/* glow esquina */}
               <div
                 style={{
-                  fontFamily: "'Syne', sans-serif",
+                  position: "absolute",
+                  top: "-20px",
+                  right: "-20px",
+                  width: "100px",
+                  height: "100px",
+                  background: "radial-gradient(circle, rgba(74,222,128,0.12) 0%, transparent 70%)",
+                  pointerEvents: "none",
+                }}
+              />
+
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "7px",
+                  marginBottom: "16px",
+                }}
+              >
+                <span style={{ color: "#4ade80", fontSize: "13px" }}>★</span>
+                <span
+                  style={{
+                    fontFamily: "'Inter',sans-serif",
+                    fontSize: "10px",
+                    letterSpacing: "0.2em",
+                    textTransform: "uppercase",
+                    color: "rgba(74,222,128,0.65)",
+                    fontWeight: 500,
+                  }}
+                >
+                  Ganadores
+                </span>
+              </div>
+
+              <p
+                style={{
+                  fontFamily: "'Syne',sans-serif",
                   fontWeight: 800,
-                  fontSize: "48px",
-                  lineHeight: 1,
-                  color: "rgba(240,234,216,0.88)",
-                  letterSpacing: "-2px",
-                  marginBottom: "6px",
+                  fontSize: "15px",
+                  color: "rgba(240,234,216,0.92)",
+                  lineHeight: 1.25,
+                  marginBottom: "8px",
                 }}
               >
-                {item.value}
-              </div>
-              <div
+                {a.title}
+              </p>
+              <p
                 style={{
-                  fontSize: "11px",
-                  letterSpacing: "0.2em",
-                  textTransform: "uppercase",
-                  fontFamily: "'Inter', sans-serif",
+                  fontFamily: "'Inter',sans-serif",
                   fontWeight: 300,
-                  color: "rgba(240,234,216,0.3)",
+                  fontSize: "12px",
+                  color: "rgba(240,234,216,0.38)",
+                  lineHeight: 1.5,
                 }}
               >
-                {item.label}
-              </div>
+                {a.detail}
+              </p>
             </div>
           ))}
         </div>
 
-        {/* Awards — tabla con ganadores destacados */}
-        <div className="mb-24">
-          <p
-            style={{
-              fontSize: "11px",
-              letterSpacing: "0.3em",
-              textTransform: "uppercase",
-              fontFamily: "'Inter', sans-serif",
-              color: "rgba(240,234,216,0.2)",
-              marginBottom: "24px",
-              opacity: isVisible ? 1 : 0,
-              transition: "opacity 700ms 200ms",
-            }}
-          >
-            Premios
-          </p>
-
-          <div style={{ borderTop: "0.5px solid rgba(240,234,216,0.06)" }}>
-            {awards.map((award, i) => (
-              <div
-                key={award.title}
-                style={{
-                  display: "grid",
-                  gridTemplateColumns: "180px 1fr",
-                  gap: "48px",
-                  padding: "28px 0",
-                  borderBottom: "0.5px solid rgba(240,234,216,0.06)",
-                  background: award.winner ? "rgba(240,234,216,0.025)" : "transparent",
-                  borderLeft: award.winner ? "2px solid rgba(240,234,216,0.15)" : "2px solid transparent",
-                  paddingLeft: award.winner ? "20px" : "0",
-                  opacity: isVisible ? 1 : 0,
-                  transform: isVisible ? "translateY(0)" : "translateY(12px)",
-                  transition: `all 700ms ${200 + i * 60}ms`,
-                }}
-              >
-                {/* Tag */}
-                <div style={{ display: "flex", alignItems: "flex-start", paddingTop: "2px" }}>
-                  <span
-                    style={{
-                      display: "inline-block",
-                      fontSize: "10px",
-                      letterSpacing: "0.2em",
-                      textTransform: "uppercase",
-                      fontFamily: "'Inter', sans-serif",
-                      fontWeight: award.winner ? 500 : 300,
-                      color: award.winner ? "rgba(240,234,216,0.7)" : "rgba(240,234,216,0.25)",
-                      background: award.winner ? "rgba(240,234,216,0.08)" : "transparent",
-                      border: award.winner ? "0.5px solid rgba(240,234,216,0.15)" : "none",
-                      padding: award.winner ? "4px 10px" : "0",
-                      borderRadius: award.winner ? "3px" : "0",
-                    }}
-                  >
-                    {award.winner && "★ "}{award.tag}
-                  </span>
-                </div>
-
-                {/* Content */}
-                <div>
-                  <p
-                    style={{
-                      fontFamily: "'Syne', sans-serif",
-                      fontWeight: 800,
-                      fontSize: award.winner ? "18px" : "15px",
-                      color: award.winner ? "rgba(240,234,216,0.92)" : "rgba(240,234,216,0.75)",
-                      marginBottom: "8px",
-                      letterSpacing: award.winner ? "-0.3px" : "0",
-                    }}
-                  >
-                    {award.title}
-                  </p>
-                  <p
-                    style={{
-                      fontSize: "13px",
-                      fontFamily: "'Inter', sans-serif",
-                      fontWeight: 300,
-                      color: "rgba(240,234,216,0.4)",
-                      lineHeight: 1.6,
-                    }}
-                  >
-                    {award.description}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Alianzas */}
-        <div className="mb-20">
-          <p
-            style={{
-              fontSize: "11px",
-              letterSpacing: "0.3em",
-              textTransform: "uppercase",
-              fontFamily: "'Inter', sans-serif",
-              color: "rgba(240,234,216,0.2)",
-              marginBottom: "24px",
-              opacity: isVisible ? 1 : 0,
-              transition: "opacity 700ms 400ms",
-            }}
-          >
-            Alianzas estratégicas
-          </p>
-
-          <div
-            className="grid md:grid-cols-2 lg:grid-cols-4 gap-px"
-            style={{ background: "rgba(240,234,216,0.06)" }}
-          >
-            {alliances.map((alliance, i) => (
-              <div
-                key={alliance.title}
-                style={{
-                  background: "#0c0b09",
-                  padding: "28px 24px",
-                  opacity: isVisible ? 1 : 0,
-                  transform: isVisible ? "translateY(0)" : "translateY(12px)",
-                  transition: `all 700ms ${420 + i * 40}ms`,
-                }}
-              >
-                {/* Stat destacado */}
-                <div
-                  style={{
-                    fontFamily: "'Syne', sans-serif",
-                    fontWeight: 800,
-                    fontSize: "28px",
-                    color: "rgba(240,234,216,0.6)",
-                    letterSpacing: "-1px",
-                    lineHeight: 1,
-                    marginBottom: "2px",
-                  }}
-                >
-                  {alliance.stat}
-                </div>
-                <div
-                  style={{
-                    fontSize: "10px",
-                    letterSpacing: "0.15em",
-                    textTransform: "uppercase",
-                    fontFamily: "'Inter', sans-serif",
-                    color: "rgba(240,234,216,0.2)",
-                    marginBottom: "12px",
-                  }}
-                >
-                  {alliance.statLabel}
-                </div>
-                <div
-                  style={{
-                    width: "20px",
-                    height: "0.5px",
-                    background: "rgba(240,234,216,0.12)",
-                    marginBottom: "12px",
-                  }}
-                />
-                <p
-                  style={{
-                    fontSize: "12px",
-                    fontFamily: "'Syne', sans-serif",
-                    fontWeight: 700,
-                    color: "rgba(240,234,216,0.6)",
-                    marginBottom: "6px",
-                  }}
-                >
-                  {alliance.title}
-                </p>
-                <p
-                  style={{
-                    fontSize: "12px",
-                    fontFamily: "'Inter', sans-serif",
-                    fontWeight: 300,
-                    color: "rgba(240,234,216,0.3)",
-                    lineHeight: 1.5,
-                  }}
-                >
-                  {alliance.description}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Photos */}
+        {/* Tabla — otros logros */}
         <div
-          className="grid md:grid-cols-2 gap-4"
           style={{
-            opacity: isVisible ? 1 : 0,
-            transform: isVisible ? "translateY(0)" : "translateY(16px)",
-            transition: "all 700ms 600ms",
+            marginTop: "52px",
+            borderTop: "0.5px solid rgba(240,234,216,0.06)",
           }}
         >
-          <div className="relative overflow-hidden" style={{ borderRadius: "4px", aspectRatio: "16/9" }}>
+          {others.map((a, i) => (
+            <div
+              key={a.title}
+              style={{
+                display: "grid",
+                gridTemplateColumns: "120px 1fr auto",
+                gap: "24px",
+                alignItems: "center",
+                padding: "18px 0",
+                borderBottom: "0.5px solid rgba(240,234,216,0.06)",
+                opacity: isVisible ? 1 : 0,
+                transform: isVisible ? "none" : "translateY(8px)",
+                transition: `all 600ms ${480 + i * 50}ms`,
+              }}
+            >
+              <span
+                style={{
+                  fontFamily: "'Inter',sans-serif",
+                  fontSize: "10px",
+                  letterSpacing: "0.2em",
+                  textTransform: "uppercase",
+                  color: "rgba(240,234,216,0.26)",
+                  fontWeight: 300,
+                }}
+              >
+                {a.tag}
+              </span>
+              <p
+                style={{
+                  fontFamily: "'Syne',sans-serif",
+                  fontWeight: 700,
+                  fontSize: "14px",
+                  color: "rgba(240,234,216,0.78)",
+                  margin: 0,
+                }}
+              >
+                {a.title}
+              </p>
+              <p
+                style={{
+                  fontFamily: "'Inter',sans-serif",
+                  fontWeight: 300,
+                  fontSize: "12px",
+                  color: "rgba(240,234,216,0.32)",
+                  textAlign: "right",
+                  margin: 0,
+                  whiteSpace: "nowrap",
+                }}
+              >
+                {a.detail}
+              </p>
+            </div>
+          ))}
+        </div>
+
+        {/* Apoyo — logo strip */}
+        <div
+          style={{
+            marginTop: "72px",
+            paddingTop: "48px",
+            borderTop: "0.5px solid rgba(240,234,216,0.06)",
+            opacity: isVisible ? 1 : 0,
+            transition: "opacity 700ms 650ms",
+          }}
+        >
+          <p
+            style={{
+              fontFamily: "'Inter',sans-serif",
+              fontSize: "11px",
+              letterSpacing: "0.3em",
+              textTransform: "uppercase",
+              color: "rgba(240,234,216,0.2)",
+              marginBottom: "28px",
+            }}
+          >
+            Apoyo
+          </p>
+
+          <div style={{ display: "flex", flexWrap: "wrap", gap: "2px" }}>
+            {supporters.map((name, i) => (
+              <div
+                key={name}
+                style={{
+                  background: "rgba(240,234,216,0.04)",
+                  border: "0.5px solid rgba(240,234,216,0.08)",
+                  padding: "9px 16px",
+                  borderRadius: "2px",
+                  fontFamily: "'Inter',sans-serif",
+                  fontSize: "12px",
+                  fontWeight: 300,
+                  color: "rgba(240,234,216,0.38)",
+                  letterSpacing: "0.02em",
+                  opacity: isVisible ? 1 : 0,
+                  transition: `opacity 500ms ${680 + i * 30}ms`,
+                }}
+              >
+                {name}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Fotos */}
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "1fr 1fr",
+            gap: "16px",
+            marginTop: "56px",
+            opacity: isVisible ? 1 : 0,
+            transform: isVisible ? "none" : "translateY(16px)",
+            transition: "all 700ms 750ms",
+          }}
+        >
+          <div
+            style={{
+              position: "relative",
+              overflow: "hidden",
+              borderRadius: "4px",
+              aspectRatio: "16/9",
+            }}
+          >
             <img
               src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ccc-gALQ3KWjawlF9rnPDmzFmx33ahTdAz.png"
               alt="Logros Sentinel"
-              className="w-full h-full object-cover"
+              style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0c0b09]/60 to-transparent" />
+            <div
+              style={{
+                position: "absolute",
+                inset: 0,
+                background: "linear-gradient(to top, rgba(12,11,9,0.6), transparent)",
+              }}
+            />
           </div>
-          <div className="relative overflow-hidden" style={{ borderRadius: "4px", aspectRatio: "16/9" }}>
+          <div
+            style={{
+              position: "relative",
+              overflow: "hidden",
+              borderRadius: "4px",
+              aspectRatio: "16/9",
+            }}
+          >
             <img
               src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/AGRADECIMIENTOS.png-5OTA6U7D0gfG9BTAJJXyKQwQIhtxO1.jpeg"
               alt="Prendete & Premios Sadosky"
-              className="w-full h-full object-cover"
+              style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0c0b09]/60 to-transparent" />
+            <div
+              style={{
+                position: "absolute",
+                inset: 0,
+                background: "linear-gradient(to top, rgba(12,11,9,0.6), transparent)",
+              }}
+            />
             <p
-              className="absolute bottom-4 left-5 text-[11px] tracking-wider uppercase"
-              style={{ fontFamily: "'Inter', sans-serif", color: "rgba(240,234,216,0.5)" }}
+              style={{
+                position: "absolute",
+                bottom: "16px",
+                left: "20px",
+                fontFamily: "'Inter',sans-serif",
+                fontSize: "11px",
+                letterSpacing: "0.15em",
+                textTransform: "uppercase",
+                color: "rgba(240,234,216,0.5)",
+                margin: 0,
+              }}
             >
               Prendete & Premios Sadosky
             </p>
