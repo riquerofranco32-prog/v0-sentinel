@@ -1,6 +1,7 @@
 "use client"
 
 import { Mail, MapPin } from "lucide-react"
+import Image from "next/image"
 
 const footerLinks = {
   Producto: [
@@ -51,35 +52,31 @@ export function Footer() {
         style={{ background: "linear-gradient(to right, transparent, rgba(74,222,128,0.3), rgba(251,146,60,0.3), transparent)" }}
       />
 
-      {/* Foto de fondo */}
-      <div
-        className="absolute bottom-0 left-0 right-0"
-        style={{
-          height: "70%",
-          backgroundImage: "url('/fot.jpg')",
-          backgroundSize: "cover",
-          backgroundPosition: "center top",
-          opacity: 0.22,
-        }}
-      />
-
-      {/* Overlay degradado sobre la foto */}
-      <div
-        className="absolute bottom-0 left-0 right-0"
-        style={{
-          height: "70%",
-          background: "linear-gradient(to top, rgba(7,8,6,0.98) 0%, rgba(7,8,6,0.65) 45%, transparent 100%)",
-        }}
-      />
-
-      {/* Degradado superior */}
-      <div
-        className="absolute top-0 left-0 right-0"
-        style={{
-          height: "35%",
-          background: "linear-gradient(to bottom, rgba(7,8,6,1) 0%, transparent 100%)",
-        }}
-      />
+      {/* Foto de fondo con next/image */}
+      <div className="absolute inset-0">
+        <Image
+          src="/fot.jpg"
+          alt=""
+          fill
+          className="object-cover object-center"
+          style={{ opacity: 0.18 }}
+          priority={false}
+        />
+        {/* Degradado superior */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background: "linear-gradient(to bottom, rgba(7,8,6,1) 0%, rgba(7,8,6,0.8) 30%, rgba(7,8,6,0.45) 60%, transparent 100%)",
+          }}
+        />
+        {/* Degradado inferior */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background: "linear-gradient(to top, rgba(7,8,6,1) 0%, rgba(7,8,6,0.85) 25%, transparent 65%)",
+          }}
+        />
+      </div>
 
       {/* Watermark */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden select-none">
@@ -102,17 +99,21 @@ export function Footer() {
 
           {/* Brand */}
           <div className="lg:col-span-2">
+
+            {/* Logo */}
             <div className="flex items-center gap-3 mb-4">
-              <span className="relative flex h-2 w-2">
+              <span className="relative flex h-2 w-2 flex-shrink-0">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#4ade80] opacity-60"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-[#4ade80]"></span>
               </span>
-              <span
-                className="text-lg font-extrabold tracking-tight"
-                style={{ fontFamily: "'Syne', sans-serif", color: "rgba(240,234,216,0.9)" }}
-              >
-                SENTINEL
-              </span>
+              <Image
+                src="/logoo.jpg"
+                alt="Sentinel"
+                width={130}
+                height={32}
+                className="object-contain"
+                style={{ height: "28px", width: "auto" }}
+              />
             </div>
 
             {/* Badge región */}
