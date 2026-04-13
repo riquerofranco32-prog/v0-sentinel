@@ -121,8 +121,10 @@
   * {
     @apply border-border outline-ring/50;
   }
-  body {
-    @apply bg-background text-foreground;
+body {
+  background: #f5f2eb;
+  color: #1a1a1a;
+}
   }
 }
 @keyframes marquee {
