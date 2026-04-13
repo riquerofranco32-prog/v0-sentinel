@@ -28,7 +28,7 @@ export function Hero() {
       {/* Background */}
       <div className="absolute inset-0 z-0">
         <img
-          src="/aaa.jpg"
+          src="/Component_16.jpg"
           alt="Incendio forestal Patagonia"
           className="w-full h-full object-cover scale-105"
         />
@@ -62,8 +62,8 @@ export function Hero() {
             mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
           }`}
           style={{
-            fontFamily: "'Syne', sans-serif",
-            fontWeight: 800,
+            fontFamily: "'Jura', sans-serif",
+            fontWeight: 700,
             fontSize: "clamp(5rem, 20vw, 17rem)",
             color: "rgba(240,234,216,0.92)",
           }}
