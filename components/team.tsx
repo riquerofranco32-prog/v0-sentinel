@@ -10,7 +10,7 @@ const team = [
     background: "Ingeniero Industrial",
     focus: "Liderazgo en estrategia, desarrollo de productos y asociaciones.",
     photo: "/GANAMOS-3.jpg",
-    linkedin: "https://linkedin.com/in/",
+    linkedin: "https://www.linkedin.com/in/lautaro-silva-0188781a2/",
   },
   {
     name: "Franco Riquero",
@@ -18,7 +18,7 @@ const team = [
     background: "Tec. Elec | Ingeniero Industrial",
     focus: "Sensores, IA, datos y hoja de ruta de I+D.",
     photo: "/GANAMOS-2.jpg",
-    linkedin: "https://linkedin.com/in/francoriquero-117492355",
+    linkedin: "https://www.linkedin.com/in/franco-riquero-117492355/",
   },
   {
     name: "Alexis Ramundo",
@@ -26,7 +26,7 @@ const team = [
     background: "Tec. Elec | Ingeniero en Sistemas",
     focus: "Liderazgo técnico. Desarrollo de software y gestión de sistemas.",
     photo: "/GANAMOS-1.jpg",
-    linkedin: "https://linkedin.com/in/",
+    linkedin: "https://www.linkedin.com/in/alexisramundo-dev/",
   },
   {
     name: "Martín Toledano",
@@ -34,7 +34,7 @@ const team = [
     background: "Tec. Elec | Ingeniero Industrial",
     focus: "Modelo de negocio, precios y asociaciones industriales.",
     photo: "/GANAMOS.jpg",
-    linkedin: "https://linkedin.com/in/",
+    linkedin: "https://www.linkedin.com/in/martin-toledano-804a69264/",
   },
 ]
 
