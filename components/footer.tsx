@@ -66,14 +66,14 @@ export function Footer() {
         <div
           className="absolute inset-0"
           style={{
-            background: "linear-gradient(to bottom, rgba(7,8,6,1) 0%, rgba(7,8,6,0.8) 30%, rgba(7,8,6,0.4) 60%, transparent 100%)",
+            background: "linear-gradient(to bottom, rgba(7,8,6,1) 0%, rgba(7,8,6,0.8) 30%, rgba(7,8,6,0.4) 60%, transparent 20%)",
           }}
         />
         {/* Degradado inferior */}
         <div
           className="absolute inset-0"
           style={{
-            background: "linear-gradient(to top, rgba(7,8,6,1) 0%, rgba(7,8,6,0.85) 25%, transparent 60%)",
+            background: "linear-gradient(to top, rgba(7,8,6,1) 0%, rgba(7,8,6,0.85) 25%, transparent 30%)",
           }}
         />
       </div>
