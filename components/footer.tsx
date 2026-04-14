@@ -52,28 +52,28 @@ export function Footer() {
         style={{ background: "linear-gradient(to right, transparent, rgba(74,222,128,0.3), rgba(251,146,60,0.3), transparent)" }}
       />
 
-      {/* Foto de fondo con next/image */}
+      {/* Foto de fondo */}
       <div className="absolute inset-0">
         <Image
           src="/fot.jpg"
           alt=""
           fill
           className="object-cover object-center"
-          style={{ opacity: 0.18 }}
+          style={{ opacity: 0.1 }}
           priority={false}
         />
         {/* Degradado superior */}
         <div
           className="absolute inset-0"
           style={{
-            background: "linear-gradient(to bottom, rgba(7,8,6,1) 0%, rgba(7,8,6,0.8) 30%, rgba(7,8,6,0.45) 60%, transparent 100%)",
+            background: "linear-gradient(to bottom, rgba(7,8,6,1) 0%, rgba(7,8,6,0.85) 30%, rgba(7,8,6,0.5) 60%, transparent 100%)",
           }}
         />
         {/* Degradado inferior */}
         <div
           className="absolute inset-0"
           style={{
-            background: "linear-gradient(to top, rgba(7,8,6,1) 0%, rgba(7,8,6,0.85) 25%, transparent 65%)",
+            background: "linear-gradient(to top, rgba(7,8,6,1) 0%, rgba(7,8,6,0.9) 25%, transparent 65%)",
           }}
         />
       </div>
@@ -100,7 +100,7 @@ export function Footer() {
           {/* Brand */}
           <div className="lg:col-span-2">
 
-            {/* Logo */}
+            {/* Logo — brightness-0 invert convierte cualquier logo oscuro a blanco */}
             <div className="flex items-center gap-3 mb-4">
               <span className="relative flex h-2 w-2 flex-shrink-0">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#4ade80] opacity-60"></span>
@@ -108,9 +108,10 @@ export function Footer() {
               </span>
               <Image
                 src="/logoo.jpg"
+                alt="Sentinel"
                 width={130}
                 height={32}
-                className="object-contain"
+                className="object-contain brightness-0 invert opacity-90"
                 style={{ height: "28px", width: "auto" }}
               />
             </div>
