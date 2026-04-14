@@ -59,19 +59,21 @@ export function Footer() {
           alt=""
           fill
           className="object-cover object-center"
-          style={{ opacity: 0.1 }}
+          style={{ opacity: 0.12 }}
           priority={false}
         />
+        {/* Degradado superior */}
         <div
           className="absolute inset-0"
           style={{
-            background: "linear-gradient(to bottom, rgba(7,8,6,1) 0%, rgba(7,8,6,0.85) 30%, rgba(7,8,6,0.5) 60%, transparent 100%)",
+            background: "linear-gradient(to bottom, rgba(7,8,6,1) 0%, rgba(7,8,6,0.8) 30%, rgba(7,8,6,0.4) 60%, transparent 100%)",
           }}
         />
+        {/* Degradado inferior */}
         <div
           className="absolute inset-0"
           style={{
-            background: "linear-gradient(to top, rgba(7,8,6,1) 0%, rgba(7,8,6,0.9) 25%, transparent 65%)",
+            background: "linear-gradient(to top, rgba(7,8,6,1) 0%, rgba(7,8,6,0.85) 25%, transparent 60%)",
           }}
         />
       </div>
@@ -98,30 +100,16 @@ export function Footer() {
           {/* Brand */}
           <div className="lg:col-span-2">
 
-            {/* Logo imagen sin filtros */}
-            <div className="flex items-center gap-3 mb-4">
+            {/* Logo PNG con fondo transparente */}
+            <div className="mb-5">
               <Image
-                src="/logoo.jpg"
+                src="/logoo.png"
                 alt="Sentinel"
-                width={130}
-                height={32}
+                width={150}
+                height={40}
                 className="object-contain"
-                style={{ height: "28px", width: "auto" }}
+                style={{ height: "36px", width: "auto" }}
               />
-            </div>
-
-            {/* Badge región */}
-            <div
-              className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full mb-5"
-              style={{ border: "0.5px solid rgba(74,222,128,0.2)" }}
-            >
-              <span className="w-1.5 h-1.5 rounded-full bg-[#4ade80]" />
-              <span
-                className="text-[10px] tracking-widest uppercase"
-                style={{ fontFamily: "'Inter', sans-serif", color: "rgba(74,222,128,0.7)" }}
-              >
-                Patagonia · Argentina
-              </span>
             </div>
 
             <p
