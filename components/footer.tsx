@@ -62,14 +62,12 @@ export function Footer() {
           style={{ opacity: 0.1 }}
           priority={false}
         />
-        {/* Degradado superior */}
         <div
           className="absolute inset-0"
           style={{
             background: "linear-gradient(to bottom, rgba(7,8,6,1) 0%, rgba(7,8,6,0.85) 30%, rgba(7,8,6,0.5) 60%, transparent 100%)",
           }}
         />
-        {/* Degradado inferior */}
         <div
           className="absolute inset-0"
           style={{
@@ -100,18 +98,14 @@ export function Footer() {
           {/* Brand */}
           <div className="lg:col-span-2">
 
-            {/* Logo — brightness-0 invert convierte cualquier logo oscuro a blanco */}
+            {/* Logo imagen sin filtros */}
             <div className="flex items-center gap-3 mb-4">
-              <span className="relative flex h-2 w-2 flex-shrink-0">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#4ade80] opacity-60"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-[#4ade80]"></span>
-              </span>
               <Image
                 src="/logoo.jpg"
                 alt="Sentinel"
                 width={130}
                 height={32}
-                className="object-contain brightness-0 invert opacity-90"
+                className="object-contain"
                 style={{ height: "28px", width: "auto" }}
               />
             </div>
