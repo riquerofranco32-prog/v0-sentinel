@@ -3,6 +3,7 @@
 import { useEffect, useState, useRef } from "react"
 import { ArrowRight } from "lucide-react"
 
+// ─── Logos ────────────────────────────────────────────────────────────────────
 const logos = [
   { src: "/20220609002317_uba.png", alt: "UBA" },
   { src: "/aiweken.png", alt: "Aiweken" },
@@ -20,6 +21,14 @@ const logos = [
   { src: "/utn.png", alt: "UTN" },
 ]
 
+// ─── Stats ─────────────────────────────────────────────────────────────────────
+const stats = [
+  { target: 15, suffix: "min", label: "Tiempo detección" },
+  { target: 300, suffix: "ha", label: "Cobertura por vuelo" },
+  { target: 98, suffix: "%", label: "Precisión de detección" },
+]
+
+// ─── Particle types ────────────────────────────────────────────────────────────
 interface Particle {
   id: number
   x: number
@@ -33,6 +42,7 @@ interface Particle {
   type: "ember" | "smoke"
 }
 
+// ─── Particles canvas ──────────────────────────────────────────────────────────
 function ParticleCanvas() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const particlesRef = useRef<Particle[]>([])
@@ -53,17 +63,21 @@ function ParticleCanvas() {
     window.addEventListener("resize", resize)
 
     const spawnParticle = () => {
-      const isEmber = Math.random() < 0.3
+      const isEmber = Math.random() < 0.28
       const p: Particle = {
         id: counterRef.current++,
         x: Math.random() * canvas.width,
         y: canvas.height * (0.4 + Math.random() * 0.5),
-        size: isEmber ? Math.random() * 2.5 + 1 : Math.random() * 40 + 20,
-        opacity: isEmber ? Math.random() * 0.8 + 0.2 : Math.random() * 0.06 + 0.02,
-        speedX: (Math.random() - 0.5) * (isEmber ? 1.2 : 0.4),
-        speedY: -(Math.random() * (isEmber ? 1.5 : 0.6) + 0.3),
+        size: isEmber ? Math.random() * 2.2 + 0.8 : Math.random() * 38 + 18,
+        opacity: isEmber
+          ? Math.random() * 0.75 + 0.15
+          : Math.random() * 0.055 + 0.015,
+        speedX: (Math.random() - 0.5) * (isEmber ? 1.1 : 0.35),
+        speedY: -(Math.random() * (isEmber ? 1.4 : 0.55) + 0.25),
         life: 0,
-        maxLife: isEmber ? Math.random() * 80 + 40 : Math.random() * 160 + 80,
+        maxLife: isEmber
+          ? Math.random() * 80 + 40
+          : Math.random() * 160 + 80,
         type: isEmber ? "ember" : "smoke",
       }
       particlesRef.current.push(p)
@@ -73,45 +87,53 @@ function ParticleCanvas() {
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height)
       if (frame % 3 === 0) spawnParticle()
-      if (frame % 8 === 0) spawnParticle()
+      if (frame % 7 === 0) spawnParticle()
       frame++
 
-      particlesRef.current = particlesRef.current.filter(p => p.life < p.maxLife)
+      particlesRef.current = particlesRef.current.filter(
+        (p) => p.life < p.maxLife
+      )
 
       for (const p of particlesRef.current) {
         p.life++
         p.x += p.speedX
         p.y += p.speedY
-        p.speedX += (Math.random() - 0.5) * 0.1
+        p.speedX += (Math.random() - 0.5) * 0.08
         const progress = p.life / p.maxLife
 
         if (p.type === "ember") {
           const alpha = p.opacity * (1 - progress)
-          const flicker = 0.7 + Math.random() * 0.3
+          const flicker = 0.75 + Math.random() * 0.25
           ctx.beginPath()
           ctx.arc(p.x, p.y, p.size * flicker, 0, Math.PI * 2)
-          const grad = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.size * 2)
-          grad.addColorStop(0, `rgba(255, 180, 50, ${alpha})`)
-          grad.addColorStop(0.4, `rgba(255, 80, 10, ${alpha * 0.6})`)
-          grad.addColorStop(1, `rgba(255, 40, 0, 0)`)
+          const grad = ctx.createRadialGradient(
+            p.x, p.y, 0, p.x, p.y, p.size * 2.2
+          )
+          grad.addColorStop(0, `rgba(255,185,60,${alpha})`)
+          grad.addColorStop(0.4, `rgba(255,85,15,${alpha * 0.55})`)
+          grad.addColorStop(1, `rgba(255,40,0,0)`)
           ctx.fillStyle = grad
           ctx.fill()
         } else {
-          const alpha = p.opacity * (progress < 0.2 ? progress / 0.2 : 1 - (progress - 0.2) / 0.8)
-          const radius = p.size * (1 + progress * 1.5)
-          const grad = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, radius)
-          grad.addColorStop(0, `rgba(180, 140, 100, ${alpha})`)
-          grad.addColorStop(1, `rgba(100, 80, 60, 0)`)
+          const alpha =
+            p.opacity *
+            (progress < 0.2
+              ? progress / 0.2
+              : 1 - (progress - 0.2) / 0.8)
+          const radius = p.size * (1 + progress * 1.6)
+          const grad = ctx.createRadialGradient(
+            p.x, p.y, 0, p.x, p.y, radius
+          )
+          grad.addColorStop(0, `rgba(170,135,95,${alpha})`)
+          grad.addColorStop(1, `rgba(90,70,50,0)`)
           ctx.beginPath()
           ctx.arc(p.x, p.y, radius, 0, Math.PI * 2)
           ctx.fillStyle = grad
           ctx.fill()
         }
       }
-
       animFrameRef.current = requestAnimationFrame(animate)
     }
-
     animate()
 
     return () => {
@@ -124,61 +146,150 @@ function ParticleCanvas() {
     <canvas
       ref={canvasRef}
       className="absolute inset-0 z-[1] pointer-events-none"
+      aria-hidden="true"
     />
   )
 }
 
+// ─── Animated counter ──────────────────────────────────────────────────────────
+function AnimatedStat({
+  target,
+  suffix,
+  label,
+  delay = 0,
+}: {
+  target: number
+  suffix: string
+  label: string
+  delay?: number
+}) {
+  const [value, setValue] = useState(0)
+  const ref = useRef<HTMLDivElement>(null)
+  const ran = useRef(false)
+
+  useEffect(() => {
+    const el = ref.current
+    if (!el) return
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !ran.current) {
+          ran.current = true
+          const start = performance.now()
+          const dur = 1800
+          const step = (ts: number) => {
+            const p = Math.min((ts - start) / dur, 1)
+            const eased = 1 - Math.pow(1 - p, 3)
+            setValue(Math.round(eased * target))
+            if (p < 1) requestAnimationFrame(step)
+          }
+          setTimeout(() => requestAnimationFrame(step), delay)
+        }
+      },
+      { threshold: 0.5 }
+    )
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [target, delay])
+
+  return (
+    <div ref={ref} className="text-center">
+      <div
+        className="leading-none"
+        style={{
+          fontFamily: "'Jura', sans-serif",
+          fontWeight: 700,
+          fontSize: "clamp(1.5rem, 3.5vw, 2rem)",
+          color: "rgba(240,234,216,0.95)",
+        }}
+      >
+        {value}
+        <span style={{ color: "#94f1be" }}>{" "}{suffix}</span>
+      </div>
+      <div
+        className="mt-1"
+        style={{
+          fontFamily: "'DM Sans', sans-serif",
+          fontSize: "11px",
+          fontWeight: 400,
+          letterSpacing: "0.1em",
+          textTransform: "uppercase",
+          color: "rgba(240,234,216,0.4)",
+        }}
+      >
+        {label}
+      </div>
+    </div>
+  )
+}
+
+// ─── Hero ──────────────────────────────────────────────────────────────────────
 export function Hero() {
   const [mounted, setMounted] = useState(false)
+  const [showScroll, setShowScroll] = useState(true)
+  const [bgLoaded, setBgLoaded] = useState(false)
 
   useEffect(() => {
     setMounted(true)
+    const handleScroll = () => setShowScroll(window.scrollY < 80)
+    window.addEventListener("scroll", handleScroll)
+    return () => window.removeEventListener("scroll", handleScroll)
   }, [])
+
+  const fadeIn = (delay: number) =>
+    `transition-all duration-700 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`
 
   return (
     <section
       id="inicio"
       className="relative min-h-screen flex flex-col justify-center overflow-hidden"
+      aria-label="Inicio — Sentinel Technologies"
     >
-      {/* Background */}
+      {/* ── Background ── */}
       <div className="absolute inset-0 z-0">
         <img
           src="/aaa.jpg"
-          alt="Incendio forestal Patagonia"
-          className="w-full h-full object-cover scale-105"
+          alt="Incendio forestal en la Patagonia argentina"
+          className={`w-full h-full object-cover transition-transform duration-[20000ms] ease-out ${
+            bgLoaded ? "scale-100" : "scale-105"
+          }`}
+          loading="eager"
+          onLoad={() => setBgLoaded(true)}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0c0b09]/60 via-[#0c0b09]/40 to-[#0c0b09]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0c0b09]/75 via-[#0c0b09]/35 to-[#0c0b09]/90" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#0c0b09] via-transparent to-[#0c0b09]/70" />
       </div>
 
-      {/* Particle effect */}
+      {/* ── Particles ── */}
       <ParticleCanvas />
 
-      {/* Main Content */}
-      <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-6 pb-32">
+      {/* ── Content ── */}
+      <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-6 pb-44 text-center">
 
-        {/* Marca chica arriba */}
+        {/* Badge */}
         <div
           className={`inline-flex items-center gap-2 mb-8 transition-all duration-700 ${
             mounted ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-3"
           }`}
         >
           <span className="relative flex h-1.5 w-1.5">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#94f1be] opacity-60"></span>
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#94f1be] opacity-50"></span>
             <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-[#94f1be]"></span>
           </span>
           <span
-            className="text-[11px] font-semibold tracking-[0.35em] uppercase"
             style={{
               fontFamily: "'Jura', sans-serif",
+              fontSize: "10px",
+              fontWeight: 600,
+              letterSpacing: "0.35em",
+              textTransform: "uppercase",
               color: "#94f1be",
             }}
           >
-            
+            Sistema activo · Patagonia
           </span>
         </div>
 
-        {/* Headline principal */}
+        {/* Headline */}
         <h1
           className={`leading-tight tracking-tight text-center transition-all duration-700 delay-100 ${
             mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
@@ -186,9 +297,9 @@ export function Hero() {
           style={{
             fontFamily: "'Jura', sans-serif",
             fontWeight: 700,
-            fontSize: "clamp(2.8rem, 7vw, 6rem)",
+            fontSize: "clamp(2.6rem, 6.5vw, 5.5rem)",
             color: "rgba(240,234,216,0.95)",
-            maxWidth: "820px",
+            maxWidth: "860px",
           }}
         >
           Plataforma de prevención
@@ -198,10 +309,10 @@ export function Hero() {
 
         {/* Divider */}
         <div
-          className={`w-16 h-px my-8 transition-all duration-700 delay-200 ${
+          className={`w-12 h-px my-8 transition-all duration-700 delay-200 ${
             mounted ? "opacity-100" : "opacity-0"
           }`}
-          style={{ background: "rgba(240,234,216,0.15)" }}
+          style={{ background: "rgba(240,234,216,0.12)" }}
         />
 
         {/* Tagline */}
@@ -210,16 +321,46 @@ export function Hero() {
             mounted ? "opacity-100" : "opacity-0"
           }`}
           style={{
-            fontFamily: "'Inter', sans-serif",
+            fontFamily: "'DM Sans', sans-serif",
             fontWeight: 300,
             fontSize: "16px",
-            lineHeight: 1.7,
-            color: "rgba(240,234,216,0.75)",
+            lineHeight: 1.75,
+            color: "rgba(240,234,216,0.6)",
           }}
         >
-          Tecnología aérea e inteligencia artificial para detectar incendios
-          en minutos, no en horas.
+          Tecnología aérea e inteligencia artificial para detectar incendios en{" "}
+          <strong
+            style={{ fontWeight: 500, color: "rgba(240,234,216,0.9)" }}
+          >
+            minutos, no en horas.
+          </strong>
         </p>
+
+        {/* Stats */}
+        <div
+          className={`flex items-center gap-6 sm:gap-10 mt-10 transition-all duration-700 delay-[400ms] ${
+            mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+          }`}
+        >
+          {stats.map((s, i) => (
+            <>
+              {i > 0 && (
+                <div
+                  key={`div-${i}`}
+                  className="w-px self-stretch"
+                  style={{ background: "rgba(240,234,216,0.1)" }}
+                />
+              )}
+              <AnimatedStat
+                key={s.label}
+                target={s.target}
+                suffix={s.suffix}
+                label={s.label}
+                delay={i * 150}
+              />
+            </>
+          ))}
+        </div>
 
         {/* CTAs */}
         <div
@@ -229,37 +370,45 @@ export function Hero() {
         >
           <a
             href="#nosotros"
-            className="inline-flex items-center gap-2 px-7 py-3 rounded-sm text-[13px] font-medium transition-all"
+            className="group inline-flex items-center gap-2 px-7 py-3 rounded-sm text-[13px] font-medium transition-all"
             style={{
-              fontFamily: "'Inter', sans-serif",
+              fontFamily: "'DM Sans', sans-serif",
+              fontWeight: 500,
+              letterSpacing: "0.04em",
               background: "rgba(148,241,190,0.1)",
-              border: "0.5px solid rgba(148,241,190,0.35)",
+              border: "0.5px solid rgba(148,241,190,0.3)",
               color: "#94f1be",
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.background = "rgba(148,241,190,0.18)"
-              e.currentTarget.style.borderColor = "rgba(148,241,190,0.6)"
+              e.currentTarget.style.background = "rgba(148,241,190,0.2)"
+              e.currentTarget.style.borderColor = "rgba(148,241,190,0.65)"
+              e.currentTarget.style.transform = "translateY(-1px)"
             }}
             onMouseLeave={(e) => {
               e.currentTarget.style.background = "rgba(148,241,190,0.1)"
-              e.currentTarget.style.borderColor = "rgba(148,241,190,0.35)"
+              e.currentTarget.style.borderColor = "rgba(148,241,190,0.3)"
+              e.currentTarget.style.transform = "translateY(0)"
             }}
           >
-            Quiero saber más
-            <ArrowRight className="w-3.5 h-3.5" />
+            Conocer la plataforma
+            <ArrowRight
+              className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1"
+            />
           </a>
+
           <a
             href="#servicios"
             className="inline-flex items-center justify-center px-7 py-3 rounded-sm text-[13px] font-light transition-all"
             style={{
-              fontFamily: "'Inter', sans-serif",
-              color: "rgba(240,234,216,0.45)",
+              fontFamily: "'DM Sans', sans-serif",
+              fontWeight: 300,
+              color: "rgba(240,234,216,0.4)",
             }}
             onMouseEnter={(e) =>
-              (e.currentTarget.style.color = "rgba(240,234,216,0.8)")
+              (e.currentTarget.style.color = "rgba(240,234,216,0.85)")
             }
             onMouseLeave={(e) =>
-              (e.currentTarget.style.color = "rgba(240,234,216,0.45)")
+              (e.currentTarget.style.color = "rgba(240,234,216,0.4)")
             }
           >
             Ver servicios
@@ -267,34 +416,104 @@ export function Hero() {
         </div>
       </div>
 
-      {/* Logo marquee */}
+      {/* ── Scroll indicator ── */}
       <div
-        className="absolute bottom-0 left-0 right-0 z-10 border-t border-white/5 py-8 overflow-hidden"
-        style={{ background: "rgba(12,11,9,0.7)", backdropFilter: "blur(8px)" }}
+        className="absolute left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 transition-all duration-500"
+        style={{ bottom: "172px", opacity: showScroll && mounted ? 1 : 0 }}
+        aria-hidden="true"
+      >
+        <div
+          className="w-px relative overflow-hidden"
+          style={{ height: "44px", background: "rgba(240,234,216,0.08)" }}
+        >
+          <div
+            className="absolute top-0 left-0 w-full"
+            style={{
+              height: "100%",
+              background: "linear-gradient(to bottom, transparent, #94f1be)",
+              animation: "scrollDown 2s ease-in-out infinite",
+            }}
+          />
+        </div>
+        <span
+          style={{
+            fontFamily: "'Jura', sans-serif",
+            fontSize: "9px",
+            letterSpacing: "0.3em",
+            textTransform: "uppercase",
+            color: "rgba(240,234,216,0.18)",
+          }}
+        >
+          Scroll
+        </span>
+      </div>
+
+      {/* ── Marquee ── */}
+      <div
+        className="absolute bottom-0 left-0 right-0 z-10 border-t py-6 overflow-hidden"
+        style={{
+          borderColor: "rgba(255,255,255,0.04)",
+          background: "rgba(12,11,9,0.75)",
+          backdropFilter: "blur(12px)",
+        }}
       >
         <p
-          className="text-center mb-5 text-[10px] tracking-[0.25em] uppercase"
-          style={{ color: "rgba(240,234,216,0.2)", fontFamily: "'Inter', sans-serif" }}
+          className="text-center mb-4"
+          style={{
+            fontFamily: "'DM Sans', sans-serif",
+            fontSize: "9px",
+            letterSpacing: "0.3em",
+            textTransform: "uppercase",
+            color: "rgba(240,234,216,0.18)",
+          }}
         >
           Nos acompañan
         </p>
-        <div className="flex animate-marquee whitespace-nowrap">
-          {[...logos, ...logos, ...logos].map((logo, i) => (
-            <div
-              key={i}
-              className="inline-flex items-center justify-center mx-10 shrink-0"
-              style={{ height: "52px" }}
-            >
-              <img
-                src={logo.src}
-                alt={logo.alt}
-                className="h-full w-auto object-contain"
-                style={{ opacity: 0.8 }}
-              />
-            </div>
-          ))}
+
+        <div
+          className="overflow-hidden"
+          style={{
+            maskImage:
+              "linear-gradient(to right, transparent, black 8%, black 92%, transparent)",
+          }}
+        >
+          <div className="flex animate-marquee whitespace-nowrap hover:[animation-play-state:paused]">
+            {[...logos, ...logos, ...logos].map((logo, i) => (
+              <div
+                key={i}
+                className="inline-flex items-center justify-center mx-9 shrink-0"
+                style={{ height: "40px" }}
+              >
+                <img
+                  src={logo.src}
+                  alt={logo.alt}
+                  className="h-full w-auto object-contain transition-all duration-300"
+                  style={{ opacity: 0.5, filter: "grayscale(25%)" }}
+                  loading="lazy"
+                  onMouseEnter={(e) => {
+                    ;(e.currentTarget as HTMLImageElement).style.opacity = "0.9"
+                    ;(e.currentTarget as HTMLImageElement).style.filter =
+                      "grayscale(0%)"
+                  }}
+                  onMouseLeave={(e) => {
+                    ;(e.currentTarget as HTMLImageElement).style.opacity = "0.5"
+                    ;(e.currentTarget as HTMLImageElement).style.filter =
+                      "grayscale(25%)"
+                  }}
+                />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
+
+      {/* Scroll animation keyframe */}
+      <style jsx>{`
+        @keyframes scrollDown {
+          0% { top: -100%; }
+          100% { top: 200%; }
+        }
+      `}</style>
     </section>
   )
 }
