@@ -108,7 +108,6 @@ export function Footer() {
               </span>
               <Image
                 src="/logoo.jpg"
-                alt="Sentinel"
                 width={130}
                 height={32}
                 className="object-contain"
