@@ -59,21 +59,21 @@ export function Footer() {
           alt=""
           fill
           className="object-cover object-center"
-          style={{ opacity: 0.12 }}
+          style={{ opacity: 0.35 }}
           priority={false}
         />
         {/* Degradado superior */}
         <div
           className="absolute inset-0"
           style={{
-            background: "linear-gradient(to bottom, rgba(7,8,6,1) 0%, rgba(7,8,6,0.8) 30%, rgba(7,8,6,0.4) 6%, transparent 1%)",
+            background: "linear-gradient(to bottom, rgba(7,8,6,0.85) 0%, rgba(7,8,6,0.3) 40%, transparent 70%)",
           }}
         />
         {/* Degradado inferior */}
         <div
           className="absolute inset-0"
           style={{
-            background: "linear-gradient(to top, rgba(7,8,6,1) 0%, rgba(7,8,6,0.85) 5%, transparent 0%)",
+            background: "linear-gradient(to top, rgba(7,8,6,0.9) 0%, rgba(7,8,6,0.4) 30%, transparent 60%)",
           }}
         />
       </div>
