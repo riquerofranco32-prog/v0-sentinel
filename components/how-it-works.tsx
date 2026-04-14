@@ -33,8 +33,14 @@ const steps = [
   },
 ]
 
+const TYPING_TEXT = "Analizando señal térmica... incendio confirmado."
+
 export function HowItWorks() {
   const [isVisible, setIsVisible] = useState(false)
+  const [radarAngle, setRadarAngle] = useState(0)
+  const [typedText, setTypedText] = useState("")
+  const [typingDone, setTypingDone] = useState(false)
+  const [alertVisible, setAlertVisible] = useState(false)
   const sectionRef = useRef<HTMLElement>(null)
 
   useEffect(() => {
@@ -46,6 +52,34 @@ export function HowItWorks() {
     return () => observer.disconnect()
   }, [])
 
+  // Radar sweep
+  useEffect(() => {
+    if (!isVisible) return
+    const timer = setInterval(() => {
+      setRadarAngle(a => (a + 1.2) % 360)
+    }, 16)
+    return () => clearInterval(timer)
+  }, [isVisible])
+
+  // Typing effect — starts after section is visible
+  useEffect(() => {
+    if (!isVisible) return
+    const delay = setTimeout(() => {
+      let i = 0
+      const timer = setInterval(() => {
+        setTypedText(TYPING_TEXT.slice(0, i + 1))
+        i++
+        if (i >= TYPING_TEXT.length) {
+          clearInterval(timer)
+          setTypingDone(true)
+          setTimeout(() => setAlertVisible(true), 400)
+        }
+      }, 38)
+      return () => clearInterval(timer)
+    }, 900)
+    return () => clearTimeout(delay)
+  }, [isVisible])
+
   return (
     <section
       ref={sectionRef}
@@ -53,7 +87,7 @@ export function HowItWorks() {
       className="relative py-24 lg:py-32 overflow-hidden"
       style={{ background: "#0e100d" }}
     >
-      {/* Subtle grid */}
+      {/* Grid background */}
       <div className="absolute inset-0 opacity-[0.04]" style={{
         backgroundImage: `linear-gradient(rgba(74,222,128,1) 1px, transparent 1px), linear-gradient(90deg, rgba(74,222,128,1) 1px, transparent 1px)`,
         backgroundSize: "80px 80px",
@@ -62,23 +96,60 @@ export function HowItWorks() {
         background: "radial-gradient(ellipse at 50% 50%, rgba(0,79,57,0.15) 0%, transparent 70%)"
       }} />
 
+      {/* Radar in top-right corner */}
+      <div
+        className="absolute top-12 right-12 pointer-events-none select-none transition-opacity duration-1000"
+        style={{ opacity: isVisible ? 0.15 : 0, width: 160, height: 160 }}
+      >
+        <svg viewBox="0 0 160 160" width="160" height="160">
+          {/* Concentric circles */}
+          {[40, 60, 80].map((r) => (
+            <circle key={r} cx="80" cy="80" r={r} fill="none" stroke="#4ade80" strokeWidth="0.6" />
+          ))}
+          {/* Cross lines */}
+          <line x1="80" y1="0" x2="80" y2="160" stroke="#4ade80" strokeWidth="0.5" />
+          <line x1="0" y1="80" x2="160" y2="80" stroke="#4ade80" strokeWidth="0.5" />
+          {/* Sweep cone */}
+          <path
+            d={`M 80 80 L ${80 + 80 * Math.cos((radarAngle - 90) * Math.PI / 180)} ${80 + 80 * Math.sin((radarAngle - 90) * Math.PI / 180)} A 80 80 0 0 0 ${80 + 80 * Math.cos((radarAngle - 130) * Math.PI / 180)} ${80 + 80 * Math.sin((radarAngle - 130) * Math.PI / 180)} Z`}
+            fill="rgba(74,222,128,0.25)"
+          />
+          {/* Sweep line */}
+          <line
+            x1="80" y1="80"
+            x2={80 + 80 * Math.cos((radarAngle - 90) * Math.PI / 180)}
+            y2={80 + 80 * Math.sin((radarAngle - 90) * Math.PI / 180)}
+            stroke="#4ade80" strokeWidth="1.5"
+          />
+          {/* Blip */}
+          <circle cx="110" cy="55" r="3" fill="#4ade80" style={{ animation: "radarBlip 2s ease-in-out infinite" }} />
+        </svg>
+      </div>
+
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-10">
 
         {/* Header */}
         <div className="mb-16">
           <p
-            className={`text-[11px] tracking-[0.3em] uppercase mb-5 transition-all duration-700 ${isVisible ? "opacity-100" : "opacity-0"}`}
-            style={{ fontFamily: "'Inter', sans-serif", color: "rgba(240,234,216,0.3)" }}
+            className="text-[11px] tracking-[0.3em] uppercase mb-5 transition-all duration-700"
+            style={{
+              fontFamily: "'Inter', sans-serif",
+              color: "rgba(240,234,216,0.3)",
+              opacity: isVisible ? 1 : 0,
+            }}
           >
             El proceso
           </p>
           <h2
-            className={`text-4xl sm:text-5xl lg:text-6xl transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
+            className="text-4xl sm:text-5xl lg:text-6xl transition-all duration-700"
             style={{
               fontFamily: "'Syne', sans-serif",
               fontWeight: 800,
               color: "rgba(240,234,216,0.92)",
               lineHeight: 1,
+              opacity: isVisible ? 1 : 0,
+              transform: isVisible ? "translateY(0)" : "translateY(16px)",
+              transitionDelay: "100ms",
             }}
           >
             ¿Cómo lo hacemos?
@@ -90,35 +161,39 @@ export function HowItWorks() {
           {steps.map((step, i) => (
             <div
               key={step.number}
-              className={`relative rounded-lg p-8 transition-all duration-700 group cursor-default ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+              className="relative rounded-lg p-8 group cursor-default transition-all duration-700"
               style={{
-                transitionDelay: `${i * 120}ms`,
                 background: step.accentBg,
                 border: `0.5px solid ${step.accentBorder}`,
+                opacity: isVisible ? 1 : 0,
+                transform: isVisible ? "translateY(0)" : "translateY(24px)",
+                transitionDelay: `${i * 140}ms`,
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.borderColor = step.accent
-                e.currentTarget.style.transform = "translateY(-4px)"
+                e.currentTarget.style.transform = "translateY(-5px)"
+                e.currentTarget.style.boxShadow = `0 12px 40px ${step.accent}18`
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.borderColor = step.accentBorder
                 e.currentTarget.style.transform = "translateY(0)"
+                e.currentTarget.style.boxShadow = "none"
               }}
             >
-              {/* Number */}
+              {/* Big number watermark */}
               <div
-                className="text-6xl font-extrabold mb-6 leading-none select-none"
+                className="text-7xl font-extrabold mb-6 leading-none select-none"
                 style={{
                   fontFamily: "'Syne', sans-serif",
-                  color: `${step.accent}18`,
+                  color: `${step.accent}14`,
                 }}
               >
                 {step.number}
               </div>
 
-              {/* Icon */}
+              {/* Animated icon */}
               <div
-                className="w-11 h-11 rounded-lg flex items-center justify-center mb-5 transition-transform duration-300 group-hover:scale-110"
+                className="w-11 h-11 rounded-lg flex items-center justify-center mb-5 transition-all duration-300 group-hover:scale-110 group-hover:rotate-3"
                 style={{ background: `${step.accent}20`, border: `0.5px solid ${step.accent}40` }}
               >
                 <step.icon className="w-5 h-5" style={{ color: step.accent }} />
@@ -139,22 +214,64 @@ export function HowItWorks() {
 
               {/* Bottom accent line */}
               <div
-                className="absolute bottom-0 left-0 right-0 h-px rounded-b-lg transition-all duration-300"
+                className="absolute bottom-0 left-0 right-0 h-px rounded-b-lg"
                 style={{ background: `linear-gradient(to right, transparent, ${step.accent}60, transparent)` }}
               />
+
+              {/* Hover glow top-left */}
+              <div
+                className="absolute top-0 left-0 w-16 h-16 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-tl-lg"
+                style={{ background: `radial-gradient(circle at 0% 0%, ${step.accent}18, transparent 70%)` }}
+              />
+
+              {/* Connector line between steps */}
+              {i < 2 && (
+                <div
+                  className="hidden md:block absolute top-1/2 -right-3 w-5 h-px"
+                  style={{ background: `linear-gradient(to right, ${step.accent}50, transparent)` }}
+                />
+              )}
             </div>
           ))}
         </div>
 
-        {/* Alert mockup */}
+        {/* Alert mockup with typing + reveal */}
         <div
-          className={`max-w-2xl mx-auto transition-all duration-700 delay-500 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+          className="max-w-2xl mx-auto transition-all duration-700"
+          style={{
+            opacity: isVisible ? 1 : 0,
+            transform: isVisible ? "translateY(0)" : "translateY(24px)",
+            transitionDelay: "550ms",
+          }}
         >
+          {/* Typing line above card */}
           <div
-            className="relative rounded-lg p-6 overflow-hidden"
+            className="mb-3 h-5 flex items-center gap-2"
+            style={{ opacity: isVisible ? 1 : 0, transition: "opacity 0.5s 0.9s" }}
+          >
+            <span
+              className="w-1.5 h-1.5 rounded-full flex-shrink-0"
+              style={{ background: "#4ade80", animation: "sentinelPulse 1.2s ease-in-out infinite" }}
+            />
+            <span
+              className="text-[11px] tracking-wider"
+              style={{ fontFamily: "'Inter', sans-serif", color: "rgba(74,222,128,0.7)" }}
+            >
+              {typedText}
+              {!typingDone && (
+                <span style={{ animation: "blink 0.7s step-end infinite" }}>|</span>
+              )}
+            </span>
+          </div>
+
+          {/* Alert card */}
+          <div
+            className="relative rounded-lg p-6 overflow-hidden transition-all duration-500"
             style={{
               background: "linear-gradient(135deg, rgba(251,146,60,0.08) 0%, rgba(14,16,13,0.8) 100%)",
               border: "0.5px solid rgba(251,146,60,0.3)",
+              opacity: alertVisible ? 1 : 0,
+              transform: alertVisible ? "translateY(0)" : "translateY(10px)",
             }}
           >
             {/* Pulse dot */}
@@ -168,7 +285,11 @@ export function HowItWorks() {
             <div className="flex items-start gap-4">
               <div
                 className="w-11 h-11 rounded-lg flex items-center justify-center flex-shrink-0"
-                style={{ background: "rgba(251,146,60,0.15)", border: "0.5px solid rgba(251,146,60,0.3)" }}
+                style={{
+                  background: "rgba(251,146,60,0.15)",
+                  border: "0.5px solid rgba(251,146,60,0.3)",
+                  animation: alertVisible ? "alertIconPulse 2s ease-in-out infinite" : "none",
+                }}
               >
                 <Flame className="w-5 h-5" style={{ color: "#fb923c" }} />
               </div>
@@ -183,7 +304,12 @@ export function HowItWorks() {
                   </span>
                   <span
                     className="flex items-center gap-1 text-[11px] px-2 py-0.5 rounded-sm"
-                    style={{ background: "rgba(74,222,128,0.1)", border: "0.5px solid rgba(74,222,128,0.3)", color: "#4ade80", fontFamily: "'Inter', sans-serif" }}
+                    style={{
+                      background: "rgba(74,222,128,0.1)",
+                      border: "0.5px solid rgba(74,222,128,0.3)",
+                      color: "#4ade80",
+                      fontFamily: "'Inter', sans-serif",
+                    }}
                   >
                     <CheckCircle className="w-3 h-3" />
                     IA verificada
@@ -204,7 +330,15 @@ export function HowItWorks() {
                     { label: "Área: 2,3 ha", color: "rgba(240,234,216,0.6)" },
                     { icon: Wind, label: "NE 18 km/h", color: "#4ade80" },
                   ].map((item, i) => (
-                    <div key={i} className="flex items-center gap-1.5">
+                    <div
+                      key={i}
+                      className="flex items-center gap-1.5 transition-all duration-300"
+                      style={{
+                        opacity: alertVisible ? 1 : 0,
+                        transform: alertVisible ? "translateX(0)" : "translateX(-8px)",
+                        transitionDelay: `${i * 80}ms`,
+                      }}
+                    >
                       {item.icon && <item.icon className="w-3.5 h-3.5 flex-shrink-0" style={{ color: item.color }} />}
                       <span
                         className="text-[11px]"
@@ -227,6 +361,25 @@ export function HowItWorks() {
         </div>
 
       </div>
+
+      <style>{`
+        @keyframes sentinelPulse {
+          0%, 100% { opacity: 1; transform: scale(1); }
+          50% { opacity: 0.3; transform: scale(0.75); }
+        }
+        @keyframes blink {
+          0%, 100% { opacity: 1; }
+          50% { opacity: 0; }
+        }
+        @keyframes radarBlip {
+          0%, 100% { opacity: 0.3; r: 3; }
+          50% { opacity: 1; r: 5; }
+        }
+        @keyframes alertIconPulse {
+          0%, 100% { box-shadow: 0 0 0 rgba(251,146,60,0); }
+          50% { box-shadow: 0 0 16px rgba(251,146,60,0.3); }
+        }
+      `}</style>
     </section>
   )
 }
