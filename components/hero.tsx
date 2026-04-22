@@ -33,8 +33,12 @@ const stats = [
 // Using your Cloudinary cloud (auto-detected from public ID format)
 const CLOUDINARY_CLOUD = "djqq3fxou"
 const VIDEO_PUBLIC_ID = "13851-252799027_gbm6no"
-const VIDEO_URL = `https://res.cloudinary.com/${CLOUDINARY_CLOUD}/video/upload/q_auto/${VIDEO_PUBLIC_ID}.mp4`
-const VIDEO_URL_WEBM = `https://res.cloudinary.com/${CLOUDINARY_CLOUD}/video/upload/q_auto/${VIDEO_PUBLIC_ID}.webm`
+// q_auto:low = menor calidad pero carga instantánea para background
+// w_1280 = limita resolución máxima, no necesitás 4K de fondo
+// vc_h264 = codec compatible con todos los browsers
+// fl_progressive = streaming progresivo, empieza a reproducir antes de terminar la descarga
+const VIDEO_URL = `https://res.cloudinary.com/${CLOUDINARY_CLOUD}/video/upload/q_auto:low,w_1280,vc_h264,fl_progressive/${VIDEO_PUBLIC_ID}.mp4`
+const VIDEO_URL_WEBM = `https://res.cloudinary.com/${CLOUDINARY_CLOUD}/video/upload/q_auto:low,w_1280,vc_vp9/${VIDEO_PUBLIC_ID}.webm`
 
 // ─── Particle types ────────────────────────────────────────────────────────────
 interface Particle {
@@ -320,7 +324,7 @@ export function Hero() {
           id="bg-video"
           muted
           playsInline
-          preload="auto"
+          preload="metadata"
           className="absolute inset-0 w-full h-full object-cover"
           style={{ opacity: 0 }}
         >
