@@ -31,10 +31,10 @@ const stats = [
 // ─── Cloudinary video URL ──────────────────────────────────────────────────────
 // Public ID: 13851-252799027_gbm6no
 // Using your Cloudinary cloud (auto-detected from public ID format)
-const CLOUDINARY_CLOUD = "your_cloud_name" // ← reemplazá con tu cloud name de Cloudinary
+const CLOUDINARY_CLOUD = "djqq3fxou"
 const VIDEO_PUBLIC_ID = "13851-252799027_gbm6no"
-const VIDEO_URL = `https://res.cloudinary.com/${CLOUDINARY_CLOUD}/video/upload/q_auto,f_auto/${VIDEO_PUBLIC_ID}.mp4`
-const VIDEO_URL_WEBM = `https://res.cloudinary.com/${CLOUDINARY_CLOUD}/video/upload/q_auto,f_webm/${VIDEO_PUBLIC_ID}.webm`
+const VIDEO_URL = `https://res.cloudinary.com/${CLOUDINARY_CLOUD}/video/upload/q_auto/${VIDEO_PUBLIC_ID}.mp4`
+const VIDEO_URL_WEBM = `https://res.cloudinary.com/${CLOUDINARY_CLOUD}/video/upload/q_auto/${VIDEO_PUBLIC_ID}.webm`
 
 // ─── Particle types ────────────────────────────────────────────────────────────
 interface Particle {
@@ -307,6 +307,14 @@ export function Hero() {
     >
       {/* ── Background video ── */}
       <div className="absolute inset-0 z-0 bg-[#0c0b09]">
+        {/* Imagen de fallback — visible mientras carga el video */}
+        <img
+          src="/aaa.jpg"
+          alt=""
+          aria-hidden="true"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+
         <video
           ref={videoRef}
           id="bg-video"
@@ -316,12 +324,11 @@ export function Hero() {
           className="absolute inset-0 w-full h-full object-cover"
           style={{ opacity: 0 }}
         >
-          {/* WebM primero para mejor compresión en navegadores compatibles */}
           <source src={VIDEO_URL_WEBM} type="video/webm" />
           <source src={VIDEO_URL} type="video/mp4" />
         </video>
 
-        {/* Gradientes encima del video — igual que antes */}
+        {/* Gradientes encima del video */}
         <div className="absolute inset-0 bg-gradient-to-b from-[#0c0b09]/75 via-[#0c0b09]/35 to-[#0c0b09]/90" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#0c0b09] via-transparent to-[#0c0b09]/70" />
       </div>
