@@ -28,6 +28,14 @@ const stats = [
   { target: 98, suffix: "%", label: "Precisión de detección" },
 ]
 
+// ─── Cloudinary video URL ──────────────────────────────────────────────────────
+// Public ID: 13851-252799027_gbm6no
+// Using your Cloudinary cloud (auto-detected from public ID format)
+const CLOUDINARY_CLOUD = "your_cloud_name" // ← reemplazá con tu cloud name de Cloudinary
+const VIDEO_PUBLIC_ID = "13851-252799027_gbm6no"
+const VIDEO_URL = `https://res.cloudinary.com/${CLOUDINARY_CLOUD}/video/upload/q_auto,f_auto/${VIDEO_PUBLIC_ID}.mp4`
+const VIDEO_URL_WEBM = `https://res.cloudinary.com/${CLOUDINARY_CLOUD}/video/upload/q_auto,f_webm/${VIDEO_PUBLIC_ID}.webm`
+
 // ─── Particle types ────────────────────────────────────────────────────────────
 interface Particle {
   id: number
@@ -222,11 +230,67 @@ function AnimatedStat({
   )
 }
 
+// ─── Video background hook ─────────────────────────────────────────────────────
+function useVideoFade(videoRef: React.RefObject<HTMLVideoElement>) {
+  useEffect(() => {
+    const video = videoRef.current
+    if (!video) return
+
+    let rafId: number
+    const FADE = 0.6 // segundos de fade in/out
+
+    const setOp = (v: number) => {
+      video.style.opacity = String(Math.min(1, Math.max(0, v)))
+    }
+
+    const tick = () => {
+      const t = video.currentTime
+      const d = video.duration
+      if (!d || isNaN(d)) { rafId = requestAnimationFrame(tick); return }
+      if (t < FADE) {
+        setOp(t / FADE)
+      } else if (t > d - FADE) {
+        setOp((d - t) / FADE)
+      } else {
+        setOp(1)
+      }
+      rafId = requestAnimationFrame(tick)
+    }
+
+    const onEnded = () => {
+      setOp(0)
+      setTimeout(() => {
+        video.currentTime = 0
+        video.play().catch(() => {})
+      }, 100)
+    }
+
+    const onCanPlay = () => {
+      video.play().then(() => {
+        if (rafId) cancelAnimationFrame(rafId)
+        tick()
+      }).catch(() => {})
+    }
+
+    video.addEventListener("ended", onEnded)
+    video.addEventListener("canplay", onCanPlay)
+    video.load()
+
+    return () => {
+      cancelAnimationFrame(rafId)
+      video.removeEventListener("ended", onEnded)
+      video.removeEventListener("canplay", onCanPlay)
+    }
+  }, [videoRef])
+}
+
 // ─── Hero ──────────────────────────────────────────────────────────────────────
 export function Hero() {
   const [mounted, setMounted] = useState(false)
   const [showScroll, setShowScroll] = useState(true)
-  const [bgLoaded, setBgLoaded] = useState(false)
+  const videoRef = useRef<HTMLVideoElement>(null)
+
+  useVideoFade(videoRef)
 
   useEffect(() => {
     setMounted(true)
@@ -235,26 +299,29 @@ export function Hero() {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
-  const fadeIn = (delay: number) =>
-    `transition-all duration-700 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`
-
   return (
     <section
       id="inicio"
       className="relative min-h-screen flex flex-col justify-center overflow-hidden"
       aria-label="Inicio — Sentinel Technologies"
     >
-      {/* ── Background ── */}
-      <div className="absolute inset-0 z-0">
-        <img
-          src="/aaa.jpg"
-          alt="Incendio forestal en la Patagonia argentina"
-          className={`w-full h-full object-cover transition-transform duration-[20000ms] ease-out ${
-            bgLoaded ? "scale-100" : "scale-105"
-          }`}
-          loading="eager"
-          onLoad={() => setBgLoaded(true)}
-        />
+      {/* ── Background video ── */}
+      <div className="absolute inset-0 z-0 bg-[#0c0b09]">
+        <video
+          ref={videoRef}
+          id="bg-video"
+          muted
+          playsInline
+          preload="auto"
+          className="absolute inset-0 w-full h-full object-cover"
+          style={{ opacity: 0 }}
+        >
+          {/* WebM primero para mejor compresión en navegadores compatibles */}
+          <source src={VIDEO_URL_WEBM} type="video/webm" />
+          <source src={VIDEO_URL} type="video/mp4" />
+        </video>
+
+        {/* Gradientes encima del video — igual que antes */}
         <div className="absolute inset-0 bg-gradient-to-b from-[#0c0b09]/75 via-[#0c0b09]/35 to-[#0c0b09]/90" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#0c0b09] via-transparent to-[#0c0b09]/70" />
       </div>
@@ -391,9 +458,7 @@ export function Hero() {
             }}
           >
             Conocer la plataforma
-            <ArrowRight
-              className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1"
-            />
+            <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
           </a>
 
           <a
