@@ -245,7 +245,7 @@ export function Footer() {
 
         {/* Bottom */}
         <div
-          className="pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 border-t"
+          className="pt-8 border-t"
           style={{ borderColor: "rgba(240,234,216,0.06)" }}
         >
           <p
@@ -258,28 +258,6 @@ export function Footer() {
           >
             © 2025 Sentinel · Visioned and Crafted by Sentinel
           </p>
-          <div className="flex gap-6">
-            {["Términos", "Privacidad"].map((label) => (
-              <a
-                key={label}
-                href="#"
-                className="text-[11px] transition-colors duration-200"
-                style={{
-                  fontFamily: "var(--font-sans)",
-                  fontWeight: 300,
-                  color: "rgba(240,234,216,0.25)",
-                }}
-                onMouseEnter={(e) =>
-                  (e.currentTarget.style.color = "rgba(240,234,216,0.55)")
-                }
-                onMouseLeave={(e) =>
-                  (e.currentTarget.style.color = "rgba(240,234,216,0.25)")
-                }
-              >
-                {label}
-              </a>
-            ))}
-          </div>
         </div>
       </div>
     </footer>

@@ -39,6 +39,7 @@ const ScrollExpandMedia = ({
   const [mediaFullyExpanded, setMediaFullyExpanded] = useState<boolean>(false);
   const [touchStartY, setTouchStartY] = useState<number>(0);
   const [isMobileState, setIsMobileState] = useState<boolean>(false);
+  const [reducedMotion, setReducedMotion] = useState<boolean>(false);
 
   const sectionRef = useRef<HTMLDivElement | null>(null);
 
@@ -48,7 +49,27 @@ const ScrollExpandMedia = ({
     setMediaFullyExpanded(false);
   }, [mediaType]);
 
+  // Skip the scroll-jacking expand animation for users who asked the OS
+  // for reduced motion — jump straight to the expanded end state instead.
+  // Runs after the mediaType-reset effect above so it wins on mount.
   useEffect(() => {
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const apply = () => {
+      setReducedMotion(mq.matches);
+      if (mq.matches) {
+        setScrollProgress(1);
+        setMediaFullyExpanded(true);
+        setShowContent(true);
+      }
+    };
+    apply();
+    mq.addEventListener("change", apply);
+    return () => mq.removeEventListener("change", apply);
+  }, []);
+
+  useEffect(() => {
+    if (reducedMotion) return;
+
     const handleWheel = (e: globalThis.WheelEvent) => {
       if (mediaFullyExpanded && e.deltaY < 0 && window.scrollY <= 5) {
         setMediaFullyExpanded(false);
@@ -132,7 +153,7 @@ const ScrollExpandMedia = ({
       window.removeEventListener("touchmove", handleTouchMove);
       window.removeEventListener("touchend", handleTouchEnd);
     };
-  }, [scrollProgress, mediaFullyExpanded, touchStartY]);
+  }, [scrollProgress, mediaFullyExpanded, touchStartY, reducedMotion]);
 
   useEffect(() => {
     const checkIfMobile = (): void => {
