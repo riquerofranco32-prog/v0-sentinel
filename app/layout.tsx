@@ -15,31 +15,48 @@ const inter = Inter({
   variable: "--font-sans",
 });
 
+const siteUrl = "https://www.sentineltech.com.ar";
 const title = "SENTINEL | Tecnología que protege tu territorio";
 const description =
   "Tecnología aérea e inteligencia artificial para la detección temprana de incendios y el monitoreo ambiental.";
 
-const siteUrl = process.env.VERCEL_PROJECT_PRODUCTION_URL
-  ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
-  : process.env.VERCEL_URL
-    ? `https://${process.env.VERCEL_URL}`
-    : "http://localhost:3000";
-
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title,
+  title: {
+    default: title,
+    template: "%s | Sentinel Technologies",
+  },
   description,
   keywords: [
-    "drones",
-    "incendios",
-    "monitoreo ambiental",
-    "IA",
-    "Argentina",
-    "detección temprana",
+    "detección incendios forestales",
+    "prevención incendios Patagonia",
+    "drones monitoreo ambiental",
+    "inteligencia artificial incendios",
+    "Sentinel Technologies Argentina",
+    "monitoreo Río Negro",
+    "wildfire detection Argentina",
   ],
+  authors: [{ name: "Sentinel Technologies", url: siteUrl }],
+  creator: "Sentinel Technologies",
+  publisher: "Sentinel Technologies",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  alternates: {
+    canonical: siteUrl,
+    languages: { "es-AR": siteUrl },
+  },
   openGraph: {
     title,
     description,
+    url: siteUrl,
     siteName: "Sentinel Technologies",
     locale: "es_AR",
     type: "website",
@@ -55,6 +72,51 @@ export const viewport: Viewport = {
   themeColor: "#0c0b09",
 };
 
+const organizationJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "Sentinel Technologies",
+  url: siteUrl,
+  logo: `${siteUrl}/logoo.png`,
+  description,
+  areaServed: [
+    { "@type": "AdministrativeArea", name: "Neuquén" },
+    { "@type": "AdministrativeArea", name: "Río Negro" },
+    { "@type": "AdministrativeArea", name: "Patagonia" },
+    { "@type": "Country", name: "Argentina" },
+  ],
+  sameAs: ["https://linktr.ee/sentinelarg"],
+  knowsAbout: [
+    "Wildfire Detection",
+    "Drone Technology",
+    "Artificial Intelligence",
+    "Environmental Monitoring",
+    "Forest Fire Prevention",
+  ],
+  award: ["ILAN Awards 2025", "Premio Sadosky 2025", "JIJE 2025"],
+};
+
+const productJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  name: "Sentinel Cloud",
+  applicationCategory: "EnvironmentalManagement",
+  operatingSystem: "Web",
+  description:
+    "Plataforma SaaS de monitoreo, alertas y dashboards en tiempo real para detección de incendios forestales.",
+  offers: {
+    "@type": "Offer",
+    priceSpecification: {
+      "@type": "UnitPriceSpecification",
+      description: "Modelo sin CAPEX inicial. Piloto de 4 a 8 semanas.",
+    },
+  },
+  provider: {
+    "@type": "Organization",
+    name: "Sentinel Technologies",
+  },
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -62,6 +124,18 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" className="scroll-smooth">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organizationJsonLd),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(productJsonLd) }}
+        />
+      </head>
       <body
         className={`${inter.variable} ${jura.variable} font-sans antialiased bg-[#0c0b09] text-[#f0ead8]`}
       >

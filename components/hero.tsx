@@ -235,7 +235,7 @@ function AnimatedStat({
 }
 
 // ─── Video background hook ─────────────────────────────────────────────────────
-function useVideoFade(videoRef: React.RefObject<HTMLVideoElement>) {
+function useVideoFade(videoRef: React.RefObject<HTMLVideoElement | null>) {
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
