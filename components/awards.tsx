@@ -2,34 +2,103 @@
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import { CheckCircle } from "lucide-react";
 import { Timeline } from "@/components/ui/timeline";
 
-const logros = [
-  { bold: "Ganadores", rest: "Premios ILAN 2025 — viaje a Israel." },
-  {
-    bold: "Ganadores",
-    rest: "JIJE 20 años — Universidad Nacional del Litoral.",
-  },
-  { bold: "Ganadores", rest: "Premios Sadosky 2025 — CESSI." },
-  { bold: "Ganadores", rest: "Usina Emprendedores — CAC." },
-  { bold: "Ganadores", rest: "Prendete Pitch Day — CICE SV." },
-  { bold: "Seleccionados", rest: "Softlanding en Europa por Piensas.xyz." },
-  { bold: "Inversión", rest: "3.000 USD — Gobierno de Mendoza." },
-  { bold: "Seleccionados", rest: "Emprelatam y Draper House Americas." },
-  { bold: "Finalistas", rest: "Impact Startup Competition Perú 2026 — Scale." },
-];
-
-const timelineData = logros.map((l) => ({
-  title: l.bold,
-  content: (
-    <p
-      className="text-sm md:text-base leading-relaxed"
-      style={{ color: "rgba(240,234,216,0.55)", fontWeight: 300 }}
+function ChecklistItem({ children }: { children: React.ReactNode }) {
+  return (
+    <div
+      className="flex gap-2 items-start text-xs md:text-sm"
+      style={{ color: "rgba(240,234,216,0.6)" }}
     >
-      {l.rest}
-    </p>
-  ),
-}));
+      <CheckCircle
+        className="w-4 h-4 flex-shrink-0 mt-0.5"
+        style={{ color: "#94f1be" }}
+      />
+      {children}
+    </div>
+  );
+}
+
+const imgClass = "rounded-lg object-cover h-24 md:h-40 lg:h-48 w-full";
+
+const timelineData = [
+  {
+    title: "Competencias",
+    content: (
+      <div>
+        <p
+          className="text-xs md:text-sm mb-6 leading-relaxed"
+          style={{ color: "rgba(240,234,216,0.55)", fontWeight: 300 }}
+        >
+          Cinco competencias ganadas en 2025, de norte a sur del país.
+        </p>
+        <div className="mb-6 flex flex-col gap-2">
+          <ChecklistItem>Premios ILAN 2025 — viaje a Israel</ChecklistItem>
+          <ChecklistItem>
+            JIJE 20 años — Universidad Nacional del Litoral
+          </ChecklistItem>
+          <ChecklistItem>Premios Sadosky 2025 — CESSI</ChecklistItem>
+          <ChecklistItem>Usina Emprendedores — CAC</ChecklistItem>
+          <ChecklistItem>Prendete Pitch Day — CICE SV</ChecklistItem>
+        </div>
+        <div className="grid grid-cols-2 gap-3">
+          <Image
+            src="/logros-tile-0.jpg"
+            alt="Equipo Sentinel en Prendete Pitch Day"
+            width={500}
+            height={320}
+            className={imgClass}
+          />
+          <Image
+            src="/logros-tile-3.jpg"
+            alt="Premios Sadosky 2025"
+            width={500}
+            height={320}
+            className={imgClass}
+          />
+        </div>
+      </div>
+    ),
+  },
+  {
+    title: "Selección internacional",
+    content: (
+      <div>
+        <p
+          className="text-xs md:text-sm mb-6 leading-relaxed"
+          style={{ color: "rgba(240,234,216,0.55)", fontWeight: 300 }}
+        >
+          Reconocimiento fuera de Argentina y primer apoyo financiero.
+        </p>
+        <div className="mb-6 flex flex-col gap-2">
+          <ChecklistItem>Softlanding en Europa por Piensas.xyz</ChecklistItem>
+          <ChecklistItem>3.000 USD — Gobierno de Mendoza</ChecklistItem>
+          <ChecklistItem>Emprelatam y Draper House Americas</ChecklistItem>
+          <ChecklistItem>
+            Finalistas — Impact Startup Competition Perú 2026 (Scale)
+          </ChecklistItem>
+        </div>
+        <div className="grid grid-cols-2 gap-3">
+          <Image
+            src="/logros-tile-1.jpg"
+            alt="Entrega de reconocimiento a Sentinel"
+            width={500}
+            height={320}
+            className={imgClass}
+          />
+          <Image
+            src="/logros-tile-4.jpg"
+            alt="Presentación de Sentinel en JIJE 20 años"
+            width={500}
+            height={320}
+            className={imgClass}
+          />
+        </div>
+      </div>
+    ),
+  },
+];
 
 export function Awards() {
   const [isVisible, setIsVisible] = useState(false);

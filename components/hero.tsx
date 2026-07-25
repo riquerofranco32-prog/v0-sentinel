@@ -116,9 +116,9 @@ export function Hero() {
         mediaSrc={VIDEO_URL}
         posterSrc="/aaa.jpg"
         bgImageSrc="/aaa.jpg"
-        title="Plataforma de prevención de incendios forestales"
+        title="Detectamos incendios en minutos, no en horas"
         date="Sistema activo · Patagonia"
-        scrollToExpand="Scroll para expandir"
+        scrollToExpand="Desplazate para expandir"
       >
         <div className="flex flex-col items-center text-center max-w-3xl mx-auto">
           <p
@@ -130,11 +130,11 @@ export function Hero() {
               color: "rgba(240,234,216,0.6)",
             }}
           >
-            Tecnología aérea e inteligencia artificial para detectar incendios
-            en{" "}
+            Tecnología aérea e inteligencia artificial para el{" "}
             <strong style={{ fontWeight: 500, color: "rgba(240,234,216,0.9)" }}>
-              minutos, no en horas.
-            </strong>
+              monitoreo forestal continuo
+            </strong>{" "}
+            en la Patagonia.
           </p>
 
           <div className="flex items-center gap-6 sm:gap-10 mt-10">
