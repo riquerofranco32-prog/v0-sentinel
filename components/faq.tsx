@@ -53,21 +53,21 @@ export function FAQ() {
         <div className="mb-14">
           <p
             className={`text-[11px] tracking-[0.3em] uppercase mb-5 transition-all duration-700 ${isVisible ? "opacity-100" : "opacity-0"}`}
-            style={{ fontFamily: "'Inter', sans-serif", color: "rgba(240,234,216,0.3)" }}
+            style={{ fontFamily: "var(--font-sans)", color: "rgba(240,234,216,0.3)" }}
           >
             Preguntas frecuentes
           </p>
           <h2
             className={`text-4xl sm:text-5xl transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
             style={{
-              fontFamily: "'Syne', sans-serif",
+              fontFamily: "var(--font-heading)",
               fontWeight: 800,
               color: "rgba(240,234,216,0.92)",
               lineHeight: 1.1,
             }}
           >
             Tenemos las respuestas<br />
-            <span style={{ color: "#4ade80" }}>que buscás.</span>
+            <span style={{ color: "#94f1be" }}>que buscás.</span>
           </h2>
         </div>
 
@@ -89,7 +89,7 @@ export function FAQ() {
                 <span
                   className="text-[14px] font-medium leading-snug transition-colors duration-200"
                   style={{
-                    fontFamily: "'Inter', sans-serif",
+                    fontFamily: "var(--font-sans)",
                     color: openIndex === i ? "rgba(240,234,216,0.95)" : "rgba(240,234,216,0.65)",
                   }}
                 >
@@ -98,12 +98,12 @@ export function FAQ() {
                 <div
                   className="flex-shrink-0 w-7 h-7 rounded-sm flex items-center justify-center mt-0.5 transition-all duration-200"
                   style={{
-                    background: openIndex === i ? "rgba(74,222,128,0.15)" : "rgba(240,234,216,0.05)",
-                    border: `0.5px solid ${openIndex === i ? "rgba(74,222,128,0.4)" : "rgba(240,234,216,0.1)"}`,
+                    background: openIndex === i ? "rgba(148,241,190,0.15)" : "rgba(240,234,216,0.05)",
+                    border: `0.5px solid ${openIndex === i ? "rgba(148,241,190,0.4)" : "rgba(240,234,216,0.1)"}`,
                   }}
                 >
                   {openIndex === i
-                    ? <Minus className="w-3.5 h-3.5" style={{ color: "#4ade80" }} />
+                    ? <Minus className="w-3.5 h-3.5" style={{ color: "#94f1be" }} />
                     : <Plus className="w-3.5 h-3.5" style={{ color: "rgba(240,234,216,0.4)" }} />
                   }
                 </div>
@@ -116,7 +116,7 @@ export function FAQ() {
                 <p
                   className="pb-6 text-[13px] leading-relaxed"
                   style={{
-                    fontFamily: "'Inter', sans-serif",
+                    fontFamily: "var(--font-sans)",
                     fontWeight: 300,
                     color: "rgba(240,234,216,0.45)",
                   }}

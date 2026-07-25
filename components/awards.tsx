@@ -77,7 +77,7 @@ export function Awards() {
         >
           <p
             style={{
-              fontFamily: "'Jura', sans-serif",
+              fontFamily: "var(--font-heading)",
               fontSize: "10px",
               fontWeight: 600,
               letterSpacing: "0.35em",
@@ -90,7 +90,7 @@ export function Awards() {
           </p>
           <h2
             style={{
-              fontFamily: "'Jura', sans-serif",
+              fontFamily: "var(--font-heading)",
               fontWeight: 700,
               fontSize: "clamp(2rem, 5vw, 3.5rem)",
               color: "rgba(240,234,216,0.95)",
@@ -191,7 +191,7 @@ export function Awards() {
                   <div>
                     <span
                       style={{
-                        fontFamily: "'Jura', sans-serif",
+                        fontFamily: "var(--font-heading)",
                         fontWeight: 700,
                         fontSize: "13px",
                         color: "rgba(240,234,216,0.95)",
@@ -202,7 +202,7 @@ export function Awards() {
                     </span>
                     <span
                       style={{
-                        fontFamily: "'DM Sans', sans-serif",
+                        fontFamily: "var(--font-sans)",
                         fontWeight: 300,
                         fontSize: "13px",
                         color: "rgba(240,234,216,0.5)",
@@ -235,7 +235,7 @@ export function Awards() {
             <div key={s.label} className="text-center">
               <div
                 style={{
-                  fontFamily: "'Jura', sans-serif",
+                  fontFamily: "var(--font-heading)",
                   fontWeight: 700,
                   fontSize: "clamp(1.6rem, 3vw, 2.2rem)",
                   color: "rgba(240,234,216,0.92)",
@@ -246,7 +246,7 @@ export function Awards() {
               </div>
               <div
                 style={{
-                  fontFamily: "'DM Sans', sans-serif",
+                  fontFamily: "var(--font-sans)",
                   fontSize: "11px",
                   fontWeight: 300,
                   letterSpacing: "0.1em",
@@ -296,7 +296,7 @@ function LogroCard({
     >
       <span
         style={{
-          fontFamily: "'Jura', sans-serif",
+          fontFamily: "var(--font-heading)",
           fontWeight: 700,
           fontSize: "14px",
           color: hovered ? "#94f1be" : "rgba(240,234,216,0.9)",
@@ -309,7 +309,7 @@ function LogroCard({
       </span>
       <span
         style={{
-          fontFamily: "'DM Sans', sans-serif",
+          fontFamily: "var(--font-sans)",
           fontWeight: 300,
           fontSize: "13px",
           color: "rgba(240,234,216,0.5)",

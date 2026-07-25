@@ -64,7 +64,7 @@ export function Team() {
           <p
             className="mb-4"
             style={{
-              fontFamily: "'Jura', sans-serif",
+              fontFamily: "var(--font-heading)",
               fontSize: "10px",
               fontWeight: 600,
               letterSpacing: "0.35em",
@@ -76,7 +76,7 @@ export function Team() {
           </p>
           <h2
             style={{
-              fontFamily: "'Jura', sans-serif",
+              fontFamily: "var(--font-heading)",
               fontWeight: 700,
               fontSize: "clamp(1.8rem, 4vw, 2.8rem)",
               color: "rgba(240,234,216,0.95)",
@@ -88,7 +88,7 @@ export function Team() {
           <p
             className="mt-4 mx-auto"
             style={{
-              fontFamily: "'DM Sans', sans-serif",
+              fontFamily: "var(--font-sans)",
               fontWeight: 300,
               fontSize: "15px",
               lineHeight: 1.7,
@@ -151,7 +151,7 @@ export function Team() {
                 <div
                   className="absolute top-3 left-3"
                   style={{
-                    fontFamily: "'Jura', sans-serif",
+                    fontFamily: "var(--font-heading)",
                     fontSize: "9px",
                     fontWeight: 600,
                     letterSpacing: "0.2em",
@@ -172,7 +172,7 @@ export function Team() {
               <div className="p-4 flex flex-col gap-1 flex-1">
                 <h3
                   style={{
-                    fontFamily: "'Jura', sans-serif",
+                    fontFamily: "var(--font-heading)",
                     fontWeight: 700,
                     fontSize: "15px",
                     color: "rgba(240,234,216,0.95)",
@@ -184,7 +184,7 @@ export function Team() {
 
                 <p
                   style={{
-                    fontFamily: "'DM Sans', sans-serif",
+                    fontFamily: "var(--font-sans)",
                     fontSize: "11px",
                     fontWeight: 300,
                     color: "rgba(240,234,216,0.35)",
@@ -209,7 +209,7 @@ export function Team() {
 
                 <p
                   style={{
-                    fontFamily: "'DM Sans', sans-serif",
+                    fontFamily: "var(--font-sans)",
                     fontSize: "12px",
                     fontWeight: 300,
                     color: "rgba(240,234,216,0.5)",
@@ -227,7 +227,7 @@ export function Team() {
                   rel="noopener noreferrer"
                   className="mt-4 inline-flex items-center gap-1.5 transition-all duration-200"
                   style={{
-                    fontFamily: "'DM Sans', sans-serif",
+                    fontFamily: "var(--font-sans)",
                     fontSize: "11px",
                     fontWeight: 400,
                     color:

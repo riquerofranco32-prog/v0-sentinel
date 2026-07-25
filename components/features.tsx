@@ -35,25 +35,25 @@ function StatCard({ value, unit, label, prefix, isVisible, delay }: {
     >
       <div
         className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-        style={{ background: "linear-gradient(135deg, rgba(74,222,128,0.05), transparent)" }}
+        style={{ background: "linear-gradient(135deg, rgba(148,241,190,0.05), transparent)" }}
       />
       <div
         className="text-3xl sm:text-4xl font-bold leading-none mb-1.5 transition-all duration-700"
         style={{
-          fontFamily: "'Syne', sans-serif",
-          color: "#4ade80",
+          fontFamily: "var(--font-heading)",
+          color: "#94f1be",
           opacity: isVisible ? 1 : 0,
           transform: isVisible ? "translateY(0)" : "translateY(10px)",
           transitionDelay: `${delay}ms`,
         }}
       >
         {prefix}{count}
-        <span className="text-lg" style={{ color: "rgba(74,222,128,0.55)" }}>{unit}</span>
+        <span className="text-lg" style={{ color: "rgba(148,241,190,0.55)" }}>{unit}</span>
       </div>
       <div
         className="text-[10px] tracking-[0.2em] uppercase transition-all duration-700"
         style={{
-          fontFamily: "'Inter', sans-serif",
+          fontFamily: "var(--font-sans)",
           color: "rgba(240,234,216,0.3)",
           opacity: isVisible ? 1 : 0,
           transitionDelay: `${delay + 100}ms`,
@@ -110,17 +110,17 @@ export function Features() {
         className="absolute inset-0 pointer-events-none transition-opacity duration-1000"
         style={{
           opacity: isVisible ? 1 : 0,
-          backgroundImage: "radial-gradient(ellipse 70% 50% at 65% 55%, rgba(74,222,128,0.06) 0%, transparent 70%)",
+          backgroundImage: "radial-gradient(ellipse 70% 50% at 65% 55%, rgba(148,241,190,0.06) 0%, transparent 70%)",
         }}
       />
 
       {/* Subtle grid lines */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden" style={{ opacity: 0.025 }}>
         {Array.from({ length: 8 }).map((_, i) => (
-          <div key={i} className="absolute top-0 bottom-0 w-px" style={{ left: `${(i + 1) * 12.5}%`, background: "rgba(74,222,128,1)" }} />
+          <div key={i} className="absolute top-0 bottom-0 w-px" style={{ left: `${(i + 1) * 12.5}%`, background: "rgba(148,241,190,1)" }} />
         ))}
         {Array.from({ length: 6 }).map((_, i) => (
-          <div key={i} className="absolute left-0 right-0 h-px" style={{ top: `${(i + 1) * 16.6}%`, background: "rgba(74,222,128,1)" }} />
+          <div key={i} className="absolute left-0 right-0 h-px" style={{ top: `${(i + 1) * 16.6}%`, background: "rgba(148,241,190,1)" }} />
         ))}
       </div>
 
@@ -131,7 +131,7 @@ export function Features() {
           <p
             className="text-[11px] tracking-[0.3em] uppercase mb-5 transition-all duration-700"
             style={{
-              fontFamily: "'Inter', sans-serif",
+              fontFamily: "var(--font-sans)",
               color: "rgba(240,234,216,0.3)",
               opacity: isVisible ? 1 : 0,
             }}
@@ -142,7 +142,7 @@ export function Features() {
             <h2
               className="text-4xl sm:text-5xl lg:text-6xl transition-all duration-700"
               style={{
-                fontFamily: "'Syne', sans-serif",
+                fontFamily: "var(--font-heading)",
                 fontWeight: 800,
                 color: "rgba(240,234,216,0.92)",
                 lineHeight: 1,
@@ -152,12 +152,12 @@ export function Features() {
               }}
             >
               Nuestra{" "}
-              <span style={{ color: "#4ade80" }}>solución.</span>
+              <span style={{ color: "#94f1be" }}>solución.</span>
             </h2>
             <p
               className="max-w-xs text-[13px] leading-relaxed lg:pb-1 transition-all duration-700"
               style={{
-                fontFamily: "'Inter', sans-serif",
+                fontFamily: "var(--font-sans)",
                 fontWeight: 300,
                 color: "rgba(240,234,216,0.4)",
                 opacity: isVisible ? 1 : 0,
@@ -218,8 +218,8 @@ export function Features() {
               style={{
                 top: `${scanPos}%`,
                 height: "2px",
-                background: "linear-gradient(to right, transparent 0%, rgba(74,222,128,0.7) 30%, rgba(74,222,128,0.9) 50%, rgba(74,222,128,0.7) 70%, transparent 100%)",
-                boxShadow: "0 0 16px rgba(74,222,128,0.5), 0 0 4px rgba(74,222,128,0.8)",
+                background: "linear-gradient(to right, transparent 0%, rgba(148,241,190,0.7) 30%, rgba(148,241,190,0.9) 50%, rgba(148,241,190,0.7) 70%, transparent 100%)",
+                boxShadow: "0 0 16px rgba(148,241,190,0.5), 0 0 4px rgba(148,241,190,0.8)",
                 opacity: isVisible ? 1 : 0,
                 transition: "opacity 0.5s",
               }}
@@ -230,15 +230,15 @@ export function Features() {
             {/* Hover tint */}
             <div
               className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-              style={{ background: "linear-gradient(135deg, rgba(74,222,128,0.06) 0%, transparent 60%)" }}
+              style={{ background: "linear-gradient(135deg, rgba(148,241,190,0.06) 0%, transparent 60%)" }}
             />
 
             {/* Alert border flash */}
             <div
               className="absolute inset-0 rounded-lg pointer-events-none"
               style={{
-                border: "1px solid rgba(74,222,128,0.5)",
-                boxShadow: "inset 0 0 40px rgba(74,222,128,0.08)",
+                border: "1px solid rgba(148,241,190,0.5)",
+                boxShadow: "inset 0 0 40px rgba(148,241,190,0.08)",
                 opacity: alertPulse ? 1 : 0,
                 transition: "opacity 0.3s ease",
               }}
@@ -248,21 +248,21 @@ export function Features() {
             <div
               className="absolute top-5 right-5 flex items-center gap-2 px-3 py-1.5 rounded-sm"
               style={{
-                fontFamily: "'Inter', sans-serif",
+                fontFamily: "var(--font-sans)",
                 background: "rgba(0,0,0,0.6)",
-                border: "0.5px solid rgba(74,222,128,0.4)",
+                border: "0.5px solid rgba(148,241,190,0.4)",
                 backdropFilter: "blur(8px)",
               }}
             >
               <span
                 className="w-1.5 h-1.5 rounded-full"
                 style={{
-                  background: "#4ade80",
-                  boxShadow: "0 0 6px #4ade80",
+                  background: "#94f1be",
+                  boxShadow: "0 0 6px #94f1be",
                   animation: "sentinelPulse 1.5s ease-in-out infinite",
                 }}
               />
-              <span className="text-[10px] tracking-widest uppercase" style={{ color: "#4ade80" }}>En vivo</span>
+              <span className="text-[10px] tracking-widest uppercase" style={{ color: "#94f1be" }}>En vivo</span>
             </div>
 
             {/* Bottom */}
@@ -270,10 +270,10 @@ export function Features() {
               <div
                 className="px-3 py-1.5 rounded-sm text-[10px] tracking-widest uppercase"
                 style={{
-                  fontFamily: "'Inter', sans-serif",
-                  background: "rgba(0,79,57,0.75)",
-                  border: "0.5px solid rgba(74,222,128,0.3)",
-                  color: "#4ade80",
+                  fontFamily: "var(--font-sans)",
+                  background: "rgba(20,74,52,0.75)",
+                  border: "0.5px solid rgba(148,241,190,0.3)",
+                  color: "#94f1be",
                   backdropFilter: "blur(6px)",
                 }}
               >
@@ -281,7 +281,7 @@ export function Features() {
               </div>
               <div
                 className="text-[10px] tracking-wider opacity-0 group-hover:opacity-100 transition-all duration-300 translate-x-3 group-hover:translate-x-0"
-                style={{ fontFamily: "'Inter', sans-serif", color: "rgba(240,234,216,0.4)" }}
+                style={{ fontFamily: "var(--font-sans)", color: "rgba(240,234,216,0.4)" }}
               >
                 Detecta en minutos →
               </div>
@@ -310,16 +310,16 @@ export function Features() {
               <div className="absolute inset-0 bg-gradient-to-t from-[#0c0b09]/75 via-transparent to-transparent" />
               <div
                 className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                style={{ background: "rgba(74,222,128,0.05)" }}
+                style={{ background: "rgba(148,241,190,0.05)" }}
               />
               <div className="absolute bottom-4 left-4">
                 <div
                   className="px-3 py-1.5 rounded-sm text-[10px] tracking-widest uppercase"
                   style={{
-                    fontFamily: "'Inter', sans-serif",
-                    background: "rgba(0,79,57,0.75)",
-                    border: "0.5px solid rgba(74,222,128,0.3)",
-                    color: "#4ade80",
+                    fontFamily: "var(--font-sans)",
+                    background: "rgba(20,74,52,0.75)",
+                    border: "0.5px solid rgba(148,241,190,0.3)",
+                    color: "#94f1be",
                     backdropFilter: "blur(6px)",
                   }}
                 >
@@ -341,19 +341,19 @@ export function Features() {
               }}
             >
               {/* Corner accents */}
-              <div className="absolute top-0 left-0 w-6 h-6 pointer-events-none" style={{ borderTop: "1px solid rgba(74,222,128,0.4)", borderLeft: "1px solid rgba(74,222,128,0.4)" }} />
-              <div className="absolute bottom-0 right-0 w-6 h-6 pointer-events-none" style={{ borderBottom: "1px solid rgba(74,222,128,0.2)", borderRight: "1px solid rgba(74,222,128,0.2)" }} />
+              <div className="absolute top-0 left-0 w-6 h-6 pointer-events-none" style={{ borderTop: "1px solid rgba(148,241,190,0.4)", borderLeft: "1px solid rgba(148,241,190,0.4)" }} />
+              <div className="absolute bottom-0 right-0 w-6 h-6 pointer-events-none" style={{ borderBottom: "1px solid rgba(148,241,190,0.2)", borderRight: "1px solid rgba(148,241,190,0.2)" }} />
 
               {/* Hover glow */}
               <div
                 className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
-                style={{ background: "radial-gradient(ellipse at 30% 50%, rgba(74,222,128,0.05), transparent 70%)" }}
+                style={{ background: "radial-gradient(ellipse at 30% 50%, rgba(148,241,190,0.05), transparent 70%)" }}
               />
 
-              <p className="text-[11px] tracking-[0.2em] uppercase mb-3" style={{ fontFamily: "'Inter', sans-serif", color: "rgba(240,234,216,0.25)" }}>
+              <p className="text-[11px] tracking-[0.2em] uppercase mb-3" style={{ fontFamily: "var(--font-sans)", color: "rgba(240,234,216,0.25)" }}>
                 Alcance
               </p>
-              <p className="text-[13px] leading-relaxed" style={{ fontFamily: "'Inter', sans-serif", fontWeight: 300, color: "rgba(240,234,216,0.5)" }}>
+              <p className="text-[13px] leading-relaxed" style={{ fontFamily: "var(--font-sans)", fontWeight: 300, color: "rgba(240,234,216,0.5)" }}>
                 Cobertura desde{" "}
                 <span style={{ color: "rgba(240,234,216,0.85)", fontWeight: 400 }}>Patagonia</span>
                 {" "}hasta{" "}
@@ -368,14 +368,14 @@ export function Features() {
                     key={i}
                     className="w-1.5 h-1.5 rounded-full"
                     style={{
-                      background: "#4ade80",
+                      background: "#94f1be",
                       opacity: 0.3 + i * 0.18,
                       animation: `sentinelDot ${1 + i * 0.25}s ease-in-out infinite`,
                       animationDelay: `${i * 0.15}s`,
                     }}
                   />
                 ))}
-                <span className="text-[10px] ml-1" style={{ fontFamily: "'Inter', sans-serif", color: "rgba(240,234,216,0.25)" }}>
+                <span className="text-[10px] ml-1" style={{ fontFamily: "var(--font-sans)", color: "rgba(240,234,216,0.25)" }}>
                   sistema activo
                 </span>
               </div>
@@ -386,8 +386,8 @@ export function Features() {
 
       <style>{`
         @keyframes sentinelPulse {
-          0%, 100% { opacity: 1; transform: scale(1); box-shadow: 0 0 6px #4ade80; }
-          50% { opacity: 0.35; transform: scale(0.8); box-shadow: 0 0 2px #4ade80; }
+          0%, 100% { opacity: 1; transform: scale(1); box-shadow: 0 0 6px #94f1be; }
+          50% { opacity: 0.35; transform: scale(0.8); box-shadow: 0 0 2px #94f1be; }
         }
         @keyframes sentinelDot {
           0%, 100% { opacity: var(--base-op, 0.5); transform: scale(1); }
