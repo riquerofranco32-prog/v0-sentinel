@@ -182,12 +182,12 @@ export function Features() {
                 transitionDelay: "200ms",
               }}
             >
-              Un sistema inmunitario planetario. Sentinel fusiona el IoT, los
-              drones y los satélites en un único{" "}
+              Una plataforma integral que combina drones, satélites y sensores
+              para el monitoreo ambiental —{" "}
               <span
                 style={{ color: "rgba(240,234,216,0.75)", fontWeight: 400 }}
               >
-                sistema nervioso impulsado por IA.
+                pasando de una acción reactiva a una acción preventiva.
               </span>
             </p>
           </div>
