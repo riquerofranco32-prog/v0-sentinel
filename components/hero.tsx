@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
+import { Fragment, useEffect, useState, useRef } from "react";
+import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 
 // ─── Logos ────────────────────────────────────────────────────────────────────
@@ -234,7 +235,7 @@ function AnimatedStat({
 }
 
 // ─── Video background hook ─────────────────────────────────────────────────────
-function useVideoFade(videoRef: React.RefObject<HTMLVideoElement>) {
+function useVideoFade(videoRef: React.RefObject<HTMLVideoElement | null>) {
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
@@ -317,10 +318,13 @@ export function Hero() {
       {/* ── Background video ── */}
       <div className="absolute inset-0 z-0 bg-[#0c0b09]">
         {/* Imagen de fallback — visible mientras carga el video */}
-        <img
+        <Image
           src="/aaa.jpg"
           alt=""
           aria-hidden="true"
+          fill
+          priority
+          sizes="100vw"
           className="absolute inset-0 w-full h-full object-cover"
         />
 
@@ -423,22 +427,20 @@ export function Hero() {
           }`}
         >
           {stats.map((s, i) => (
-            <>
+            <Fragment key={s.label}>
               {i > 0 && (
                 <div
-                  key={`div-${i}`}
                   className="w-px self-stretch"
                   style={{ background: "rgba(240,234,216,0.1)" }}
                 />
               )}
               <AnimatedStat
-                key={s.label}
                 target={s.target}
                 suffix={s.suffix}
                 label={s.label}
                 delay={i * 150}
               />
-            </>
+            </Fragment>
           ))}
         </div>
 
