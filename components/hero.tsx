@@ -2,22 +2,27 @@
 
 import { useEffect, useRef, useState } from "react";
 import ScrollExpandMedia from "./scroll-expansion-hero";
+import { Logos3 } from "./blocks/logos3";
 
 const logos = [
-  { src: "/20220609002317_uba.png", alt: "UBA" },
-  { src: "/aiweken.png", alt: "Aiweken" },
-  { src: "/cice.png", alt: "CICE" },
-  { src: "/empretec.png", alt: "Empretec" },
-  { src: "/endeavor.png", alt: "Endeavor" },
-  { src: "/FPN2.webp", alt: "Fundación Patagonia Natural" },
-  { src: "/ilan.png", alt: "ILAN" },
-  { src: "/movistar-3.svg", alt: "Movistar" },
-  { src: "/sadosky.png", alt: "Sadosky" },
-  { src: "/scale.png", alt: "Scale" },
-  { src: "/ue.png", alt: "UE" },
-  { src: "/uncuyo.png", alt: "UNCUYO" },
-  { src: "/unl.png", alt: "UNL" },
-  { src: "/utn.png", alt: "UTN" },
+  { id: "uba", description: "UBA", image: "/20220609002317_uba.png" },
+  { id: "aiweken", description: "Aiweken", image: "/aiweken.png" },
+  { id: "cice", description: "CICE", image: "/cice.png" },
+  { id: "empretec", description: "Empretec", image: "/empretec.png" },
+  { id: "endeavor", description: "Endeavor", image: "/endeavor.png" },
+  {
+    id: "fpn",
+    description: "Fundación Patagonia Natural",
+    image: "/FPN2.webp",
+  },
+  { id: "ilan", description: "ILAN", image: "/ilan.png" },
+  { id: "movistar", description: "Movistar", image: "/movistar-3.svg" },
+  { id: "sadosky", description: "Sadosky", image: "/sadosky.png" },
+  { id: "scale", description: "Scale", image: "/scale.png" },
+  { id: "ue", description: "UE", image: "/ue.png" },
+  { id: "uncuyo", description: "UNCUYO", image: "/uncuyo.png" },
+  { id: "unl", description: "UNL", image: "/unl.png" },
+  { id: "utn", description: "UTN", image: "/utn.png" },
 ];
 
 const stats = [
@@ -184,43 +189,8 @@ export function Hero() {
             </a>
           </div>
 
-          <p
-            className="mt-16 mb-6"
-            style={{
-              fontFamily: "var(--font-sans)",
-              fontSize: "9px",
-              letterSpacing: "0.3em",
-              textTransform: "uppercase",
-              color: "rgba(240,234,216,0.25)",
-            }}
-          >
-            Nos acompañan
-          </p>
-
-          <div
-            className="overflow-hidden w-full"
-            style={{
-              maskImage:
-                "linear-gradient(to right, transparent, black 8%, black 92%, transparent)",
-            }}
-          >
-            <div className="flex animate-marquee whitespace-nowrap hover:[animation-play-state:paused]">
-              {[...logos, ...logos, ...logos].map((logo, i) => (
-                <div
-                  key={i}
-                  className="inline-flex items-center justify-center mx-9 shrink-0"
-                  style={{ height: "40px" }}
-                >
-                  <img
-                    src={logo.src}
-                    alt={logo.alt}
-                    className="h-full w-auto object-contain transition-opacity duration-300 hover:opacity-90"
-                    style={{ opacity: 0.5, filter: "grayscale(25%)" }}
-                    loading="lazy"
-                  />
-                </div>
-              ))}
-            </div>
+          <div className="w-full mt-10">
+            <Logos3 heading="Nos acompañan" logos={logos} />
           </div>
         </div>
       </ScrollExpandMedia>
