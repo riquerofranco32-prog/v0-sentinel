@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import { Timeline } from "@/components/ui/timeline";
 
 const logros = [
   { bold: "Ganadores", rest: "Premios ILAN 2025 — viaje a Israel." },
@@ -17,6 +18,18 @@ const logros = [
   { bold: "Seleccionados", rest: "Emprelatam y Draper House Americas." },
   { bold: "Finalistas", rest: "Impact Startup Competition Perú 2026 — Scale." },
 ];
+
+const timelineData = logros.map((l) => ({
+  title: l.bold,
+  content: (
+    <p
+      className="text-sm md:text-base leading-relaxed"
+      style={{ color: "rgba(240,234,216,0.55)", fontWeight: 300 }}
+    >
+      {l.rest}
+    </p>
+  ),
+}));
 
 export function Awards() {
   const [isVisible, setIsVisible] = useState(false);
@@ -60,7 +73,6 @@ export function Awards() {
           onLoad={() => setImageLoaded(true)}
         />
 
-        {/* Gradientes sobre la foto */}
         <div
           className="absolute inset-0"
           style={{
@@ -76,7 +88,6 @@ export function Awards() {
           }}
         />
 
-        {/* Label flotante sobre la foto */}
         <div
           className="absolute bottom-8 left-1/2 -translate-x-1/2 text-center"
           style={{
@@ -115,150 +126,14 @@ export function Awards() {
         </div>
       </div>
 
-      {/* ── Lista de logros ── */}
-      <div
-        className="relative mx-auto px-6"
-        style={{ maxWidth: "880px", paddingTop: "48px", paddingBottom: "88px" }}
-      >
-        {/* Línea de tiempo vertical */}
-        <div
-          className="absolute left-6 md:left-1/2 top-0 bottom-0"
-          style={{
-            width: "0.5px",
-            background:
-              "linear-gradient(to bottom, rgba(148,241,190,0.4) 0%, rgba(148,241,190,0.05) 100%)",
-            transform: "translateX(-50%)",
-            pointerEvents: "none",
-          }}
-        />
-
-        <div className="flex flex-col gap-0">
-          {logros.map((l, i) => {
-            const isEven = i % 2 === 0;
-            return (
-              <div
-                key={i}
-                className="relative flex items-center gap-0"
-                style={{
-                  opacity: isVisible ? 1 : 0,
-                  transform: isVisible ? "translateY(0)" : `translateY(16px)`,
-                  transition: `opacity 600ms ${200 + i * 70}ms, transform 600ms ${200 + i * 70}ms`,
-                  justifyContent: "center",
-                }}
-              >
-                {/* ── Desktop: alternating layout ── */}
-                <div
-                  className="hidden md:grid w-full"
-                  style={{ gridTemplateColumns: "1fr 48px 1fr" }}
-                >
-                  {/* Left */}
-                  <div
-                    className="flex justify-end pr-6 py-4"
-                    style={{
-                      opacity: isEven ? 1 : 0.15,
-                      pointerEvents: isEven ? "auto" : "none",
-                    }}
-                  >
-                    {isEven && (
-                      <LogroCard
-                        bold={l.bold}
-                        rest={l.rest}
-                        align="right"
-                        index={i}
-                      />
-                    )}
-                  </div>
-
-                  {/* Center dot */}
-                  <div className="flex items-center justify-center relative">
-                    <div
-                      style={{
-                        width: "8px",
-                        height: "8px",
-                        borderRadius: "50%",
-                        background: isVisible
-                          ? "#94f1be"
-                          : "rgba(148,241,190,0.2)",
-                        border: "0.5px solid rgba(148,241,190,0.5)",
-                        boxShadow: isVisible
-                          ? "0 0 12px rgba(148,241,190,0.4)"
-                          : "none",
-                        transition: `all 400ms ${300 + i * 70}ms`,
-                        flexShrink: 0,
-                      }}
-                    />
-                  </div>
-
-                  {/* Right */}
-                  <div
-                    className="flex justify-start pl-6 py-4"
-                    style={{
-                      opacity: !isEven ? 1 : 0.15,
-                      pointerEvents: !isEven ? "auto" : "none",
-                    }}
-                  >
-                    {!isEven && (
-                      <LogroCard
-                        bold={l.bold}
-                        rest={l.rest}
-                        align="left"
-                        index={i}
-                      />
-                    )}
-                  </div>
-                </div>
-
-                {/* ── Mobile: single column ── */}
-                <div className="flex md:hidden items-start gap-4 w-full py-3 pl-8">
-                  <div
-                    className="absolute left-6 top-1/2 -translate-y-1/2"
-                    style={{
-                      width: "6px",
-                      height: "6px",
-                      borderRadius: "50%",
-                      background: "#94f1be",
-                      border: "0.5px solid rgba(148,241,190,0.5)",
-                      flexShrink: 0,
-                    }}
-                  />
-                  <div>
-                    <span
-                      style={{
-                        fontFamily: "var(--font-heading)",
-                        fontWeight: 700,
-                        fontSize: "13px",
-                        color: "rgba(240,234,216,0.95)",
-                        display: "block",
-                      }}
-                    >
-                      {l.bold}
-                    </span>
-                    <span
-                      style={{
-                        fontFamily: "var(--font-sans)",
-                        fontWeight: 300,
-                        fontSize: "13px",
-                        color: "rgba(240,234,216,0.5)",
-                        lineHeight: 1.5,
-                      }}
-                    >
-                      {l.rest}
-                    </span>
-                  </div>
-                </div>
-              </div>
-            );
-          })}
-        </div>
+      {/* ── Timeline de logros ── */}
+      <div className="relative py-12">
+        <Timeline data={timelineData} />
 
         {/* Bottom counter */}
         <div
-          className="flex justify-center gap-12 mt-16 pt-12"
-          style={{
-            borderTop: "0.5px solid rgba(240,234,216,0.07)",
-            opacity: isVisible ? 1 : 0,
-            transition: "opacity 800ms 900ms",
-          }}
+          className="flex justify-center gap-12 mt-4 pt-12 max-w-4xl mx-auto"
+          style={{ borderTop: "0.5px solid rgba(240,234,216,0.07)" }}
         >
           {[
             { num: "9", label: "reconocimientos" },
@@ -295,64 +170,5 @@ export function Awards() {
         </div>
       </div>
     </section>
-  );
-}
-
-// ── Subcomponente tarjeta ──────────────────────────────────────────────────────
-function LogroCard({
-  bold,
-  rest,
-  align,
-  index,
-}: {
-  bold: string;
-  rest: string;
-  align: "left" | "right";
-  index: number;
-}) {
-  const [hovered, setHovered] = useState(false);
-
-  return (
-    <div
-      className="max-w-xs"
-      style={{
-        padding: "12px 16px",
-        border: `0.5px solid ${hovered ? "rgba(148,241,190,0.2)" : "rgba(240,234,216,0.06)"}`,
-        borderRadius: "2px",
-        background: hovered ? "rgba(148,241,190,0.03)" : "transparent",
-        transition: "all 0.25s ease",
-        textAlign: align,
-        cursor: "default",
-      }}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-    >
-      <span
-        style={{
-          fontFamily: "var(--font-heading)",
-          fontWeight: 700,
-          fontSize: "14px",
-          color: hovered ? "#94f1be" : "rgba(240,234,216,0.9)",
-          display: "block",
-          transition: "color 0.25s",
-          lineHeight: 1.3,
-        }}
-      >
-        {bold}
-      </span>
-      <span
-        style={{
-          fontFamily: "var(--font-sans)",
-          fontWeight: 300,
-          fontSize: "13px",
-          color: "rgba(240,234,216,0.5)",
-          lineHeight: 1.5,
-          display: "block",
-          marginTop: "2px",
-        }}
-      >
-        {rest}
-      </span>
-    </div>
   );
 }
