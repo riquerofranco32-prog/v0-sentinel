@@ -1,41 +1,40 @@
-@import 'tailwindcss';
-@import 'tw-animate-css';
-@import 'shadcn/tailwind.css';
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
 
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --background: #151613;
-  --foreground: #FFFACA;
-  --card: #1a1c18;
-  --card-foreground: #FFFACA;
-  --popover: #1a1c18;
-  --popover-foreground: #FFFACA;
-  --primary: #004f39;
-  --primary-foreground: #FFFACA;
-  --secondary: #1a1c18;
-  --secondary-foreground: #FFFACA;
-  --muted: #1a1c18;
-  --muted-foreground: #FFFACA99;
-  --accent: #004f39;
-  --accent-foreground: #FFFACA;
+  --background: #0c0b09;
+  --foreground: #f0ead8;
+  --card: #131210;
+  --card-foreground: #f0ead8;
+  --popover: #131210;
+  --popover-foreground: #f0ead8;
+  --primary: #94f1be;
+  --primary-foreground: #0c0b09;
+  --secondary: #16150f;
+  --secondary-foreground: #f0ead8;
+  --muted: #16150f;
+  --muted-foreground: rgba(240, 234, 216, 0.45);
+  --accent: #94f1be;
+  --accent-foreground: #0c0b09;
   --destructive: #ef4444;
-  --destructive-foreground: #FFFACA;
-  --border: #004f39;
-  --input: #004f39;
-  --ring: #004f39;
-  --chart-1: #004f39;
-  --chart-2: #006b4e;
-  --chart-3: #008763;
-  --chart-4: #00a378;
-  --chart-5: #00bf8d;
-  --radius: 0.75rem;
+  --destructive-foreground: #f0ead8;
+  --border: rgba(240, 234, 216, 0.08);
+  --input: rgba(240, 234, 216, 0.08);
+  --ring: rgba(148, 241, 190, 0.4);
+  --chart-1: #94f1be;
+  --chart-2: #6dd9a0;
+  --chart-3: #4bc182;
+  --chart-4: #2fa868;
+  --chart-5: #178f52;
+  --radius: 0.375rem;
 }
 
 @theme inline {
-  --font-sans: var(--font-sans), 'DM Mono', monospace;
-  --font-heading: var(--font-heading), 'Bebas Neue', system-ui, sans-serif;
-  --font-mono: 'DM Mono', monospace;
+  --font-sans: var(--font-sans), "Inter", sans-serif;
+  --font-heading: var(--font-heading), "Jura", sans-serif;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -64,14 +63,6 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
-  --color-sidebar: var(--sidebar);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-ring: var(--sidebar-ring);
 }
 
 @layer base {
@@ -83,7 +74,7 @@
   }
 }
 
-/* Custom animations */
+/* Marquee */
 @keyframes marquee {
   0% {
     transform: translateX(0);
@@ -97,7 +88,6 @@
   animation: marquee 30s linear infinite;
 }
 
-/* Hide scrollbar */
 .scrollbar-hide {
   -ms-overflow-style: none;
   scrollbar-width: none;
@@ -107,31 +97,10 @@
   display: none;
 }
 
-/* Smooth scroll */
 html {
   scroll-behavior: smooth;
 }
 
-/* Letter falling animation */
-@keyframes letterFall {
-  0% {
-    opacity: 0;
-    transform: translateY(-100%);
-  }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.animate-letter-fall {
-  animation: letterFall 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-}
-
-/* Fade in on scroll animation */
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -147,9 +116,9 @@ html {
   animation: fadeInUp 0.6s ease-out forwards;
 }
 
-/* Pulse animation for alerts */
 @keyframes pulse-slow {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 1;
   }
   50% {
@@ -161,45 +130,13 @@ html {
   animation: pulse-slow 2s ease-in-out infinite;
 }
 
-/* Hero wordmark animation */
-@keyframes heroFadeIn {
-  0% {
-    opacity: 0;
-    transform: scale(0.97);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-.animate-hero-fade-in {
-  animation: heroFadeIn 1.4s ease-out forwards;
-}
-
-/* Scroll indicator animation */
-@keyframes scrollIndicator {
-  0%, 100% {
-    transform: scaleY(0.3);
-    opacity: 0.3;
-  }
-  50% {
-    transform: scaleY(1);
-    opacity: 1;
-  }
-}
-
-.animate-scroll-indicator {
-  animation: scrollIndicator 2s ease-in-out infinite;
-  transform-origin: top;
-}
-
-/* Card hover effect */
 .card-hover {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .card-hover:hover {
   transform: translateY(-4px);
-  box-shadow: 0 10px 40px -10px rgba(0, 79, 57, 0.3);
+  box-shadow: 0 10px 40px -10px rgba(148, 241, 190, 0.15);
 }

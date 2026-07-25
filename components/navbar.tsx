@@ -50,7 +50,7 @@ export function Navbar() {
                 href={link.href}
                 className="text-[13px] font-light transition-colors"
                 style={{
-                  fontFamily: "'Inter', sans-serif",
+                  fontFamily: "var(--font-sans)",
                   color: "rgba(240,234,216,0.45)",
                 }}
                 onMouseEnter={(e) =>
@@ -73,7 +73,7 @@ export function Navbar() {
               rel="noopener noreferrer"
               className="text-[12px] font-medium px-5 py-2 rounded-sm border transition-all"
               style={{
-                fontFamily: "'Inter', sans-serif",
+                fontFamily: "var(--font-sans)",
                 borderColor: "rgba(240,234,216,0.2)",
                 color: "rgba(240,234,216,0.8)",
                 letterSpacing: "0.06em",
@@ -115,7 +115,7 @@ export function Navbar() {
               href={link.href}
               className="block text-[13px] font-light"
               style={{
-                fontFamily: "'Inter', sans-serif",
+                fontFamily: "var(--font-sans)",
                 color: "rgba(240,234,216,0.55)",
               }}
               onClick={() => setIsMobileMenuOpen(false)}
@@ -129,7 +129,7 @@ export function Navbar() {
             rel="noopener noreferrer"
             className="block text-center text-[12px] font-medium px-5 py-2.5 border rounded-sm"
             style={{
-              fontFamily: "'Inter', sans-serif",
+              fontFamily: "var(--font-sans)",
               borderColor: "rgba(240,234,216,0.2)",
               color: "rgba(240,234,216,0.8)",
               letterSpacing: "0.06em",

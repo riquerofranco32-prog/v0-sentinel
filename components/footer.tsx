@@ -1,7 +1,7 @@
-"use client"
+"use client";
 
-import { Mail, MapPin } from "lucide-react"
-import Image from "next/image"
+import { Mail, MapPin } from "lucide-react";
+import Image from "next/image";
 
 const footerLinks = {
   Producto: [
@@ -16,7 +16,7 @@ const footerLinks = {
     { label: "Contacto", href: "#contacto" },
     { label: "FAQ", href: "#faq" },
   ],
-}
+};
 
 const socialLinks = [
   {
@@ -37,7 +37,7 @@ const socialLinks = [
       </svg>
     ),
   },
-]
+];
 
 export function Footer() {
   return (
@@ -49,7 +49,10 @@ export function Footer() {
       {/* Top border gradient */}
       <div
         className="absolute top-0 left-0 right-0 h-px"
-        style={{ background: "linear-gradient(to right, transparent, rgba(74,222,128,0.3), rgba(251,146,60,0.3), transparent)" }}
+        style={{
+          background:
+            "linear-gradient(to right, transparent, rgba(148,241,190,0.35), transparent)",
+        }}
       />
 
       {/* Foto de fondo */}
@@ -66,14 +69,16 @@ export function Footer() {
         <div
           className="absolute inset-0"
           style={{
-            background: "linear-gradient(to bottom, rgba(7,8,6,0.85) 0%, rgba(7,8,6,0.3) 40%, transparent 70%)",
+            background:
+              "linear-gradient(to bottom, rgba(7,8,6,0.85) 0%, rgba(7,8,6,0.3) 40%, transparent 70%)",
           }}
         />
         {/* Degradado inferior */}
         <div
           className="absolute inset-0"
           style={{
-            background: "linear-gradient(to top, rgba(7,8,6,0.9) 0%, rgba(7,8,6,0.4) 30%, transparent 60%)",
+            background:
+              "linear-gradient(to top, rgba(7,8,6,0.9) 0%, rgba(7,8,6,0.4) 30%, transparent 60%)",
           }}
         />
       </div>
@@ -82,7 +87,7 @@ export function Footer() {
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden select-none">
         <span
           style={{
-            fontFamily: "'Syne', sans-serif",
+            fontFamily: "var(--font-heading)",
             fontWeight: 800,
             fontSize: "18vw",
             color: "rgba(240,234,216,0.02)",
@@ -96,10 +101,8 @@ export function Footer() {
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-10 pt-16 pb-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 lg:gap-8 mb-14">
-
           {/* Brand */}
           <div className="lg:col-span-2">
-
             {/* Logo PNG con fondo transparente */}
             <div className="mb-5">
               <Image
@@ -114,7 +117,11 @@ export function Footer() {
 
             <p
               className="text-[13px] leading-relaxed mb-7 max-w-xs"
-              style={{ fontFamily: "'Inter', sans-serif", fontWeight: 300, color: "rgba(240,234,216,0.4)" }}
+              style={{
+                fontFamily: "var(--font-sans)",
+                fontWeight: 300,
+                color: "rgba(240,234,216,0.4)",
+              }}
             >
               Tecnología aérea e inteligencia artificial para la detección
               temprana de incendios y el monitoreo ambiental.
@@ -126,10 +133,17 @@ export function Footer() {
                 { icon: MapPin, text: "San Rafael, Mendoza — Argentina" },
               ].map((item) => (
                 <div key={item.text} className="flex items-center gap-2.5">
-                  <item.icon className="w-3.5 h-3.5 flex-shrink-0" style={{ color: "#4ade80", opacity: 0.7 }} />
+                  <item.icon
+                    className="w-3.5 h-3.5 flex-shrink-0"
+                    style={{ color: "#94f1be", opacity: 0.7 }}
+                  />
                   <span
                     className="text-[12px]"
-                    style={{ fontFamily: "'Inter', sans-serif", fontWeight: 300, color: "rgba(240,234,216,0.45)" }}
+                    style={{
+                      fontFamily: "var(--font-sans)",
+                      fontWeight: 300,
+                      color: "rgba(240,234,216,0.45)",
+                    }}
                   >
                     {item.text}
                   </span>
@@ -152,14 +166,14 @@ export function Footer() {
                     color: "rgba(240,234,216,0.4)",
                   }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.borderColor = "rgba(74,222,128,0.4)"
-                    e.currentTarget.style.color = "#4ade80"
-                    e.currentTarget.style.background = "rgba(74,222,128,0.08)"
+                    e.currentTarget.style.borderColor = "rgba(148,241,190,0.4)";
+                    e.currentTarget.style.color = "#94f1be";
+                    e.currentTarget.style.background = "rgba(148,241,190,0.08)";
                   }}
                   onMouseLeave={(e) => {
-                    e.currentTarget.style.borderColor = "rgba(240,234,216,0.1)"
-                    e.currentTarget.style.color = "rgba(240,234,216,0.4)"
-                    e.currentTarget.style.background = "rgba(240,234,216,0.05)"
+                    e.currentTarget.style.borderColor = "rgba(240,234,216,0.1)";
+                    e.currentTarget.style.color = "rgba(240,234,216,0.4)";
+                    e.currentTarget.style.background = "rgba(240,234,216,0.05)";
                   }}
                 >
                   {s.icon}
@@ -173,7 +187,10 @@ export function Footer() {
             <div key={section}>
               <p
                 className="text-[11px] tracking-[0.2em] uppercase mb-5"
-                style={{ fontFamily: "'Inter', sans-serif", color: "rgba(240,234,216,0.25)" }}
+                style={{
+                  fontFamily: "var(--font-sans)",
+                  color: "rgba(240,234,216,0.25)",
+                }}
               >
                 {section}
               </p>
@@ -183,9 +200,17 @@ export function Footer() {
                     <a
                       href={link.href}
                       className="text-[13px] transition-colors duration-200"
-                      style={{ fontFamily: "'Inter', sans-serif", fontWeight: 300, color: "rgba(240,234,216,0.4)" }}
-                      onMouseEnter={(e) => (e.currentTarget.style.color = "rgba(240,234,216,0.8)")}
-                      onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(240,234,216,0.4)")}
+                      style={{
+                        fontFamily: "var(--font-sans)",
+                        fontWeight: 300,
+                        color: "rgba(240,234,216,0.4)",
+                      }}
+                      onMouseEnter={(e) =>
+                        (e.currentTarget.style.color = "rgba(240,234,216,0.8)")
+                      }
+                      onMouseLeave={(e) =>
+                        (e.currentTarget.style.color = "rgba(240,234,216,0.4)")
+                      }
                     >
                       {link.label}
                     </a>
@@ -203,7 +228,11 @@ export function Footer() {
         >
           <p
             className="text-[11px]"
-            style={{ fontFamily: "'Inter', sans-serif", fontWeight: 300, color: "rgba(240,234,216,0.25)" }}
+            style={{
+              fontFamily: "var(--font-sans)",
+              fontWeight: 300,
+              color: "rgba(240,234,216,0.25)",
+            }}
           >
             © 2025 Sentinel · Visioned and Crafted by Sentinel
           </p>
@@ -213,9 +242,17 @@ export function Footer() {
                 key={label}
                 href="#"
                 className="text-[11px] transition-colors duration-200"
-                style={{ fontFamily: "'Inter', sans-serif", fontWeight: 300, color: "rgba(240,234,216,0.25)" }}
-                onMouseEnter={(e) => (e.currentTarget.style.color = "rgba(240,234,216,0.55)")}
-                onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(240,234,216,0.25)")}
+                style={{
+                  fontFamily: "var(--font-sans)",
+                  fontWeight: 300,
+                  color: "rgba(240,234,216,0.25)",
+                }}
+                onMouseEnter={(e) =>
+                  (e.currentTarget.style.color = "rgba(240,234,216,0.55)")
+                }
+                onMouseLeave={(e) =>
+                  (e.currentTarget.style.color = "rgba(240,234,216,0.25)")
+                }
               >
                 {label}
               </a>
@@ -224,5 +261,5 @@ export function Footer() {
         </div>
       </div>
     </footer>
-  )
+  );
 }
