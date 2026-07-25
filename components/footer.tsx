@@ -1,12 +1,12 @@
 "use client";
 
-import { Mail, MapPin } from "lucide-react";
+import { Mail, MapPin, MessageCircle } from "lucide-react";
 import Image from "next/image";
 
 const footerLinks = {
   Producto: [
     { label: "Cómo funciona", href: "#servicios" },
-    { label: "Casos de uso", href: "#casos" },
+    { label: "Reconocimientos", href: "#noticias" },
   ],
   Empresa: [
     { label: "Nosotros", href: "#nosotros" },
@@ -37,6 +37,11 @@ const socialLinks = [
       </svg>
     ),
   },
+  {
+    href: "https://linktr.ee/sentinelarg",
+    label: "WhatsApp",
+    icon: <MessageCircle className="w-4 h-4" />,
+  },
 ];
 
 export function Footer() {
@@ -44,7 +49,7 @@ export function Footer() {
     <footer
       id="contacto"
       className="relative overflow-hidden"
-      style={{ background: "#070806" }}
+      style={{ background: "#0c0b09" }}
     >
       {/* Top border gradient */}
       <div
@@ -70,7 +75,7 @@ export function Footer() {
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(to bottom, rgba(7,8,6,0.85) 0%, rgba(7,8,6,0.3) 40%, transparent 70%)",
+              "linear-gradient(to bottom, rgba(12,11,9,0.85) 0%, rgba(12,11,9,0.3) 40%, transparent 70%)",
           }}
         />
         {/* Degradado inferior */}
@@ -78,7 +83,7 @@ export function Footer() {
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(to top, rgba(7,8,6,0.9) 0%, rgba(7,8,6,0.4) 30%, transparent 60%)",
+              "linear-gradient(to top, rgba(12,11,9,0.9) 0%, rgba(12,11,9,0.4) 30%, transparent 60%)",
           }}
         />
       </div>
@@ -128,27 +133,44 @@ export function Footer() {
             </p>
 
             <div className="space-y-2.5 mb-7">
-              {[
-                { icon: Mail, text: "sentinelproyecto@gmail.com" },
-                { icon: MapPin, text: "San Rafael, Mendoza — Argentina" },
-              ].map((item) => (
-                <div key={item.text} className="flex items-center gap-2.5">
-                  <item.icon
-                    className="w-3.5 h-3.5 flex-shrink-0"
-                    style={{ color: "#94f1be", opacity: 0.7 }}
-                  />
-                  <span
-                    className="text-[12px]"
-                    style={{
-                      fontFamily: "var(--font-sans)",
-                      fontWeight: 300,
-                      color: "rgba(240,234,216,0.45)",
-                    }}
-                  >
-                    {item.text}
-                  </span>
-                </div>
-              ))}
+              <a
+                href="mailto:sentinelproyecto@gmail.com"
+                className="flex items-center gap-2.5 w-fit transition-colors duration-200"
+                style={{ color: "rgba(240,234,216,0.45)" }}
+                onMouseEnter={(e) =>
+                  (e.currentTarget.style.color = "rgba(240,234,216,0.8)")
+                }
+                onMouseLeave={(e) =>
+                  (e.currentTarget.style.color = "rgba(240,234,216,0.45)")
+                }
+              >
+                <Mail
+                  className="w-3.5 h-3.5 flex-shrink-0"
+                  style={{ color: "#94f1be", opacity: 0.7 }}
+                />
+                <span
+                  className="text-[12px]"
+                  style={{ fontFamily: "var(--font-sans)", fontWeight: 300 }}
+                >
+                  sentinelproyecto@gmail.com
+                </span>
+              </a>
+              <div className="flex items-center gap-2.5">
+                <MapPin
+                  className="w-3.5 h-3.5 flex-shrink-0"
+                  style={{ color: "#94f1be", opacity: 0.7 }}
+                />
+                <span
+                  className="text-[12px]"
+                  style={{
+                    fontFamily: "var(--font-sans)",
+                    fontWeight: 300,
+                    color: "rgba(240,234,216,0.45)",
+                  }}
+                >
+                  San Rafael, Mendoza — Argentina
+                </span>
+              </div>
             </div>
 
             <div className="flex gap-3">
