@@ -15,10 +15,20 @@ const inter = Inter({
   variable: "--font-sans",
 });
 
+const title = "SENTINEL | Tecnología que protege tu territorio";
+const description =
+  "Tecnología aérea e inteligencia artificial para la detección temprana de incendios y el monitoreo ambiental.";
+
+const siteUrl = process.env.VERCEL_PROJECT_PRODUCTION_URL
+  ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+  : process.env.VERCEL_URL
+    ? `https://${process.env.VERCEL_URL}`
+    : "http://localhost:3000";
+
 export const metadata: Metadata = {
-  title: "SENTINEL | Tecnología que protege tu territorio",
-  description:
-    "Tecnología aérea e inteligencia artificial para la detección temprana de incendios y el monitoreo ambiental.",
+  metadataBase: new URL(siteUrl),
+  title,
+  description,
   keywords: [
     "drones",
     "incendios",
@@ -27,6 +37,18 @@ export const metadata: Metadata = {
     "Argentina",
     "detección temprana",
   ],
+  openGraph: {
+    title,
+    description,
+    siteName: "Sentinel Technologies",
+    locale: "es_AR",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title,
+    description,
+  },
 };
 
 export const viewport: Viewport = {

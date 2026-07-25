@@ -1,10 +1,14 @@
-"use client"
+"use client";
 
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 
 const logros = [
   { bold: "Ganadores", rest: "Premios ILAN 2025 — viaje a Israel." },
-  { bold: "Ganadores", rest: "JIJE 20 años — Universidad Nacional del Litoral." },
+  {
+    bold: "Ganadores",
+    rest: "JIJE 20 años — Universidad Nacional del Litoral.",
+  },
   { bold: "Ganadores", rest: "Premios Sadosky 2025 — CESSI." },
   { bold: "Ganadores", rest: "Usina Emprendedores — CAC." },
   { bold: "Ganadores", rest: "Prendete Pitch Day — CICE SV." },
@@ -12,21 +16,23 @@ const logros = [
   { bold: "Inversión", rest: "3.000 USD — Gobierno de Mendoza." },
   { bold: "Seleccionados", rest: "Emprelatam y Draper House Americas." },
   { bold: "Finalistas", rest: "Impact Startup Competition Perú 2026 — Scale." },
-]
+];
 
 export function Awards() {
-  const [isVisible, setIsVisible] = useState(false)
-  const [imageLoaded, setImageLoaded] = useState(false)
-  const sectionRef = useRef<HTMLElement>(null)
+  const [isVisible, setIsVisible] = useState(false);
+  const [imageLoaded, setImageLoaded] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) setIsVisible(true) },
-      { threshold: 0.05 }
-    )
-    if (sectionRef.current) observer.observe(sectionRef.current)
-    return () => observer.disconnect()
-  }, [])
+      ([entry]) => {
+        if (entry.isIntersecting) setIsVisible(true);
+      },
+      { threshold: 0.05 },
+    );
+    if (sectionRef.current) observer.observe(sectionRef.current);
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <section
@@ -36,17 +42,21 @@ export function Awards() {
       style={{ background: "#0c0b09" }}
     >
       {/* ── Foto de fondo completa ── */}
-      <div className="relative w-full overflow-hidden" style={{ height: "clamp(260px, 40vw, 520px)" }}>
-        <img
-          src="/logros.png"
+      <div
+        className="relative w-full overflow-hidden"
+        style={{ height: "clamp(260px, 40vw, 520px)" }}
+      >
+        <Image
+          src="/logros.jpg"
           alt="Sentinel Technologies en competencias y eventos"
-          className="w-full h-full object-cover transition-transform duration-[8000ms] ease-out"
+          fill
+          sizes="100vw"
+          className="object-cover transition-transform duration-[8000ms] ease-out"
           style={{
             objectPosition: "center 30%",
             transform: imageLoaded ? "scale(1.0)" : "scale(1.06)",
             filter: "grayscale(20%) brightness(0.75)",
           }}
-          loading="lazy"
           onLoad={() => setImageLoaded(true)}
         />
 
@@ -71,7 +81,9 @@ export function Awards() {
           className="absolute bottom-8 left-1/2 -translate-x-1/2 text-center"
           style={{
             opacity: isVisible ? 1 : 0,
-            transform: isVisible ? "translateX(-50%) translateY(0)" : "translateX(-50%) translateY(12px)",
+            transform: isVisible
+              ? "translateX(-50%) translateY(0)"
+              : "translateX(-50%) translateY(12px)",
             transition: "all 800ms 100ms",
           }}
         >
@@ -113,7 +125,8 @@ export function Awards() {
           className="absolute left-6 md:left-1/2 top-0 bottom-0"
           style={{
             width: "0.5px",
-            background: "linear-gradient(to bottom, rgba(148,241,190,0.4) 0%, rgba(148,241,190,0.05) 100%)",
+            background:
+              "linear-gradient(to bottom, rgba(148,241,190,0.4) 0%, rgba(148,241,190,0.05) 100%)",
             transform: "translateX(-50%)",
             pointerEvents: "none",
           }}
@@ -121,30 +134,38 @@ export function Awards() {
 
         <div className="flex flex-col gap-0">
           {logros.map((l, i) => {
-            const isEven = i % 2 === 0
+            const isEven = i % 2 === 0;
             return (
               <div
                 key={i}
                 className="relative flex items-center gap-0"
                 style={{
                   opacity: isVisible ? 1 : 0,
-                  transform: isVisible
-                    ? "translateY(0)"
-                    : `translateY(16px)`,
+                  transform: isVisible ? "translateY(0)" : `translateY(16px)`,
                   transition: `opacity 600ms ${200 + i * 70}ms, transform 600ms ${200 + i * 70}ms`,
                   justifyContent: "center",
                 }}
               >
                 {/* ── Desktop: alternating layout ── */}
-                <div className="hidden md:grid w-full" style={{ gridTemplateColumns: "1fr 48px 1fr" }}>
-
+                <div
+                  className="hidden md:grid w-full"
+                  style={{ gridTemplateColumns: "1fr 48px 1fr" }}
+                >
                   {/* Left */}
                   <div
                     className="flex justify-end pr-6 py-4"
-                    style={{ opacity: isEven ? 1 : 0.15, pointerEvents: isEven ? "auto" : "none" }}
+                    style={{
+                      opacity: isEven ? 1 : 0.15,
+                      pointerEvents: isEven ? "auto" : "none",
+                    }}
                   >
                     {isEven && (
-                      <LogroCard bold={l.bold} rest={l.rest} align="right" index={i} />
+                      <LogroCard
+                        bold={l.bold}
+                        rest={l.rest}
+                        align="right"
+                        index={i}
+                      />
                     )}
                   </div>
 
@@ -155,9 +176,13 @@ export function Awards() {
                         width: "8px",
                         height: "8px",
                         borderRadius: "50%",
-                        background: isVisible ? "#94f1be" : "rgba(148,241,190,0.2)",
+                        background: isVisible
+                          ? "#94f1be"
+                          : "rgba(148,241,190,0.2)",
                         border: "0.5px solid rgba(148,241,190,0.5)",
-                        boxShadow: isVisible ? "0 0 12px rgba(148,241,190,0.4)" : "none",
+                        boxShadow: isVisible
+                          ? "0 0 12px rgba(148,241,190,0.4)"
+                          : "none",
                         transition: `all 400ms ${300 + i * 70}ms`,
                         flexShrink: 0,
                       }}
@@ -167,10 +192,18 @@ export function Awards() {
                   {/* Right */}
                   <div
                     className="flex justify-start pl-6 py-4"
-                    style={{ opacity: !isEven ? 1 : 0.15, pointerEvents: !isEven ? "auto" : "none" }}
+                    style={{
+                      opacity: !isEven ? 1 : 0.15,
+                      pointerEvents: !isEven ? "auto" : "none",
+                    }}
                   >
                     {!isEven && (
-                      <LogroCard bold={l.bold} rest={l.rest} align="left" index={i} />
+                      <LogroCard
+                        bold={l.bold}
+                        rest={l.rest}
+                        align="left"
+                        index={i}
+                      />
                     )}
                   </div>
                 </div>
@@ -214,7 +247,7 @@ export function Awards() {
                   </div>
                 </div>
               </div>
-            )
+            );
           })}
         </div>
 
@@ -262,7 +295,7 @@ export function Awards() {
         </div>
       </div>
     </section>
-  )
+  );
 }
 
 // ── Subcomponente tarjeta ──────────────────────────────────────────────────────
@@ -272,12 +305,12 @@ function LogroCard({
   align,
   index,
 }: {
-  bold: string
-  rest: string
-  align: "left" | "right"
-  index: number
+  bold: string;
+  rest: string;
+  align: "left" | "right";
+  index: number;
 }) {
-  const [hovered, setHovered] = useState(false)
+  const [hovered, setHovered] = useState(false);
 
   return (
     <div
@@ -321,5 +354,5 @@ function LogroCard({
         {rest}
       </span>
     </div>
-  )
+  );
 }

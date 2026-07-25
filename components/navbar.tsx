@@ -1,7 +1,8 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import { Menu, X } from "lucide-react"
+import { useState, useEffect } from "react";
+import Image from "next/image";
+import { Menu, X } from "lucide-react";
 
 const navLinks = [
   { href: "#inicio", label: "Inicio" },
@@ -10,17 +11,17 @@ const navLinks = [
   { href: "#equipo", label: "Equipo" },
   { href: "#noticias", label: "Noticias" },
   { href: "#contacto", label: "Contacto" },
-]
+];
 
 export function Navbar() {
-  const [isScrolled, setIsScrolled] = useState(false)
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 50)
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+    const handleScroll = () => setIsScrolled(window.scrollY > 50);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <nav
@@ -32,12 +33,14 @@ export function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-10">
         <div className="flex items-center justify-between h-16 md:h-20">
-
           {/* Logo */}
           <a href="#inicio" className="flex items-center gap-3 group">
-            <img
+            <Image
               src="/logoo.png"
               alt="Sentinel Logo"
+              width={140}
+              height={32}
+              priority
               className="h-8 w-auto object-contain"
             />
           </a>
@@ -79,12 +82,12 @@ export function Navbar() {
                 letterSpacing: "0.06em",
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.borderColor = "rgba(240,234,216,0.5)"
-                e.currentTarget.style.color = "rgba(240,234,216,1)"
+                e.currentTarget.style.borderColor = "rgba(240,234,216,0.5)";
+                e.currentTarget.style.color = "rgba(240,234,216,1)";
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.borderColor = "rgba(240,234,216,0.2)"
-                e.currentTarget.style.color = "rgba(240,234,216,0.8)"
+                e.currentTarget.style.borderColor = "rgba(240,234,216,0.2)";
+                e.currentTarget.style.color = "rgba(240,234,216,0.8)";
               }}
             >
               Solicitar reunión
@@ -97,7 +100,11 @@ export function Navbar() {
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle menu"
           >
-            {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            {isMobileMenuOpen ? (
+              <X className="w-5 h-5" />
+            ) : (
+              <Menu className="w-5 h-5" />
+            )}
           </button>
         </div>
       </div>
@@ -140,5 +147,5 @@ export function Navbar() {
         </div>
       </div>
     </nav>
-  )
+  );
 }

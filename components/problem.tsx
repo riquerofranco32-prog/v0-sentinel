@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 
 function useCountUp(target: number, isVisible: boolean, duration = 1400) {
@@ -43,10 +44,13 @@ export function Problem() {
     <section ref={sectionRef} className="relative bg-[#0c0b09]">
       {/* Hero image */}
       <div className="relative h-[60vh] min-h-[400px] overflow-hidden">
-        <img
+        <Image
           src="/a3.jpg"
           alt="Bomberos enfrentando incendio forestal en la Patagonia"
-          className="w-full h-full object-cover transition-transform duration-[3000ms]"
+          fill
+          sizes="100vw"
+          priority
+          className="object-cover transition-transform duration-[3000ms]"
           style={{ transform: isVisible ? "scale(1.04)" : "scale(1)" }}
         />
 
@@ -302,10 +306,12 @@ export function Problem() {
                     transitionDelay: `${450 + i * 80}ms`,
                   }}
                 >
-                  <img
+                  <Image
                     src={src}
                     alt=""
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+                    fill
+                    sizes="(max-width: 1024px) 50vw, 25vw"
+                    className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
                 </div>

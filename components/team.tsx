@@ -1,7 +1,8 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { Linkedin } from "lucide-react"
+import { useState } from "react";
+import Image from "next/image";
+import { Linkedin } from "lucide-react";
 
 const team = [
   {
@@ -36,10 +37,10 @@ const team = [
     photo: "/GANAMOS.jpg",
     linkedin: "https://www.linkedin.com/in/martin-toledano-804a69264/",
   },
-]
+];
 
 export function Team() {
-  const [hovered, setHovered] = useState<number | null>(null)
+  const [hovered, setHovered] = useState<number | null>(null);
 
   return (
     <section
@@ -127,16 +128,16 @@ export function Team() {
                 className="relative overflow-hidden"
                 style={{ aspectRatio: "3/4" }}
               >
-                <img
+                <Image
                   src={member.photo}
                   alt={member.name}
-                  className="w-full h-full object-cover object-top transition-transform duration-700"
+                  fill
+                  sizes="(max-width: 1024px) 50vw, 25vw"
+                  className="object-cover object-top transition-transform duration-700"
                   style={{
-                    transform:
-                      hovered === i ? "scale(1.04)" : "scale(1.0)",
+                    transform: hovered === i ? "scale(1.04)" : "scale(1.0)",
                     filter: "grayscale(15%)",
                   }}
-                  loading="lazy"
                 />
                 {/* Gradient over photo */}
                 <div
@@ -230,10 +231,7 @@ export function Team() {
                     fontFamily: "var(--font-sans)",
                     fontSize: "11px",
                     fontWeight: 400,
-                    color:
-                      hovered === i
-                        ? "#94f1be"
-                        : "rgba(240,234,216,0.25)",
+                    color: hovered === i ? "#94f1be" : "rgba(240,234,216,0.25)",
                     textDecoration: "none",
                   }}
                   onClick={(e) => e.stopPropagation()}
@@ -247,5 +245,5 @@ export function Team() {
         </div>
       </div>
     </section>
-  )
+  );
 }
