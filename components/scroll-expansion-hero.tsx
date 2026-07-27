@@ -42,27 +42,43 @@ const ScrollExpandMedia = ({
 
   const sectionRef = useRef<HTMLDivElement | null>(null);
 
+  // ponytail: refs mirror the state below so wheel/touch handlers always read
+  // the latest value. Reading state directly from the closure let fast
+  // scroll bursts fire several wheel events before React re-registered the
+  // listener, so they all saw a stale mediaFullyExpanded=false and trapped
+  // the page mid-hero (repro'd on prod: scrollY stuck at 0 after 15+ scrolls).
+  const scrollProgressRef = useRef(0);
+  const mediaFullyExpandedRef = useRef(false);
+  const touchStartYRef = useRef(0);
+
   useEffect(() => {
     setScrollProgress(0);
     setShowContent(false);
     setMediaFullyExpanded(false);
+    scrollProgressRef.current = 0;
+    mediaFullyExpandedRef.current = false;
   }, [mediaType]);
 
   useEffect(() => {
     const handleWheel = (e: globalThis.WheelEvent) => {
+      const mediaFullyExpanded = mediaFullyExpandedRef.current;
+
       if (mediaFullyExpanded && e.deltaY < 0 && window.scrollY <= 5) {
+        mediaFullyExpandedRef.current = false;
         setMediaFullyExpanded(false);
         e.preventDefault();
       } else if (!mediaFullyExpanded) {
         e.preventDefault();
         const scrollDelta = e.deltaY * 0.0009;
         const newProgress = Math.min(
-          Math.max(scrollProgress + scrollDelta, 0),
+          Math.max(scrollProgressRef.current + scrollDelta, 0),
           1,
         );
+        scrollProgressRef.current = newProgress;
         setScrollProgress(newProgress);
 
         if (newProgress >= 1) {
+          mediaFullyExpandedRef.current = true;
           setMediaFullyExpanded(true);
           setShowContent(true);
         } else if (newProgress < 0.75) {
@@ -72,16 +88,20 @@ const ScrollExpandMedia = ({
     };
 
     const handleTouchStart = (e: globalThis.TouchEvent) => {
+      touchStartYRef.current = e.touches[0].clientY;
       setTouchStartY(e.touches[0].clientY);
     };
 
     const handleTouchMove = (e: globalThis.TouchEvent) => {
+      const touchStartY = touchStartYRef.current;
       if (!touchStartY) return;
 
+      const mediaFullyExpanded = mediaFullyExpandedRef.current;
       const touchY = e.touches[0].clientY;
       const deltaY = touchStartY - touchY;
 
       if (mediaFullyExpanded && deltaY < -20 && window.scrollY <= 5) {
+        mediaFullyExpandedRef.current = false;
         setMediaFullyExpanded(false);
         e.preventDefault();
       } else if (!mediaFullyExpanded) {
@@ -89,28 +109,32 @@ const ScrollExpandMedia = ({
         const scrollFactor = deltaY < 0 ? 0.008 : 0.005;
         const scrollDelta = deltaY * scrollFactor;
         const newProgress = Math.min(
-          Math.max(scrollProgress + scrollDelta, 0),
+          Math.max(scrollProgressRef.current + scrollDelta, 0),
           1,
         );
+        scrollProgressRef.current = newProgress;
         setScrollProgress(newProgress);
 
         if (newProgress >= 1) {
+          mediaFullyExpandedRef.current = true;
           setMediaFullyExpanded(true);
           setShowContent(true);
         } else if (newProgress < 0.75) {
           setShowContent(false);
         }
 
+        touchStartYRef.current = touchY;
         setTouchStartY(touchY);
       }
     };
 
     const handleTouchEnd = (): void => {
+      touchStartYRef.current = 0;
       setTouchStartY(0);
     };
 
     const handleScroll = (): void => {
-      if (!mediaFullyExpanded) {
+      if (!mediaFullyExpandedRef.current) {
         window.scrollTo(0, 0);
       }
     };
@@ -132,7 +156,7 @@ const ScrollExpandMedia = ({
       window.removeEventListener("touchmove", handleTouchMove);
       window.removeEventListener("touchend", handleTouchEnd);
     };
-  }, [scrollProgress, mediaFullyExpanded, touchStartY]);
+  }, []);
 
   useEffect(() => {
     const checkIfMobile = (): void => {

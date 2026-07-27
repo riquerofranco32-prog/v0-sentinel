@@ -36,20 +36,39 @@ const faqs = [
   },
 ];
 
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((faq) => ({
+    "@type": "Question",
+    name: faq.question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: faq.answer,
+    },
+  })),
+};
+
 export function FAQ() {
   return (
-    <FaqSectionWithCategories
-      title="Tenemos las respuestas que buscás"
-      items={faqs}
-      contactInfo={{
-        title: "¿Tenés otra pregunta?",
-        buttonText: "Hablar con el equipo",
-        onContact: () => {
-          document
-            .getElementById("contacto")
-            ?.scrollIntoView({ behavior: "smooth" });
-        },
-      }}
-    />
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
+      <FaqSectionWithCategories
+        title="Tenemos las respuestas que buscás"
+        items={faqs}
+        contactInfo={{
+          title: "¿Tenés otra pregunta?",
+          buttonText: "Hablar con el equipo",
+          onContact: () => {
+            document
+              .getElementById("contacto")
+              ?.scrollIntoView({ behavior: "smooth" });
+          },
+        }}
+      />
+    </>
   );
 }
