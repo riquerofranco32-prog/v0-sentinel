@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { ArrowRight } from "lucide-react";
+import { Globe } from "./ui/globe";
 
 export function CTA() {
   const [isVisible, setIsVisible] = useState(false);
@@ -33,20 +34,9 @@ export function CTA() {
         }}
       />
 
-      {/* Watermark */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden select-none">
-        <span
-          style={{
-            fontFamily: "var(--font-heading)",
-            fontWeight: 800,
-            fontSize: "22vw",
-            color: "rgba(240,234,216,0.025)",
-            letterSpacing: "0.05em",
-            whiteSpace: "nowrap",
-          }}
-        >
-          SENTINEL
-        </span>
+      {/* Globe */}
+      <div className="absolute inset-0 flex items-end justify-center pointer-events-none overflow-hidden select-none opacity-40 md:opacity-60">
+        <Globe className="!relative !inset-auto translate-y-1/3" />
       </div>
 
       <div className="relative z-10 max-w-4xl mx-auto px-6 lg:px-10 text-center">
