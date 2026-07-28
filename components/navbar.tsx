@@ -5,12 +5,12 @@ import Image from "next/image";
 import { Menu, X } from "lucide-react";
 
 const navLinks = [
-  { href: "#inicio", label: "Inicio" },
-  { href: "#nosotros", label: "Solución" },
-  { href: "#servicios", label: "Servicios" },
-  { href: "#equipo", label: "Equipo" },
-  { href: "#noticias", label: "Noticias" },
-  { href: "#contacto", label: "Contacto" },
+  { href: "/#inicio", label: "Inicio" },
+  { href: "/#nosotros", label: "Solución" },
+  { href: "/#servicios", label: "Servicios" },
+  { href: "/#equipo", label: "Equipo" },
+  { href: "/blog", label: "Blog" },
+  { href: "/#contacto", label: "Contacto" },
 ];
 
 export function Navbar() {
@@ -34,7 +34,7 @@ export function Navbar() {
       <div className="max-w-7xl mx-auto px-6 lg:px-10">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
-          <a href="#inicio" className="flex items-center gap-3 group">
+          <a href="/#inicio" className="flex items-center gap-3 group">
             <Image
               src="/logoo.png"
               alt="Sentinel Logo"

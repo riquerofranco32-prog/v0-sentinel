@@ -5,16 +5,17 @@ import Image from "next/image";
 
 const footerLinks = {
   Producto: [
-    { label: "Cómo funciona", href: "#servicios" },
-    { label: "Reconocimientos", href: "#noticias" },
+    { label: "Cómo funciona", href: "/#servicios" },
+    { label: "Reconocimientos", href: "/#noticias" },
   ],
   Empresa: [
-    { label: "Solución", href: "#nosotros" },
-    { label: "Equipo", href: "#equipo" },
+    { label: "Solución", href: "/#nosotros" },
+    { label: "Equipo", href: "/#equipo" },
   ],
   Soporte: [
-    { label: "Contacto", href: "#contacto" },
-    { label: "FAQ", href: "#faq" },
+    { label: "Blog", href: "/blog" },
+    { label: "Contacto", href: "/#contacto" },
+    { label: "FAQ", href: "/#faq" },
   ],
 };
 

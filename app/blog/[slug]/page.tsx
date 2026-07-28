@@ -1,0 +1,254 @@
+import type { Metadata } from "next";
+import Image from "next/image";
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import { ArrowLeft, ArrowRight } from "lucide-react";
+import { Navbar } from "@/components/navbar";
+import { Footer } from "@/components/footer";
+import { blogPosts, getBlogPost } from "@/lib/blog-posts";
+
+const siteUrl = "https://www.sentineltech.com.ar";
+
+export function generateStaticParams() {
+  return blogPosts.map((post) => ({ slug: post.slug }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const post = getBlogPost(slug);
+  if (!post) return {};
+
+  const url = `${siteUrl}/blog/${post.slug}`;
+  return {
+    title: post.title,
+    description: post.excerpt,
+    keywords: post.keywords,
+    alternates: { canonical: url },
+    openGraph: {
+      title: post.title,
+      description: post.excerpt,
+      url,
+      type: "article",
+      publishedTime: post.publishedAt,
+      images: [{ url: `${siteUrl}${post.coverImage}` }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.excerpt,
+    },
+  };
+}
+
+export default async function BlogPostPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+  const post = getBlogPost(slug);
+  if (!post) notFound();
+
+  const url = `${siteUrl}/blog/${post.slug}`;
+  const articleJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: post.title,
+    description: post.excerpt,
+    image: `${siteUrl}${post.coverImage}`,
+    datePublished: post.publishedAt,
+    author: { "@type": "Organization", name: "Sentinel Technologies" },
+    publisher: { "@type": "Organization", name: "Sentinel Technologies" },
+    mainEntityOfPage: url,
+  };
+
+  const related = blogPosts.filter((p) => p.slug !== post.slug).slice(0, 2);
+
+  return (
+    <main className="min-h-screen bg-[#0c0b09]">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+      />
+      <Navbar />
+
+      <article className="relative pt-32 lg:pt-36">
+        <div
+          className="relative w-full"
+          style={{ height: "clamp(260px, 45vw, 480px)" }}
+        >
+          <Image
+            src={post.coverImage}
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover"
+            style={{ filter: "brightness(0.6)" }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0c0b09] via-[#0c0b09]/30 to-transparent" />
+        </div>
+
+        <div className="max-w-3xl mx-auto px-6 lg:px-10 -mt-16 relative z-10">
+          <Link
+            href="/blog"
+            className="inline-flex items-center gap-2 mb-6 text-[12px] transition-colors hover:text-[rgba(240,234,216,0.85)]"
+            style={{
+              fontFamily: "var(--font-sans)",
+              color: "rgba(240,234,216,0.45)",
+            }}
+          >
+            <ArrowLeft className="w-3.5 h-3.5" />
+            Volver al blog
+          </Link>
+
+          <p
+            className="text-[11px] mb-4"
+            style={{
+              fontFamily: "var(--font-sans)",
+              color: "rgba(240,234,216,0.3)",
+            }}
+          >
+            {new Date(post.publishedAt).toLocaleDateString("es-AR", {
+              day: "numeric",
+              month: "long",
+              year: "numeric",
+            })}
+          </p>
+
+          <h1
+            className="text-3xl sm:text-4xl lg:text-5xl mb-12"
+            style={{
+              fontFamily: "var(--font-heading)",
+              fontWeight: 800,
+              color: "rgba(240,234,216,0.95)",
+              lineHeight: 1.15,
+            }}
+          >
+            {post.title}
+          </h1>
+
+          <div className="space-y-10 pb-20">
+            {post.body.map((block, i) => (
+              <div key={i}>
+                {block.heading && (
+                  <h2
+                    className="text-xl sm:text-2xl mb-4"
+                    style={{
+                      fontFamily: "var(--font-heading)",
+                      fontWeight: 700,
+                      color: "rgba(240,234,216,0.9)",
+                    }}
+                  >
+                    {block.heading}
+                  </h2>
+                )}
+                {block.paragraphs.map((p, j) => (
+                  <p
+                    key={j}
+                    className="text-[15px] leading-relaxed mb-4"
+                    style={{
+                      fontFamily: "var(--font-sans)",
+                      fontWeight: 300,
+                      color: "rgba(240,234,216,0.6)",
+                    }}
+                  >
+                    {p}
+                  </p>
+                ))}
+              </div>
+            ))}
+          </div>
+
+          <div
+            className="rounded-lg p-8 mb-20 text-center"
+            style={{
+              background: "rgba(148,241,190,0.05)",
+              border: "0.5px solid rgba(148,241,190,0.2)",
+            }}
+          >
+            <p
+              className="text-lg mb-5"
+              style={{
+                fontFamily: "var(--font-heading)",
+                fontWeight: 700,
+                color: "rgba(240,234,216,0.92)",
+              }}
+            >
+              ¿Querés monitoreo continuo en tu territorio?
+            </p>
+            <a
+              href="https://linktr.ee/sentinelarg"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-7 py-3 rounded-sm text-[13px] font-medium transition-all hover:-translate-y-0.5"
+              style={{
+                fontFamily: "var(--font-sans)",
+                background: "rgba(148,241,190,0.12)",
+                border: "0.5px solid rgba(148,241,190,0.4)",
+                color: "#94f1be",
+              }}
+            >
+              Solicitar una reunión
+              <ArrowRight className="w-3.5 h-3.5" />
+            </a>
+          </div>
+
+          {related.length > 0 && (
+            <div className="pb-24">
+              <p
+                className="text-[11px] tracking-[0.25em] uppercase mb-6"
+                style={{
+                  fontFamily: "var(--font-sans)",
+                  color: "rgba(240,234,216,0.3)",
+                }}
+              >
+                Seguí leyendo
+              </p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {related.map((r) => (
+                  <Link
+                    key={r.slug}
+                    href={`/blog/${r.slug}`}
+                    className="group rounded-lg p-5 transition-all duration-300 hover:-translate-y-0.5"
+                    style={{
+                      background: "rgba(240,234,216,0.02)",
+                      border: "0.5px solid rgba(240,234,216,0.07)",
+                    }}
+                  >
+                    <p
+                      className="text-[14px] mb-2"
+                      style={{
+                        fontFamily: "var(--font-heading)",
+                        fontWeight: 700,
+                        color: "rgba(240,234,216,0.85)",
+                      }}
+                    >
+                      {r.title}
+                    </p>
+                    <p
+                      className="text-[12px] leading-relaxed"
+                      style={{
+                        fontFamily: "var(--font-sans)",
+                        fontWeight: 300,
+                        color: "rgba(240,234,216,0.4)",
+                      }}
+                    >
+                      {r.excerpt}
+                    </p>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+      </article>
+
+      <Footer />
+    </main>
+  );
+}
