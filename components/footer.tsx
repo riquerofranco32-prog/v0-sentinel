@@ -256,7 +256,8 @@ export function Footer() {
               color: "rgba(240,234,216,0.25)",
             }}
           >
-            © 2025 Sentinel · Visioned and Crafted by Sentinel
+            © {new Date().getFullYear()} Sentinel · Visioned and Crafted by
+            Sentinel
           </p>
         </div>
       </div>

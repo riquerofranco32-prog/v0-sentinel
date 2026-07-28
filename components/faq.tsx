@@ -7,7 +7,7 @@ const faqs = [
     question:
       "¿Cómo puede ayudar Sentinel en la detección de incendios forestales?",
     answer:
-      "Utilizamos drones con cámaras térmicas e IA a bordo que analizan en tiempo real imágenes para identificar focos de calor con 95% de precisión, enviando alertas automáticas geolocalizadas.",
+      "Utilizamos drones con cámaras térmicas e IA a bordo que analizan en tiempo real imágenes para identificar focos de calor con 98% de precisión, enviando alertas automáticas geolocalizadas.",
     category: "Producto",
   },
   {

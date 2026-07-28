@@ -9,28 +9,24 @@ const teamMembers = [
     image: "/GANAMOS-3.jpg",
     name: "Lautaro Silva",
     role: "CEO | Founder",
-    background: "Ingeniero Industrial",
     linkedin: "https://www.linkedin.com/in/lautaro-silva-0188781a2/",
   },
   {
     image: "/GANAMOS-2.jpg",
     name: "Franco Riquero",
     role: "CDO | Co-Founder",
-    background: "Tec. Elec | Ingeniero Industrial",
     linkedin: "https://www.linkedin.com/in/franco-riquero-117492355/",
   },
   {
     image: "/GANAMOS-1.jpg",
     name: "Alexis Ramundo",
     role: "CTO | Co-Founder",
-    background: "Tec. Elec | Ingeniero en Sistemas",
     linkedin: "https://www.linkedin.com/in/alexisramundo-dev/",
   },
   {
     image: "/GANAMOS.jpg",
     name: "Martín Toledano",
     role: "CFO | Co-Founder",
-    background: "Tec. Elec | Ingeniero Industrial",
     linkedin: "https://www.linkedin.com/in/martin-toledano-804a69264/",
   },
 ];
@@ -92,83 +88,42 @@ export function Team() {
 
           <Marquee className="[--gap:1.5rem] [--duration:32s]" pauseOnHover>
             {teamMembers.map((member) => (
-              <div
+              <a
                 key={member.name}
-                className="group flex w-60 shrink-0 flex-col overflow-hidden rounded-sm"
+                href={member.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative flex w-48 shrink-0 overflow-hidden rounded-lg"
                 style={{
+                  aspectRatio: "9/16",
                   border: "0.5px solid rgba(240,234,216,0.07)",
-                  background: "rgba(240,234,216,0.02)",
                 }}
               >
-                <div className="relative w-full" style={{ aspectRatio: "3/4" }}>
-                  <Image
-                    src={member.image}
-                    alt={member.name}
-                    fill
-                    sizes="240px"
-                    className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
-                    style={{ filter: "grayscale(15%)" }}
-                  />
-                  <div
-                    className="absolute inset-0"
-                    style={{
-                      background:
-                        "linear-gradient(to bottom, transparent 55%, rgba(12,11,9,0.95) 100%)",
-                    }}
-                  />
-                  <div
-                    className="absolute top-3 left-3 px-2 py-1 rounded-sm"
-                    style={{
-                      fontFamily: "var(--font-heading)",
-                      fontSize: "9px",
-                      fontWeight: 600,
-                      letterSpacing: "0.2em",
-                      textTransform: "uppercase",
-                      color: "#94f1be",
-                      background: "rgba(12,11,9,0.7)",
-                      border: "0.5px solid rgba(148,241,190,0.2)",
-                    }}
-                  >
-                    {member.role.split(" | ")[0]}
-                  </div>
-                </div>
-
-                <div className="flex flex-col gap-1 p-4">
-                  <h3
-                    style={{
-                      fontFamily: "var(--font-heading)",
-                      fontWeight: 700,
-                      fontSize: "15px",
-                      color: "rgba(240,234,216,0.95)",
-                    }}
-                  >
-                    {member.name}
-                  </h3>
-                  <p
-                    style={{
-                      fontFamily: "var(--font-sans)",
-                      fontSize: "11px",
-                      fontWeight: 300,
-                      color: "rgba(240,234,216,0.35)",
-                    }}
-                  >
-                    {member.background}
-                  </p>
-                  <a
-                    href={member.linkedin}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="mt-3 inline-flex items-center gap-1.5 text-[11px] transition-colors hover:text-[#94f1be]"
-                    style={{
-                      fontFamily: "var(--font-sans)",
-                      color: "rgba(240,234,216,0.4)",
-                    }}
+                {/* member.image is a pre-designed card (name, role, bio
+                    already baked in) — shown full, no HTML caption on top */}
+                <Image
+                  src={member.image}
+                  alt={`${member.name} — ${member.role}`}
+                  fill
+                  sizes="192px"
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                <div
+                  className="absolute inset-0 flex items-end justify-center gap-1.5 pb-3 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                  style={{
+                    background:
+                      "linear-gradient(to bottom, transparent 60%, rgba(12,11,9,0.85) 100%)",
+                  }}
+                >
+                  <span
+                    className="inline-flex items-center gap-1.5 text-[11px]"
+                    style={{ fontFamily: "var(--font-sans)", color: "#94f1be" }}
                   >
                     <Linkedin className="w-3 h-3" />
                     LinkedIn
-                  </a>
+                  </span>
                 </div>
-              </div>
+              </a>
             ))}
           </Marquee>
         </div>
