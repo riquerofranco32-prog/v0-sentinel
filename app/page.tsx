@@ -7,6 +7,7 @@ import { HowItWorks } from "@/components/how-it-works";
 import { Stats } from "@/components/stats";
 import { Team } from "@/components/team";
 import { Awards } from "@/components/awards";
+import { InstagramFeed } from "@/components/instagram";
 import { FAQ } from "@/components/faq";
 import { CTA } from "@/components/cta";
 import { Footer } from "@/components/footer";
@@ -26,6 +27,7 @@ export default function Home() {
       <Stats />
       <Team />
       <Awards />
+      <InstagramFeed />
       <FAQ />
       <CTA />
       <Footer />
