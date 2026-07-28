@@ -77,6 +77,35 @@ export function CTA() {
         </p>
 
         <div
+          className={`flex flex-wrap items-center justify-center gap-x-8 gap-y-3 mb-12 transition-all duration-700 delay-[250ms] ${isVisible ? "opacity-100" : "opacity-0"}`}
+        >
+          {[
+            "Sin inversión inicial (CAPEX)",
+            "Piloto de 4 a 8 semanas",
+            "Para municipios, brigadas y grandes propietarios",
+          ].map((item, i) => (
+            <div key={item} className="flex items-center gap-8">
+              {i > 0 && (
+                <div
+                  className="hidden sm:block w-px h-3"
+                  style={{ background: "rgba(240,234,216,0.15)" }}
+                />
+              )}
+              <span
+                className="text-[12px]"
+                style={{
+                  fontFamily: "var(--font-sans)",
+                  fontWeight: 400,
+                  color: "rgba(240,234,216,0.55)",
+                }}
+              >
+                {item}
+              </span>
+            </div>
+          ))}
+        </div>
+
+        <div
           className={`flex flex-col sm:flex-row gap-4 justify-center transition-all duration-700 delay-300 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
         >
           <a
