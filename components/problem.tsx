@@ -288,10 +288,10 @@ export function Problem() {
               }}
             >
               {[
-                "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/a2-sCSrBbHtMQFzFqp4eBBIvUs8dgnrEh.jpg",
-                "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/a-ctE13dVLBzJmNQfjnPbHhp9EhxtVRw.jpg",
-                "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/a3-oiXPvEaaqCu4FDqlu6UlcDIRhaaex6.jpg",
-                "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/a1-dL77IHIBwasbZgslhBmZWAQ2XQHJdk.jpg",
+                "/problem-a2.jpg",
+                "/problem-a1.jpg",
+                "/problem-a3.jpg",
+                "/problem-a4.jpg",
               ].map((src, i) => (
                 <div
                   key={i}

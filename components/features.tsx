@@ -126,7 +126,7 @@ export function Features() {
             }}
           >
             <Image
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/d-0eY1XCgdCNJr5FWwE0WfHb4VdN6lFe.jpg"
+              src="/features-d.jpg"
               alt="Sistema Sentinel"
               fill
               sizes="(max-width: 1024px) 100vw, 60vw"
@@ -183,7 +183,7 @@ export function Features() {
               }}
             >
               <Image
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/dd-5FM9OcJbCEu1IatjOnmcjtjnVYhTem.jpg"
+                src="/features-dd.jpg"
                 alt="Cobertura integral"
                 fill
                 sizes="(max-width: 1024px) 100vw, 40vw"
