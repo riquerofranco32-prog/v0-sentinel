@@ -42,30 +42,10 @@ const steps = [
   },
 ];
 
-function useCountUp(target: number, isVisible: boolean, duration = 1200) {
-  const [count, setCount] = useState(0);
-  useEffect(() => {
-    if (!isVisible) return;
-    let start = 0;
-    const step = target / (duration / 16);
-    const timer = setInterval(() => {
-      start += step;
-      if (start >= target) {
-        setCount(target);
-        clearInterval(timer);
-      } else setCount(Math.floor(start));
-    }, 16);
-    return () => clearInterval(timer);
-  }, [isVisible, target, duration]);
-  return count;
-}
-
 export function HowItWorks() {
   const [isVisible, setIsVisible] = useState(false);
   const [activeStep, setActiveStep] = useState(0);
   const sectionRef = useRef<HTMLElement>(null);
-  const responseCount = useCountUp(60, isVisible, 1400);
-  const precisionCount = useCountUp(98, isVisible, 1200);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -104,73 +84,33 @@ export function HowItWorks() {
       <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-10">
         {/* Header */}
         <div
-          className="flex flex-col lg:flex-row lg:items-end lg:justify-between mb-20 gap-6 transition-all duration-700"
+          className="mb-20 transition-all duration-700"
           style={{
             opacity: isVisible ? 1 : 0,
             transform: isVisible ? "translateY(0)" : "translateY(16px)",
           }}
         >
-          <div>
-            <p
-              className="text-[11px] tracking-[0.35em] uppercase mb-4"
-              style={{
-                fontFamily: "var(--font-sans)",
-                color: "rgba(240,234,216,0.25)",
-              }}
-            >
-              El proceso
-            </p>
-            <h2
-              style={{
-                fontFamily: "var(--font-heading)",
-                fontWeight: 800,
-                fontSize: "clamp(40px, 6vw, 64px)",
-                lineHeight: 0.95,
-                color: "rgba(240,234,216,0.92)",
-                letterSpacing: "-1px",
-              }}
-            >
-              ¿Cómo <span style={{ color: "#94f1be" }}>lo hacemos?</span>
-            </h2>
-          </div>
-
-          {/* KPI pills */}
-          <div className="flex gap-3 flex-wrap">
-            {[
-              { label: "Precisión IA", value: `${precisionCount}%` },
-              { label: "Respuesta más rápida", value: `+${responseCount}%` },
-            ].map((kpi) => (
-              <div
-                key={kpi.label}
-                className="flex flex-col items-center px-5 py-3 rounded-sm"
-                style={{
-                  background: "rgba(240,234,216,0.03)",
-                  border: "0.5px solid rgba(240,234,216,0.08)",
-                }}
-              >
-                <span
-                  style={{
-                    fontFamily: "var(--font-heading)",
-                    fontWeight: 800,
-                    fontSize: "28px",
-                    color: "#94f1be",
-                    lineHeight: 1,
-                  }}
-                >
-                  {kpi.value}
-                </span>
-                <span
-                  className="text-[10px] tracking-wider uppercase mt-1"
-                  style={{
-                    fontFamily: "var(--font-sans)",
-                    color: "rgba(240,234,216,0.3)",
-                  }}
-                >
-                  {kpi.label}
-                </span>
-              </div>
-            ))}
-          </div>
+          <p
+            className="text-[11px] tracking-[0.35em] uppercase mb-4"
+            style={{
+              fontFamily: "var(--font-sans)",
+              color: "rgba(240,234,216,0.25)",
+            }}
+          >
+            El proceso
+          </p>
+          <h2
+            style={{
+              fontFamily: "var(--font-heading)",
+              fontWeight: 800,
+              fontSize: "clamp(40px, 6vw, 64px)",
+              lineHeight: 0.95,
+              color: "rgba(240,234,216,0.92)",
+              letterSpacing: "-1px",
+            }}
+          >
+            ¿Cómo <span style={{ color: "#94f1be" }}>lo hacemos?</span>
+          </h2>
         </div>
 
         {/* Steps */}

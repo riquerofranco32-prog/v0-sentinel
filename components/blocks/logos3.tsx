@@ -35,9 +35,12 @@ export function Logos3({ heading = "Nos acompañan", logos }: Logos3Props) {
             loading="lazy"
             className={
               logo.className ??
-              "h-8 w-auto object-contain transition-opacity duration-300 hover:opacity-90"
+              "h-7 w-auto object-contain transition-opacity duration-300 hover:opacity-90"
             }
-            style={{ opacity: 0.55, filter: "grayscale(25%)" }}
+            style={{
+              opacity: 0.45,
+              filter: "grayscale(100%) brightness(0) invert(1)",
+            }}
           />
         ))}
       </div>

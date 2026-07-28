@@ -5,7 +5,7 @@ import ScrollExpandMedia from "./scroll-expansion-hero";
 import { Logos3 } from "./blocks/logos3";
 
 const logos = [
-  { id: "uba", description: "UBA", image: "/20220609002317_uba.png" },
+  { id: "uba", description: "UBA", image: "/uba-logo.png" },
   { id: "aiweken", description: "Aiweken", image: "/aiweken.png" },
   { id: "cice", description: "CICE", image: "/cice.png" },
   { id: "empretec", description: "Empretec", image: "/empretec.png" },

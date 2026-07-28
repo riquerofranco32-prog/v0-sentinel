@@ -6,89 +6,6 @@ import { WorldMap } from "./ui/world-map";
 
 const PATAGONIA = { lat: -41.1335, lng: -71.3103 }; // Bariloche
 
-const stats = [
-  { value: 8, unit: "min", label: "Detección temprana", prefix: "<" },
-  { value: 98, unit: "%", label: "Precisión IA", prefix: "" },
-  { value: 24, unit: "/7", label: "Monitoreo continuo", prefix: "" },
-];
-
-function useCountUp(target: number, isVisible: boolean, duration = 1200) {
-  const [count, setCount] = useState(0);
-  useEffect(() => {
-    if (!isVisible) return;
-    let start = 0;
-    const step = target / (duration / 16);
-    const timer = setInterval(() => {
-      start += step;
-      if (start >= target) {
-        setCount(target);
-        clearInterval(timer);
-      } else setCount(Math.floor(start));
-    }, 16);
-    return () => clearInterval(timer);
-  }, [isVisible, target, duration]);
-  return count;
-}
-
-function StatCard({
-  value,
-  unit,
-  label,
-  prefix,
-  isVisible,
-  delay,
-}: {
-  value: number;
-  unit: string;
-  label: string;
-  prefix: string;
-  isVisible: boolean;
-  delay: number;
-}) {
-  const count = useCountUp(value, isVisible);
-  return (
-    <div
-      className="flex flex-col items-center justify-center py-6 px-4 text-center relative overflow-hidden group"
-      style={{ background: "rgba(240,234,216,0.02)" }}
-    >
-      <div
-        className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-        style={{
-          background:
-            "linear-gradient(135deg, rgba(148,241,190,0.05), transparent)",
-        }}
-      />
-      <div
-        className="text-3xl sm:text-4xl font-bold leading-none mb-1.5 transition-all duration-700"
-        style={{
-          fontFamily: "var(--font-heading)",
-          color: "#94f1be",
-          opacity: isVisible ? 1 : 0,
-          transform: isVisible ? "translateY(0)" : "translateY(10px)",
-          transitionDelay: `${delay}ms`,
-        }}
-      >
-        {prefix}
-        {count}
-        <span className="text-lg" style={{ color: "rgba(148,241,190,0.55)" }}>
-          {unit}
-        </span>
-      </div>
-      <div
-        className="text-[10px] tracking-[0.2em] uppercase transition-all duration-700"
-        style={{
-          fontFamily: "var(--font-sans)",
-          color: "rgba(240,234,216,0.3)",
-          opacity: isVisible ? 1 : 0,
-          transitionDelay: `${delay + 100}ms`,
-        }}
-      >
-        {label}
-      </div>
-    </div>
-  );
-}
-
 export function Features() {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
@@ -194,31 +111,6 @@ export function Features() {
               </span>
             </p>
           </div>
-        </div>
-
-        {/* ── STATS ROW ── */}
-        <div
-          className="grid grid-cols-3 gap-px mb-10 transition-all duration-700"
-          style={{
-            border: "0.5px solid rgba(240,234,216,0.07)",
-            borderRadius: "6px",
-            overflow: "hidden",
-            opacity: isVisible ? 1 : 0,
-            transform: isVisible ? "translateY(0)" : "translateY(12px)",
-            transitionDelay: "300ms",
-          }}
-        >
-          {stats.map((s, i) => (
-            <div
-              key={i}
-              style={{
-                borderRight:
-                  i < 2 ? "0.5px solid rgba(240,234,216,0.07)" : "none",
-              }}
-            >
-              <StatCard {...s} isVisible={isVisible} delay={400 + i * 120} />
-            </div>
-          ))}
         </div>
 
         {/* ── MAIN GRID ── */}
