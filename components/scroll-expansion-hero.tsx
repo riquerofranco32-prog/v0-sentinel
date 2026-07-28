@@ -139,8 +139,25 @@ const ScrollExpandMedia = ({
       }
     };
 
+    // ponytail: nav anchor links (#servicios, #equipo...) change the hash
+    // and let the browser's own smooth-scroll carry the page there. That
+    // scroll fires many incremental "scroll" events starting near 0, which
+    // handleScroll was snapping back to 0 every time — nav links silently
+    // did nothing. Expand instantly on hashchange so handleScroll's guard
+    // (mediaFullyExpanded) is already true before the browser scroll starts.
+    const expandForHash = (): void => {
+      if (mediaFullyExpandedRef.current || !window.location.hash) return;
+      mediaFullyExpandedRef.current = true;
+      scrollProgressRef.current = 1;
+      setScrollProgress(1);
+      setMediaFullyExpanded(true);
+      setShowContent(true);
+    };
+    expandForHash();
+
     window.addEventListener("wheel", handleWheel, { passive: false });
     window.addEventListener("scroll", handleScroll);
+    window.addEventListener("hashchange", expandForHash);
     window.addEventListener("touchstart", handleTouchStart, {
       passive: false,
     });
@@ -152,6 +169,7 @@ const ScrollExpandMedia = ({
     return () => {
       window.removeEventListener("wheel", handleWheel);
       window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("hashchange", expandForHash);
       window.removeEventListener("touchstart", handleTouchStart);
       window.removeEventListener("touchmove", handleTouchMove);
       window.removeEventListener("touchend", handleTouchEnd);
