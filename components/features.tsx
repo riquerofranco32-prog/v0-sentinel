@@ -409,7 +409,7 @@ export function Features() {
 
         {/* ── COVERAGE MAP ── */}
         <div
-          className="mt-4 rounded-lg overflow-hidden relative transition-all duration-700"
+          className="mt-4 mx-auto max-w-xs sm:max-w-sm rounded-lg overflow-hidden relative transition-all duration-700"
           style={{
             border: "0.5px solid rgba(240,234,216,0.07)",
             opacity: isVisible ? 1 : 0,
