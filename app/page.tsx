@@ -8,6 +8,7 @@ import { Stats } from "@/components/stats";
 import { Team } from "@/components/team";
 import { Awards } from "@/components/awards";
 import { InstagramFeed } from "@/components/instagram";
+import { BlogTeaser } from "@/components/blog-teaser";
 import { FAQ } from "@/components/faq";
 import { CTA } from "@/components/cta";
 import { Footer } from "@/components/footer";
@@ -28,6 +29,7 @@ export default function Home() {
       <Team />
       <Awards />
       <InstagramFeed />
+      <BlogTeaser />
       <FAQ />
       <CTA />
       <Footer />

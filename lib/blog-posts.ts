@@ -14,7 +14,7 @@ export interface BlogPost {
 export const blogPosts: BlogPost[] = [
   {
     slug: "deteccion-temprana-incendios-forestales",
-    title: "Por qué el tiempo de detección lo es todo en un incendio forestal",
+    title: "El tiempo de detección lo es todo en un incendio forestal",
     excerpt:
       "Un incendio detectado en los primeros minutos se controla. Uno detectado horas después, arrasa. Así funciona la ventana de tiempo que decide todo.",
     coverImage: "/problem-a2.jpg",
@@ -50,8 +50,7 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: "monitoreo-continuo-campos-y-forestales",
-    title:
-      "De reaccionar a predecir: monitoreo territorial continuo para campos y forestales",
+    title: "De reaccionar a predecir: monitoreo forestal continuo",
     excerpt:
       "Tus campos, tu monte, tu hacienda llevan años de inversión. La diferencia entre perderlo todo y protegerlo está en cuándo sabés lo que está pasando.",
     coverImage: "/problem-a1.jpg",
@@ -88,8 +87,7 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: "prevencion-vs-reaccion-incendios-forestales",
-    title:
-      "Lo que el fuego no perdona: por qué la prevención le gana a la reacción",
+    title: "Lo que el fuego no perdona: prevención vs. reacción",
     excerpt:
       "El fuego no da segundas oportunidades. Lo que ya pasó, lo que no se ve, y lo que todavía se puede salvar si se actúa a tiempo.",
     coverImage: "/problem-a4.jpg",
