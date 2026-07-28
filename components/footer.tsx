@@ -9,7 +9,7 @@ const footerLinks = {
     { label: "Reconocimientos", href: "#noticias" },
   ],
   Empresa: [
-    { label: "Nosotros", href: "#nosotros" },
+    { label: "Solución", href: "#nosotros" },
     { label: "Equipo", href: "#equipo" },
   ],
   Soporte: [

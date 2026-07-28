@@ -1,13 +1,6 @@
 "use client";
 
-import {
-  useEffect,
-  useRef,
-  useState,
-  ReactNode,
-  TouchEvent,
-  WheelEvent,
-} from "react";
+import { useEffect, useRef, useState, ReactNode } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 
@@ -34,159 +27,49 @@ const ScrollExpandMedia = ({
   textBlend,
   children,
 }: ScrollExpandMediaProps) => {
-  const [scrollProgress, setScrollProgress] = useState<number>(0);
-  const [showContent, setShowContent] = useState<boolean>(false);
-  const [mediaFullyExpanded, setMediaFullyExpanded] = useState<boolean>(false);
-  const [touchStartY, setTouchStartY] = useState<number>(0);
-  const [isMobileState, setIsMobileState] = useState<boolean>(false);
-
-  const sectionRef = useRef<HTMLDivElement | null>(null);
-
-  // ponytail: refs mirror the state below so wheel/touch handlers always read
-  // the latest value. Reading state directly from the closure let fast
-  // scroll bursts fire several wheel events before React re-registered the
-  // listener, so they all saw a stale mediaFullyExpanded=false and trapped
-  // the page mid-hero (repro'd on prod: scrollY stuck at 0 after 15+ scrolls).
-  const scrollProgressRef = useRef(0);
-  const mediaFullyExpandedRef = useRef(false);
-  const touchStartYRef = useRef(0);
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const [isMobileState, setIsMobileState] = useState(false);
+  const pinZoneRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    setScrollProgress(0);
-    setShowContent(false);
-    setMediaFullyExpanded(false);
-    scrollProgressRef.current = 0;
-    mediaFullyExpandedRef.current = false;
-  }, [mediaType]);
-
-  useEffect(() => {
-    const handleWheel = (e: globalThis.WheelEvent) => {
-      const mediaFullyExpanded = mediaFullyExpandedRef.current;
-
-      if (mediaFullyExpanded && e.deltaY < 0 && window.scrollY <= 5) {
-        mediaFullyExpandedRef.current = false;
-        setMediaFullyExpanded(false);
-        e.preventDefault();
-      } else if (!mediaFullyExpanded) {
-        e.preventDefault();
-        const scrollDelta = e.deltaY * 0.0009;
-        const newProgress = Math.min(
-          Math.max(scrollProgressRef.current + scrollDelta, 0),
-          1,
-        );
-        scrollProgressRef.current = newProgress;
-        setScrollProgress(newProgress);
-
-        if (newProgress >= 1) {
-          mediaFullyExpandedRef.current = true;
-          setMediaFullyExpanded(true);
-          setShowContent(true);
-        } else if (newProgress < 0.75) {
-          setShowContent(false);
-        }
-      }
-    };
-
-    const handleTouchStart = (e: globalThis.TouchEvent) => {
-      touchStartYRef.current = e.touches[0].clientY;
-      setTouchStartY(e.touches[0].clientY);
-    };
-
-    const handleTouchMove = (e: globalThis.TouchEvent) => {
-      const touchStartY = touchStartYRef.current;
-      if (!touchStartY) return;
-
-      const mediaFullyExpanded = mediaFullyExpandedRef.current;
-      const touchY = e.touches[0].clientY;
-      const deltaY = touchStartY - touchY;
-
-      if (mediaFullyExpanded && deltaY < -20 && window.scrollY <= 5) {
-        mediaFullyExpandedRef.current = false;
-        setMediaFullyExpanded(false);
-        e.preventDefault();
-      } else if (!mediaFullyExpanded) {
-        e.preventDefault();
-        const scrollFactor = deltaY < 0 ? 0.008 : 0.005;
-        const scrollDelta = deltaY * scrollFactor;
-        const newProgress = Math.min(
-          Math.max(scrollProgressRef.current + scrollDelta, 0),
-          1,
-        );
-        scrollProgressRef.current = newProgress;
-        setScrollProgress(newProgress);
-
-        if (newProgress >= 1) {
-          mediaFullyExpandedRef.current = true;
-          setMediaFullyExpanded(true);
-          setShowContent(true);
-        } else if (newProgress < 0.75) {
-          setShowContent(false);
-        }
-
-        touchStartYRef.current = touchY;
-        setTouchStartY(touchY);
-      }
-    };
-
-    const handleTouchEnd = (): void => {
-      touchStartYRef.current = 0;
-      setTouchStartY(0);
-    };
-
-    const handleScroll = (): void => {
-      if (!mediaFullyExpandedRef.current) {
-        window.scrollTo(0, 0);
-      }
-    };
-
-    // ponytail: nav anchor links (#servicios, #equipo...) change the hash
-    // and let the browser's own smooth-scroll carry the page there. That
-    // scroll fires many incremental "scroll" events starting near 0, which
-    // handleScroll was snapping back to 0 every time — nav links silently
-    // did nothing. Expand instantly on hashchange so handleScroll's guard
-    // (mediaFullyExpanded) is already true before the browser scroll starts.
-    const expandForHash = (): void => {
-      if (mediaFullyExpandedRef.current || !window.location.hash) return;
-      mediaFullyExpandedRef.current = true;
-      scrollProgressRef.current = 1;
-      setScrollProgress(1);
-      setMediaFullyExpanded(true);
-      setShowContent(true);
-    };
-    expandForHash();
-
-    window.addEventListener("wheel", handleWheel, { passive: false });
-    window.addEventListener("scroll", handleScroll);
-    window.addEventListener("hashchange", expandForHash);
-    window.addEventListener("touchstart", handleTouchStart, {
-      passive: false,
-    });
-    window.addEventListener("touchmove", handleTouchMove, {
-      passive: false,
-    });
-    window.addEventListener("touchend", handleTouchEnd);
-
-    return () => {
-      window.removeEventListener("wheel", handleWheel);
-      window.removeEventListener("scroll", handleScroll);
-      window.removeEventListener("hashchange", expandForHash);
-      window.removeEventListener("touchstart", handleTouchStart);
-      window.removeEventListener("touchmove", handleTouchMove);
-      window.removeEventListener("touchend", handleTouchEnd);
-    };
-  }, []);
-
-  useEffect(() => {
-    const checkIfMobile = (): void => {
-      setIsMobileState(window.innerWidth < 768);
-    };
-
+    const checkIfMobile = (): void => setIsMobileState(window.innerWidth < 768);
     checkIfMobile();
     window.addEventListener("resize", checkIfMobile);
-
     return () => window.removeEventListener("resize", checkIfMobile);
   }, []);
 
+  // ponytail: driven by real window scroll (sticky element + scroll math)
+  // instead of intercepting wheel/touch with preventDefault. The previous
+  // version hijacked the wheel to fake a scroll, which fought trackpad
+  // momentum, keyboard scroll and anchor-link navigation, and felt "stuck"
+  // to real users. This never blocks native scrolling — it just reads it.
+  useEffect(() => {
+    let ticking = false;
+    const updateProgress = (): void => {
+      ticking = false;
+      const el = pinZoneRef.current;
+      if (!el) return;
+      const rect = el.getBoundingClientRect();
+      const scrollRange = rect.height - window.innerHeight;
+      const progress =
+        scrollRange > 0 ? Math.min(Math.max(-rect.top / scrollRange, 0), 1) : 0;
+      setScrollProgress(progress);
+    };
+    const onScroll = (): void => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(updateProgress);
+    };
+    updateProgress();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
+  }, []);
+
+  const showContent = scrollProgress >= 0.85;
   const mediaWidth = 300 + scrollProgress * (isMobileState ? 650 : 1250);
   const mediaHeight = 400 + scrollProgress * (isMobileState ? 200 : 400);
   const textTranslateX = scrollProgress * (isMobileState ? 180 : 150);
@@ -195,12 +78,9 @@ const ScrollExpandMedia = ({
   const restOfTitle = title ? title.split(" ").slice(1).join(" ") : "";
 
   return (
-    <div
-      ref={sectionRef}
-      className="transition-colors duration-700 ease-in-out overflow-x-hidden"
-    >
-      <section className="relative flex flex-col items-center justify-start min-h-[100dvh]">
-        <div className="relative w-full flex flex-col items-center min-h-[100dvh]">
+    <div className="relative">
+      <div ref={pinZoneRef} className="relative" style={{ height: "180vh" }}>
+        <div className="sticky top-0 h-[100dvh] overflow-hidden">
           <motion.div
             className="absolute inset-0 z-0 h-full"
             initial={{ opacity: 0 }}
@@ -218,8 +98,8 @@ const ScrollExpandMedia = ({
             <div className="absolute inset-0 bg-[#0c0b09]/50" />
           </motion.div>
 
-          <div className="container mx-auto flex flex-col items-center justify-start relative z-10">
-            <div className="flex flex-col items-center justify-center w-full h-[100dvh] relative">
+          <div className="container mx-auto flex flex-col items-center justify-center relative z-10 h-full">
+            <div className="flex flex-col items-center justify-center w-full h-full relative">
               <div
                 className="absolute z-0 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 transition-none rounded-2xl"
                 style={{
@@ -325,18 +205,18 @@ const ScrollExpandMedia = ({
                 </motion.h2>
               </div>
             </div>
-
-            <motion.section
-              className="flex flex-col w-full px-8 py-10 md:px-16 lg:py-20"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: showContent ? 1 : 0 }}
-              transition={{ duration: 0.7 }}
-            >
-              {children}
-            </motion.section>
           </div>
         </div>
-      </section>
+      </div>
+
+      <motion.section
+        className="relative z-10 flex flex-col w-full px-8 py-10 md:px-16 lg:py-20 bg-[#0c0b09]"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: showContent ? 1 : 0 }}
+        transition={{ duration: 0.7 }}
+      >
+        {children}
+      </motion.section>
     </div>
   );
 };
