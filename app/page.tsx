@@ -16,12 +16,14 @@ import { FAQ } from "@/components/faq";
 import { CTA } from "@/components/cta";
 import { Footer } from "@/components/footer";
 import { ScrollProgress } from "@/components/scroll-progress";
+import { SectionDots } from "@/components/ui/section-dots";
 import { WhatsAppButton } from "@/components/whatsapp-button";
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-[#0c0b09]">
       <ScrollProgress />
+      <SectionDots />
       <Navbar />
       <Hero />
       <Problem />
