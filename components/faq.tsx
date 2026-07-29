@@ -34,6 +34,13 @@ const faqs = [
       "Soporte 24/7 durante operaciones críticas, onboarding personalizado y actualizaciones continuas de los modelos de IA.",
     category: "Soporte",
   },
+  {
+    question:
+      "¿Los datos en vivo de la web son de la red de drones de Sentinel?",
+    answer:
+      "No, y queremos ser claros con eso: el índice de riesgo y el mapa de focos activos usan fuentes públicas (Open-Meteo y NASA FIRMS) a modo ilustrativo, para mostrar la misma clase de variables que nuestro sistema procesa. Los datos que genera la red propia de drones de un cliente no son públicos ni se muestran en la web.",
+    category: "Producto",
+  },
 ];
 
 const faqJsonLd = {
