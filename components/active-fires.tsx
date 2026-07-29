@@ -1,4 +1,4 @@
-import { WorldMap } from "@/components/ui/world-map";
+import { ArgentinaFireMap } from "@/components/ui/argentina-fire-map";
 
 // ponytail: whole-Argentina bounding box (west,south,east,north) — matches
 // the "Patagonia hasta todo el pais" coverage claim elsewhere on the site,
@@ -128,7 +128,9 @@ export async function ActiveFires() {
           className="rounded-lg overflow-hidden"
           style={{ border: "0.5px solid rgba(240,234,216,0.07)" }}
         >
-          <WorldMap points={sorted.map((f) => ({ lat: f.lat, lng: f.lng }))} />
+          <ArgentinaFireMap
+            points={sorted.map((f) => ({ lat: f.lat, lng: f.lng }))}
+          />
         </div>
 
         <p

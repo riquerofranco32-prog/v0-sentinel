@@ -1,8 +1,14 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import dynamic from "next/dynamic";
 import { ArrowRight } from "lucide-react";
-import { Globe } from "./ui/globe";
+
+// ponytail: cobe renders a WebGL globe — kept out of the initial bundle and
+// only mounted once this section is actually visible (see isVisible below).
+const Globe = dynamic(() => import("./ui/globe").then((m) => m.Globe), {
+  ssr: false,
+});
 
 export function CTA() {
   const [isVisible, setIsVisible] = useState(false);
@@ -36,7 +42,9 @@ export function CTA() {
 
       {/* Globe */}
       <div className="absolute inset-0 flex items-end justify-center pointer-events-none overflow-hidden select-none opacity-40 md:opacity-60">
-        <Globe className="!relative !inset-auto translate-y-1/3" />
+        {isVisible && (
+          <Globe className="!relative !inset-auto translate-y-1/3" />
+        )}
       </div>
 
       <div className="relative z-10 max-w-4xl mx-auto px-6 lg:px-10 text-center">
