@@ -4,6 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import { geoMercator, geoPath, geoCentroid, geoContains } from "d3-geo";
 import type { Feature, FeatureCollection, Geometry } from "geojson";
 import countriesGeoJson from "@/data/latam-countries.json";
+import { MapTooltip } from "@/components/ui/map-tooltip";
 
 export interface FirePoint {
   lat: number;
@@ -26,12 +27,14 @@ const countries = countriesGeoJson as FeatureCollection<
   { name: string }
 >;
 
+// ponytail: plain-language labels — "gente comun" reading a satellite feed
+// doesn't know what VIIRS confidence codes or MW of radiative power mean.
 const CONFIDENCE_LABEL: Record<string, string> = {
   l: "Baja",
-  n: "Nominal",
+  n: "Media",
   h: "Alta",
   low: "Baja",
-  nominal: "Nominal",
+  nominal: "Media",
   high: "Alta",
 };
 
@@ -40,7 +43,27 @@ function formatConfidence(c?: string) {
   return CONFIDENCE_LABEL[c.toLowerCase()] ?? c;
 }
 
-function formatDateTime(acqDate?: string, acqTime?: string) {
+function frpIntensity(frp?: number) {
+  if (frp === undefined) return undefined;
+  if (frp < 10) return "Foco chico";
+  if (frp < 50) return "Foco moderado";
+  if (frp < 150) return "Foco grande";
+  return "Foco muy intenso";
+}
+
+function hoursAgo(acqDate?: string, acqTime?: string) {
+  if (!acqDate || !acqTime) return undefined;
+  const hh = acqTime.padStart(4, "0").slice(0, 2);
+  const mm = acqTime.padStart(4, "0").slice(2);
+  const detected = new Date(`${acqDate}T${hh}:${mm}:00Z`);
+  if (Number.isNaN(detected.getTime())) return undefined;
+  const diffH = Math.round((Date.now() - detected.getTime()) / 36e5);
+  if (diffH <= 0) return "hace instantes";
+  if (diffH === 1) return "hace 1 hora";
+  return `hace ${diffH} horas`;
+}
+
+function formatDate(acqDate?: string, acqTime?: string) {
   if (!acqDate) return "—";
   const time =
     acqTime && acqTime.length >= 3
@@ -129,6 +152,7 @@ export function FireMap({ points = [], pointColor = "#f16b6b" }: FireMapProps) {
   }, [selectedFeature, selectedCountry]);
 
   const active = activePoint !== null ? visiblePoints[activePoint] : undefined;
+  const activePos = active ? project(active.lat, active.lng) : null;
 
   return (
     <div className="w-full">
@@ -147,10 +171,10 @@ export function FireMap({ points = [], pointColor = "#f16b6b" }: FireMapProps) {
               d={pathFor(feature)}
               fill={
                 feature.properties.name === selectedCountry
-                  ? "#f0ead810"
+                  ? "#f0ead812"
                   : "#f0ead808"
               }
-              stroke="rgba(240,234,216,0.18)"
+              stroke="rgba(240,234,216,0.2)"
               strokeWidth={0.75}
             />
           ))}
@@ -171,18 +195,39 @@ export function FireMap({ points = [], pointColor = "#f16b6b" }: FireMapProps) {
 
           {visiblePoints.map((point, i) => {
             const [x, y] = project(point.lat, point.lng);
+            const isActive = i === activePoint;
             return (
               <g
                 key={`fire-${i}`}
                 onClick={(e) => {
                   e.stopPropagation();
-                  setActivePoint(i === activePoint ? null : i);
+                  setActivePoint(isActive ? null : i);
                 }}
                 style={{ cursor: "pointer" }}
               >
                 {/* generous invisible hit target — the visible dot is tiny */}
-                <circle cx={x} cy={y} r={8} fill="transparent" />
+                <circle cx={x} cy={y} r={9} fill="transparent" />
                 <circle cx={x} cy={y} r={2.5} fill={pointColor} />
+                <circle
+                  cx={x}
+                  cy={y}
+                  r={2.5}
+                  fill="none"
+                  stroke={pointColor}
+                  strokeWidth={isActive ? 1.5 : 0}
+                  opacity={0.9}
+                >
+                  {isActive && (
+                    <animate
+                      attributeName="r"
+                      from={2.5}
+                      to={7}
+                      dur="0.6s"
+                      repeatCount="1"
+                      fill="freeze"
+                    />
+                  )}
+                </circle>
                 <circle cx={x} cy={y} r={2.5} fill={pointColor} opacity="0.5">
                   {!reducedMotion && (
                     <>
@@ -210,29 +255,43 @@ export function FireMap({ points = [], pointColor = "#f16b6b" }: FireMapProps) {
           })}
         </svg>
 
-        {active && (
-          <div
-            className="absolute top-3 right-3 rounded-md px-4 py-3 text-[11px] leading-relaxed max-w-[200px]"
-            style={{
-              fontFamily: "var(--font-sans)",
-              background: "rgba(12,11,9,0.92)",
-              border: "0.5px solid rgba(240,234,216,0.15)",
-              color: "rgba(240,234,216,0.8)",
-              backdropFilter: "blur(6px)",
-            }}
+        {active && activePos && (
+          <MapTooltip
+            xPct={(activePos[0] / WIDTH) * 100}
+            yPct={(activePos[1] / HEIGHT) * 100}
+            accentColor={pointColor}
           >
             <p
-              className="uppercase tracking-widest text-[9px] mb-2"
-              style={{ color: "#f16b6b" }}
+              className="uppercase tracking-widest text-[9px] mb-1.5"
+              style={{ color: pointColor }}
             >
               {active.country ?? "Foco detectado"}
             </p>
-            <p>Confianza: {formatConfidence(active.confidence)}</p>
-            {active.frp !== undefined && (
-              <p>Potencia radiativa: {active.frp.toFixed(1)} MW</p>
+            {frpIntensity(active.frp) && (
+              <p
+                className="text-[12px] mb-1"
+                style={{
+                  fontWeight: 600,
+                  color: "rgba(240,234,216,0.95)",
+                }}
+              >
+                {frpIntensity(active.frp)}
+                {active.frp !== undefined && (
+                  <span style={{ color: "rgba(240,234,216,0.4)" }}>
+                    {" "}
+                    · {active.frp.toFixed(0)} MW
+                  </span>
+                )}
+              </p>
             )}
-            <p>{formatDateTime(active.acqDate, active.acqTime)}</p>
-          </div>
+            <p>Certeza del dato: {formatConfidence(active.confidence)}</p>
+            <p>{formatDate(active.acqDate, active.acqTime)}</p>
+            {hoursAgo(active.acqDate, active.acqTime) && (
+              <p style={{ color: "rgba(240,234,216,0.45)" }}>
+                {hoursAgo(active.acqDate, active.acqTime)}
+              </p>
+            )}
+          </MapTooltip>
         )}
       </div>
 

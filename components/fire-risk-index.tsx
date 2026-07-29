@@ -1,6 +1,16 @@
 import { Wind, Droplets, Thermometer } from "lucide-react";
 import { PatagoniaRiskMap } from "@/components/ui/patagonia-risk-map";
 
+// ponytail: kept in sync with RISK_EXPLAIN in patagonia-risk-map.tsx —
+// duplicated rather than imported since that component is a client boundary
+// and re-exporting plain constants across it doesn't resolve reliably here.
+const RISK_EXPLAIN: Record<string, string> = {
+  Bajo: "Condiciones tranquilas, riesgo bajo de que un fuego se propague.",
+  Moderado: "Vigilar: condiciones que podrían favorecer un incendio.",
+  Alto: "Un incendio se propagaría rápido en estas condiciones.",
+  Extremo: "Alerta: condiciones muy peligrosas para incendios forestales.",
+};
+
 interface Location {
   name: string;
   province: string;
@@ -169,11 +179,15 @@ export async function FireRiskIndex() {
         >
           Índice estimado a partir de temperatura, humedad y viento en tiempo
           real — la misma clase de variables que alimenta nuestros modelos de
-          detección. Tocá un punto del mapa para ver el detalle.
+          detección.{" "}
+          <span style={{ color: "rgba(240,234,216,0.6)" }}>
+            {RISK_EXPLAIN[overall.label]}
+          </span>{" "}
+          Tocá un punto del mapa para ver el detalle de cada localidad.
         </p>
 
         <div
-          className="max-w-md mx-auto mb-10 rounded-lg overflow-hidden p-4"
+          className="max-w-md mx-auto mb-10 rounded-lg p-4"
           style={{ border: "0.5px solid rgba(240,234,216,0.07)" }}
         >
           <PatagoniaRiskMap points={points} />

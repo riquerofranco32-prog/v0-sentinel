@@ -128,7 +128,7 @@ export async function ActiveFires() {
         </p>
 
         <div
-          className="rounded-lg overflow-hidden p-4"
+          className="rounded-lg p-4"
           style={{ border: "0.5px solid rgba(240,234,216,0.07)" }}
         >
           <FireMap

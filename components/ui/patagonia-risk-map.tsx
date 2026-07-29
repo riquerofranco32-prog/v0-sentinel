@@ -4,6 +4,7 @@ import { useMemo, useState } from "react";
 import { geoMercator, geoPath } from "d3-geo";
 import type { FeatureCollection, Geometry } from "geojson";
 import countriesGeoJson from "@/data/latam-countries.json";
+import { MapTooltip } from "@/components/ui/map-tooltip";
 
 export interface RiskPoint {
   name: string;
@@ -19,6 +20,16 @@ export interface RiskPoint {
 
 const WIDTH = 480;
 const HEIGHT = 480;
+
+// ponytail: plain-language gloss for each risk tier — a badge that just
+// says "Moderado" doesn't tell someone without wildfire background what
+// that actually means in practice.
+const RISK_EXPLAIN: Record<string, string> = {
+  Bajo: "Condiciones tranquilas, riesgo bajo de que un fuego se propague.",
+  Moderado: "Vigilar: condiciones que podrían favorecer un incendio.",
+  Alto: "Un incendio se propagaría rápido en estas condiciones.",
+  Extremo: "Alerta: condiciones muy peligrosas para incendios forestales.",
+};
 
 // ponytail: two corner points, not a real bbox polygon — a lightweight way
 // to hand d3-geo a Patagonia lake-district viewport (fitExtent just needs
@@ -67,6 +78,9 @@ export function PatagoniaRiskMap({ points }: { points: RiskPoint[] }) {
   }, []);
 
   const activePoint = active !== null ? points[active] : undefined;
+  const activePos = activePoint
+    ? project(activePoint.lat, activePoint.lon)
+    : null;
 
   return (
     <div
@@ -83,28 +97,37 @@ export function PatagoniaRiskMap({ points }: { points: RiskPoint[] }) {
             key={feature.properties.name}
             d={pathFor(feature)}
             fill="#f0ead808"
-            stroke="rgba(240,234,216,0.18)"
+            stroke="rgba(240,234,216,0.2)"
             strokeWidth={0.75}
           />
         ))}
 
         {points.map((point, i) => {
           const [x, y] = project(point.lat, point.lon);
+          const isActive = i === active;
           return (
             <g
               key={point.name}
               onClick={(e) => {
                 e.stopPropagation();
-                setActive(i === active ? null : i);
+                setActive(isActive ? null : i);
               }}
               style={{ cursor: "pointer" }}
             >
-              <circle cx={x} cy={y} r={12} fill="transparent" />
+              <circle cx={x} cy={y} r={13} fill="transparent" />
               <circle cx={x} cy={y} r={9} fill={point.color} opacity="0.15" />
-              <circle cx={x} cy={y} r={3.5} fill={point.color} />
+              <circle
+                cx={x}
+                cy={y}
+                r={3.5}
+                fill={point.color}
+                stroke={isActive ? point.color : "none"}
+                strokeWidth={isActive ? 5 : 0}
+                strokeOpacity={0.25}
+              />
               <text
                 x={x}
-                y={y - 12}
+                y={y - 14}
                 textAnchor="middle"
                 fontSize={9}
                 fill="rgba(240,234,216,0.55)"
@@ -117,28 +140,25 @@ export function PatagoniaRiskMap({ points }: { points: RiskPoint[] }) {
         })}
       </svg>
 
-      {activePoint && (
-        <div
-          className="absolute top-3 right-3 rounded-md px-4 py-3 text-[11px] leading-relaxed max-w-[190px]"
-          style={{
-            fontFamily: "var(--font-sans)",
-            background: "rgba(12,11,9,0.92)",
-            border: "0.5px solid rgba(240,234,216,0.15)",
-            color: "rgba(240,234,216,0.8)",
-            backdropFilter: "blur(6px)",
-          }}
+      {activePoint && activePos && (
+        <MapTooltip
+          xPct={(activePos[0] / WIDTH) * 100}
+          yPct={(activePos[1] / HEIGHT) * 100}
+          accentColor={activePoint.color}
         >
           <p
-            className="uppercase tracking-widest text-[9px] mb-2"
+            className="uppercase tracking-widest text-[9px] mb-1.5"
             style={{ color: activePoint.color }}
           >
             {activePoint.name} · {activePoint.label}
           </p>
-          <p>{activePoint.province}</p>
+          <p className="mb-2" style={{ color: "rgba(240,234,216,0.65)" }}>
+            {RISK_EXPLAIN[activePoint.label]}
+          </p>
           <p>{Math.round(activePoint.temperature)}°C</p>
           <p>{Math.round(activePoint.humidity)}% humedad</p>
           <p>{Math.round(activePoint.windSpeed)} km/h viento</p>
-        </div>
+        </MapTooltip>
       )}
     </div>
   );
