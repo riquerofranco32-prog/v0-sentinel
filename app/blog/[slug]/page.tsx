@@ -5,12 +5,21 @@ import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
-import { blogPosts, getBlogPost } from "@/lib/blog-posts";
+import { ScrollProgress } from "@/components/scroll-progress";
+import { blogPosts, getBlogPost, type BlogPost } from "@/lib/blog-posts";
 
 const siteUrl = "https://www.sentineltech.com.ar";
 
 export function generateStaticParams() {
   return blogPosts.map((post) => ({ slug: post.slug }));
+}
+
+function readingTime(post: BlogPost): number {
+  const words = post.body
+    .flatMap((b) => b.paragraphs)
+    .join(" ")
+    .split(/\s+/).length;
+  return Math.max(1, Math.round(words / 200));
 }
 
 export async function generateMetadata({
@@ -82,6 +91,7 @@ export default async function BlogPostPage({
   };
 
   const related = blogPosts.filter((p) => p.slug !== post.slug).slice(0, 2);
+  const minutes = readingTime(post);
 
   return (
     <main className="min-h-screen bg-[#0c0b09]">
@@ -93,6 +103,7 @@ export default async function BlogPostPage({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
+      <ScrollProgress />
       <Navbar />
 
       <article className="relative pt-32 lg:pt-36">
@@ -137,6 +148,8 @@ export default async function BlogPostPage({
               month: "long",
               year: "numeric",
             })}
+            {" · "}
+            {minutes} min de lectura
           </p>
 
           <h1
@@ -179,6 +192,23 @@ export default async function BlogPostPage({
                     {p}
                   </p>
                 ))}
+                {i === 0 && (
+                  <blockquote
+                    className="my-2 pl-6 py-1"
+                    style={{ borderLeft: "2px solid #94f1be" }}
+                  >
+                    <p
+                      className="text-xl sm:text-2xl leading-snug"
+                      style={{
+                        fontFamily: "var(--font-heading)",
+                        fontWeight: 700,
+                        color: "rgba(240,234,216,0.85)",
+                      }}
+                    >
+                      {post.pullQuote}
+                    </p>
+                  </blockquote>
+                )}
               </div>
             ))}
           </div>

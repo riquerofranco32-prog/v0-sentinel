@@ -6,6 +6,7 @@ export interface BlogPost {
   publishedAt: string; // ISO date
   keywords: string[];
   relatedLink: { href: string; label: string };
+  pullQuote: string;
   body: {
     heading?: string;
     paragraphs: string[];
@@ -30,6 +31,8 @@ export const blogPosts: BlogPost[] = [
       href: "/#servicios",
       label: "Cómo funciona el sistema de detección de Sentinel",
     },
+    pullQuote:
+      "La diferencia entre esos tres escenarios no es la cantidad de recursos disponibles — es cuánto tiempo pasó entre que el fuego empezó y alguien se enteró.",
     body: [
       {
         paragraphs: [
@@ -70,6 +73,8 @@ export const blogPosts: BlogPost[] = [
       href: "/#nosotros",
       label: "Conocé la plataforma de Sentinel",
     },
+    pullQuote:
+      "Pasar de reaccionar a predecir no es una frase de marketing — es literalmente la diferencia entre gestionar el riesgo y sufrirlo.",
     body: [
       {
         paragraphs: [
@@ -111,6 +116,8 @@ export const blogPosts: BlogPost[] = [
       href: "/#equipo",
       label: "Conocé al equipo detrás de Sentinel",
     },
+    pullQuote:
+      "Un incendio de dos hectáreas se apaga con una cuadrilla. Un incendio de dos mil hectáreas necesita aviones hidrantes, semanas de trabajo, y aun así puede no ser suficiente.",
     body: [
       {
         paragraphs: [

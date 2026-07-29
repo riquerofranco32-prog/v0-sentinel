@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
+import { ScrollProgress } from "@/components/scroll-progress";
 import { blogPosts } from "@/lib/blog-posts";
 
 const siteUrl = "https://www.sentineltech.com.ar";
@@ -28,6 +29,7 @@ export default function BlogIndex() {
 
   return (
     <main className="min-h-screen bg-[#0c0b09]">
+      <ScrollProgress />
       <Navbar />
 
       <section className="relative pt-40 pb-20 lg:pt-48 lg:pb-28 px-6 lg:px-10 bg-[#0c0b09]">

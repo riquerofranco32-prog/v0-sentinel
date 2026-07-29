@@ -5,17 +5,33 @@ import Image from "next/image";
 import { CheckCircle } from "lucide-react";
 import { Timeline } from "@/components/ui/timeline";
 
-function ChecklistItem({ children }: { children: React.ReactNode }) {
+function ChecklistItem({
+  title,
+  description,
+}: {
+  title: string;
+  description: string;
+}) {
   return (
-    <div
-      className="flex gap-2 items-start text-xs md:text-sm"
-      style={{ color: "rgba(240,234,216,0.6)" }}
-    >
+    <div className="flex gap-2.5 items-start">
       <CheckCircle
         className="w-4 h-4 flex-shrink-0 mt-0.5"
         style={{ color: "#94f1be" }}
       />
-      {children}
+      <div>
+        <p
+          className="text-xs md:text-sm"
+          style={{ color: "rgba(240,234,216,0.75)", fontWeight: 500 }}
+        >
+          {title}
+        </p>
+        <p
+          className="text-[11px] md:text-xs mt-0.5 leading-relaxed"
+          style={{ color: "rgba(240,234,216,0.4)", fontWeight: 300 }}
+        >
+          {description}
+        </p>
+      </div>
     </div>
   );
 }
@@ -33,14 +49,27 @@ const timelineData = [
         >
           Cinco competencias ganadas en 2025, de norte a sur del país.
         </p>
-        <div className="mb-6 flex flex-col gap-2">
-          <ChecklistItem>Premios ILAN 2025 — viaje a Israel</ChecklistItem>
-          <ChecklistItem>
-            JIJE 20 años — Universidad Nacional del Litoral
-          </ChecklistItem>
-          <ChecklistItem>Premios Sadosky 2025 — CESSI</ChecklistItem>
-          <ChecklistItem>Usina Emprendedores — CAC</ChecklistItem>
-          <ChecklistItem>Prendete Pitch Day — CICE SV</ChecklistItem>
+        <div className="mb-6 flex flex-col gap-4">
+          <ChecklistItem
+            title="Premios ILAN 2025 — viaje a Israel"
+            description="El galardón a innovación tecnológica de mayor peso del país, con final en Tel Aviv."
+          />
+          <ChecklistItem
+            title="JIJE 20 años — Universidad Nacional del Litoral"
+            description="Primer puesto en las jornadas de ingeniería más antiguas de Argentina."
+          />
+          <ChecklistItem
+            title="Premios Sadosky 2025 — CESSI"
+            description="El reconocimiento más importante de la industria del software argentino."
+          />
+          <ChecklistItem
+            title="Usina Emprendedores — CAC"
+            description="Programa de la Cámara Argentina de Comercio para escalar startups con impacto real."
+          />
+          <ChecklistItem
+            title="Prendete Pitch Day — CICE SV"
+            description="Competencia de pitch para founders universitarios de Mendoza."
+          />
         </div>
         <div className="grid grid-cols-2 gap-3">
           <Image
@@ -71,13 +100,23 @@ const timelineData = [
         >
           Reconocimiento fuera de Argentina y primer apoyo financiero.
         </p>
-        <div className="mb-6 flex flex-col gap-2">
-          <ChecklistItem>Softlanding en Europa por Piensas.xyz</ChecklistItem>
-          <ChecklistItem>3.000 USD — Gobierno de Mendoza</ChecklistItem>
-          <ChecklistItem>Emprelatam y Draper House Americas</ChecklistItem>
-          <ChecklistItem>
-            Finalistas — Impact Startup Competition Perú 2026 (Scale)
-          </ChecklistItem>
+        <div className="mb-6 flex flex-col gap-4">
+          <ChecklistItem
+            title="Softlanding en Europa por Piensas.xyz"
+            description="Viaje financiado para instalarse y conectar con el ecosistema tech europeo."
+          />
+          <ChecklistItem
+            title="3.000 USD — Gobierno de Mendoza"
+            description="Primer capital no dilutivo recibido, vía fondo provincial de innovación."
+          />
+          <ChecklistItem
+            title="Emprelatam y Draper House Americas"
+            description="Programa de la red de aceleración fundada por Tim Draper, referente global en venture capital."
+          />
+          <ChecklistItem
+            title="Finalistas — Impact Startup Competition Perú 2026 (Scale)"
+            description="Entre las startups de impacto ambiental más prometedoras de Latinoamérica."
+          />
         </div>
         <div className="grid grid-cols-2 gap-3">
           <Image

@@ -76,7 +76,7 @@ export function InstagramFeed() {
               Redes
             </p>
             <h2
-              className="text-4xl sm:text-5xl lg:text-6xl"
+              className="text-4xl sm:text-5xl lg:text-6xl mb-4"
               style={{
                 fontFamily: "var(--font-heading)",
                 fontWeight: 800,
@@ -86,6 +86,22 @@ export function InstagramFeed() {
             >
               Seguinos en <span style={{ color: "#94f1be" }}>Instagram.</span>
             </h2>
+            <p
+              className="max-w-md text-[13px] leading-relaxed"
+              style={{
+                fontFamily: "var(--font-sans)",
+                fontWeight: 300,
+                color: "rgba(240,234,216,0.4)",
+              }}
+            >
+              Prevenimos incendios y generamos datos ambientales — el detrás de
+              escena de Sentinel, contado por el equipo.{" "}
+              <span
+                style={{ color: "rgba(240,234,216,0.75)", fontWeight: 400 }}
+              >
+                +950 seguidores.
+              </span>
+            </p>
           </div>
 
           <a
