@@ -66,6 +66,21 @@ export default async function BlogPostPage({
     mainEntityOfPage: url,
   };
 
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Inicio", item: siteUrl },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Blog",
+        item: `${siteUrl}/blog`,
+      },
+      { "@type": "ListItem", position: 3, name: post.title, item: url },
+    ],
+  };
+
   const related = blogPosts.filter((p) => p.slug !== post.slug).slice(0, 2);
 
   return (
@@ -73,6 +88,10 @@ export default async function BlogPostPage({
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
       <Navbar />
 
@@ -163,6 +182,15 @@ export default async function BlogPostPage({
               </div>
             ))}
           </div>
+
+          <Link
+            href={post.relatedLink.href}
+            className="inline-flex items-center gap-2 mb-16 text-[13px] transition-colors hover:text-[rgba(240,234,216,0.85)]"
+            style={{ fontFamily: "var(--font-sans)", color: "#94f1be" }}
+          >
+            {post.relatedLink.label}
+            <ArrowRight className="w-3.5 h-3.5" />
+          </Link>
 
           <div
             className="rounded-lg p-8 mb-20 text-center"

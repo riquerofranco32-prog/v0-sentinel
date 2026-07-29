@@ -5,6 +5,7 @@ export interface BlogPost {
   coverImage: string;
   publishedAt: string; // ISO date
   keywords: string[];
+  relatedLink: { href: string; label: string };
   body: {
     heading?: string;
     paragraphs: string[];
@@ -25,6 +26,10 @@ export const blogPosts: BlogPost[] = [
       "drones para detección de incendios",
       "monitoreo forestal Patagonia",
     ],
+    relatedLink: {
+      href: "/#servicios",
+      label: "Cómo funciona el sistema de detección de Sentinel",
+    },
     body: [
       {
         paragraphs: [
@@ -61,6 +66,10 @@ export const blogPosts: BlogPost[] = [
       "inteligencia territorial",
       "gestión de riesgo forestal Argentina",
     ],
+    relatedLink: {
+      href: "/#nosotros",
+      label: "Conocé la plataforma de Sentinel",
+    },
     body: [
       {
         paragraphs: [
@@ -98,6 +107,10 @@ export const blogPosts: BlogPost[] = [
       "ecosistemas patagónicos",
       "detección temprana vs reacción",
     ],
+    relatedLink: {
+      href: "/#equipo",
+      label: "Conocé al equipo detrás de Sentinel",
+    },
     body: [
       {
         paragraphs: [
