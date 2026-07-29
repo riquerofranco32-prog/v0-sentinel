@@ -8,6 +8,7 @@ import { Stats } from "@/components/stats";
 import { FireRiskIndex } from "@/components/fire-risk-index";
 import { Team } from "@/components/team";
 import { Awards } from "@/components/awards";
+import { Partners } from "@/components/partners";
 import { InstagramFeed } from "@/components/instagram";
 import { BlogTeaser } from "@/components/blog-teaser";
 import { FAQ } from "@/components/faq";
@@ -30,6 +31,7 @@ export default function Home() {
       <FireRiskIndex />
       <Team />
       <Awards />
+      <Partners />
       <InstagramFeed />
       <BlogTeaser />
       <FAQ />

@@ -1,8 +1,8 @@
 "use client";
 
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { Linkedin } from "lucide-react";
-import { Marquee } from "@/components/ui/marquee";
 
 const teamMembers = [
   {
@@ -32,8 +32,23 @@ const teamMembers = [
 ];
 
 export function Team() {
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) setIsVisible(true);
+      },
+      { threshold: 0.05 },
+    );
+    if (sectionRef.current) observer.observe(sectionRef.current);
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <section
+      ref={sectionRef}
       id="equipo"
       className="relative w-full overflow-hidden py-24 lg:py-32"
       style={{ background: "#0c0b09" }}
@@ -72,60 +87,54 @@ export function Team() {
           </p>
         </div>
 
-        <div className="relative w-full">
-          <div
-            className="pointer-events-none absolute left-0 top-0 z-10 h-full w-24 sm:w-32"
-            style={{
-              background: "linear-gradient(to right, #0c0b09, transparent)",
-            }}
-          />
-          <div
-            className="pointer-events-none absolute right-0 top-0 z-10 h-full w-24 sm:w-32"
-            style={{
-              background: "linear-gradient(to left, #0c0b09, transparent)",
-            }}
-          />
-
-          <Marquee className="[--gap:1.5rem] [--duration:32s]" pauseOnHover>
-            {teamMembers.map((member) => (
-              <a
-                key={member.name}
-                href={member.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group relative flex w-48 shrink-0 overflow-hidden rounded-lg"
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-5">
+          {teamMembers.map((member, i) => (
+            <a
+              key={member.name}
+              href={member.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group relative flex overflow-hidden rounded-xl transition-all duration-700 hover:-translate-y-1.5"
+              style={{
+                aspectRatio: "9/16",
+                border: "0.5px solid rgba(240,234,216,0.1)",
+                boxShadow: "0 20px 40px -20px rgba(0,0,0,0.6)",
+                opacity: isVisible ? 1 : 0,
+                transform: isVisible ? "translateY(0)" : "translateY(24px)",
+                transitionDelay: `${i * 100}ms`,
+              }}
+            >
+              {/* member.image is a pre-designed card (name, role, bio
+                  already baked in) — shown full, no HTML caption on top */}
+              <Image
+                src={member.image}
+                alt={`${member.name} — ${member.role}`}
+                fill
+                sizes="(max-width: 1024px) 45vw, 22vw"
+                className="object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+              <div
+                className="absolute inset-x-0 bottom-0 flex items-center justify-center gap-1.5 py-3 transition-all duration-300"
                 style={{
-                  aspectRatio: "9/16",
-                  border: "0.5px solid rgba(240,234,216,0.07)",
+                  background:
+                    "linear-gradient(to bottom, transparent 0%, rgba(12,11,9,0.9) 70%)",
                 }}
               >
-                {/* member.image is a pre-designed card (name, role, bio
-                    already baked in) — shown full, no HTML caption on top */}
-                <Image
-                  src={member.image}
-                  alt={`${member.name} — ${member.role}`}
-                  fill
-                  sizes="192px"
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-                <div
-                  className="absolute inset-0 flex items-end justify-center gap-1.5 pb-3 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                <span
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-sm text-[11px] transition-all duration-300 group-hover:-translate-y-0.5"
                   style={{
-                    background:
-                      "linear-gradient(to bottom, transparent 60%, rgba(12,11,9,0.85) 100%)",
+                    fontFamily: "var(--font-sans)",
+                    color: "#94f1be",
+                    background: "rgba(148,241,190,0.1)",
+                    border: "0.5px solid rgba(148,241,190,0.3)",
                   }}
                 >
-                  <span
-                    className="inline-flex items-center gap-1.5 text-[11px]"
-                    style={{ fontFamily: "var(--font-sans)", color: "#94f1be" }}
-                  >
-                    <Linkedin className="w-3 h-3" />
-                    LinkedIn
-                  </span>
-                </div>
-              </a>
-            ))}
-          </Marquee>
+                  <Linkedin className="w-3 h-3" />
+                  LinkedIn
+                </span>
+              </div>
+            </a>
+          ))}
         </div>
       </div>
     </section>

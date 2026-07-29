@@ -2,28 +2,6 @@
 
 import { useEffect, useRef, useState } from "react";
 import ScrollExpandMedia from "./scroll-expansion-hero";
-import { Logos3 } from "./blocks/logos3";
-
-const logos = [
-  { id: "uba", description: "UBA", image: "/uba-logo.png" },
-  { id: "aiweken", description: "Aiweken", image: "/aiweken.png" },
-  { id: "cice", description: "CICE", image: "/cice.png" },
-  { id: "empretec", description: "Empretec", image: "/empretec.png" },
-  { id: "endeavor", description: "Endeavor", image: "/endeavor.png" },
-  {
-    id: "fpn",
-    description: "Fundación Patagonia Natural",
-    image: "/FPN2.webp",
-  },
-  { id: "ilan", description: "ILAN", image: "/ilan.png" },
-  { id: "movistar", description: "Movistar", image: "/movistar-3.svg" },
-  { id: "sadosky", description: "Sadosky", image: "/sadosky.png" },
-  { id: "scale", description: "Scale", image: "/scale.png" },
-  { id: "ue", description: "UE", image: "/ue.png" },
-  { id: "uncuyo", description: "UNCUYO", image: "/uncuyo.png" },
-  { id: "unl", description: "UNL", image: "/unl.png" },
-  { id: "utn", description: "UTN", image: "/utn.png" },
-];
 
 const stats = [
   { target: 8, suffix: "min", label: "Tiempo detección" },
@@ -187,10 +165,6 @@ export function Hero() {
             >
               Ver servicios
             </a>
-          </div>
-
-          <div className="w-full mt-10">
-            <Logos3 heading="Nos acompañan" logos={logos} />
           </div>
         </div>
       </ScrollExpandMedia>
