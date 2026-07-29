@@ -62,6 +62,7 @@ export function Capabilities() {
   return (
     <section
       ref={sectionRef}
+      id="capacidades"
       className="relative py-24 lg:py-32 overflow-hidden"
       style={{ background: "#0c0b09" }}
     >

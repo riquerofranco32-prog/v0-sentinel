@@ -141,6 +141,91 @@ export const blogPosts: BlogPost[] = [
       },
     ],
   },
+  {
+    slug: "drones-vs-camaras-fijas-deteccion-incendios",
+    title: "Drones autónomos vs. cámaras fijas: qué cambia en la detección",
+    excerpt:
+      "Las torres de cámaras fueron un salto respecto a la vigilancia humana. Pero tienen un techo estructural que los drones autónomos no tienen.",
+    coverImage: "/ig-post-2.jpg",
+    publishedAt: "2026-05-12",
+    keywords: [
+      "drones vs cámaras fijas incendios",
+      "tecnología de detección de incendios",
+      "vigilancia forestal con drones",
+      "cámaras térmicas monitoreo forestal",
+    ],
+    relatedLink: {
+      href: "/#capacidades",
+      label: "Ver todas las capacidades de Sentinel",
+    },
+    pullQuote:
+      "Una cámara fija vigila un punto. Un dron autónomo vigila un territorio — y eso cambia por completo qué tan rápido se detecta un foco fuera de su campo de visión.",
+    body: [
+      {
+        paragraphs: [
+          "Durante años, la respuesta tecnológica al problema de la vigilancia forestal fueron las torres con cámaras fijas: mástiles altos, cámaras térmicas apuntando a un sector del territorio, y un operador humano (o un algoritmo simple) mirando el feed. Funcionan, pero tienen una limitación estructural que no se resuelve con más cámaras: cada torre solo ve lo que está dentro de su línea de visión directa.",
+          "En terrenos montañosos o con cobertura boscosa densa — la norma en la Patagonia — eso significa zonas ciegas permanentes detrás de cada loma, cada bosque cerrado, cada quebrada. Cubrir un territorio grande con este modelo requiere multiplicar torres, cada una con su costo de instalación, mantenimiento y conectividad.",
+        ],
+      },
+      {
+        heading: "Qué resuelve un dron autónomo que una torre no puede",
+        paragraphs: [
+          "Un dron autónomo no depende de una línea de visión fija: recorre rutas programadas, cubre el territorio de forma dinámica y puede redirigirse hacia una zona de interés en minutos. Donde una torre ve un punto, la red de drones de Sentinel cubre un área completa de forma sistemática, sin los puntos ciegos estructurales del modelo de vigilancia fija.",
+          "Esto no vuelve obsoletas a las cámaras fijas — en sitios de altísimo tránsito o riesgo constante, siguen teniendo sentido como complemento. Pero como estrategia principal de cobertura territorial extensa, el techo de las torres fijas es real: no importa cuántas cámaras agregues, seguís vigilando puntos, no territorio.",
+        ],
+      },
+      {
+        heading: "El otro factor: qué tan rápido se verifica una alerta",
+        paragraphs: [
+          "Una cámara fija que detecta humo genera una alerta que un humano tiene que revisar y confirmar — un cuello de botella que se agrava cuando hay múltiples cámaras y pocos operadores disponibles. El sistema de Sentinel usa visión computacional entrenada específicamente para descartar falsos positivos (neblina, polvo, reflejos) antes de que la alerta llegue a una persona, recortando el tiempo entre detección y confirmación de minutos u horas a segundos.",
+          "La pregunta que importa no es solo '¿lo vimos?' sino '¿cuánto tardamos en confirmar que era real y avisar a quien tiene que actuar?'. Ahí es donde la combinación de cobertura dinámica más IA de verificación marca la diferencia frente a un modelo de cámaras fijas y revisión manual.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "costo-real-de-un-incendio-forestal",
+    title:
+      "El costo real de un incendio forestal (y por qué prevenir sale más barato)",
+    excerpt:
+      "Un incendio no solo cuesta lo que se quema. Cuesta la respuesta de emergencia, la pérdida productiva, y años de recuperación del ecosistema.",
+    coverImage: "/a3.jpg",
+    publishedAt: "2026-06-20",
+    keywords: [
+      "costo de incendios forestales",
+      "impacto económico incendios Argentina",
+      "prevención vs combate de incendios costo",
+      "ROI monitoreo forestal",
+    ],
+    relatedLink: {
+      href: "/#servicios",
+      label: "Cómo funciona el sistema de detección de Sentinel",
+    },
+    pullQuote:
+      "El costo de prevenir un incendio se mide en un abono de monitoreo. El costo de no prevenirlo se mide en aviones hidrantes, hectáreas perdidas y años de recuperación.",
+    body: [
+      {
+        paragraphs: [
+          "Cuando se habla del costo de un incendio forestal, la conversación suele quedarse en lo más visible: hectáreas quemadas. Pero esa cifra es solo la punta del iceberg. Está el costo de la respuesta de emergencia (aviones hidrantes, brigadas, combustible, horas de trabajo), el costo productivo (pasturas, forestación comercial, infraestructura rural destruida), y el costo ambiental de largo plazo, que no tiene una factura pero sí un impacto medible: pérdida de biodiversidad, erosión de suelo, alteración de cuencas hídricas que tardan años o décadas en recuperarse.",
+          "Ese último punto es el que más se subestima. Un bosque nativo patagónico no se replanta como un cultivo: un ciprés o una araucaria pueden tardar entre 50 y 300 años en alcanzar su tamaño adulto. El 'costo' de esas hectáreas no se recupera en la próxima temporada — se recupera, si acaso, en la próxima generación.",
+        ],
+      },
+      {
+        heading: "Por qué la prevención es matemáticamente más barata",
+        paragraphs: [
+          "La lógica económica de la prevención es simple pero se ignora seguido: cuanto antes se detecta un foco, menor es el recurso necesario para controlarlo, y esa relación no es lineal — crece de forma exponencial con el tiempo. Un foco de dos hectáreas se apaga con una cuadrilla y unas horas de trabajo. El mismo foco, ocho horas después, puede necesitar múltiples aviones hidrantes, semanas de operativo y una superficie cien veces mayor.",
+          "Monitorear un territorio de forma continua con drones y IA tiene un costo previsible y recurrente — es, en esencia, un seguro operativo. Combatir un incendio que escaló por falta de detección temprana tiene un costo impredecible que puede multiplicar ese gasto muchas veces, sin garantía de que alcance para contener el daño.",
+        ],
+      },
+      {
+        heading:
+          "Un modelo pensado para no exigir esa inversión por adelantado",
+        paragraphs: [
+          "Por eso Sentinel no pide una inversión de capital inicial para arrancar: el modelo es un piloto de 4 a 8 semanas, pensado para que municipios, brigadas forestales y grandes propietarios de tierra puedan validar el sistema en su propio territorio antes de comprometer presupuesto de largo plazo. La pregunta que buscamos que se hagan no es '¿podemos pagar la prevención?' sino '¿podemos pagar no tenerla?'.",
+        ],
+      },
+    ],
+  },
 ];
 
 export function getBlogPost(slug: string): BlogPost | undefined {
