@@ -5,6 +5,7 @@ import { Features } from "@/components/features";
 import { Capabilities } from "@/components/capabilities";
 import { HowItWorks } from "@/components/how-it-works";
 import { Stats } from "@/components/stats";
+import { FireRiskIndex } from "@/components/fire-risk-index";
 import { Team } from "@/components/team";
 import { Awards } from "@/components/awards";
 import { InstagramFeed } from "@/components/instagram";
@@ -26,6 +27,7 @@ export default function Home() {
       <Capabilities />
       <HowItWorks />
       <Stats />
+      <FireRiskIndex />
       <Team />
       <Awards />
       <InstagramFeed />
