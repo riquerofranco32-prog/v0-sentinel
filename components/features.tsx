@@ -2,9 +2,6 @@
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import { WorldMap } from "./ui/world-map";
-
-const PATAGONIA = { lat: -41.1335, lng: -71.3103 }; // Bariloche
 
 export function Features() {
   const [isVisible, setIsVisible] = useState(false);
@@ -296,38 +293,6 @@ export function Features() {
                 </span>
               </div>
             </div>
-          </div>
-        </div>
-
-        {/* ── COVERAGE MAP ── */}
-        <div
-          className="mt-4 mx-auto max-w-xs sm:max-w-sm rounded-lg overflow-hidden relative transition-all duration-700"
-          style={{
-            border: "0.5px solid rgba(240,234,216,0.07)",
-            opacity: isVisible ? 1 : 0,
-            transform: isVisible ? "translateY(0)" : "translateY(24px)",
-            transitionDelay: "820ms",
-          }}
-        >
-          <WorldMap
-            lineColor="#94f1be"
-            dots={[
-              { start: PATAGONIA, end: { lat: -38.9516, lng: -68.0591 } }, // Neuquén
-              { start: PATAGONIA, end: { lat: -32.8895, lng: -68.8458 } }, // Mendoza
-              { start: PATAGONIA, end: { lat: -27.4698, lng: -58.8306 } }, // Corrientes
-              { start: PATAGONIA, end: { lat: -34.6037, lng: -58.3816 } }, // CABA
-            ]}
-          />
-          <div className="absolute top-5 left-5">
-            <p
-              className="text-[11px] tracking-[0.2em] uppercase"
-              style={{
-                fontFamily: "var(--font-sans)",
-                color: "rgba(240,234,216,0.35)",
-              }}
-            >
-              Red de cobertura
-            </p>
           </div>
         </div>
       </div>

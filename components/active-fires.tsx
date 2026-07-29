@@ -1,9 +1,9 @@
-import { ArgentinaFireMap } from "@/components/ui/argentina-fire-map";
+import { FireMap } from "@/components/ui/fire-map";
 
-// ponytail: whole-Argentina bounding box (west,south,east,north) — matches
-// the "Patagonia hasta todo el pais" coverage claim elsewhere on the site,
-// and gives real data to show even when Patagonia itself is quiet.
-const ARGENTINA_BBOX = "-73.6,-55.1,-53.6,-21.8";
+// ponytail: Latin America bounding box (west,south,east,north) — Mexico's
+// northern border down to Cape Horn, wide enough to cover every country in
+// data/latam-countries.json.
+const LATAM_BBOX = "-118,-56,-34,33";
 const SOURCE = "VIIRS_SNPP_NRT";
 const DAY_RANGE = 1;
 
@@ -48,7 +48,7 @@ async function fetchActiveFires(): Promise<FirePoint[] | null> {
   if (!key) return null;
 
   try {
-    const url = `https://firms.modaps.eosdis.nasa.gov/api/area/csv/${key}/${SOURCE}/${ARGENTINA_BBOX}/${DAY_RANGE}`;
+    const url = `https://firms.modaps.eosdis.nasa.gov/api/area/csv/${key}/${SOURCE}/${LATAM_BBOX}/${DAY_RANGE}`;
     const res = await fetch(url, { next: { revalidate: 3600 } });
     if (!res.ok) return null;
     const csv = await res.text();
@@ -68,7 +68,9 @@ export async function ActiveFires() {
   if (fires === null) return null;
 
   const highConfidence = fires.filter((f) => f.confidence !== "l");
-  const sorted = [...highConfidence].sort((a, b) => b.frp - a.frp).slice(0, 60);
+  const sorted = [...highConfidence]
+    .sort((a, b) => b.frp - a.frp)
+    .slice(0, 200);
 
   return (
     <section
@@ -119,17 +121,25 @@ export async function ActiveFires() {
             color: "rgba(240,234,216,0.4)",
           }}
         >
-          Detecciones satelitales VIIRS de la NASA (FIRMS) en todo el país — la
-          misma clase de dato que un sistema como el nuestro procesa y verifica
-          en minutos, no en horas.
+          Detecciones satelitales VIIRS de la NASA (FIRMS) en toda Latinoamérica
+          — la misma clase de dato que un sistema como el nuestro procesa y
+          verifica en minutos, no en horas. Tocá un foco para ver el detalle, o
+          elegí un país para recorrer la región.
         </p>
 
         <div
-          className="rounded-lg overflow-hidden"
+          className="rounded-lg overflow-hidden p-4"
           style={{ border: "0.5px solid rgba(240,234,216,0.07)" }}
         >
-          <ArgentinaFireMap
-            points={sorted.map((f) => ({ lat: f.lat, lng: f.lng }))}
+          <FireMap
+            points={sorted.map((f) => ({
+              lat: f.lat,
+              lng: f.lng,
+              confidence: f.confidence,
+              acqDate: f.acqDate,
+              acqTime: f.acqTime,
+              frp: f.frp,
+            }))}
           />
         </div>
 
