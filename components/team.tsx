@@ -89,51 +89,58 @@ export function Team() {
 
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-5">
           {teamMembers.map((member, i) => (
-            <a
+            <div
               key={member.name}
-              href={member.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group relative flex overflow-hidden rounded-xl transition-all duration-700 hover:-translate-y-1.5"
+              className="transition-all duration-700"
               style={{
-                aspectRatio: "9/16",
-                border: "0.5px solid rgba(240,234,216,0.1)",
-                boxShadow: "0 20px 40px -20px rgba(0,0,0,0.6)",
                 opacity: isVisible ? 1 : 0,
-                transform: isVisible ? "translateY(0)" : "translateY(24px)",
+                transform: isVisible
+                  ? `translateY(0) rotate(${i % 2 === 0 ? "-0.6deg" : "0.6deg"})`
+                  : "translateY(24px) rotate(0deg)",
                 transitionDelay: `${i * 100}ms`,
               }}
             >
-              {/* member.image is a pre-designed card (name, role, bio
-                  already baked in) — shown full, no HTML caption on top */}
-              <Image
-                src={member.image}
-                alt={`${member.name} — ${member.role}`}
-                fill
-                sizes="(max-width: 1024px) 45vw, 22vw"
-                className="object-cover transition-transform duration-500 group-hover:scale-105"
-              />
-              <div
-                className="absolute inset-x-0 bottom-0 flex items-center justify-center gap-1.5 py-3 transition-all duration-300"
+              <a
+                href={member.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative flex overflow-hidden rounded-xl transition-all duration-500 shadow-[0_20px_40px_-20px_rgba(0,0,0,0.6)] hover:-translate-y-1.5 hover:scale-[1.02] hover:rotate-0 hover:shadow-[0_20px_50px_-15px_rgba(148,241,190,0.35)]"
                 style={{
-                  background:
-                    "linear-gradient(to bottom, transparent 0%, rgba(12,11,9,0.9) 70%)",
+                  aspectRatio: "9/16",
+                  border: "0.5px solid rgba(240,234,216,0.1)",
                 }}
               >
-                <span
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-sm text-[11px] transition-all duration-300 group-hover:-translate-y-0.5"
+                {/* member.image is a pre-designed card (name, role, bio
+                  already baked in) — shown full, no HTML caption on top */}
+                <Image
+                  src={member.image}
+                  alt={`${member.name} — ${member.role}`}
+                  fill
+                  sizes="(max-width: 1024px) 45vw, 22vw"
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                <div
+                  className="absolute inset-x-0 bottom-0 flex items-center justify-center gap-1.5 py-3 transition-all duration-300"
                   style={{
-                    fontFamily: "var(--font-sans)",
-                    color: "#94f1be",
-                    background: "rgba(148,241,190,0.1)",
-                    border: "0.5px solid rgba(148,241,190,0.3)",
+                    background:
+                      "linear-gradient(to bottom, transparent 0%, rgba(12,11,9,0.9) 70%)",
                   }}
                 >
-                  <Linkedin className="w-3 h-3" />
-                  LinkedIn
-                </span>
-              </div>
-            </a>
+                  <span
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-sm text-[11px] transition-all duration-300 group-hover:-translate-y-0.5"
+                    style={{
+                      fontFamily: "var(--font-sans)",
+                      color: "#94f1be",
+                      background: "rgba(148,241,190,0.1)",
+                      border: "0.5px solid rgba(148,241,190,0.3)",
+                    }}
+                  >
+                    <Linkedin className="w-3 h-3" />
+                    LinkedIn
+                  </span>
+                </div>
+              </a>
+            </div>
           ))}
         </div>
       </div>

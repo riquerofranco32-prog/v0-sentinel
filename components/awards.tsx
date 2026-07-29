@@ -8,14 +8,38 @@ import { Timeline } from "@/components/ui/timeline";
 function ChecklistItem({
   title,
   description,
+  index = 0,
 }: {
   title: string;
   description: string;
+  index?: number;
 }) {
+  const [isVisible, setIsVisible] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) setIsVisible(true);
+      },
+      { threshold: 0.3 },
+    );
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <div className="flex gap-2.5 items-start">
+    <div
+      ref={ref}
+      className="group flex gap-2.5 items-start rounded-md p-2 -m-2 transition-all duration-500 hover:bg-[rgba(148,241,190,0.05)]"
+      style={{
+        opacity: isVisible ? 1 : 0,
+        transform: isVisible ? "translateX(0)" : "translateX(-12px)",
+        transitionDelay: `${index * 80}ms`,
+      }}
+    >
       <CheckCircle
-        className="w-4 h-4 flex-shrink-0 mt-0.5"
+        className="w-4 h-4 flex-shrink-0 mt-0.5 transition-transform duration-300 group-hover:scale-110"
         style={{ color: "#94f1be" }}
       />
       <div>
@@ -38,6 +62,64 @@ function ChecklistItem({
 
 const imgClass = "rounded-lg object-cover h-24 md:h-40 lg:h-48 w-full";
 
+function CountUpStat({ value, label }: { value: number; label: string }) {
+  const [count, setCount] = useState(0);
+  const [isVisible, setIsVisible] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) setIsVisible(true);
+      },
+      { threshold: 0.5 },
+    );
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!isVisible) return;
+    const duration = 1200;
+    const start = performance.now();
+    const tick = (now: number) => {
+      const progress = Math.min((now - start) / duration, 1);
+      setCount(Math.round(value * (1 - Math.pow(1 - progress, 3))));
+      if (progress < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  }, [isVisible, value]);
+
+  return (
+    <div ref={ref} className="text-center">
+      <div
+        style={{
+          fontFamily: "var(--font-heading)",
+          fontWeight: 700,
+          fontSize: "clamp(1.6rem, 3vw, 2.2rem)",
+          color: "rgba(240,234,216,0.92)",
+          lineHeight: 1,
+        }}
+      >
+        {count}
+      </div>
+      <div
+        style={{
+          fontFamily: "var(--font-sans)",
+          fontSize: "11px",
+          fontWeight: 300,
+          letterSpacing: "0.1em",
+          textTransform: "uppercase",
+          color: "rgba(240,234,216,0.35)",
+          marginTop: "6px",
+        }}
+      >
+        {label}
+      </div>
+    </div>
+  );
+}
+
 const timelineData = [
   {
     title: "Competencias",
@@ -51,22 +133,27 @@ const timelineData = [
         </p>
         <div className="mb-6 flex flex-col gap-4">
           <ChecklistItem
+            index={0}
             title="Premios ILAN 2025 — viaje a Israel"
             description="El galardón a innovación tecnológica de mayor peso del país, con final en Tel Aviv."
           />
           <ChecklistItem
+            index={1}
             title="JIJE 20 años — Universidad Nacional del Litoral"
             description="Primer puesto en las jornadas de ingeniería más antiguas de Argentina."
           />
           <ChecklistItem
+            index={2}
             title="Premios Sadosky 2025 — CESSI"
             description="El reconocimiento más importante de la industria del software argentino."
           />
           <ChecklistItem
+            index={3}
             title="Usina Emprendedores — CAC"
             description="Programa de la Cámara Argentina de Comercio para escalar startups con impacto real."
           />
           <ChecklistItem
+            index={4}
             title="Prendete Pitch Day — CICE SV"
             description="Competencia de pitch para founders universitarios de Mendoza."
           />
@@ -102,18 +189,22 @@ const timelineData = [
         </p>
         <div className="mb-6 flex flex-col gap-4">
           <ChecklistItem
+            index={0}
             title="Softlanding en Europa por Piensas.xyz"
             description="Viaje financiado para instalarse y conectar con el ecosistema tech europeo."
           />
           <ChecklistItem
+            index={1}
             title="3.000 USD — Gobierno de Mendoza"
             description="Primer capital no dilutivo recibido, vía fondo provincial de innovación."
           />
           <ChecklistItem
+            index={2}
             title="Emprelatam y Draper House Americas"
             description="Programa de la red de aceleración fundada por Tim Draper, referente global en venture capital."
           />
           <ChecklistItem
+            index={3}
             title="Finalistas — Impact Startup Competition Perú 2026 (Scale)"
             description="Entre las startups de impacto ambiental más prometedoras de Latinoamérica."
           />
@@ -243,38 +334,34 @@ export function Awards() {
           className="flex justify-center gap-12 mt-4 pt-12 max-w-4xl mx-auto"
           style={{ borderTop: "0.5px solid rgba(240,234,216,0.07)" }}
         >
-          {[
-            { num: "9", label: "reconocimientos" },
-            { num: "3", label: "países" },
-            { num: "2025–26", label: "temporada" },
-          ].map((s) => (
-            <div key={s.label} className="text-center">
-              <div
-                style={{
-                  fontFamily: "var(--font-heading)",
-                  fontWeight: 700,
-                  fontSize: "clamp(1.6rem, 3vw, 2.2rem)",
-                  color: "rgba(240,234,216,0.92)",
-                  lineHeight: 1,
-                }}
-              >
-                {s.num}
-              </div>
-              <div
-                style={{
-                  fontFamily: "var(--font-sans)",
-                  fontSize: "11px",
-                  fontWeight: 300,
-                  letterSpacing: "0.1em",
-                  textTransform: "uppercase",
-                  color: "rgba(240,234,216,0.35)",
-                  marginTop: "6px",
-                }}
-              >
-                {s.label}
-              </div>
+          <CountUpStat value={9} label="reconocimientos" />
+          <CountUpStat value={3} label="países" />
+          <div className="text-center">
+            <div
+              style={{
+                fontFamily: "var(--font-heading)",
+                fontWeight: 700,
+                fontSize: "clamp(1.6rem, 3vw, 2.2rem)",
+                color: "rgba(240,234,216,0.92)",
+                lineHeight: 1,
+              }}
+            >
+              2025–26
             </div>
-          ))}
+            <div
+              style={{
+                fontFamily: "var(--font-sans)",
+                fontSize: "11px",
+                fontWeight: 300,
+                letterSpacing: "0.1em",
+                textTransform: "uppercase",
+                color: "rgba(240,234,216,0.35)",
+                marginTop: "6px",
+              }}
+            >
+              temporada
+            </div>
+          </div>
         </div>
       </div>
     </section>
