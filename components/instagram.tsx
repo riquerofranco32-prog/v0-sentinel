@@ -6,21 +6,21 @@ import { Instagram, Heart } from "lucide-react";
 
 const posts = [
   {
-    image: "/problem-a2.jpg",
+    image: "/ig-post-1.jpg",
     likes: 42,
     caption:
       "Un incendio detectado en los primeros minutos se controla. Uno detectado horas después, arrasa. Sentinel detecta focos activos en menos de 5 minutos con drones autónomos e IA.",
     href: "https://www.instagram.com/p/DWmLb_DjvIA/",
   },
   {
-    image: "/problem-a3.jpg",
+    image: "/ig-post-2.jpg",
     likes: 7,
     caption:
       "Con Sentinel pasás de reaccionar a predecir. Monitorear → Detectar/Verificar → Contextualizar → Alertar. Así funciona la protección real del territorio.",
     href: "https://www.instagram.com/p/DWmLh-Bjn91/",
   },
   {
-    image: "/problem-a4.jpg",
+    image: "/ig-post-3.jpg",
     likes: 36,
     caption:
       "El fuego no da segundas oportunidades. Usamos sistemas de detección temprana e inteligencia territorial para identificar el peligro antes de que sea incontrolable.",
