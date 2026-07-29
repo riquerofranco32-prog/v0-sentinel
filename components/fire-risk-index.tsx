@@ -1,4 +1,5 @@
 import { Wind, Droplets, Thermometer } from "lucide-react";
+import { PatagoniaRiskMap } from "@/components/ui/patagonia-risk-map";
 
 interface Location {
   name: string;
@@ -49,6 +50,13 @@ function riskLevel(r: Reading): { label: string; color: string } {
   return { label: "Bajo", color: "#94f1be" };
 }
 
+const RISK_RANK: Record<string, number> = {
+  Bajo: 0,
+  Moderado: 1,
+  Alto: 2,
+  Extremo: 3,
+};
+
 async function fetchReading(location: Location): Promise<Reading | null> {
   try {
     const url = `https://api.open-meteo.com/v1/forecast?latitude=${location.lat}&longitude=${location.lon}&current=temperature_2m,relative_humidity_2m,wind_speed_10m&timezone=auto`;
@@ -72,6 +80,24 @@ export async function FireRiskIndex() {
   );
 
   if (readings.length === 0) return null;
+
+  const points = readings.map((r) => {
+    const risk = riskLevel(r);
+    return {
+      name: r.location.name,
+      province: r.location.province,
+      lat: r.location.lat,
+      lon: r.location.lon,
+      color: risk.color,
+      label: risk.label,
+      temperature: r.temperature,
+      humidity: r.humidity,
+      windSpeed: r.windSpeed,
+    };
+  });
+  const overall = points.reduce((worst, p) =>
+    RISK_RANK[p.label] > RISK_RANK[worst.label] ? p : worst,
+  );
 
   return (
     <section
@@ -102,19 +128,39 @@ export async function FireRiskIndex() {
             Datos en vivo
           </p>
         </div>
-        <h2
-          className="text-4xl sm:text-5xl lg:text-6xl mb-4"
-          style={{
-            fontFamily: "var(--font-heading)",
-            fontWeight: 800,
-            color: "rgba(240,234,216,0.92)",
-            lineHeight: 1,
-          }}
-        >
-          Riesgo de incendio, <span style={{ color: "#94f1be" }}>hoy.</span>
-        </h2>
+        <div className="flex flex-wrap items-end gap-4 mb-4">
+          <h2
+            className="text-4xl sm:text-5xl lg:text-6xl"
+            style={{
+              fontFamily: "var(--font-heading)",
+              fontWeight: 800,
+              color: "rgba(240,234,216,0.92)",
+              lineHeight: 1,
+            }}
+          >
+            Riesgo de incendio, <span style={{ color: "#94f1be" }}>hoy.</span>
+          </h2>
+          <div
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-sm mb-1"
+            style={{
+              background: `${overall.color}15`,
+              border: `0.5px solid ${overall.color}40`,
+            }}
+          >
+            <span
+              className="w-1.5 h-1.5 rounded-full"
+              style={{ background: overall.color }}
+            />
+            <span
+              className="text-[11px] tracking-wide"
+              style={{ fontFamily: "var(--font-sans)", color: overall.color }}
+            >
+              Patagonia: {overall.label}
+            </span>
+          </div>
+        </div>
         <p
-          className="text-[13px] mb-14 max-w-xl"
+          className="text-[13px] mb-10 max-w-xl"
           style={{
             fontFamily: "var(--font-sans)",
             fontWeight: 300,
@@ -123,8 +169,15 @@ export async function FireRiskIndex() {
         >
           Índice estimado a partir de temperatura, humedad y viento en tiempo
           real — la misma clase de variables que alimenta nuestros modelos de
-          detección.
+          detección. Tocá un punto del mapa para ver el detalle.
         </p>
+
+        <div
+          className="max-w-md mx-auto mb-10 rounded-lg overflow-hidden p-4"
+          style={{ border: "0.5px solid rgba(240,234,216,0.07)" }}
+        >
+          <PatagoniaRiskMap points={points} />
+        </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {readings.map((r) => {
