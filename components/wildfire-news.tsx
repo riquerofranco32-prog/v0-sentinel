@@ -1,67 +1,49 @@
 import { ArrowUpRight, Flame, Newspaper } from "lucide-react";
 
-const FEED_URL =
-  "https://news.google.com/rss/search?q=incendios%20forestales%20Argentina%20when:7d&hl=es-419&gl=AR&ceid=AR:es-419";
+const QUERY = "incendios forestales Argentina";
 const MAX_ITEMS = 6;
 
 interface NewsItem {
   title: string;
   source: string;
   link: string;
-  pubDate: string;
+  image: string;
+  publishedAt: string;
 }
 
-function decodeEntities(text: string): string {
-  return text
-    .replace(/&amp;/g, "&")
-    .replace(/&quot;/g, '"')
-    .replace(/&#39;/g, "'")
-    .replace(/&apos;/g, "'")
-    .replace(/&lt;/g, "<")
-    .replace(/&gt;/g, ">");
-}
-
-function parseRss(xml: string): NewsItem[] {
-  const items: NewsItem[] = [];
-  const itemBlocks = xml.match(/<item>[\s\S]*?<\/item>/g) ?? [];
-
-  for (const block of itemBlocks) {
-    const titleMatch = block.match(/<title>([\s\S]*?)<\/title>/);
-    const linkMatch = block.match(/<link>([\s\S]*?)<\/link>/);
-    const dateMatch = block.match(/<pubDate>([\s\S]*?)<\/pubDate>/);
-    if (!titleMatch || !linkMatch) continue;
-
-    const rawTitle = decodeEntities(titleMatch[1].trim());
-    // ponytail: Google News RSS titles end in " - Source Name".
-    const lastDash = rawTitle.lastIndexOf(" - ");
-    const title = lastDash === -1 ? rawTitle : rawTitle.slice(0, lastDash);
-    const source = lastDash === -1 ? "" : rawTitle.slice(lastDash + 3);
-
-    items.push({
-      title,
-      source,
-      link: linkMatch[1].trim(),
-      pubDate: dateMatch?.[1]?.trim() ?? "",
-    });
-  }
-
-  return items;
+interface GNewsArticle {
+  title: string;
+  url: string;
+  image: string | null;
+  publishedAt: string;
+  source: { name: string };
 }
 
 async function fetchWildfireNews(): Promise<NewsItem[] | null> {
+  const key = process.env.GNEWS_API_KEY;
+  if (!key) return null;
+
   try {
-    const res = await fetch(FEED_URL, { next: { revalidate: 21600 } });
+    const url = `https://gnews.io/api/v4/search?q=${encodeURIComponent(QUERY)}&lang=es&max=${MAX_ITEMS}&sortby=publishedAt&apikey=${key}`;
+    const res = await fetch(url, { next: { revalidate: 21600 } });
     if (!res.ok) return null;
-    const xml = await res.text();
-    return parseRss(xml).slice(0, MAX_ITEMS);
+    const data = (await res.json()) as { articles?: GNewsArticle[] };
+    if (!data.articles) return null;
+
+    return data.articles.map((a) => ({
+      title: a.title,
+      source: a.source.name,
+      link: a.url,
+      image: a.image ?? "",
+      publishedAt: a.publishedAt,
+    }));
   } catch {
     return null;
   }
 }
 
-function relativeTime(pubDate: string): string {
-  if (!pubDate) return "";
-  const then = new Date(pubDate).getTime();
+function relativeTime(publishedAt: string): string {
+  const then = new Date(publishedAt).getTime();
   if (Number.isNaN(then)) return "";
   const hours = Math.max(1, Math.round((Date.now() - then) / 3_600_000));
   if (hours < 24) return `hace ${hours} h`;
@@ -71,7 +53,8 @@ function relativeTime(pubDate: string): string {
 export async function WildfireNews() {
   const news = await fetchWildfireNews();
 
-  // ponytail: feed unreachable -> hide the section instead of showing empty.
+  // ponytail: no key or feed unreachable -> hide the section rather than
+  // show broken/empty cards.
   if (!news || news.length === 0) return null;
 
   return (
@@ -118,7 +101,7 @@ export async function WildfireNews() {
               }}
             >
               <div
-                className="relative flex items-center justify-center"
+                className="relative overflow-hidden"
                 style={{
                   aspectRatio: "16/9",
                   background: `radial-gradient(circle at 30% 30%, ${
@@ -130,16 +113,35 @@ export async function WildfireNews() {
                   }, rgba(12,11,9,0.6))`,
                 }}
               >
-                <Flame
-                  className="w-8 h-8 transition-transform duration-300 group-hover:scale-110"
+                {item.image ? (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img
+                    src={item.image}
+                    alt=""
+                    loading="lazy"
+                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                ) : (
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <Flame
+                      className="w-8 h-8"
+                      style={{
+                        color: ["#f16b6b", "#d99a5a", "#94f1be"][i % 3],
+                        opacity: 0.85,
+                      }}
+                    />
+                  </div>
+                )}
+                <div
+                  className="absolute inset-0"
                   style={{
-                    color: ["#f16b6b", "#d99a5a", "#94f1be"][i % 3],
-                    opacity: 0.85,
+                    background:
+                      "linear-gradient(to top, rgba(12,11,9,0.9) 0%, transparent 55%)",
                   }}
                 />
                 <ArrowUpRight
                   className="absolute top-3 right-3 w-4 h-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                  style={{ color: "rgba(240,234,216,0.35)" }}
+                  style={{ color: "rgba(240,234,216,0.7)" }}
                 />
               </div>
               <div className="p-4 flex-1 flex flex-col justify-between">
@@ -160,9 +162,7 @@ export async function WildfireNews() {
                     color: "rgba(240,234,216,0.3)",
                   }}
                 >
-                  {item.source}
-                  {item.source && relativeTime(item.pubDate) && " · "}
-                  {relativeTime(item.pubDate)}
+                  {item.source} · {relativeTime(item.publishedAt)}
                 </p>
               </div>
             </a>
@@ -176,8 +176,8 @@ export async function WildfireNews() {
             color: "rgba(240,234,216,0.2)",
           }}
         >
-          Fuente: Google Noticias. Los enlaces abren la nota original en el
-          medio que la publicó.
+          Fuente: GNews. Los enlaces abren la nota original en el medio que la
+          publicó.
         </p>
       </div>
     </section>

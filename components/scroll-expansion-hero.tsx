@@ -44,15 +44,28 @@ const ScrollExpandMedia = ({
   // momentum, keyboard scroll and anchor-link navigation, and felt "stuck"
   // to real users. This never blocks native scrolling — it just reads it.
   useEffect(() => {
+    // ponytail: cache the pin zone's document-relative top once (on mount
+    // and on resize) instead of calling getBoundingClientRect() on every
+    // scroll frame. That call forces a synchronous layout flush right after
+    // this same component's width/height write from the previous frame —
+    // a classic write-then-read thrash loop that stutters scroll. Deriving
+    // progress from window.scrollY avoids the forced layout read entirely.
+    let pinTop = 0;
+    let scrollRange = 0;
     let ticking = false;
-    const updateProgress = (): void => {
-      ticking = false;
+
+    const measure = (): void => {
       const el = pinZoneRef.current;
       if (!el) return;
-      const rect = el.getBoundingClientRect();
-      const scrollRange = rect.height - window.innerHeight;
+      pinTop = el.getBoundingClientRect().top + window.scrollY;
+      scrollRange = el.offsetHeight - window.innerHeight;
+    };
+    const updateProgress = (): void => {
+      ticking = false;
       const progress =
-        scrollRange > 0 ? Math.min(Math.max(-rect.top / scrollRange, 0), 1) : 0;
+        scrollRange > 0
+          ? Math.min(Math.max((window.scrollY - pinTop) / scrollRange, 0), 1)
+          : 0;
       setScrollProgress(progress);
     };
     const onScroll = (): void => {
@@ -60,12 +73,18 @@ const ScrollExpandMedia = ({
       ticking = true;
       requestAnimationFrame(updateProgress);
     };
+    const onResize = (): void => {
+      measure();
+      onScroll();
+    };
+
+    measure();
     updateProgress();
     window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll);
+    window.addEventListener("resize", onResize);
     return () => {
       window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
+      window.removeEventListener("resize", onResize);
     };
   }, []);
 
@@ -108,6 +127,10 @@ const ScrollExpandMedia = ({
                   maxWidth: "95vw",
                   maxHeight: "85vh",
                   boxShadow: "0px 0px 50px rgba(0, 0, 0, 0.4)",
+                  // ponytail: this box resizes every scroll frame while
+                  // pinned — contain keeps that layout/paint work scoped to
+                  // itself instead of the browser re-checking ancestors.
+                  contain: "layout paint",
                 }}
               >
                 {mediaType === "video" ? (
