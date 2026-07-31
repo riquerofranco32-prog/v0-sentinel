@@ -226,6 +226,114 @@ export const blogPosts: BlogPost[] = [
       },
     ],
   },
+  {
+    slug: "monitoreo-con-drones-para-incendios-forestales",
+    title:
+      "Monitoreo con drones para incendios forestales: cómo funciona en la práctica",
+    excerpt:
+      "No es un dron con cámara volando al azar. Es un sistema de monitoreo de incendios con rutas programadas, IA de verificación y alertas automáticas. Así se arma en la práctica.",
+    coverImage: "/problem-a3.jpg",
+    publishedAt: "2026-07-31",
+    keywords: [
+      "monitoreo con drones",
+      "monitoreo de incendios",
+      "drones para incendios forestales",
+      "monitoreo aéreo forestal",
+    ],
+    relatedLink: {
+      href: "/#servicios",
+      label: "Ver cómo funciona el monitoreo de Sentinel paso a paso",
+    },
+    pullQuote:
+      "El dron es el sensor. El sistema de monitoreo de incendios es todo lo que pasa después de que ese sensor capta una imagen.",
+    body: [
+      {
+        paragraphs: [
+          "Cuando alguien escucha 'monitoreo con drones' suele imaginarse un equipo pilotando un dron manualmente sobre el monte, mirando una pantalla. Esa imagen está desactualizada. El monitoreo de incendios forestales que realmente funciona a escala no depende de un piloto mirando una pantalla — depende de una operación programada, repetible y verificada por IA, con intervención humana solo cuando hay algo real que decidir.",
+          "Vale la pena desarmar el proceso paso a paso, porque ahí es donde se nota la diferencia entre un dron como juguete caro y un sistema de monitoreo como infraestructura de prevención.",
+        ],
+      },
+      {
+        heading: "Paso 1: rutas de vuelo programadas, no vuelos manuales",
+        paragraphs: [
+          "El territorio a cubrir se divide en zonas de riesgo, priorizadas según vegetación, historial de focos y accesibilidad para brigadas. Los drones vuelan esas rutas en horarios programados — no depende de que alguien decida 'hoy toca sobrevolar tal sector'. Esa regularidad es lo que convierte un sobrevuelo puntual en monitoreo continuo.",
+        ],
+      },
+      {
+        heading: "Paso 2: cámaras térmicas, no cámaras de video comunes",
+        paragraphs: [
+          "Un foco de calor incipiente muchas veces no es visible a simple vista todavía — puede estar bajo cobertura vegetal o recién empezando. Las cámaras térmicas detectan la firma de temperatura, no la imagen visible, lo que permite identificar un principio de incendio antes de que produzca humo visible desde el aire o desde tierra.",
+        ],
+      },
+      {
+        heading:
+          "Paso 3: IA que filtra falsos positivos antes de alertar a un humano",
+        paragraphs: [
+          "Esta es la parte que más diferencia a un sistema de monitoreo de incendios serio de uno amateur. No toda fuente de calor es un incendio: rocas calentadas por el sol, maquinaria agrícola, quemas controladas autorizadas. Un modelo de IA entrenado con miles de casos reales descarta automáticamente esos falsos positivos, para que la alerta que llega a un humano sea, con altísima probabilidad, un foco real.",
+          "Sin ese filtro, un sistema de monitoreo con drones satura de alertas falsas a quien tiene que decidir — y termina generando el mismo problema que quería resolver: gente ignorando avisos.",
+        ],
+      },
+      {
+        heading: "Paso 4: alerta geolocalizada a quien puede actuar",
+        paragraphs: [
+          "Confirmado el foco, el sistema genera una alerta con coordenadas exactas que llega directo a bomberos, brigadas o al equipo de gestión del territorio — no a una bandeja de entrada que alguien revisa cada tanto. En Sentinel, ese circuito completo (vuelo, detección, verificación, alerta) corre en menos de 5 minutos desde que aparece el foco.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "la-solucion-a-incendios-forestales",
+    title:
+      "La solución a incendios forestales: qué tiene que tener un sistema real",
+    excerpt:
+      '"Solución a incendios forestales" se usa mucho y se define poco. Estos son los cuatro componentes que separan una solución real de un parche.',
+    coverImage: "/features-d.jpg",
+    publishedAt: "2026-07-31",
+    keywords: [
+      "solución a incendios forestales",
+      "soluciones a incendios",
+      "sistema de monitoreo de incendios",
+      "prevención de incendios forestales Argentina",
+    ],
+    relatedLink: {
+      href: "/#nosotros",
+      label: "Conocé la solución de Sentinel de punta a punta",
+    },
+    pullQuote:
+      "Una solución a incendios forestales no es un producto — es un circuito completo: detectar, verificar, alertar y aprender de cada temporada.",
+    body: [
+      {
+        paragraphs: [
+          "\"Solución a incendios forestales\" es una frase que se usa para casi cualquier cosa: una app, un dron, una cámara, un número de teléfono de emergencia. El problema es que ninguna de esas cosas por separado resuelve el problema real, que no es 'ver el fuego' sino 'actuar antes de que sea demasiado tarde'. Después de trabajar en detección temprana en la Patagonia, en Sentinel identificamos cuatro componentes que tiene que tener cualquier solución que se tome en serio, y sin los cuales es, en el mejor de los casos, un parche.",
+        ],
+      },
+      {
+        heading: "1. Cobertura continua, no puntual",
+        paragraphs: [
+          "Un sobrevuelo ocasional o una cámara fija en un solo punto alto cubre una fracción del territorio y deja el resto a ciegas. La cobertura tiene que ser sistemática y repetida, priorizando las zonas de mayor riesgo según vegetación y clima, no solo las de mejor acceso.",
+        ],
+      },
+      {
+        heading: "2. Detección automatizada con verificación por IA",
+        paragraphs: [
+          "Como desarrollamos en la nota sobre monitoreo con drones, el paso que más diferencia a un sistema real es el filtro de falsos positivos. Sin IA de verificación, cualquier sistema de monitoreo termina generando ruido en vez de señal, y el ruido se ignora.",
+        ],
+      },
+      {
+        heading: "3. Alertas que llegan a quien decide, en minutos",
+        paragraphs: [
+          "Detectar un foco y no avisar a tiempo a quien puede actuar es lo mismo que no detectarlo. La alerta tiene que ser automática, geolocalizada y llegar directo a bomberos, brigadas o al gestor del territorio — sin pasos manuales intermedios que agreguen minutos que no sobran.",
+        ],
+      },
+      {
+        heading: "4. Datos que se acumulan temporada a temporada",
+        paragraphs: [
+          "Una solución real no reinicia en cero cada verano. Cada foco detectado, cada falso positivo descartado y cada patrón de riesgo queda como dato histórico que mejora la precisión del sistema y permite anticipar zonas críticas antes de que empiece la temporada de incendios.",
+          "Estos cuatro puntos son, en definitiva, la diferencia entre comprar un dron y tener una solución a incendios forestales. Es la distinción que buscamos que quede clara antes de que cualquier municipio, brigada o productor invierta en un sistema de monitoreo.",
+        ],
+      },
+    ],
+  },
 ];
 
 export function getBlogPost(slug: string): BlogPost | undefined {
