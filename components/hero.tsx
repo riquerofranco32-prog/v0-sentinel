@@ -97,7 +97,7 @@ export function Hero() {
       <ScrollExpandMedia
         mediaType="video"
         mediaSrc={VIDEO_URL}
-        posterSrc="/aaa.jpg"
+        posterSrc="/aaa-poster.webp"
         bgImageSrc="/aaa.jpg"
         title="Detectamos incendios en minutos, no en horas"
         date="Sistema activo · Patagonia"

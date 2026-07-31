@@ -137,6 +137,12 @@ export default function RootLayout({
   return (
     <html lang="es" className="scroll-smooth">
       <head>
+        {/* ponytail: the hero video streams from Cloudinary — preconnecting
+            lets the browser open that connection while the HTML is still
+            parsing instead of waiting until the <video> tag is discovered,
+            which matters on the LCP critical path. */}
+        <link rel="preconnect" href="https://res.cloudinary.com" />
+        <link rel="dns-prefetch" href="https://res.cloudinary.com" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

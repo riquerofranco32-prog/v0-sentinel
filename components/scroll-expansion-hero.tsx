@@ -151,6 +151,8 @@ const ScrollExpandMedia = ({
                       loop
                       playsInline
                       preload="auto"
+                      // @ts-expect-error -- fetchPriority is valid on video/img but not yet in this React DOM typing
+                      fetchpriority="high"
                       className="w-full h-full object-cover rounded-xl"
                       controls={false}
                       disablePictureInPicture
