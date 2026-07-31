@@ -102,7 +102,7 @@ const ScrollExpandMedia = ({
         <div className="sticky top-0 h-[100dvh] overflow-hidden">
           <motion.div
             className="absolute inset-0 z-0 h-full"
-            initial={{ opacity: 0 }}
+            initial={false}
             animate={{ opacity: 1 - scrollProgress }}
             transition={{ duration: 0.1 }}
           >
