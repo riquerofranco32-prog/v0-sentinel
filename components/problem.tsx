@@ -49,7 +49,7 @@ export function Problem() {
           alt="Bomberos enfrentando incendio forestal en la Patagonia"
           fill
           sizes="100vw"
-          priority
+          loading="lazy"
           className="object-cover transition-transform duration-[3000ms]"
           style={{ transform: isVisible ? "scale(1.04)" : "scale(1)" }}
         />

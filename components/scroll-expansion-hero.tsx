@@ -53,6 +53,7 @@ const ScrollExpandMedia = ({
     let pinTop = 0;
     let scrollRange = 0;
     let ticking = false;
+    let lastStep = -1;
 
     const measure = (): void => {
       const el = pinZoneRef.current;
@@ -66,7 +67,14 @@ const ScrollExpandMedia = ({
         scrollRange > 0
           ? Math.min(Math.max((window.scrollY - pinTop) / scrollRange, 0), 1)
           : 0;
-      setScrollProgress(progress);
+      // ponytail: this drives a width/height resize (non-composited, forces
+      // layout) every time it changes — round to 200 discrete steps so a
+      // 1px scroll delta doesn't trigger a re-render for an imperceptible
+      // size change. Still smooth, just fewer layout passes.
+      const step = Math.round(progress * 200);
+      if (step === lastStep) return;
+      lastStep = step;
+      setScrollProgress(step / 200);
     };
     const onScroll = (): void => {
       if (ticking) return;
