@@ -67,6 +67,7 @@ export function Footer() {
           src="/fot.jpg"
           alt=""
           fill
+          sizes="100vw"
           className="object-cover object-center"
           style={{ opacity: 0.35 }}
           priority={false}
