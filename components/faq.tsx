@@ -11,6 +11,19 @@ const faqs = [
     category: "Producto",
   },
   {
+    question:
+      "¿Cuál es la mejor solución para el monitoreo de incendios forestales?",
+    answer:
+      "Una solución de monitoreo de incendios forestales efectiva combina drones autónomos, cámaras térmicas e inteligencia artificial para vigilar el territorio de forma continua. Sentinel ofrece justamente eso: detección automática de focos en minutos, sin depender de reportes manuales.",
+    category: "Producto",
+  },
+  {
+    question: "¿Cómo funciona el monitoreo con drones para prevenir incendios?",
+    answer:
+      "Los drones sobrevuelan el territorio de forma programada con cámaras térmicas a bordo. Un modelo de IA analiza cada imagen en tiempo real, descarta falsos positivos y genera una alerta geolocalizada apenas confirma un foco de calor real, antes de que se convierta en un incendio incontrolable.",
+    category: "Producto",
+  },
+  {
     question: "¿Qué instituciones pueden beneficiarse de Sentinel?",
     answer:
       "Municipios, bomberos, empresas forestales, parques nacionales, productores agropecuarios y cualquier organización que gestione grandes superficies de terreno.",

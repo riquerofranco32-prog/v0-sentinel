@@ -178,32 +178,31 @@ const ScrollExpandMedia = ({
                 </div>
               </div>
 
-              <div
-                className={`flex items-center justify-center text-center gap-4 w-full relative z-10 transition-none flex-col ${
+              <h1
+                className={`flex items-center justify-center text-center gap-4 w-full relative z-10 transition-none flex-col font-bold text-4xl md:text-5xl lg:text-6xl ${
                   textBlend ? "mix-blend-difference" : "mix-blend-normal"
                 }`}
+                style={{ fontFamily: "var(--font-heading)" }}
               >
-                <motion.h2
-                  className="text-4xl md:text-5xl lg:text-6xl font-bold transition-none"
+                <motion.span
+                  className="transition-none"
                   style={{
                     color: "rgba(240,234,216,0.95)",
-                    fontFamily: "var(--font-heading)",
                     transform: `translateX(-${textTranslateX}vw)`,
                   }}
                 >
                   {firstWord}
-                </motion.h2>
-                <motion.h2
-                  className="text-4xl md:text-5xl lg:text-6xl font-bold text-center transition-none"
+                </motion.span>
+                <motion.span
+                  className="text-center transition-none"
                   style={{
                     color: "#94f1be",
-                    fontFamily: "var(--font-heading)",
                     transform: `translateX(${textTranslateX}vw)`,
                   }}
                 >
                   {restOfTitle}
-                </motion.h2>
-              </div>
+                </motion.span>
+              </h1>
             </div>
           </div>
         </div>

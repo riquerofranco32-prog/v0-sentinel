@@ -97,7 +97,7 @@ export function HowItWorks() {
               color: "rgba(240,234,216,0.25)",
             }}
           >
-            El proceso
+            Cómo funciona el monitoreo con drones
           </p>
           <h2
             style={{

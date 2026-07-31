@@ -16,9 +16,9 @@ const inter = Inter({
 });
 
 const siteUrl = "https://www.sentineltech.com.ar";
-const title = "SENTINEL | Tecnología que protege tu territorio";
+const title = "Monitoreo de Incendios Forestales con Drones e IA | Sentinel";
 const description =
-  "Tecnología aérea e inteligencia artificial para la detección temprana de incendios y el monitoreo ambiental.";
+  "Sentinel: la solución a incendios forestales. Monitoreo de incendios con drones autónomos e IA. Detección en minutos para Patagonia y Argentina.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -28,6 +28,12 @@ export const metadata: Metadata = {
   },
   description,
   keywords: [
+    "monitoreo de incendios",
+    "monitoreo de incendios forestales",
+    "solución a incendios forestales",
+    "soluciones a incendios",
+    "monitoreo con drones",
+    "incendios forestales",
     "detección incendios forestales",
     "prevención incendios Patagonia",
     "drones monitoreo ambiental",
@@ -39,6 +45,9 @@ export const metadata: Metadata = {
   authors: [{ name: "Sentinel Technologies", url: siteUrl }],
   creator: "Sentinel Technologies",
   publisher: "Sentinel Technologies",
+  verification: {
+    google: "_e_gueYaQyl1g7OI7D112etzhS028QTSXqnFzdM1Gfg",
+  },
   robots: {
     index: true,
     follow: true,

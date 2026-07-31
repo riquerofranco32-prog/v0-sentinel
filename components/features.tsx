@@ -72,7 +72,7 @@ export function Features() {
               opacity: isVisible ? 1 : 0,
             }}
           >
-            Nuestra tecnología
+            Monitoreo de incendios forestales con drones
           </p>
           <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
             <h2

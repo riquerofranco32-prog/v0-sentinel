@@ -82,7 +82,7 @@ export function Capabilities() {
               color: "rgba(240,234,216,0.3)",
             }}
           >
-            Capacidades
+            La solución a incendios forestales
           </p>
           <h2
             className="text-4xl sm:text-5xl lg:text-6xl"
