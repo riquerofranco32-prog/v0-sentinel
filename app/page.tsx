@@ -11,6 +11,7 @@ import { FireImpactStats } from "@/components/fire-impact-stats";
 import { WildfireNews } from "@/components/wildfire-news";
 import { Team } from "@/components/team";
 import { Awards } from "@/components/awards";
+import { Press } from "@/components/press";
 import { Partners } from "@/components/partners";
 import { InstagramFeed } from "@/components/instagram";
 import { BlogTeaser } from "@/components/blog-teaser";
@@ -39,6 +40,7 @@ export default function Home() {
       <WildfireNews />
       <Team />
       <Awards />
+      <Press />
       <Partners />
       <InstagramFeed />
       <BlogTeaser />
