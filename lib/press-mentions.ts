@@ -18,14 +18,17 @@ export const pressMentions: PressMention[] = [
     title: "Finalizó la competencia ILAN a la innovación Universitaria UTN",
     url: "https://www.utn.edu.ar/es/articulos-slider-principal/finalizo-la-competencia-ilan-a-la-innovacion-universitaria-utn",
     date: "2025-05-22",
-    image: "",
+    // ponytail: la nota no tiene og:image propio -> foto real del equipo
+    // recibiendo el premio ILAN (no es la foto del medio, es nuestra).
+    image: "/logros-tile-1.jpg",
   },
   {
     outlet: "CESSI",
     title: "Premios Sadosky | Conocé los ganadores 2025",
     url: "https://cessi.org.ar/2025/11/27/premios-sadosky-conoce-los-ganadores-2025/",
     date: "2025-11-27",
-    image: "",
+    // ponytail: sin og:image -> foto real de la ceremonia de Premios Sadosky.
+    image: "/logros-tile-3.jpg",
   },
   {
     outlet: "Canal-AR",
