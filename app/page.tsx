@@ -7,6 +7,8 @@ import { HowItWorks } from "@/components/how-it-works";
 import { Stats } from "@/components/stats";
 import { FireRiskIndex } from "@/components/fire-risk-index";
 import { ActiveFires } from "@/components/active-fires";
+import { FireImpactStats } from "@/components/fire-impact-stats";
+import { WildfireNews } from "@/components/wildfire-news";
 import { Team } from "@/components/team";
 import { Awards } from "@/components/awards";
 import { Partners } from "@/components/partners";
@@ -33,6 +35,8 @@ export default function Home() {
       <Stats />
       <FireRiskIndex />
       <ActiveFires />
+      <FireImpactStats />
+      <WildfireNews />
       <Team />
       <Awards />
       <Partners />
