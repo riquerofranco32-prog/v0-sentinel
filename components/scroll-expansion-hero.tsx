@@ -32,8 +32,17 @@ const ScrollExpandMedia = ({
   const pinZoneRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    const checkIfMobile = (): void => setIsMobileState(window.innerWidth < 768);
-    checkIfMobile();
+    // ponytail: mobile browsers fire "resize" when the address bar
+    // shows/hides during scroll (viewport height changes, width doesn't) —
+    // only react to actual width changes so scrolling on mobile doesn't
+    // keep re-triggering this.
+    let lastWidth = window.innerWidth;
+    const checkIfMobile = (): void => {
+      if (window.innerWidth === lastWidth) return;
+      lastWidth = window.innerWidth;
+      setIsMobileState(window.innerWidth < 768);
+    };
+    setIsMobileState(window.innerWidth < 768);
     window.addEventListener("resize", checkIfMobile);
     return () => window.removeEventListener("resize", checkIfMobile);
   }, []);
@@ -54,6 +63,7 @@ const ScrollExpandMedia = ({
     let scrollRange = 0;
     let ticking = false;
     let lastStep = -1;
+    let lastWidth = window.innerWidth;
 
     const measure = (): void => {
       const el = pinZoneRef.current;
@@ -82,6 +92,11 @@ const ScrollExpandMedia = ({
       requestAnimationFrame(updateProgress);
     };
     const onResize = (): void => {
+      // ponytail: same address-bar-collapse issue as the isMobileState
+      // effect above — a pure height change (toolbar show/hide) shouldn't
+      // re-measure and shift the scroll math mid-gesture.
+      if (window.innerWidth === lastWidth) return;
+      lastWidth = window.innerWidth;
       measure();
       onScroll();
     };
