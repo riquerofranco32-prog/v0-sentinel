@@ -94,7 +94,10 @@ const organizationJsonLd = {
     { "@type": "AdministrativeArea", name: "Patagonia" },
     { "@type": "Country", name: "Argentina" },
   ],
-  sameAs: ["https://linktr.ee/sentinelarg"],
+  sameAs: [
+    "https://instagram.com/sentinel.arg",
+    "https://linktr.ee/sentinelarg",
+  ],
   knowsAbout: [
     "Wildfire Detection",
     "Drone Technology",
