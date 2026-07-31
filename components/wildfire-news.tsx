@@ -1,4 +1,4 @@
-import { ArrowUpRight, Newspaper } from "lucide-react";
+import { ArrowUpRight, Flame, Newspaper } from "lucide-react";
 
 const FEED_URL =
   "https://news.google.com/rss/search?q=incendios%20forestales%20Argentina%20when:7d&hl=es-419&gl=AR&ceid=AR:es-419";
@@ -104,22 +104,47 @@ export async function WildfireNews() {
           Noticias sobre incendios forestales, al día.
         </h2>
 
-        <div className="flex flex-col">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {news.map((item, i) => (
             <a
               key={i}
               href={item.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex items-start justify-between gap-4 py-5 transition-colors hover:bg-[rgba(240,234,216,0.02)]"
+              className="group flex flex-col overflow-hidden rounded-lg transition-all duration-300 hover:-translate-y-0.5"
               style={{
-                borderTop:
-                  i === 0 ? "none" : "0.5px solid rgba(240,234,216,0.07)",
+                background: "rgba(240,234,216,0.02)",
+                border: "0.5px solid rgba(240,234,216,0.07)",
               }}
             >
-              <div className="min-w-0">
+              <div
+                className="relative flex items-center justify-center"
+                style={{
+                  aspectRatio: "16/9",
+                  background: `radial-gradient(circle at 30% 30%, ${
+                    [
+                      "rgba(241,107,107,0.16)",
+                      "rgba(217,154,90,0.16)",
+                      "rgba(148,241,190,0.14)",
+                    ][i % 3]
+                  }, rgba(12,11,9,0.6))`,
+                }}
+              >
+                <Flame
+                  className="w-8 h-8 transition-transform duration-300 group-hover:scale-110"
+                  style={{
+                    color: ["#f16b6b", "#d99a5a", "#94f1be"][i % 3],
+                    opacity: 0.85,
+                  }}
+                />
+                <ArrowUpRight
+                  className="absolute top-3 right-3 w-4 h-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                  style={{ color: "rgba(240,234,216,0.35)" }}
+                />
+              </div>
+              <div className="p-4 flex-1 flex flex-col justify-between">
                 <p
-                  className="text-[15px] leading-snug mb-2 transition-colors group-hover:text-[rgba(240,234,216,0.95)]"
+                  className="text-[14px] leading-snug mb-3 transition-colors group-hover:text-[rgba(240,234,216,0.95)]"
                   style={{
                     fontFamily: "var(--font-sans)",
                     fontWeight: 400,
@@ -140,10 +165,6 @@ export async function WildfireNews() {
                   {relativeTime(item.pubDate)}
                 </p>
               </div>
-              <ArrowUpRight
-                className="w-4 h-4 mt-1 flex-shrink-0 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                style={{ color: "rgba(240,234,216,0.25)" }}
-              />
             </a>
           ))}
         </div>
