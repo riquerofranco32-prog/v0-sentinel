@@ -269,11 +269,11 @@ export function Problem() {
               >
                 <a
                   href="#servicios"
-                  className="inline-flex items-center gap-2 px-8 py-3 text-[13px] font-medium rounded-sm transition-all border border-[rgba(240,234,216,0.2)] bg-[rgba(240,234,216,0.08)] text-[rgba(240,234,216,0.85)] hover:bg-[rgba(240,234,216,0.13)] hover:border-[rgba(240,234,216,0.4)]"
+                  className="group inline-flex items-center gap-2 px-8 py-3 text-[13px] font-medium rounded-sm transition-all duration-300 border border-[rgba(148,241,190,0.3)] bg-[rgba(148,241,190,0.08)] text-[#94f1be] hover:bg-[#94f1be] hover:text-[#0c0b09] hover:shadow-[0_0_20px_rgba(148,241,190,0.3)] hover:-translate-y-0.5"
                   style={{ fontFamily: "var(--font-sans)" }}
                 >
                   Ver cómo lo resolvemos
-                  <ArrowRight className="w-3.5 h-3.5" />
+                  <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
                 </a>
               </div>
             </div>

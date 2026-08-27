@@ -277,19 +277,19 @@ export function Features() {
               </p>
 
               {/* Status */}
-              <div className="flex items-center gap-2 mt-5">
-                <div
-                  className="w-1.5 h-1.5 rounded-full"
-                  style={{ background: "#94f1be" }}
-                />
+              <div className="flex items-center gap-2.5 mt-5">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#94f1be] opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-[#94f1be]"></span>
+                </span>
                 <span
-                  className="text-[10px]"
+                  className="text-[10px] tracking-widest uppercase font-medium"
                   style={{
                     fontFamily: "var(--font-sans)",
-                    color: "rgba(240,234,216,0.25)",
+                    color: "#94f1be",
                   }}
                 >
-                  sistema activo
+                  Sistema activo y operativo
                 </span>
               </div>
             </div>
