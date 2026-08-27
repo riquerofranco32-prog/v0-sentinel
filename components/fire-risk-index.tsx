@@ -199,98 +199,119 @@ export async function FireRiskIndex() {
             return (
               <div
                 key={r.location.name}
-                className="rounded-lg p-6"
+                className="rounded-lg p-6 transition-all duration-300 hover:-translate-y-0.5 hover:border-[rgba(240,234,216,0.14)]"
                 style={{
                   background: "rgba(240,234,216,0.02)",
-                  border: "0.5px solid rgba(240,234,216,0.07)",
+                  border: "0.5px solid rgba(240,234,216,0.08)",
                 }}
               >
-                <p
-                  className="text-[15px] mb-0.5"
-                  style={{
-                    fontFamily: "var(--font-heading)",
-                    fontWeight: 700,
-                    color: "rgba(240,234,216,0.92)",
-                  }}
-                >
-                  {r.location.name}
-                </p>
-                <p
-                  className="text-[11px] mb-5"
-                  style={{
-                    fontFamily: "var(--font-sans)",
-                    color: "rgba(240,234,216,0.3)",
-                  }}
-                >
-                  {r.location.province}
-                </p>
-
-                <div
-                  className="inline-flex items-center gap-1.5 px-3 py-1 rounded-sm mb-5"
-                  style={{
-                    background: `${risk.color}15`,
-                    border: `0.5px solid ${risk.color}40`,
-                  }}
-                >
-                  <span
-                    className="w-1.5 h-1.5 rounded-full"
-                    style={{ background: risk.color }}
-                  />
-                  <span
-                    className="text-[11px] tracking-wide"
-                    style={{
-                      fontFamily: "var(--font-sans)",
-                      color: risk.color,
-                    }}
-                  >
-                    {risk.label}
-                  </span>
-                </div>
-
-                <div className="space-y-2">
-                  <div className="flex items-center gap-2">
-                    <Thermometer
-                      className="w-3.5 h-3.5"
-                      style={{ color: "rgba(240,234,216,0.3)" }}
-                    />
-                    <span
-                      className="text-[12px]"
+                <div className="flex items-start justify-between mb-4">
+                  <div>
+                    <p
+                      className="text-[15px] mb-0.5 font-semibold"
+                      style={{
+                        fontFamily: "var(--font-heading)",
+                        color: "rgba(240,234,216,0.92)",
+                      }}
+                    >
+                      {r.location.name}
+                    </p>
+                    <p
+                      className="text-[11px]"
                       style={{
                         fontFamily: "var(--font-sans)",
-                        color: "rgba(240,234,216,0.55)",
+                        color: "rgba(240,234,216,0.35)",
+                      }}
+                    >
+                      {r.location.province}
+                    </p>
+                  </div>
+
+                  <div
+                    className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-sm"
+                    style={{
+                      background: `${risk.color}15`,
+                      border: `0.5px solid ${risk.color}35`,
+                    }}
+                  >
+                    <span
+                      className="w-1.5 h-1.5 rounded-full"
+                      style={{ background: risk.color }}
+                    />
+                    <span
+                      className="text-[10px] uppercase font-medium tracking-wider"
+                      style={{
+                        fontFamily: "var(--font-sans)",
+                        color: risk.color,
+                      }}
+                    >
+                      {risk.label}
+                    </span>
+                  </div>
+                </div>
+
+                <div className="space-y-2.5 pt-3 border-t border-[rgba(240,234,216,0.06)]">
+                  <div className="flex items-center justify-between text-[12px]">
+                    <span
+                      className="flex items-center gap-2"
+                      style={{
+                        fontFamily: "var(--font-sans)",
+                        color: "rgba(240,234,216,0.4)",
+                      }}
+                    >
+                      <Thermometer className="w-3.5 h-3.5 opacity-70" />
+                      Temperatura
+                    </span>
+                    <span
+                      className="font-medium tabular-nums"
+                      style={{
+                        fontFamily: "var(--font-sans)",
+                        color: "rgba(240,234,216,0.85)",
                       }}
                     >
                       {Math.round(r.temperature)}°C
                     </span>
                   </div>
-                  <div className="flex items-center gap-2">
-                    <Droplets
-                      className="w-3.5 h-3.5"
-                      style={{ color: "rgba(240,234,216,0.3)" }}
-                    />
+                  <div className="flex items-center justify-between text-[12px]">
                     <span
-                      className="text-[12px]"
+                      className="flex items-center gap-2"
                       style={{
                         fontFamily: "var(--font-sans)",
-                        color: "rgba(240,234,216,0.55)",
+                        color: "rgba(240,234,216,0.4)",
                       }}
                     >
-                      {Math.round(r.humidity)}% humedad
+                      <Droplets className="w-3.5 h-3.5 opacity-70" />
+                      Humedad
+                    </span>
+                    <span
+                      className="font-medium tabular-nums"
+                      style={{
+                        fontFamily: "var(--font-sans)",
+                        color: "rgba(240,234,216,0.85)",
+                      }}
+                    >
+                      {Math.round(r.humidity)}%
                     </span>
                   </div>
-                  <div className="flex items-center gap-2">
-                    <Wind
-                      className="w-3.5 h-3.5"
-                      style={{ color: "rgba(240,234,216,0.3)" }}
-                    />
+                  <div className="flex items-center justify-between text-[12px]">
                     <span
-                      className="text-[12px]"
+                      className="flex items-center gap-2"
                       style={{
                         fontFamily: "var(--font-sans)",
-                        color: "rgba(240,234,216,0.55)",
+                        color: "rgba(240,234,216,0.4)",
                       }}
                     >
-                      {Math.round(r.windSpeed)} km/h viento
+                      <Wind className="w-3.5 h-3.5 opacity-70" />
+                      Viento
+                    </span>
+                    <span
+                      className="font-medium tabular-nums"
+                      style={{
+                        fontFamily: "var(--font-sans)",
+                        color: "rgba(240,234,216,0.85)",
+                      }}
+                    >
+                      {Math.round(r.windSpeed)} km/h
                     </span>
                   </div>
                 </div>

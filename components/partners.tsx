@@ -68,28 +68,29 @@ export function Partners() {
         </p>
 
         <div
-          className="flex flex-wrap items-center justify-center gap-x-14 gap-y-10 transition-all duration-700"
+          className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-7 gap-6 sm:gap-8 items-center justify-items-center transition-all duration-700 max-w-5xl mx-auto"
           style={{
             opacity: isVisible ? 1 : 0,
             transform: isVisible ? "translateY(0)" : "translateY(16px)",
           }}
         >
           {logos.map((logo, i) => (
-            <img
+            <div
               key={logo.id}
-              src={logo.image}
-              alt={logo.description}
-              title={logo.description}
-              loading="lazy"
-              className="h-10 sm:h-12 w-auto object-contain transition-all duration-300 hover:scale-110"
-              style={{
-                filter: "grayscale(100%) brightness(0) invert(1)",
-                opacity: 0.65,
-                transitionDelay: `${i * 30}ms`,
-              }}
-              onMouseEnter={(e) => (e.currentTarget.style.opacity = "1")}
-              onMouseLeave={(e) => (e.currentTarget.style.opacity = "0.65")}
-            />
+              className="flex items-center justify-center p-3 h-16 w-full rounded-lg transition-all duration-300 hover:bg-[rgba(240,234,216,0.03)] group"
+            >
+              <img
+                src={logo.image}
+                alt={logo.description}
+                title={logo.description}
+                loading="lazy"
+                className="max-h-9 max-w-[100px] w-auto object-contain transition-all duration-300 group-hover:scale-105 opacity-60 group-hover:opacity-100"
+                style={{
+                  filter: "grayscale(100%) brightness(0) invert(1)",
+                  transitionDelay: `${i * 20}ms`,
+                }}
+              />
+            </div>
           ))}
         </div>
       </div>

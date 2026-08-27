@@ -128,9 +128,10 @@ export function InstagramFeed() {
               href={post.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative rounded-lg overflow-hidden transition-all duration-700 hover:-translate-y-1"
+              className="group relative rounded-lg overflow-hidden transition-all duration-500 hover:-translate-y-1 hover:border-[rgba(148,241,190,0.3)] shadow-lg shadow-black/40"
               style={{
                 aspectRatio: "4/5",
+                border: "0.5px solid rgba(240,234,216,0.08)",
                 opacity: isVisible ? 1 : 0,
                 transform: isVisible ? "translateY(0)" : "translateY(24px)",
                 transitionDelay: `${i * 100}ms`,
