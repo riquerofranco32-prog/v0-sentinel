@@ -136,7 +136,7 @@ export function Capabilities() {
               />
               {!reducedMotion && (
                 <div
-                  className="absolute inset-0 rounded-full animate-spin"
+                  className="absolute inset-0 rounded-full animate-spin group-hover:[animation-play-state:paused]"
                   style={{
                     background:
                       "conic-gradient(from 0deg, rgba(148,241,190,0.25), transparent 25%)",

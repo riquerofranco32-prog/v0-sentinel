@@ -128,11 +128,11 @@ export function CTA() {
           </a>
 
           <a
-            href="#servicios"
+            href="/#contacto"
             className="inline-flex items-center justify-center px-8 py-4 rounded-sm text-[13px] font-light transition-all duration-200 border border-[rgba(240,234,216,0.12)] text-[rgba(240,234,216,0.55)] hover:border-[rgba(240,234,216,0.3)] hover:text-[rgba(240,234,216,0.9)]"
             style={{ fontFamily: "var(--font-sans)" }}
           >
-            Ver cómo funciona
+            Enviar mensaje
           </a>
         </div>
       </div>

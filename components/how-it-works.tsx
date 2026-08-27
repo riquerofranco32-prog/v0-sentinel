@@ -42,9 +42,13 @@ const steps = [
   },
 ];
 
+const STEP_DURATION = 3200;
+
 export function HowItWorks() {
   const [isVisible, setIsVisible] = useState(false);
   const [activeStep, setActiveStep] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+  const [progressKey, setProgressKey] = useState(0);
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -59,12 +63,13 @@ export function HowItWorks() {
   }, []);
 
   useEffect(() => {
-    if (!isVisible) return;
+    if (!isVisible || isPaused) return;
     const timer = setInterval(() => {
       setActiveStep((s) => (s + 1) % 3);
-    }, 3200);
+      setProgressKey((k) => k + 1);
+    }, STEP_DURATION);
     return () => clearInterval(timer);
-  }, [isVisible]);
+  }, [isVisible, isPaused]);
 
   return (
     <section
@@ -72,6 +77,8 @@ export function HowItWorks() {
       id="servicios"
       className="relative py-24 lg:py-32 overflow-hidden"
       style={{ background: "#0c0b09" }}
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
     >
       <div
         className="absolute inset-0 pointer-events-none"
@@ -134,7 +141,10 @@ export function HowItWorks() {
                       : "translateX(-20px)",
                     transitionDelay: `${i * 140}ms`,
                   }}
-                  onClick={() => setActiveStep(i)}
+                  onClick={() => {
+                    setActiveStep(i);
+                    setProgressKey((k) => k + 1);
+                  }}
                 >
                   {/* Step circle */}
                   <div
@@ -258,7 +268,7 @@ export function HowItWorks() {
             })}
           </div>
 
-          {/* Progress bar */}
+          {/* Progress bar — resets each cycle with progressKey */}
           <div
             className="mt-8 ml-[70px] h-px rounded-full overflow-hidden transition-all duration-700"
             style={{
@@ -267,13 +277,23 @@ export function HowItWorks() {
             }}
           >
             <div
-              className="h-full rounded-full transition-all duration-[3200ms] ease-linear"
+              key={progressKey}
+              className="h-full rounded-full"
               style={{
-                width: isVisible ? "100%" : "0%",
                 background: "#94f1be",
+                animation: isVisible && !isPaused
+                  ? `progressBar ${STEP_DURATION}ms linear forwards`
+                  : "none",
+                width: isPaused ? undefined : "0%",
               }}
             />
           </div>
+          <style>{`
+            @keyframes progressBar {
+              from { width: 0%; }
+              to   { width: 100%; }
+            }
+          `}</style>
         </div>
       </div>
     </section>

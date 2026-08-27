@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { Flame, Clock, Trees, Trophy } from "lucide-react";
+import { Flame, Clock, Trees, Trophy, Star } from "lucide-react";
 
 const stats = [
   {
@@ -31,6 +31,13 @@ const stats = [
     suffix: "+",
     label: "Propuestas superadas (BNA 2025)",
     accent: "#94f1be",
+  },
+  {
+    icon: Star,
+    value: 9,
+    suffix: "",
+    label: "Reconocimientos obtenidos",
+    accent: "#e8c97d",
   },
 ];
 
@@ -110,7 +117,7 @@ export function Stats() {
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-10">
         <div
-          className="grid grid-cols-2 lg:grid-cols-4 gap-px"
+          className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-px"
           style={{ background: "rgba(240,234,216,0.05)" }}
         >
           {stats.map((stat, i) => (

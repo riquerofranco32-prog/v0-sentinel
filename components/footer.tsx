@@ -7,6 +7,7 @@ const footerLinks = {
   Producto: [
     { label: "Cómo funciona", href: "/#servicios" },
     { label: "Reconocimientos", href: "/#noticias" },
+    { label: "Prensa", href: "/#prensa" },
   ],
   Empresa: [
     { label: "Solución", href: "/#nosotros" },

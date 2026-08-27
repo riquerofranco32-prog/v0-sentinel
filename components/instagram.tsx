@@ -99,7 +99,7 @@ export function InstagramFeed() {
               <span
                 style={{ color: "rgba(240,234,216,0.75)", fontWeight: 400 }}
               >
-                +950 seguidores.
+                +1.000 seguidores.
               </span>
             </p>
           </div>
