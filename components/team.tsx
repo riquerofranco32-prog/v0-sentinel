@@ -120,24 +120,23 @@ export function Team() {
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
                 />
                 <div
-                  className="absolute inset-x-0 bottom-0 flex items-center justify-center gap-1.5 py-4 transition-all duration-300"
+                  className="absolute inset-x-0 bottom-0 flex items-center justify-center py-3.5 transition-all duration-300"
                   style={{
                     background:
-                      "linear-gradient(to bottom, transparent 0%, rgba(12,11,9,0.92) 75%)",
+                      "linear-gradient(to bottom, transparent 0%, rgba(12,11,9,0.85) 80%)",
                   }}
                 >
                   <span
-                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[11px] font-medium transition-all duration-300 group-hover:bg-[#94f1be] group-hover:text-[#0c0b09] group-hover:shadow-[0_0_15px_rgba(148,241,190,0.4)] group-hover:-translate-y-0.5"
+                    className="inline-flex items-center gap-1.5 px-3 py-1 rounded-sm text-[11px] font-normal transition-all duration-200 group-hover:bg-[#94f1be] group-hover:text-[#0c0b09]"
                     style={{
                       fontFamily: "var(--font-sans)",
                       color: "#94f1be",
-                      background: "rgba(148,241,190,0.12)",
-                      border: "0.5px solid rgba(148,241,190,0.35)",
-                      backdropFilter: "blur(4px)",
+                      background: "rgba(148,241,190,0.1)",
+                      border: "0.5px solid rgba(148,241,190,0.3)",
                     }}
                   >
                     <Linkedin className="w-3 h-3" />
-                    <span>Ver LinkedIn</span>
+                    LinkedIn
                   </span>
                 </div>
               </a>

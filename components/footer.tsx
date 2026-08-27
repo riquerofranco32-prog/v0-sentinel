@@ -280,46 +280,23 @@ export function Footer() {
           </div>
 
           {/* Creado por Se7en Dev */}
-          <a
-            href="https://se7endev.vercel.app/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group flex items-center gap-2 px-3.5 py-1.5 rounded-full transition-all duration-300 hover:scale-[1.03]"
-            style={{
-              background: "rgba(240,234,216,0.03)",
-              border: "1px solid rgba(148,241,190,0.18)",
-              boxShadow: "0 0 15px rgba(148,241,190,0.03)",
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.borderColor = "rgba(148,241,190,0.5)";
-              e.currentTarget.style.background = "rgba(148,241,190,0.08)";
-              e.currentTarget.style.boxShadow = "0 0 20px rgba(148,241,190,0.15)";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.borderColor = "rgba(148,241,190,0.18)";
-              e.currentTarget.style.background = "rgba(240,234,216,0.03)";
-              e.currentTarget.style.boxShadow = "0 0 15px rgba(148,241,190,0.03)";
-            }}
-          >
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#94f1be] opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-[#94f1be]"></span>
-            </span>
-            <span
-              className="text-[11px] font-normal transition-colors"
+          <div className="flex items-center">
+            <a
+              href="https://se7endev.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex items-center gap-1.5 text-[12px] transition-colors duration-200"
               style={{
                 fontFamily: "var(--font-sans)",
-                color: "rgba(240,234,216,0.55)",
+                fontWeight: 300,
+                color: "rgba(240,234,216,0.45)",
               }}
             >
-              Creado por{" "}
-              <span
-                className="font-medium text-[#94f1be] group-hover:text-[#b4fcd5] transition-colors inline-flex items-center gap-0.5"
-                style={{ letterSpacing: "0.02em" }}
-              >
+              <span>Creado por</span>
+              <span className="font-medium text-[#94f1be] group-hover:underline underline-offset-4 decoration-[#94f1be]/50 transition-all inline-flex items-center gap-1">
                 Se7en Dev
                 <svg
-                  className="w-3 h-3 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 opacity-80 group-hover:opacity-100"
+                  className="w-3 h-3 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 opacity-70 group-hover:opacity-100"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -332,8 +309,8 @@ export function Footer() {
                   />
                 </svg>
               </span>
-            </span>
-          </a>
+            </a>
+          </div>
         </div>
       </div>
     </footer>
