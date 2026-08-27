@@ -76,12 +76,12 @@ export function BlogTeaser() {
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
           {posts.map((post, i) => (
             <Link
               key={post.slug}
               href={`/blog/${post.slug}`}
-              className="group rounded-lg overflow-hidden transition-all duration-700 hover:-translate-y-1"
+              className="group flex flex-col rounded-lg overflow-hidden transition-all duration-300 hover:-translate-y-1"
               style={{
                 background: "rgba(240,234,216,0.02)",
                 border: "0.5px solid rgba(240,234,216,0.07)",
@@ -90,37 +90,65 @@ export function BlogTeaser() {
                 transitionDelay: `${i * 100}ms`,
               }}
             >
-              <div className="relative w-full" style={{ aspectRatio: "16/9" }}>
+              <div className="relative w-full overflow-hidden" style={{ aspectRatio: "16/9" }}>
                 <Image
                   src={post.coverImage}
                   alt=""
                   fill
                   sizes="(max-width: 768px) 100vw, 33vw"
-                  className="object-cover transition-transform duration-700 group-hover:scale-[1.05]"
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0c0b09]/85 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0c0b09]/90 via-transparent to-transparent" />
               </div>
-              <div className="p-6">
-                <h3
-                  className="text-base mb-2 leading-snug"
-                  style={{
-                    fontFamily: "var(--font-heading)",
-                    fontWeight: 700,
-                    color: "rgba(240,234,216,0.92)",
-                  }}
-                >
-                  {post.title}
-                </h3>
-                <p
-                  className="text-[13px] leading-relaxed line-clamp-2"
-                  style={{
-                    fontFamily: "var(--font-sans)",
-                    fontWeight: 300,
-                    color: "rgba(240,234,216,0.45)",
-                  }}
-                >
-                  {post.excerpt}
-                </p>
+              <div className="p-6 flex-1 flex flex-col justify-between">
+                <div>
+                  <p
+                    className="text-[11px] mb-2 font-normal"
+                    style={{
+                      fontFamily: "var(--font-sans)",
+                      color: "rgba(148,241,190,0.8)",
+                    }}
+                  >
+                    {new Date(post.publishedAt).toLocaleDateString("es-AR", {
+                      day: "numeric",
+                      month: "short",
+                      year: "numeric",
+                    })}
+                  </p>
+                  <h3
+                    className="text-base mb-2.5 leading-snug transition-colors duration-200 group-hover:text-[#94f1be]"
+                    style={{
+                      fontFamily: "var(--font-heading)",
+                      fontWeight: 700,
+                      color: "rgba(240,234,216,0.92)",
+                    }}
+                  >
+                    {post.title}
+                  </h3>
+                  <p
+                    className="text-[13px] leading-relaxed line-clamp-2"
+                    style={{
+                      fontFamily: "var(--font-sans)",
+                      fontWeight: 300,
+                      color: "rgba(240,234,216,0.45)",
+                    }}
+                  >
+                    {post.excerpt}
+                  </p>
+                </div>
+
+                <div className="mt-4 pt-3 border-t border-[rgba(240,234,216,0.06)] flex items-center justify-between">
+                  <span
+                    className="text-[11px] font-normal group-hover:text-[#94f1be] transition-colors flex items-center gap-1"
+                    style={{
+                      fontFamily: "var(--font-sans)",
+                      color: "rgba(240,234,216,0.4)",
+                    }}
+                  >
+                    Leer artículo
+                    <ArrowRight className="w-3 h-3 transition-transform duration-200 group-hover:translate-x-0.5" />
+                  </span>
+                </div>
               </div>
             </Link>
           ))}

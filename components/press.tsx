@@ -87,10 +87,10 @@ function PressCard({
       href={mention.url}
       target="_blank"
       rel="noopener noreferrer"
-      className="group relative flex flex-col overflow-hidden rounded-lg transition-all duration-300 hover:-translate-y-0.5"
+      className="group relative flex flex-col overflow-hidden rounded-lg transition-all duration-300 hover:-translate-y-1 hover:border-[rgba(148,241,190,0.3)]"
       style={{
         background: "rgba(240,234,216,0.02)",
-        border: "0.5px solid rgba(240,234,216,0.07)",
+        border: "0.5px solid rgba(240,234,216,0.08)",
       }}
     >
       <div
@@ -121,16 +121,22 @@ function PressCard({
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(to top, rgba(12,11,9,0.95) 0%, rgba(12,11,9,0.1) 55%, transparent 100%)",
+              "linear-gradient(to top, rgba(12,11,9,0.95) 0%, rgba(12,11,9,0.2) 55%, transparent 100%)",
           }}
         />
         <div className="absolute bottom-0 left-0 right-0 p-4 flex items-center justify-between">
-          <p
-            className="text-[11px] tracking-[0.15em] uppercase"
-            style={{ fontFamily: "var(--font-sans)", color: "#94f1be" }}
+          <span
+            className="px-2 py-0.5 rounded-sm text-[10px] tracking-wider uppercase font-medium"
+            style={{
+              fontFamily: "var(--font-sans)",
+              color: "#94f1be",
+              background: "rgba(20,74,52,0.8)",
+              border: "0.5px solid rgba(148,241,190,0.3)",
+              backdropFilter: "blur(4px)",
+            }}
           >
             {mention.outlet}
-          </p>
+          </span>
           <ArrowUpRight
             className="w-4 h-4 flex-shrink-0 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
             style={{ color: "rgba(240,234,216,0.6)" }}
@@ -141,12 +147,12 @@ function PressCard({
       <div className="p-4 flex-1 flex flex-col justify-between">
         <p
           className={
-            large ? "text-[17px] leading-snug" : "text-[13px] leading-snug"
+            large ? "text-[16px] leading-snug" : "text-[13px] leading-snug"
           }
           style={{
             fontFamily: "var(--font-heading)",
             fontWeight: 700,
-            color: "rgba(240,234,216,0.85)",
+            color: "rgba(240,234,216,0.9)",
           }}
         >
           {mention.title}
@@ -156,7 +162,7 @@ function PressCard({
             className="text-[11px] mt-3"
             style={{
               fontFamily: "var(--font-sans)",
-              color: "rgba(240,234,216,0.25)",
+              color: "rgba(240,234,216,0.3)",
             }}
           >
             {formatDate(mention.date)}
