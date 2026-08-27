@@ -40,19 +40,29 @@ export default function NotFound() {
           >
             La página que buscás no existe o se movió de lugar.
           </p>
-          <Link
-            href="/"
-            className="inline-flex items-center gap-2 px-7 py-3 rounded-sm text-[13px] font-medium transition-all hover:-translate-y-0.5"
-            style={{
-              fontFamily: "var(--font-sans)",
-              background: "rgba(148,241,190,0.1)",
-              border: "0.5px solid rgba(148,241,190,0.3)",
-              color: "#94f1be",
-            }}
-          >
-            Volver al inicio
-            <ArrowRight className="w-3.5 h-3.5" />
-          </Link>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+            <Link
+              href="/"
+              className="inline-flex items-center justify-center gap-2 px-7 py-3 rounded-sm text-[13px] font-medium transition-all duration-200 hover:-translate-y-0.5"
+              style={{
+                fontFamily: "var(--font-sans)",
+                background: "rgba(148,241,190,0.12)",
+                border: "0.5px solid rgba(148,241,190,0.35)",
+                color: "#94f1be",
+              }}
+            >
+              Volver al inicio
+              <ArrowRight className="w-3.5 h-3.5" />
+            </Link>
+
+            <Link
+              href="/blog"
+              className="inline-flex items-center justify-center px-7 py-3 rounded-sm text-[13px] font-light transition-all duration-200 border border-[rgba(240,234,216,0.15)] text-[rgba(240,234,216,0.65)] hover:border-[rgba(240,234,216,0.35)] hover:text-[#f0ead8]"
+              style={{ fontFamily: "var(--font-sans)" }}
+            >
+              Explorar el Blog
+            </Link>
+          </div>
         </div>
       </section>
 
