@@ -124,23 +124,35 @@ export default async function BlogPostPage({
         </div>
 
         <div className="max-w-3xl mx-auto px-6 lg:px-10 -mt-16 relative z-10">
-          <Link
-            href="/blog"
-            className="inline-flex items-center gap-2 mb-6 text-[12px] transition-colors hover:text-[rgba(240,234,216,0.85)]"
+          {/* Breadcrumbs */}
+          <nav
+            className="flex items-center gap-2 mb-6 text-[12px]"
             style={{
               fontFamily: "var(--font-sans)",
               color: "rgba(240,234,216,0.45)",
             }}
           >
-            <ArrowLeft className="w-3.5 h-3.5" />
-            Volver al blog
-          </Link>
+            <Link href="/" className="hover:text-[#94f1be] transition-colors">
+              Inicio
+            </Link>
+            <span className="text-[10px] opacity-40">/</span>
+            <Link href="/blog" className="hover:text-[#94f1be] transition-colors">
+              Blog
+            </Link>
+            <span className="text-[10px] opacity-40">/</span>
+            <span
+              className="truncate max-w-[180px] sm:max-w-xs font-light"
+              style={{ color: "rgba(240,234,216,0.75)" }}
+            >
+              {post.title}
+            </span>
+          </nav>
 
           <p
             className="text-[11px] mb-4"
             style={{
               fontFamily: "var(--font-sans)",
-              color: "rgba(240,234,216,0.3)",
+              color: "rgba(240,234,216,0.35)",
             }}
           >
             {new Date(post.publishedAt).toLocaleDateString("es-AR", {
@@ -169,11 +181,10 @@ export default async function BlogPostPage({
               <div key={i}>
                 {block.heading && (
                   <h2
-                    className="text-xl sm:text-2xl mb-4"
+                    className="text-xl sm:text-2xl mb-4 font-semibold"
                     style={{
                       fontFamily: "var(--font-heading)",
-                      fontWeight: 700,
-                      color: "rgba(240,234,216,0.9)",
+                      color: "rgba(240,234,216,0.92)",
                     }}
                   >
                     {block.heading}
@@ -186,7 +197,7 @@ export default async function BlogPostPage({
                     style={{
                       fontFamily: "var(--font-sans)",
                       fontWeight: 300,
-                      color: "rgba(240,234,216,0.6)",
+                      color: "rgba(240,234,216,0.65)",
                     }}
                   >
                     {p}
@@ -194,15 +205,17 @@ export default async function BlogPostPage({
                 ))}
                 {i === 0 && (
                   <blockquote
-                    className="my-2 pl-6 py-1"
-                    style={{ borderLeft: "2px solid #94f1be" }}
+                    className="my-6 pl-6 py-2 rounded-r-lg"
+                    style={{
+                      borderLeft: "2px solid #94f1be",
+                      background: "rgba(148,241,190,0.03)",
+                    }}
                   >
                     <p
-                      className="text-xl sm:text-2xl leading-snug"
+                      className="text-xl sm:text-2xl leading-snug font-medium italic"
                       style={{
                         fontFamily: "var(--font-heading)",
-                        fontWeight: 700,
-                        color: "rgba(240,234,216,0.85)",
+                        color: "rgba(240,234,216,0.9)",
                       }}
                     >
                       {post.pullQuote}
@@ -215,8 +228,8 @@ export default async function BlogPostPage({
 
           <Link
             href={post.relatedLink.href}
-            className="inline-flex items-center gap-2 mb-16 text-[13px] transition-colors hover:text-[rgba(240,234,216,0.85)]"
-            style={{ fontFamily: "var(--font-sans)", color: "#94f1be" }}
+            className="inline-flex items-center gap-2 mb-16 text-[13px] font-normal transition-colors hover:text-[#94f1be]"
+            style={{ fontFamily: "var(--font-sans)", color: "rgba(148,241,190,0.85)" }}
           >
             {post.relatedLink.label}
             <ArrowRight className="w-3.5 h-3.5" />
@@ -225,15 +238,14 @@ export default async function BlogPostPage({
           <div
             className="rounded-lg p-8 mb-20 text-center"
             style={{
-              background: "rgba(148,241,190,0.05)",
-              border: "0.5px solid rgba(148,241,190,0.2)",
+              background: "rgba(240,234,216,0.02)",
+              border: "0.5px solid rgba(148,241,190,0.25)",
             }}
           >
             <p
-              className="text-lg mb-5"
+              className="text-lg mb-5 font-semibold"
               style={{
                 fontFamily: "var(--font-heading)",
-                fontWeight: 700,
                 color: "rgba(240,234,216,0.92)",
               }}
             >
@@ -243,11 +255,11 @@ export default async function BlogPostPage({
               href="https://linktr.ee/sentinelarg"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-7 py-3 rounded-sm text-[13px] font-medium transition-all hover:-translate-y-0.5"
+              className="inline-flex items-center gap-2 px-7 py-3 rounded-sm text-[13px] font-medium transition-all duration-200 hover:-translate-y-0.5"
               style={{
                 fontFamily: "var(--font-sans)",
                 background: "rgba(148,241,190,0.12)",
-                border: "0.5px solid rgba(148,241,190,0.4)",
+                border: "0.5px solid rgba(148,241,190,0.35)",
                 color: "#94f1be",
               }}
             >
