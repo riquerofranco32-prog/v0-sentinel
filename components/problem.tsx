@@ -57,22 +57,24 @@ export function Problem() {
         <div className="absolute inset-0 bg-gradient-to-t from-[#0c0b09] via-[#0c0b09]/50 to-[#0c0b09]/20" />
 
         <div className="absolute bottom-0 left-0 right-0 px-8 md:px-16 pb-12">
-          <p
-            className="text-[11px] tracking-[0.3em] uppercase mb-4 transition-all duration-700"
+          <div
+            className="inline-flex items-center gap-2 px-3 py-1 rounded-sm text-[11px] font-medium tracking-[0.18em] uppercase mb-4 transition-all duration-700"
             style={{
               fontFamily: "var(--font-sans)",
-              color: "rgba(240,234,216,0.3)",
+              background: "rgba(241,107,107,0.1)",
+              border: "0.5px solid rgba(241,107,107,0.28)",
+              color: "#f16b6b",
               opacity: isVisible ? 1 : 0,
             }}
           >
-            Emergencia nacional
-          </p>
+            <span className="w-1.5 h-1.5 rounded-full bg-[#f16b6b]" />
+            Emergencia territorial
+          </div>
           <h2
-            className="text-4xl sm:text-5xl lg:text-6xl leading-none transition-all duration-700"
+            className="text-4xl sm:text-5xl lg:text-6xl leading-none font-extrabold tracking-[-0.03em] transition-all duration-700"
             style={{
               fontFamily: "var(--font-heading)",
-              fontWeight: 800,
-              color: "rgba(240,234,216,0.92)",
+              color: "rgba(240,234,216,0.95)",
               opacity: isVisible ? 1 : 0,
               transform: isVisible ? "translateY(0)" : "translateY(16px)",
               transitionDelay: "100ms",
@@ -142,13 +144,7 @@ export function Problem() {
                 ].map((stat) => (
                   <div
                     key={stat.label}
-                    className="relative overflow-hidden"
-                    style={{
-                      background: "rgba(240,234,216,0.02)",
-                      border: "0.5px solid rgba(240,234,216,0.08)",
-                      borderRadius: "6px",
-                      padding: "20px 16px",
-                    }}
+                    className="relative overflow-hidden tech-card rounded-md p-5"
                   >
                     <div
                       style={{
@@ -157,17 +153,17 @@ export function Problem() {
                         left: 0,
                         width: "2px",
                         height: "100%",
-                        background: "rgba(148,241,190,0.4)",
+                        background: "rgba(148,241,190,0.5)",
                       }}
                     />
                     <div
                       style={{
                         fontFamily: "var(--font-heading)",
                         fontWeight: 800,
-                        fontSize: "clamp(26px, 4vw, 38px)",
+                        fontSize: "clamp(24px, 3.5vw, 36px)",
                         lineHeight: 1,
-                        color: "rgba(240,234,216,0.92)",
-                        letterSpacing: "-1px",
+                        color: "rgba(240,234,216,0.95)",
+                        letterSpacing: "-0.03em",
                         marginBottom: "6px",
                       }}
                     >
@@ -175,12 +171,12 @@ export function Problem() {
                     </div>
                     <div
                       style={{
-                        fontSize: "11px",
-                        letterSpacing: "0.2em",
+                        fontSize: "10px",
+                        letterSpacing: "0.15em",
                         textTransform: "uppercase",
                         fontFamily: "var(--font-sans)",
-                        fontWeight: 300,
-                        color: "rgba(240,234,216,0.35)",
+                        fontWeight: 400,
+                        color: "rgba(240,234,216,0.4)",
                       }}
                     >
                       {stat.label}
@@ -224,19 +220,20 @@ export function Problem() {
                       style={{
                         width: "6px",
                         height: "6px",
-                        background: "rgba(148,241,190,0.6)",
+                        background: "#94f1be",
                         borderRadius: "50%",
                         marginTop: "6px",
                         flexShrink: 0,
+                        opacity: 0.8,
                       }}
                     />
                     <div>
                       <p
                         style={{
-                          fontSize: "13px",
+                          fontSize: "14px",
                           fontFamily: "var(--font-sans)",
                           fontWeight: 500,
-                          color: "rgba(240,234,216,0.75)",
+                          color: "rgba(240,234,216,0.85)",
                           marginBottom: "3px",
                         }}
                       >
@@ -247,7 +244,7 @@ export function Problem() {
                           fontSize: "13px",
                           fontFamily: "var(--font-sans)",
                           fontWeight: 300,
-                          color: "rgba(240,234,216,0.35)",
+                          color: "rgba(240,234,216,0.45)",
                           lineHeight: 1.5,
                         }}
                       >
@@ -269,11 +266,11 @@ export function Problem() {
               >
                 <a
                   href="#servicios"
-                  className="group inline-flex items-center gap-2 px-8 py-3 text-[13px] font-medium rounded-sm transition-all duration-300 border border-[rgba(148,241,190,0.3)] bg-[rgba(148,241,190,0.08)] text-[#94f1be] hover:bg-[#94f1be] hover:text-[#0c0b09] hover:shadow-[0_0_20px_rgba(148,241,190,0.3)] hover:-translate-y-0.5"
+                  className="group inline-flex items-center gap-2 px-7 py-3 text-[13px] font-medium rounded-sm transition-all duration-200 border border-[rgba(148,241,190,0.35)] bg-[rgba(148,241,190,0.1)] text-[#94f1be] hover:bg-[#94f1be] hover:text-[#0c0b09] hover:-translate-y-0.5"
                   style={{ fontFamily: "var(--font-sans)" }}
                 >
                   Ver cómo lo resolvemos
-                  <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
+                  <ArrowRight className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-1" />
                 </a>
               </div>
             </div>

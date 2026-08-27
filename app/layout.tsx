@@ -1,10 +1,10 @@
 import type { Metadata, Viewport } from "next";
-import { Jura, Inter } from "next/font/google";
+import { Plus_Jakarta_Sans, Inter } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
-const jura = Jura({
-  weight: ["500", "600", "700"],
+const plusJakarta = Plus_Jakarta_Sans({
+  weight: ["400", "500", "600", "700", "800"],
   subsets: ["latin"],
   variable: "--font-heading",
 });
@@ -155,7 +155,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${inter.variable} ${jura.variable} font-sans antialiased bg-[#0c0b09] text-[#f0ead8]`}
+        className={`${inter.variable} ${plusJakarta.variable} font-sans antialiased bg-[#0c0b09] text-[#f0ead8]`}
       >
         {children}
         <Analytics />

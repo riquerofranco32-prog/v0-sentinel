@@ -198,24 +198,28 @@ const ScrollExpandMedia = ({
                   </div>
                 )}
 
-                <div className="flex flex-col items-center text-center relative z-10 mt-4 transition-none">
+                <div className="flex flex-col items-center text-center relative z-10 mt-5 transition-none">
                   {date && (
-                    <p
-                      className="text-xl sm:text-2xl"
+                    <div
+                      className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-[11px] font-medium tracking-wider uppercase mb-2"
                       style={{
+                        background: "rgba(12,11,9,0.8)",
+                        border: "0.5px solid rgba(148,241,190,0.3)",
+                        backdropFilter: "blur(8px)",
                         color: "#94f1be",
                         fontFamily: "var(--font-sans)",
                         transform: `translateX(-${textTranslateX}vw)`,
                       }}
                     >
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#94f1be]" />
                       {date}
-                    </p>
+                    </div>
                   )}
                   {scrollToExpand && (
                     <p
-                      className="font-medium text-center text-sm sm:text-base"
+                      className="text-[12px] tracking-wide"
                       style={{
-                        color: "rgba(240,234,216,0.5)",
+                        color: "rgba(240,234,216,0.45)",
                         fontFamily: "var(--font-sans)",
                         transform: `translateX(${textTranslateX}vw)`,
                       }}
@@ -227,10 +231,10 @@ const ScrollExpandMedia = ({
               </div>
 
               <h1
-                className={`flex items-center justify-center text-center gap-4 w-full relative z-10 transition-none flex-col font-bold text-4xl md:text-5xl lg:text-6xl ${
+                className={`flex items-center justify-center text-center gap-2 w-full relative z-10 transition-none flex-col font-extrabold text-4xl sm:text-5xl lg:text-7xl tracking-[-0.03em] ${
                   textBlend ? "mix-blend-difference" : "mix-blend-normal"
                 }`}
-                style={{ fontFamily: "var(--font-heading)" }}
+                style={{ fontFamily: "var(--font-heading)", lineHeight: 1.05 }}
               >
                 <motion.span
                   className="transition-none"
