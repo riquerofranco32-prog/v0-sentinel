@@ -121,12 +121,12 @@
   * {
     @apply border-border outline-ring/50;
   }
-body {
-  background: #f5f2eb;
-  color: #1a1a1a;
-}
+  body {
+    background: #0c0b09;
+    color: #f0ead8;
   }
 }
+
 @keyframes marquee {
   0% { transform: translateX(0); }
   100% { transform: translateX(-33.333%); }
@@ -135,6 +135,4 @@ body {
 .animate-marquee {
   animation: marquee 12s linear infinite;
 }
-section {
-  background: #f5f2eb !important;
-}
+

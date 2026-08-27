@@ -247,20 +247,93 @@ export function Footer() {
 
         {/* Bottom */}
         <div
-          className="pt-8 border-t"
-          style={{ borderColor: "rgba(240,234,216,0.06)" }}
+          className="pt-8 border-t flex flex-col sm:flex-row items-center justify-between gap-4"
+          style={{ borderColor: "rgba(240,234,216,0.08)" }}
         >
-          <p
-            className="text-[11px]"
+          <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2 sm:gap-3 text-center sm:text-left">
+            <p
+              className="text-[12px]"
+              style={{
+                fontFamily: "var(--font-sans)",
+                fontWeight: 300,
+                color: "rgba(240,234,216,0.4)",
+              }}
+            >
+              © {new Date().getFullYear()} Sentinel. Todos los derechos reservados.
+            </p>
+            <span
+              className="hidden sm:inline text-[10px]"
+              style={{ color: "rgba(240,234,216,0.2)" }}
+            >
+              •
+            </span>
+            <span
+              className="text-[11px] hidden sm:inline"
+              style={{
+                fontFamily: "var(--font-sans)",
+                fontWeight: 300,
+                color: "rgba(240,234,216,0.3)",
+              }}
+            >
+              Monitoreo y Alerta Temprana de Incendios
+            </span>
+          </div>
+
+          {/* Creado por Se7en Dev */}
+          <a
+            href="https://se7endev.vercel.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group flex items-center gap-2 px-3.5 py-1.5 rounded-full transition-all duration-300 hover:scale-[1.03]"
             style={{
-              fontFamily: "var(--font-sans)",
-              fontWeight: 300,
-              color: "rgba(240,234,216,0.25)",
+              background: "rgba(240,234,216,0.03)",
+              border: "1px solid rgba(148,241,190,0.18)",
+              boxShadow: "0 0 15px rgba(148,241,190,0.03)",
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.borderColor = "rgba(148,241,190,0.5)";
+              e.currentTarget.style.background = "rgba(148,241,190,0.08)";
+              e.currentTarget.style.boxShadow = "0 0 20px rgba(148,241,190,0.15)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.borderColor = "rgba(148,241,190,0.18)";
+              e.currentTarget.style.background = "rgba(240,234,216,0.03)";
+              e.currentTarget.style.boxShadow = "0 0 15px rgba(148,241,190,0.03)";
             }}
           >
-            © {new Date().getFullYear()} Sentinel · Visioned and Crafted by
-            Sentinel
-          </p>
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#94f1be] opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-[#94f1be]"></span>
+            </span>
+            <span
+              className="text-[11px] font-normal transition-colors"
+              style={{
+                fontFamily: "var(--font-sans)",
+                color: "rgba(240,234,216,0.55)",
+              }}
+            >
+              Creado por{" "}
+              <span
+                className="font-medium text-[#94f1be] group-hover:text-[#b4fcd5] transition-colors inline-flex items-center gap-0.5"
+                style={{ letterSpacing: "0.02em" }}
+              >
+                Se7en Dev
+                <svg
+                  className="w-3 h-3 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 opacity-80 group-hover:opacity-100"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M7 17L17 7M17 7H7M17 7V17"
+                  />
+                </svg>
+              </span>
+            </span>
+          </a>
         </div>
       </div>
     </footer>

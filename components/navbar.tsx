@@ -52,43 +52,48 @@ export function Navbar() {
               <a
                 key={link.href}
                 href={link.href}
-                className="text-[13px] font-light transition-colors"
+                className="relative text-[13px] font-light transition-all duration-200 hover:text-white group py-1"
                 style={{
                   fontFamily: "var(--font-sans)",
-                  color: "rgba(240,234,216,0.45)",
+                  color: "rgba(240,234,216,0.55)",
                 }}
-                onMouseEnter={(e) =>
-                  (e.currentTarget.style.color = "rgba(240,234,216,0.95)")
-                }
-                onMouseLeave={(e) =>
-                  (e.currentTarget.style.color = "rgba(240,234,216,0.45)")
-                }
               >
                 {link.label}
+                <span className="absolute bottom-0 left-0 w-0 h-[1.5px] bg-[#94f1be] transition-all duration-300 group-hover:w-full rounded-full opacity-80" />
               </a>
             ))}
           </div>
 
-          {/* CTA */}
-          <div className="hidden md:block">
+          {/* CTA & Live Status */}
+          <div className="hidden md:flex items-center gap-4">
+            <div className="flex items-center gap-2 px-2.5 py-1 rounded-full bg-[#94f1be]/5 border border-[#94f1be]/15 text-[11px] text-[#94f1be]/80">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#94f1be] animate-pulse" />
+              <span className="font-light tracking-wider uppercase text-[10px]">Patagonia Activa</span>
+            </div>
+
             <a
               href="https://linktr.ee/sentinelarg"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[12px] font-medium px-5 py-2 rounded-sm border transition-all"
+              className="text-[12px] font-medium px-5 py-2 rounded-sm border transition-all duration-300 shadow-sm"
               style={{
                 fontFamily: "var(--font-sans)",
-                borderColor: "rgba(240,234,216,0.2)",
-                color: "rgba(240,234,216,0.8)",
-                letterSpacing: "0.06em",
+                borderColor: "rgba(148,241,190,0.3)",
+                color: "#94f1be",
+                background: "rgba(148,241,190,0.06)",
+                letterSpacing: "0.04em",
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.borderColor = "rgba(240,234,216,0.5)";
-                e.currentTarget.style.color = "rgba(240,234,216,1)";
+                e.currentTarget.style.borderColor = "rgba(148,241,190,0.7)";
+                e.currentTarget.style.color = "#0c0b09";
+                e.currentTarget.style.background = "#94f1be";
+                e.currentTarget.style.boxShadow = "0 0 20px rgba(148,241,190,0.35)";
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.borderColor = "rgba(240,234,216,0.2)";
-                e.currentTarget.style.color = "rgba(240,234,216,0.8)";
+                e.currentTarget.style.borderColor = "rgba(148,241,190,0.3)";
+                e.currentTarget.style.color = "#94f1be";
+                e.currentTarget.style.background = "rgba(148,241,190,0.06)";
+                e.currentTarget.style.boxShadow = "none";
               }}
             >
               Solicitar reunión
