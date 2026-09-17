@@ -114,7 +114,7 @@ export function Problem() {
 
               {/* Stats with counters */}
               <div
-                className="grid grid-cols-3 gap-4 mb-12 transition-all duration-700"
+                className="grid grid-cols-3 gap-2 sm:gap-4 mb-12 transition-all duration-700"
                 style={{
                   opacity: isVisible ? 1 : 0,
                   transform: isVisible ? "translateY(0)" : "translateY(16px)",
@@ -142,7 +142,7 @@ export function Problem() {
                 ].map((stat) => (
                   <div
                     key={stat.label}
-                    className="relative overflow-hidden tech-card rounded-lg p-5"
+                    className="relative overflow-hidden tech-card rounded-lg p-3 sm:p-5"
                   >
                     <div
                       style={{

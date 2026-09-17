@@ -114,6 +114,14 @@ html {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* ponytail: safety net against a stray fixed-width/negative-margin element
+   causing horizontal scroll on narrow viewports — doesn't change layout of
+   anything that already fits. */
+html,
+body {
+  overflow-x: hidden;
+}
+
 @keyframes fadeInUp {
   from {
     opacity: 0;
