@@ -126,7 +126,7 @@ export function Footer() {
               style={{
                 fontFamily: "var(--font-sans)",
                 fontWeight: 300,
-                color: "rgba(26,24,18,0.4)",
+                color: "rgba(26,24,18,0.62)",
               }}
             >
               Tecnología aérea e inteligencia artificial para la detección
@@ -137,12 +137,12 @@ export function Footer() {
               <a
                 href="mailto:sentinelproyecto@gmail.com"
                 className="flex items-center gap-2.5 w-fit transition-colors duration-200"
-                style={{ color: "rgba(26,24,18,0.45)" }}
+                style={{ color: "rgba(26,24,18,0.65)" }}
                 onMouseEnter={(e) =>
                   (e.currentTarget.style.color = "rgba(26,24,18,0.8)")
                 }
                 onMouseLeave={(e) =>
-                  (e.currentTarget.style.color = "rgba(26,24,18,0.45)")
+                  (e.currentTarget.style.color = "rgba(26,24,18,0.65)")
                 }
               >
                 <Mail
@@ -166,7 +166,7 @@ export function Footer() {
                   style={{
                     fontFamily: "var(--font-sans)",
                     fontWeight: 300,
-                    color: "rgba(26,24,18,0.45)",
+                    color: "rgba(26,24,18,0.65)",
                   }}
                 >
                   San Rafael, Mendoza, Argentina
@@ -186,7 +186,7 @@ export function Footer() {
                   style={{
                     background: "rgba(26,24,18,0.05)",
                     border: "0.5px solid rgba(26,24,18,0.1)",
-                    color: "rgba(26,24,18,0.4)",
+                    color: "rgba(26,24,18,0.55)",
                   }}
                   onMouseEnter={(e) => {
                     e.currentTarget.style.borderColor = "rgba(15,122,79,0.4)";
@@ -195,7 +195,7 @@ export function Footer() {
                   }}
                   onMouseLeave={(e) => {
                     e.currentTarget.style.borderColor = "rgba(26,24,18,0.1)";
-                    e.currentTarget.style.color = "rgba(26,24,18,0.4)";
+                    e.currentTarget.style.color = "rgba(26,24,18,0.55)";
                     e.currentTarget.style.background = "rgba(26,24,18,0.05)";
                   }}
                 >
@@ -226,13 +226,13 @@ export function Footer() {
                       style={{
                         fontFamily: "var(--font-sans)",
                         fontWeight: 300,
-                        color: "rgba(26,24,18,0.4)",
+                        color: "rgba(26,24,18,0.62)",
                       }}
                       onMouseEnter={(e) =>
                         (e.currentTarget.style.color = "rgba(26,24,18,0.8)")
                       }
                       onMouseLeave={(e) =>
-                        (e.currentTarget.style.color = "rgba(26,24,18,0.4)")
+                        (e.currentTarget.style.color = "rgba(26,24,18,0.62)")
                       }
                     >
                       {link.label}
@@ -255,7 +255,7 @@ export function Footer() {
               style={{
                 fontFamily: "var(--font-sans)",
                 fontWeight: 300,
-                color: "rgba(26,24,18,0.4)",
+                color: "rgba(26,24,18,0.6)",
               }}
             >
               © {new Date().getFullYear()} Sentinel. Todos los derechos
@@ -263,7 +263,7 @@ export function Footer() {
             </p>
             <span
               className="hidden sm:inline text-[10px]"
-              style={{ color: "rgba(26,24,18,0.2)" }}
+              style={{ color: "rgba(26,24,18,0.3)" }}
             >
               •
             </span>
@@ -272,7 +272,7 @@ export function Footer() {
               style={{
                 fontFamily: "var(--font-sans)",
                 fontWeight: 300,
-                color: "rgba(26,24,18,0.3)",
+                color: "rgba(26,24,18,0.55)",
               }}
             >
               Monitoreo y Alerta Temprana de Incendios
@@ -289,7 +289,7 @@ export function Footer() {
               style={{
                 fontFamily: "var(--font-sans)",
                 fontWeight: 300,
-                color: "rgba(26,24,18,0.45)",
+                color: "rgba(26,24,18,0.65)",
               }}
             >
               <span>Creado por</span>

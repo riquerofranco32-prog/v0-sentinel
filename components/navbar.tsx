@@ -26,6 +26,7 @@ export function Navbar() {
 
   return (
     <nav
+      aria-label="Navegación principal"
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         isScrolled
           ? "bg-[#faf7f0]/95 backdrop-blur-xl border-b border-white/5"
@@ -65,13 +66,13 @@ export function Navbar() {
                 className="text-[13px] font-light transition-colors duration-200"
                 style={{
                   fontFamily: "var(--font-sans)",
-                  color: "rgba(26,24,18,0.5)",
+                  color: "rgba(26,24,18,0.65)",
                 }}
                 onMouseEnter={(e) =>
                   (e.currentTarget.style.color = "rgba(26,24,18,0.95)")
                 }
                 onMouseLeave={(e) =>
-                  (e.currentTarget.style.color = "rgba(26,24,18,0.5)")
+                  (e.currentTarget.style.color = "rgba(26,24,18,0.65)")
                 }
               >
                 {link.label}
@@ -110,9 +111,12 @@ export function Navbar() {
 
           {/* Mobile toggle */}
           <button
+            type="button"
             className="md:hidden text-[#1a1812] p-2"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            aria-label="Toggle menu"
+            aria-label={isMobileMenuOpen ? "Cerrar menú" : "Abrir menú"}
+            aria-expanded={isMobileMenuOpen}
+            aria-controls="mobile-menu"
           >
             {isMobileMenuOpen ? (
               <X className="w-5 h-5" />
@@ -125,6 +129,8 @@ export function Navbar() {
 
       {/* Mobile Menu */}
       <div
+        id="mobile-menu"
+        aria-hidden={!isMobileMenuOpen}
         className={`md:hidden transition-all duration-300 overflow-hidden ${
           isMobileMenuOpen ? "max-h-[400px]" : "max-h-0"
         }`}
@@ -134,10 +140,11 @@ export function Navbar() {
             <a
               key={link.href}
               href={link.href}
+              tabIndex={isMobileMenuOpen ? 0 : -1}
               className="block text-[13px] font-light"
               style={{
                 fontFamily: "var(--font-sans)",
-                color: "rgba(26,24,18,0.55)",
+                color: "rgba(26,24,18,0.68)",
               }}
               onClick={() => setIsMobileMenuOpen(false)}
             >
@@ -148,6 +155,7 @@ export function Navbar() {
             href="https://linktr.ee/sentinelarg"
             target="_blank"
             rel="noopener noreferrer"
+            tabIndex={isMobileMenuOpen ? 0 : -1}
             className="block text-center text-[12px] font-medium px-5 py-2.5 border rounded-sm"
             style={{
               fontFamily: "var(--font-sans)",

@@ -82,7 +82,7 @@ export function InstagramFeed() {
               style={{
                 fontFamily: "var(--font-sans)",
                 fontWeight: 300,
-                color: "rgba(26,24,18,0.4)",
+                color: "rgba(26,24,18,0.62)",
               }}
             >
               Prevenimos incendios y generamos datos ambientales, el detrás de

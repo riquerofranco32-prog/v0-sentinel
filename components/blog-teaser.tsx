@@ -122,7 +122,7 @@ export function BlogTeaser() {
                     style={{
                       fontFamily: "var(--font-sans)",
                       fontWeight: 300,
-                      color: "rgba(26,24,18,0.45)",
+                      color: "rgba(26,24,18,0.65)",
                     }}
                   >
                     {posts[0].excerpt}
@@ -133,7 +133,7 @@ export function BlogTeaser() {
                     className="text-[11px] font-normal group-hover:text-[#0f7a4f] transition-colors flex items-center gap-1"
                     style={{
                       fontFamily: "var(--font-sans)",
-                      color: "rgba(26,24,18,0.4)",
+                      color: "rgba(26,24,18,0.62)",
                     }}
                   >
                     Leer artículo
@@ -184,7 +184,7 @@ export function BlogTeaser() {
                   className="text-[11px] font-normal group-hover:text-[#0f7a4f] transition-colors flex items-center gap-1"
                   style={{
                     fontFamily: "var(--font-sans)",
-                    color: "rgba(26,24,18,0.4)",
+                    color: "rgba(26,24,18,0.62)",
                   }}
                 >
                   Leer artículo

@@ -87,6 +87,8 @@ export function FaqSectionWithCategories({
             return (
               <button
                 key={cat}
+                type="button"
+                aria-pressed={active}
                 onClick={() => {
                   setActiveCategory(cat);
                   setOpenIndex(null);
@@ -114,6 +116,8 @@ export function FaqSectionWithCategories({
         >
           {filtered.map((faq, i) => {
             const isOpen = openIndex === i;
+            const panelId = `faq-panel-${activeCategory}-${i}`;
+            const buttonId = `faq-trigger-${activeCategory}-${i}`;
             return (
               <div
                 key={faq.question}
@@ -121,6 +125,10 @@ export function FaqSectionWithCategories({
                 style={{ borderColor: "rgba(26,24,18,0.08)" }}
               >
                 <button
+                  type="button"
+                  id={buttonId}
+                  aria-expanded={isOpen}
+                  aria-controls={panelId}
                   className="w-full flex items-start justify-between gap-4 py-6 text-left group"
                   onClick={() => setOpenIndex(isOpen ? null : i)}
                 >
@@ -159,6 +167,10 @@ export function FaqSectionWithCategories({
                 </button>
 
                 <div
+                  id={panelId}
+                  role="region"
+                  aria-labelledby={buttonId}
+                  aria-hidden={!isOpen}
                   className={`grid transition-[grid-template-rows] duration-300 ease-out ${
                     isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
                   }`}
@@ -169,7 +181,7 @@ export function FaqSectionWithCategories({
                       style={{
                         fontFamily: "var(--font-sans)",
                         fontWeight: 300,
-                        color: "rgba(26,24,18,0.5)",
+                        color: "rgba(26,24,18,0.65)",
                       }}
                     >
                       {faq.answer}
@@ -187,7 +199,7 @@ export function FaqSectionWithCategories({
               className="text-sm mb-4"
               style={{
                 fontFamily: "var(--font-sans)",
-                color: "rgba(26,24,18,0.4)",
+                color: "rgba(26,24,18,0.62)",
               }}
             >
               {contactInfo.title}

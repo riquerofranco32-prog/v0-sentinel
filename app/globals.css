@@ -187,3 +187,20 @@ html {
   border: 0.5px solid rgba(26, 24, 18, 0.1);
   color: rgba(26, 24, 18, 0.7);
 }
+
+/* WCAG 2.2.2 / 2.3.3: respect the OS-level reduced-motion preference for
+   every animation/transition on the page (marquees, fade-ins, radar pulse,
+   smooth-scroll), instead of only handling it case by case. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

@@ -51,30 +51,34 @@ const Footer = dynamic(() =>
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[#faf7f0]">
+    <>
       <ScrollProgress />
       <SectionDots />
-      <Navbar />
-      <Hero />
-      <Problem />
-      <Features />
-      <Capabilities />
-      <HowItWorks />
-      <Stats />
-      <FireRiskIndex />
-      <ActiveFires />
-      <FireImpactStats />
-      <WildfireNews />
-      <Team />
-      <Awards />
-      <Press />
-      <Partners />
-      <InstagramFeed />
-      <BlogTeaser />
-      <FAQ />
-      <CTA />
+      <header>
+        <Navbar />
+      </header>
+      <main id="main-content" className="min-h-screen bg-[#faf7f0]">
+        <Hero />
+        <Problem />
+        <Features />
+        <Capabilities />
+        <HowItWorks />
+        <Stats />
+        <FireRiskIndex />
+        <ActiveFires />
+        <FireImpactStats />
+        <WildfireNews />
+        <Team />
+        <Awards />
+        <Press />
+        <Partners />
+        <InstagramFeed />
+        <BlogTeaser />
+        <FAQ />
+        <CTA />
+      </main>
       <Footer />
       <WhatsAppButton />
-    </main>
+    </>
   );
 }

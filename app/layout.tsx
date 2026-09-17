@@ -169,6 +169,12 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${plusJakarta.variable} font-sans antialiased bg-[#faf7f0] text-[#1a1812]`}
       >
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[200] focus:rounded-sm focus:bg-[#0f7a4f] focus:px-4 focus:py-2 focus:text-[13px] focus:text-[#faf7f0] focus:outline-none focus:ring-2 focus:ring-[#faf7f0]"
+        >
+          Saltar al contenido principal
+        </a>
         {children}
         <Analytics />
       </body>

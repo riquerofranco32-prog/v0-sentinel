@@ -67,7 +67,7 @@ export function CTA() {
           style={{
             fontFamily: "var(--font-sans)",
             fontWeight: 300,
-            color: "rgba(26,24,18,0.4)",
+            color: "rgba(26,24,18,0.62)",
           }}
         >
           Drones autónomos con IA para detectar incendios antes de que sea
@@ -94,7 +94,7 @@ export function CTA() {
                 style={{
                   fontFamily: "var(--font-sans)",
                   fontWeight: 400,
-                  color: "rgba(26,24,18,0.55)",
+                  color: "rgba(26,24,18,0.65)",
                 }}
               >
                 {item}
@@ -119,7 +119,7 @@ export function CTA() {
 
           <a
             href="/#contacto"
-            className="inline-flex items-center justify-center px-8 py-4 rounded-sm text-[13px] font-light transition-all duration-200 border border-[rgba(26,24,18,0.12)] text-[rgba(26,24,18,0.55)] hover:border-[rgba(26,24,18,0.3)] hover:text-[rgba(26,24,18,0.9)]"
+            className="inline-flex items-center justify-center px-8 py-4 rounded-sm text-[13px] font-light transition-all duration-200 border border-[rgba(26,24,18,0.12)] text-[rgba(26,24,18,0.65)] hover:border-[rgba(26,24,18,0.3)] hover:text-[rgba(26,24,18,0.9)]"
             style={{ fontFamily: "var(--font-sans)" }}
           >
             Enviar mensaje
