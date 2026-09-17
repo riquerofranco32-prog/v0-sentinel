@@ -48,6 +48,7 @@ export function HowItWorks() {
   const [isVisible, setIsVisible] = useState(false);
   const [activeStep, setActiveStep] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+  const [isTabHidden, setIsTabHidden] = useState(false);
   const [progressKey, setProgressKey] = useState(0);
   const sectionRef = useRef<HTMLElement>(null);
 
@@ -56,20 +57,32 @@ export function HowItWorks() {
       ([entry]) => {
         if (entry.isIntersecting) setIsVisible(true);
       },
-      { threshold: 0.05 },
+      { threshold: 0.05, rootMargin: "0px 0px 200px 0px" },
     );
     if (sectionRef.current) observer.observe(sectionRef.current);
     return () => observer.disconnect();
   }, []);
 
+  // Pause the auto-advance while the tab is backgrounded, so it doesn't burn
+  // cycles or jump several steps ahead when the user comes back.
+  // ponytail: doesn't also pause on scroll-out — the observer above never
+  // flips isVisible back to false (one-shot reveal trigger), so there's no
+  // existing "left viewport" signal to reuse without adding a second observer.
   useEffect(() => {
-    if (!isVisible || isPaused) return;
+    const handleVisibilityChange = () => setIsTabHidden(document.hidden);
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+    return () =>
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+  }, []);
+
+  useEffect(() => {
+    if (!isVisible || isPaused || isTabHidden) return;
     const timer = setInterval(() => {
       setActiveStep((s) => (s + 1) % 3);
       setProgressKey((k) => k + 1);
     }, STEP_DURATION);
     return () => clearInterval(timer);
-  }, [isVisible, isPaused]);
+  }, [isVisible, isPaused, isTabHidden]);
 
   return (
     <section
@@ -278,21 +291,22 @@ export function HowItWorks() {
           >
             <div
               key={progressKey}
-              className="h-full rounded-full"
+              className="h-full w-full rounded-full"
               style={{
                 background: "#0f7a4f",
+                transformOrigin: "left",
                 animation:
-                  isVisible && !isPaused
+                  isVisible && !isPaused && !isTabHidden
                     ? `progressBar ${STEP_DURATION}ms linear forwards`
                     : "none",
-                width: isPaused ? undefined : "0%",
+                transform: isPaused || isTabHidden ? undefined : "scaleX(0)",
               }}
             />
           </div>
           <style>{`
             @keyframes progressBar {
-              from { width: 0%; }
-              to   { width: 100%; }
+              from { transform: scaleX(0); }
+              to   { transform: scaleX(1); }
             }
           `}</style>
         </div>

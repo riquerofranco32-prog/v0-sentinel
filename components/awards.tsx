@@ -250,7 +250,7 @@ export function Awards() {
       ([entry]) => {
         if (entry.isIntersecting) setIsVisible(true);
       },
-      { threshold: 0.05 },
+      { threshold: 0.05, rootMargin: "0px 0px 200px 0px" },
     );
     if (sectionRef.current) observer.observe(sectionRef.current);
     return () => observer.disconnect();
@@ -304,7 +304,7 @@ export function Awards() {
             transform: isVisible
               ? "translateX(-50%) translateY(0)"
               : "translateX(-50%) translateY(12px)",
-            transition: "all 800ms 100ms",
+            transition: "all 700ms 100ms",
           }}
         >
           <p

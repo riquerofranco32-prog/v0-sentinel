@@ -34,7 +34,7 @@ export function Problem() {
       ([entry]) => {
         if (entry.isIntersecting) setIsVisible(true);
       },
-      { threshold: 0.05 },
+      { threshold: 0.05, rootMargin: "0px 0px 200px 0px" },
     );
     if (sectionRef.current) observer.observe(sectionRef.current);
     return () => observer.disconnect();

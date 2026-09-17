@@ -94,7 +94,7 @@ export function Stats() {
           setIsVisible(true);
         }
       },
-      { threshold: 0.2 },
+      { threshold: 0.2, rootMargin: "0px 0px 200px 0px" },
     );
     observer.observe(el);
     return () => observer.disconnect();

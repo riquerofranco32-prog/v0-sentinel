@@ -19,7 +19,7 @@ export function BlogTeaser() {
       ([entry]) => {
         if (entry.isIntersecting) setIsVisible(true);
       },
-      { threshold: 0.05 },
+      { threshold: 0.05, rootMargin: "0px 0px 200px 0px" },
     );
     if (sectionRef.current) observer.observe(sectionRef.current);
     return () => observer.disconnect();
@@ -72,7 +72,7 @@ export function BlogTeaser() {
           {posts[0] && (
             <Link
               href={`/blog/${posts[0].slug}`}
-              className="group lg:col-span-3 flex flex-col overflow-hidden rounded-lg transition-all duration-300 hover:-translate-y-1"
+              className="group lg:col-span-3 flex flex-col overflow-hidden rounded-lg transition-all duration-700 hover:-translate-y-1"
               style={{
                 background: "rgba(26,24,18,0.02)",
                 border: "0.5px solid rgba(26,24,18,0.07)",
@@ -150,7 +150,7 @@ export function BlogTeaser() {
               <Link
                 key={post.slug}
                 href={`/blog/${post.slug}`}
-                className="group flex-1 flex flex-col justify-center py-5 first:pt-0 last:pb-0 transition-colors duration-200"
+                className="group flex-1 flex flex-col justify-center py-5 first:pt-0 last:pb-0 transition-all duration-700"
                 style={{
                   opacity: isVisible ? 1 : 0,
                   transform: isVisible ? "translateY(0)" : "translateY(16px)",

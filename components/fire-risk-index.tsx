@@ -199,7 +199,7 @@ export async function FireRiskIndex() {
             return (
               <div
                 key={r.location.name}
-                className="relative overflow-hidden rounded-lg border-[0.5px] border-[rgba(26,24,18,0.08)] p-6 transition-all duration-300 hover:-translate-y-0.5 hover:border-[rgba(26,24,18,0.14)]"
+                className="relative overflow-hidden rounded-lg border-[0.5px] border-[rgba(26,24,18,0.08)] p-6 transition-all duration-300 hover:-translate-y-1 hover:border-[rgba(26,24,18,0.14)]"
                 style={{
                   background: "rgba(26,24,18,0.02)",
                 }}
