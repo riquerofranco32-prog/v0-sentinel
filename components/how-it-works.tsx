@@ -48,7 +48,9 @@ export function HowItWorks() {
   const [isVisible, setIsVisible] = useState(false);
   const [activeStep, setActiveStep] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
-  const [isTabHidden, setIsTabHidden] = useState(false);
+  const [isTabHidden, setIsTabHidden] = useState(
+    () => typeof document !== "undefined" && document.hidden,
+  );
   const [progressKey, setProgressKey] = useState(0);
   const sectionRef = useRef<HTMLElement>(null);
 
