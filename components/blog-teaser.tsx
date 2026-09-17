@@ -40,15 +40,6 @@ export function BlogTeaser() {
           }}
         >
           <div>
-            <p
-              className="text-[11px] tracking-[0.3em] uppercase mb-5"
-              style={{
-                fontFamily: "var(--font-sans)",
-                color: "rgba(240,234,216,0.3)",
-              }}
-            >
-              Blog
-            </p>
             <h2
               className="text-4xl sm:text-5xl lg:text-6xl"
               style={{
@@ -76,26 +67,28 @@ export function BlogTeaser() {
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-          {posts.map((post, i) => (
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-5">
+          {/* Featured post, image-led, three-fifths width */}
+          {posts[0] && (
             <Link
-              key={post.slug}
-              href={`/blog/${post.slug}`}
-              className="group flex flex-col rounded-lg overflow-hidden transition-all duration-300 hover:-translate-y-1"
+              href={`/blog/${posts[0].slug}`}
+              className="group lg:col-span-3 flex flex-col overflow-hidden rounded-lg transition-all duration-300 hover:-translate-y-1"
               style={{
                 background: "rgba(240,234,216,0.02)",
                 border: "0.5px solid rgba(240,234,216,0.07)",
                 opacity: isVisible ? 1 : 0,
                 transform: isVisible ? "translateY(0)" : "translateY(24px)",
-                transitionDelay: `${i * 100}ms`,
               }}
             >
-              <div className="relative w-full overflow-hidden" style={{ aspectRatio: "16/9" }}>
+              <div
+                className="relative w-full overflow-hidden"
+                style={{ aspectRatio: "16/8" }}
+              >
                 <Image
-                  src={post.coverImage}
+                  src={posts[0].coverImage}
                   alt=""
                   fill
-                  sizes="(max-width: 768px) 100vw, 33vw"
+                  sizes="(max-width: 1024px) 100vw, 60vw"
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0c0b09]/90 via-transparent to-transparent" />
@@ -109,34 +102,32 @@ export function BlogTeaser() {
                       color: "rgba(148,241,190,0.8)",
                     }}
                   >
-                    {new Date(post.publishedAt).toLocaleDateString("es-AR", {
-                      day: "numeric",
-                      month: "short",
-                      year: "numeric",
-                    })}
+                    {new Date(posts[0].publishedAt).toLocaleDateString(
+                      "es-AR",
+                      { day: "numeric", month: "short", year: "numeric" },
+                    )}
                   </p>
                   <h3
-                    className="text-base mb-2.5 leading-snug transition-colors duration-200 group-hover:text-[#94f1be]"
+                    className="text-xl mb-2.5 leading-snug transition-colors duration-200 group-hover:text-[#94f1be]"
                     style={{
                       fontFamily: "var(--font-heading)",
                       fontWeight: 700,
                       color: "rgba(240,234,216,0.92)",
                     }}
                   >
-                    {post.title}
+                    {posts[0].title}
                   </h3>
                   <p
-                    className="text-[13px] leading-relaxed line-clamp-2"
+                    className="text-[13px] leading-relaxed line-clamp-2 max-w-lg"
                     style={{
                       fontFamily: "var(--font-sans)",
                       fontWeight: 300,
                       color: "rgba(240,234,216,0.45)",
                     }}
                   >
-                    {post.excerpt}
+                    {posts[0].excerpt}
                   </p>
                 </div>
-
                 <div className="mt-4 pt-3 border-t border-[rgba(240,234,216,0.06)] flex items-center justify-between">
                   <span
                     className="text-[11px] font-normal group-hover:text-[#94f1be] transition-colors flex items-center gap-1"
@@ -151,7 +142,57 @@ export function BlogTeaser() {
                 </div>
               </div>
             </Link>
-          ))}
+          )}
+
+          {/* Remaining posts as a compact list, two-fifths width */}
+          <div className="lg:col-span-2 flex flex-col divide-y divide-[rgba(240,234,216,0.06)]">
+            {posts.slice(1).map((post, i) => (
+              <Link
+                key={post.slug}
+                href={`/blog/${post.slug}`}
+                className="group flex-1 flex flex-col justify-center py-5 first:pt-0 last:pb-0 transition-colors duration-200"
+                style={{
+                  opacity: isVisible ? 1 : 0,
+                  transform: isVisible ? "translateY(0)" : "translateY(16px)",
+                  transitionDelay: `${100 + i * 100}ms`,
+                }}
+              >
+                <p
+                  className="text-[11px] mb-1.5 font-normal"
+                  style={{
+                    fontFamily: "var(--font-sans)",
+                    color: "rgba(148,241,190,0.8)",
+                  }}
+                >
+                  {new Date(post.publishedAt).toLocaleDateString("es-AR", {
+                    day: "numeric",
+                    month: "short",
+                    year: "numeric",
+                  })}
+                </p>
+                <h3
+                  className="text-base mb-1.5 leading-snug transition-colors duration-200 group-hover:text-[#94f1be]"
+                  style={{
+                    fontFamily: "var(--font-heading)",
+                    fontWeight: 700,
+                    color: "rgba(240,234,216,0.92)",
+                  }}
+                >
+                  {post.title}
+                </h3>
+                <span
+                  className="text-[11px] font-normal group-hover:text-[#94f1be] transition-colors flex items-center gap-1"
+                  style={{
+                    fontFamily: "var(--font-sans)",
+                    color: "rgba(240,234,216,0.4)",
+                  }}
+                >
+                  Leer artículo
+                  <ArrowRight className="w-3 h-3 transition-transform duration-200 group-hover:translate-x-0.5" />
+                </span>
+              </Link>
+            ))}
+          </div>
         </div>
       </div>
     </section>

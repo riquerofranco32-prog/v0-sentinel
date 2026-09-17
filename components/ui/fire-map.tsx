@@ -39,7 +39,7 @@ const CONFIDENCE_LABEL: Record<string, string> = {
 };
 
 function formatConfidence(c?: string) {
-  if (!c) return "—";
+  if (!c) return "-";
   return CONFIDENCE_LABEL[c.toLowerCase()] ?? c;
 }
 
@@ -64,7 +64,7 @@ function hoursAgo(acqDate?: string, acqTime?: string) {
 }
 
 function formatDate(acqDate?: string, acqTime?: string) {
-  if (!acqDate) return "—";
+  if (!acqDate) return "-";
   const time =
     acqTime && acqTime.length >= 3
       ? `${acqTime.padStart(4, "0").slice(0, 2)}:${acqTime
@@ -135,18 +135,32 @@ export function FireMap({ points = [], pointColor = "#f16b6b" }: FireMapProps) {
     );
     const path = geoPath(projection);
 
+    // ponytail: d3's trig-heavy projection math can land on a different
+    // last-decimal float between the server's and the browser's V8, which
+    // React then flags as a hydration mismatch even though it's visually
+    // identical. Rounding to hundredths (invisible at this scale) makes the
+    // serialized string stable across both renders.
+    const round = (n: number) => Math.round(n * 100) / 100;
+
     const provinceLabels: { name: string; x: number; y: number }[] = [];
     for (const feature of countries.features) {
       if (selectedFeature && feature.properties.name !== selectedCountry)
         continue;
       const [x, y] = projection(geoCentroid(feature)) ?? [0, 0];
-      provinceLabels.push({ name: feature.properties.name, x, y });
+      provinceLabels.push({
+        name: feature.properties.name,
+        x: round(x),
+        y: round(y),
+      });
     }
 
     return {
       pathFor: (feature: (typeof countries.features)[number]) =>
         path(feature) ?? "",
-      project: (lat: number, lng: number) => projection([lng, lat]) ?? [0, 0],
+      project: (lat: number, lng: number): [number, number] => {
+        const [x, y] = projection([lng, lat]) ?? [0, 0];
+        return [round(x), round(y)];
+      },
       labels: provinceLabels,
     };
   }, [selectedFeature, selectedCountry]);

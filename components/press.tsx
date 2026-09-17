@@ -20,20 +20,8 @@ export function Press() {
       style={{ background: "#0c0b09" }}
     >
       <div className="max-w-6xl mx-auto px-6 lg:px-10">
-        <div className="flex items-center gap-2 mb-5">
-          <Newspaper className="w-3.5 h-3.5" style={{ color: "#94f1be" }} />
-          <p
-            className="text-[11px] tracking-[0.3em] uppercase"
-            style={{
-              fontFamily: "var(--font-sans)",
-              color: "rgba(240,234,216,0.3)",
-            }}
-          >
-            Prensa
-          </p>
-        </div>
         <h2
-          className="text-3xl sm:text-4xl lg:text-5xl mb-4 max-w-2xl"
+          className="text-3xl sm:text-4xl lg:text-5xl mb-4 max-w-2xl flex items-center gap-3"
           style={{
             fontFamily: "var(--font-heading)",
             fontWeight: 800,
@@ -41,7 +29,11 @@ export function Press() {
             lineHeight: 1.1,
           }}
         >
-          Dónde <span style={{ color: "#94f1be" }}>salimos.</span>
+          <Newspaper
+            className="w-7 h-7 shrink-0 hidden sm:block"
+            style={{ color: "#94f1be" }}
+          />
+          Dónde <span style={{ color: "#94f1be" }}>salimos en los medios.</span>
         </h2>
         <p
           className="text-[13px] mb-10 max-w-xl"
@@ -147,7 +139,9 @@ function PressCard({
       <div className="p-4 flex-1 flex flex-col justify-between">
         <p
           className={
-            large ? "text-[16px] leading-snug" : "text-[13px] leading-snug"
+            large
+              ? "text-[16px] leading-snug line-clamp-3"
+              : "text-[13px] leading-snug line-clamp-2"
           }
           style={{
             fontFamily: "var(--font-heading)",

@@ -81,7 +81,7 @@ export function FAQ() {
         items={faqs}
         contactInfo={{
           title: "¿Tenés otra pregunta?",
-          buttonText: "Hablar con el equipo",
+          buttonText: "Enviar mensaje",
           onContact: () => {
             document
               .getElementById("contacto")

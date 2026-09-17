@@ -34,7 +34,7 @@ const stats = [
   },
   {
     icon: Star,
-    value: 9,
+    value: 11,
     suffix: "",
     label: "Reconocimientos obtenidos",
     accent: "#e8c97d",

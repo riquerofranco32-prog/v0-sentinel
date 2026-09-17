@@ -156,7 +156,7 @@ export function Hero() {
 
             <a
               href="#servicios"
-              className="inline-flex items-center justify-center px-7 py-3 rounded-sm text-[13px] font-light transition-colors hover:text-[rgba(240,234,216,0.85)]"
+              className="inline-flex items-center justify-center px-7 py-3 rounded-sm text-[13px] font-light transition-all hover:-translate-y-0.5 hover:text-[rgba(240,234,216,0.85)]"
               style={{
                 fontFamily: "var(--font-sans)",
                 fontWeight: 300,

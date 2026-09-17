@@ -178,7 +178,7 @@ export async function FireRiskIndex() {
           }}
         >
           Índice estimado a partir de temperatura, humedad y viento en tiempo
-          real — la misma clase de variables que alimenta nuestros modelos de
+          real, la misma clase de variables que alimenta nuestros modelos de
           detección.{" "}
           <span style={{ color: "rgba(240,234,216,0.6)" }}>
             {RISK_EXPLAIN[overall.label]}
@@ -199,12 +199,16 @@ export async function FireRiskIndex() {
             return (
               <div
                 key={r.location.name}
-                className="rounded-lg p-6 transition-all duration-300 hover:-translate-y-0.5 hover:border-[rgba(240,234,216,0.14)]"
+                className="relative overflow-hidden rounded-lg p-6 transition-all duration-300 hover:-translate-y-0.5 hover:border-[rgba(240,234,216,0.14)]"
                 style={{
                   background: "rgba(240,234,216,0.02)",
                   border: "0.5px solid rgba(240,234,216,0.08)",
                 }}
               >
+                <div
+                  className="absolute top-0 left-0 right-0 h-[2px]"
+                  style={{ background: risk.color, opacity: 0.6 }}
+                />
                 <div className="flex items-start justify-between mb-4">
                   <div>
                     <p

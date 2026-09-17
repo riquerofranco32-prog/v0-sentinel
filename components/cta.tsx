@@ -48,18 +48,8 @@ export function CTA() {
       </div>
 
       <div className="relative z-10 max-w-4xl mx-auto px-6 lg:px-10 text-center">
-        <p
-          className={`text-[11px] tracking-[0.3em] uppercase mb-8 transition-all duration-700 ${isVisible ? "opacity-100" : "opacity-0"}`}
-          style={{
-            fontFamily: "var(--font-sans)",
-            color: "rgba(240,234,216,0.3)",
-          }}
-        >
-          Empezá hoy
-        </p>
-
         <h2
-          className={`text-4xl sm:text-5xl lg:text-6xl mb-6 transition-all duration-700 delay-100 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
+          className={`text-4xl sm:text-5xl lg:text-6xl mb-6 mt-2 transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
           style={{
             fontFamily: "var(--font-heading)",
             fontWeight: 800,
@@ -123,7 +113,7 @@ export function CTA() {
             className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-sm text-[13px] font-medium transition-all duration-200 bg-[#94f1be] text-[#0c0b09] hover:bg-[#aef4cf] hover:-translate-y-0.5"
             style={{ fontFamily: "var(--font-sans)", letterSpacing: "0.03em" }}
           >
-            Solicitar una reunión
+            Solicitar reunión
             <ArrowRight className="w-4 h-4" />
           </a>
 

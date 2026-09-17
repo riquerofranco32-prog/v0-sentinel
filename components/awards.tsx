@@ -134,27 +134,27 @@ const timelineData = [
         <div className="mb-6 flex flex-col gap-4">
           <ChecklistItem
             index={0}
-            title="Premios ILAN 2025 — viaje a Israel"
+            title="Premios ILAN 2025 - viaje a Israel"
             description="El galardón a innovación tecnológica de mayor peso del país, con final en Tel Aviv."
           />
           <ChecklistItem
             index={1}
-            title="JIJE 20 años — Universidad Nacional del Litoral"
+            title="JIJE 20 años - Universidad Nacional del Litoral"
             description="Primer puesto en las jornadas de ingeniería más antiguas de Argentina."
           />
           <ChecklistItem
             index={2}
-            title="Premios Sadosky 2025 — CESSI"
+            title="Premios Sadosky 2025 - CESSI"
             description="El reconocimiento más importante de la industria del software argentino."
           />
           <ChecklistItem
             index={3}
-            title="Usina Emprendedores — CAC"
+            title="Usina Emprendedores - CAC"
             description="Programa de la Cámara Argentina de Comercio para escalar startups con impacto real."
           />
           <ChecklistItem
             index={4}
-            title="Prendete Pitch Day — CICE SV"
+            title="Prendete Pitch Day - CICE SV"
             description="Competencia de pitch para founders universitarios de Mendoza."
           />
         </div>
@@ -190,22 +190,32 @@ const timelineData = [
         <div className="mb-6 flex flex-col gap-4">
           <ChecklistItem
             index={0}
+            title="Finalistas - Premios Verdes 2026, viaje a Ecuador"
+            description="Entre los proyectos ambientales finalistas de la región, con viaje a Ecuador incluido."
+          />
+          <ChecklistItem
+            index={1}
+            title="Finalistas Argentina - Climate Launchpad, viaje a Singapur"
+            description="Entre los 15 finalistas nacionales de la competencia global de innovación climática."
+          />
+          <ChecklistItem
+            index={2}
             title="Softlanding en Europa por Piensas.xyz"
             description="Viaje financiado para instalarse y conectar con el ecosistema tech europeo."
           />
           <ChecklistItem
-            index={1}
-            title="3.000 USD — Gobierno de Mendoza"
+            index={3}
+            title="3.000 USD - Gobierno de Mendoza"
             description="Primer capital no dilutivo recibido, vía fondo provincial de innovación."
           />
           <ChecklistItem
-            index={2}
+            index={4}
             title="Emprelatam y Draper House Americas"
             description="Programa de la red de aceleración fundada por Tim Draper, referente global en venture capital."
           />
           <ChecklistItem
-            index={3}
-            title="Finalistas — Impact Startup Competition Perú 2026 (Scale)"
+            index={5}
+            title="Finalistas - Impact Startup Competition Perú 2026 (Scale)"
             description="Entre las startups de impacto ambiental más prometedoras de Latinoamérica."
           />
         </div>
@@ -334,8 +344,8 @@ export function Awards() {
           className="flex justify-center gap-12 mt-4 pt-12 max-w-4xl mx-auto"
           style={{ borderTop: "0.5px solid rgba(240,234,216,0.07)" }}
         >
-          <CountUpStat value={9} label="reconocimientos" />
-          <CountUpStat value={3} label="países" />
+          <CountUpStat value={11} label="reconocimientos" />
+          <CountUpStat value={5} label="países" />
           <div className="text-center">
             <div
               style={{
@@ -346,7 +356,7 @@ export function Awards() {
                 lineHeight: 1,
               }}
             >
-              2025–26
+              2025-26
             </div>
             <div
               style={{

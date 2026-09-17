@@ -78,20 +78,20 @@ export async function ActiveFires() {
       style={{ background: "#0c0b09" }}
     >
       <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-10">
-        <div className="flex items-center gap-2 mb-5">
+        <div className="flex items-center gap-2 mb-4">
           <span
             className="w-1.5 h-1.5 rounded-full"
             style={{ background: "#f16b6b", boxShadow: "0 0 8px #f16b6b" }}
           />
-          <p
-            className="text-[11px] tracking-[0.3em] uppercase"
+          <span
+            className="text-[11px]"
             style={{
               fontFamily: "var(--font-sans)",
-              color: "rgba(240,234,216,0.3)",
+              color: "rgba(240,234,216,0.35)",
             }}
           >
-            Satélite · últimas 24hs
-          </p>
+            Satélite, últimas 24 horas
+          </span>
         </div>
         <h2
           className="text-4xl sm:text-5xl lg:text-6xl mb-4"
@@ -121,10 +121,10 @@ export async function ActiveFires() {
             color: "rgba(240,234,216,0.4)",
           }}
         >
-          Detecciones satelitales VIIRS de la NASA (FIRMS) en toda Latinoamérica
-          — la misma clase de dato que un sistema como el nuestro procesa y
-          verifica en minutos, no en horas. Tocá un foco para ver el detalle, o
-          elegí un país para recorrer la región.
+          Detecciones satelitales VIIRS de la NASA (FIRMS) en toda
+          Latinoamérica, la misma clase de dato que un sistema como el nuestro
+          procesa y verifica en minutos, no en horas. Tocá un foco para ver el
+          detalle, o elegí un país para recorrer la región.
         </p>
 
         <div

@@ -83,17 +83,17 @@ export async function FireImpactStats() {
         }}
       />
       <div className="relative z-10 max-w-5xl mx-auto px-6 lg:px-10">
-        <div className="flex items-center gap-2 mb-5">
+        <div className="flex items-center gap-2 mb-4">
           <Satellite className="w-3.5 h-3.5" style={{ color: "#f16b6b" }} />
-          <p
-            className="text-[11px] tracking-[0.3em] uppercase"
+          <span
+            className="text-[11px]"
             style={{
               fontFamily: "var(--font-sans)",
-              color: "rgba(240,234,216,0.3)",
+              color: "rgba(240,234,216,0.35)",
             }}
           >
-            El impacto en números
-          </p>
+            Datos satelitales NASA FIRMS
+          </span>
         </div>
         <h2
           className="text-3xl sm:text-4xl lg:text-5xl mb-10 max-w-2xl"
@@ -157,7 +157,7 @@ export async function FireImpactStats() {
           }}
         >
           Fuente: NASA FIRMS (VIIRS_SNPP_NRT), detecciones satelitales de calor
-          en territorio argentino. Datos preliminares, no verificados en campo —
+          en territorio argentino. Datos preliminares, no verificados en campo,
           no distingue incendios forestales de otras fuentes de calor (quemas
           agrícolas, etc.).
         </p>

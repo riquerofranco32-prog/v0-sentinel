@@ -63,20 +63,8 @@ export async function WildfireNews() {
       style={{ background: "#0c0b09" }}
     >
       <div className="max-w-5xl mx-auto px-6 lg:px-10">
-        <div className="flex items-center gap-2 mb-5">
-          <Newspaper className="w-3.5 h-3.5" style={{ color: "#94f1be" }} />
-          <p
-            className="text-[11px] tracking-[0.3em] uppercase"
-            style={{
-              fontFamily: "var(--font-sans)",
-              color: "rgba(240,234,216,0.3)",
-            }}
-          >
-            Actualidad
-          </p>
-        </div>
         <h2
-          className="text-3xl sm:text-4xl lg:text-5xl mb-10 max-w-2xl"
+          className="text-3xl sm:text-4xl lg:text-5xl mb-10 max-w-2xl flex items-center gap-3"
           style={{
             fontFamily: "var(--font-heading)",
             fontWeight: 800,
@@ -84,6 +72,10 @@ export async function WildfireNews() {
             lineHeight: 1.1,
           }}
         >
+          <Newspaper
+            className="w-7 h-7 shrink-0 hidden sm:block"
+            style={{ color: "#94f1be" }}
+          />
           Noticias sobre incendios forestales, al día.
         </h2>
 
@@ -146,7 +138,7 @@ export async function WildfireNews() {
               </div>
               <div className="p-4 flex-1 flex flex-col justify-between">
                 <p
-                  className="text-[14px] leading-snug mb-3 transition-colors group-hover:text-[rgba(240,234,216,0.95)]"
+                  className="text-[14px] leading-snug mb-3 line-clamp-3 transition-colors group-hover:text-[rgba(240,234,216,0.95)]"
                   style={{
                     fontFamily: "var(--font-sans)",
                     fontWeight: 400,

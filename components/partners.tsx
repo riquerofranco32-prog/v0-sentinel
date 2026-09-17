@@ -45,15 +45,18 @@ export function Partners() {
       style={{ background: "#0c0b09" }}
     >
       <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-10 text-center">
-        <p
-          className="text-[11px] tracking-[0.3em] uppercase mb-4"
+        <h2
+          className="text-3xl sm:text-4xl mb-4"
           style={{
-            fontFamily: "var(--font-sans)",
-            color: "rgba(240,234,216,0.3)",
+            fontFamily: "var(--font-heading)",
+            fontWeight: 800,
+            color: "rgba(240,234,216,0.92)",
+            lineHeight: 1.1,
           }}
         >
-          Instituciones que nos acompañan
-        </p>
+          Instituciones que{" "}
+          <span style={{ color: "#94f1be" }}>nos acompañan.</span>
+        </h2>
         <p
           className="text-[14px] max-w-lg mx-auto mb-14"
           style={{

@@ -55,12 +55,6 @@ export function Team() {
     >
       <div className="relative z-10 mx-auto max-w-6xl px-6 lg:px-10">
         <div className="mx-auto mb-16 flex max-w-2xl flex-col items-center text-center">
-          <p
-            className="mb-4 text-[11px] tracking-[0.35em] uppercase"
-            style={{ fontFamily: "var(--font-sans)", color: "#94f1be" }}
-          >
-            El equipo
-          </p>
           <h2
             style={{
               fontFamily: "var(--font-heading)",
@@ -114,7 +108,7 @@ export function Team() {
                   already baked in) — shown full, no HTML caption on top */}
                 <Image
                   src={member.image}
-                  alt={`${member.name} — ${member.role}`}
+                  alt={`${member.name}, ${member.role}`}
                   fill
                   sizes="(max-width: 1024px) 45vw, 22vw"
                   className="object-cover transition-transform duration-500 group-hover:scale-105"

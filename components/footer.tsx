@@ -171,7 +171,7 @@ export function Footer() {
                     color: "rgba(240,234,216,0.45)",
                   }}
                 >
-                  San Rafael, Mendoza — Argentina
+                  San Rafael, Mendoza, Argentina
                 </span>
               </div>
             </div>
@@ -260,7 +260,8 @@ export function Footer() {
                 color: "rgba(240,234,216,0.4)",
               }}
             >
-              © {new Date().getFullYear()} Sentinel. Todos los derechos reservados.
+              © {new Date().getFullYear()} Sentinel. Todos los derechos
+              reservados.
             </p>
             <span
               className="hidden sm:inline text-[10px]"

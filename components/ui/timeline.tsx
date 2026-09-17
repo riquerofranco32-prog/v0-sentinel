@@ -53,7 +53,7 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
                 }}
               >
                 <div
-                  className="h-3 w-3 rounded-full animate-ping absolute"
+                  className="h-3 w-3 rounded-full motion-safe:animate-ping absolute"
                   style={{ background: "#94f1be", opacity: 0.5 }}
                 />
                 <div

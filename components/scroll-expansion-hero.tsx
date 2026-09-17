@@ -29,7 +29,21 @@ const ScrollExpandMedia = ({
 }: ScrollExpandMediaProps) => {
   const [scrollProgress, setScrollProgress] = useState(0);
   const [isMobileState, setIsMobileState] = useState(false);
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
   const pinZoneRef = useRef<HTMLDivElement | null>(null);
+
+  // ponytail: this whole component is a scroll-linked resize (a vestibular
+  // trigger under WCAG 2.3.3), so reduced-motion users skip the 180vh pin
+  // runway entirely and get the expanded hero + content immediately instead
+  // of having to scroll through a "nothing is happening yet" dead zone.
+  useEffect(() => {
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    setPrefersReducedMotion(mq.matches);
+    const handler = (e: MediaQueryListEvent) =>
+      setPrefersReducedMotion(e.matches);
+    mq.addEventListener("change", handler);
+    return () => mq.removeEventListener("change", handler);
+  }, []);
 
   useEffect(() => {
     // ponytail: mobile browsers fire "resize" when the address bar
@@ -53,6 +67,10 @@ const ScrollExpandMedia = ({
   // momentum, keyboard scroll and anchor-link navigation, and felt "stuck"
   // to real users. This never blocks native scrolling — it just reads it.
   useEffect(() => {
+    if (prefersReducedMotion) {
+      setScrollProgress(1);
+      return;
+    }
     // ponytail: cache the pin zone's document-relative top once (on mount
     // and on resize) instead of calling getBoundingClientRect() on every
     // scroll frame. That call forces a synchronous layout flush right after
@@ -109,7 +127,7 @@ const ScrollExpandMedia = ({
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onResize);
     };
-  }, []);
+  }, [prefersReducedMotion]);
 
   const showContent = scrollProgress >= 0.85;
   const mediaWidth = 300 + scrollProgress * (isMobileState ? 650 : 1250);
@@ -121,7 +139,11 @@ const ScrollExpandMedia = ({
 
   return (
     <div className="relative">
-      <div ref={pinZoneRef} className="relative" style={{ height: "180vh" }}>
+      <div
+        ref={pinZoneRef}
+        className="relative"
+        style={{ height: prefersReducedMotion ? "100dvh" : "180vh" }}
+      >
         <div className="sticky top-0 h-[100dvh] overflow-hidden">
           <motion.div
             className="absolute inset-0 z-0 h-full"
@@ -264,7 +286,7 @@ const ScrollExpandMedia = ({
         className="relative z-10 flex flex-col w-full px-8 py-10 md:px-16 lg:py-20 bg-[#0c0b09]"
         initial={{ opacity: 0 }}
         animate={{ opacity: showContent ? 1 : 0 }}
-        transition={{ duration: 0.7 }}
+        transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
       >
         {children}
       </motion.section>

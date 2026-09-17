@@ -100,7 +100,7 @@ export function Features() {
               }}
             >
               Una plataforma integral que combina drones, satélites y sensores
-              para el monitoreo ambiental —{" "}
+              para el monitoreo ambiental,{" "}
               <span
                 style={{ color: "rgba(240,234,216,0.75)", fontWeight: 400 }}
               >

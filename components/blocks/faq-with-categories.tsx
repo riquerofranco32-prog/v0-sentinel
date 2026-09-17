@@ -95,7 +95,9 @@ export function FaqSectionWithCategories({
                 style={{
                   fontFamily: "var(--font-sans)",
                   border: `0.5px solid ${active ? "rgba(148,241,190,0.4)" : "rgba(240,234,216,0.1)"}`,
-                  background: active ? "rgba(148,241,190,0.08)" : "rgba(240,234,216,0.02)",
+                  background: active
+                    ? "rgba(148,241,190,0.08)"
+                    : "rgba(240,234,216,0.02)",
                   color: active ? "#94f1be" : "rgba(240,234,216,0.5)",
                 }}
               >
@@ -126,10 +128,9 @@ export function FaqSectionWithCategories({
                     className="text-[14px] font-medium leading-snug transition-colors duration-200 group-hover:text-[rgba(240,234,216,0.95)]"
                     style={{
                       fontFamily: "var(--font-sans)",
-                      color:
-                        isOpen
-                          ? "rgba(240,234,216,0.95)"
-                          : "rgba(240,234,216,0.7)",
+                      color: isOpen
+                        ? "rgba(240,234,216,0.95)"
+                        : "rgba(240,234,216,0.7)",
                     }}
                   >
                     {faq.question}
@@ -137,10 +138,9 @@ export function FaqSectionWithCategories({
                   <div
                     className="flex-shrink-0 w-7 h-7 rounded-sm flex items-center justify-center mt-0.5 transition-all duration-200"
                     style={{
-                      background:
-                        isOpen
-                          ? "rgba(148,241,190,0.12)"
-                          : "rgba(240,234,216,0.04)",
+                      background: isOpen
+                        ? "rgba(148,241,190,0.12)"
+                        : "rgba(240,234,216,0.04)",
                       border: `0.5px solid ${isOpen ? "rgba(148,241,190,0.35)" : "rgba(240,234,216,0.1)"}`,
                     }}
                   >
@@ -193,6 +193,7 @@ export function FaqSectionWithCategories({
               {contactInfo.title}
             </p>
             <button
+              type="button"
               onClick={contactInfo.onContact}
               className="inline-flex items-center gap-2 px-6 py-2.5 rounded-sm text-[13px] font-normal transition-all duration-200 hover:border-[rgba(148,241,190,0.5)] hover:text-[#94f1be]"
               style={{

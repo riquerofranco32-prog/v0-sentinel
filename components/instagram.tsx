@@ -66,15 +66,6 @@ export function InstagramFeed() {
           }}
         >
           <div>
-            <p
-              className="text-[11px] tracking-[0.3em] uppercase mb-5"
-              style={{
-                fontFamily: "var(--font-sans)",
-                color: "rgba(240,234,216,0.3)",
-              }}
-            >
-              Redes
-            </p>
             <h2
               className="text-4xl sm:text-5xl lg:text-6xl mb-4"
               style={{
@@ -94,8 +85,8 @@ export function InstagramFeed() {
                 color: "rgba(240,234,216,0.4)",
               }}
             >
-              Prevenimos incendios y generamos datos ambientales — el detrás de
-              escena de Sentinel, contado por el equipo.{" "}
+              Prevenimos incendios y generamos datos ambientales, el detrás de
+              escena de Sentinel contado por el equipo.{" "}
               <span
                 style={{ color: "rgba(240,234,216,0.75)", fontWeight: 400 }}
               >
@@ -121,16 +112,19 @@ export function InstagramFeed() {
           </a>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {posts.map((post, i) => (
             <a
               key={post.href}
               href={post.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative rounded-lg overflow-hidden transition-all duration-500 hover:-translate-y-1 hover:border-[rgba(148,241,190,0.3)] shadow-lg shadow-black/40"
+              className={`group relative rounded-lg overflow-hidden transition-all duration-500 hover:-translate-y-1 hover:border-[rgba(148,241,190,0.3)] shadow-lg shadow-black/40 ${
+                i === 0
+                  ? "aspect-[4/5] sm:aspect-[4/9] sm:row-span-2"
+                  : "aspect-square sm:aspect-[16/10]"
+              }`}
               style={{
-                aspectRatio: "4/5",
                 border: "0.5px solid rgba(240,234,216,0.08)",
                 opacity: isVisible ? 1 : 0,
                 transform: isVisible ? "translateY(0)" : "translateY(24px)",
