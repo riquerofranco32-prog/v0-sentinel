@@ -165,7 +165,7 @@ export async function WildfireNews() {
           className="text-[10px] mt-6"
           style={{
             fontFamily: "var(--font-sans)",
-            color: "rgba(26,24,18,0.2)",
+            color: "rgba(26,24,18,0.42)",
           }}
         >
           Fuente: GNews. Los enlaces abren la nota original en el medio que la

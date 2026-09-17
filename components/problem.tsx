@@ -142,7 +142,7 @@ export function Problem() {
                 ].map((stat) => (
                   <div
                     key={stat.label}
-                    className="relative overflow-hidden tech-card rounded-md p-5"
+                    className="relative overflow-hidden tech-card rounded-lg p-5"
                   >
                     <div
                       style={{
@@ -290,9 +290,8 @@ export function Problem() {
               ].map((src, i) => (
                 <div
                   key={i}
-                  className="relative overflow-hidden group transition-all duration-700"
+                  className="relative overflow-hidden rounded-lg group transition-all duration-700"
                   style={{
-                    borderRadius: "4px",
                     aspectRatio: "4/5",
                     opacity: isVisible ? 1 : 0,
                     transform: isVisible

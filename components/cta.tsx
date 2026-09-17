@@ -41,7 +41,14 @@ export function CTA() {
       />
 
       {/* Globe */}
-      <div className="absolute inset-0 flex items-end justify-center pointer-events-none overflow-hidden select-none opacity-40 md:opacity-60">
+      <div
+        className="absolute inset-0 flex items-end justify-center pointer-events-none overflow-hidden select-none opacity-40 md:opacity-60"
+        style={{
+          maskImage: "linear-gradient(to top, black 15%, transparent 48%)",
+          WebkitMaskImage:
+            "linear-gradient(to top, black 15%, transparent 48%)",
+        }}
+      >
         {isVisible && (
           <Globe className="!relative !inset-auto translate-y-1/3" />
         )}

@@ -147,7 +147,7 @@ export async function ActiveFires() {
           className="text-[10px] mt-4"
           style={{
             fontFamily: "var(--font-sans)",
-            color: "rgba(26,24,18,0.2)",
+            color: "rgba(26,24,18,0.42)",
           }}
         >
           Fuente: NASA FIRMS (VIIRS_SNPP_NRT). Datos preliminares, no

@@ -31,7 +31,7 @@ function ChecklistItem({
   return (
     <div
       ref={ref}
-      className="group flex gap-2.5 items-start rounded-md p-2 -m-2 transition-all duration-500 hover:bg-[rgba(15,122,79,0.05)]"
+      className="group flex gap-2.5 items-start rounded-lg p-2 -m-2 transition-all duration-500 hover:bg-[rgba(15,122,79,0.05)]"
       style={{
         opacity: isVisible ? 1 : 0,
         transform: isVisible ? "translateX(0)" : "translateX(-12px)",

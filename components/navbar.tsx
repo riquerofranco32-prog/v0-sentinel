@@ -112,7 +112,7 @@ export function Navbar() {
           {/* Mobile toggle */}
           <button
             type="button"
-            className="md:hidden text-[#1a1812] p-2"
+            className="md:hidden text-[#1a1812] p-2.5 -mr-2.5"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label={isMobileMenuOpen ? "Cerrar menú" : "Abrir menú"}
             aria-expanded={isMobileMenuOpen}

@@ -79,10 +79,9 @@ function PressCard({
       href={mention.url}
       target="_blank"
       rel="noopener noreferrer"
-      className="group relative flex flex-col overflow-hidden rounded-lg transition-all duration-300 hover:-translate-y-1 hover:border-[rgba(15,122,79,0.3)]"
+      className="group relative flex flex-col overflow-hidden rounded-lg border-[0.5px] border-[rgba(26,24,18,0.08)] transition-all duration-300 hover:-translate-y-1 hover:border-[rgba(15,122,79,0.3)]"
       style={{
         background: "rgba(26,24,18,0.02)",
-        border: "0.5px solid rgba(26,24,18,0.08)",
       }}
     >
       <div

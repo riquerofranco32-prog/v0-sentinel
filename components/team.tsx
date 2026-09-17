@@ -98,7 +98,7 @@ export function Team() {
                 href={member.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group relative flex overflow-hidden rounded-xl transition-all duration-500 shadow-[0_20px_40px_-20px_rgba(26,24,18,0.2)] hover:-translate-y-1.5 hover:scale-[1.02] hover:rotate-0 hover:shadow-[0_20px_50px_-15px_rgba(15,122,79,0.35)]"
+                className="group relative flex overflow-hidden rounded-lg transition-all duration-500 shadow-[0_20px_40px_-20px_rgba(26,24,18,0.2)] hover:-translate-y-1.5 hover:scale-[1.02] hover:rotate-0 hover:shadow-[0_20px_50px_-15px_rgba(15,122,79,0.35)]"
                 style={{
                   aspectRatio: "9/16",
                   border: "0.5px solid rgba(26,24,18,0.1)",

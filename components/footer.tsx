@@ -182,7 +182,7 @@ export function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={s.label}
-                  className="w-8 h-8 rounded-sm flex items-center justify-center transition-all duration-200"
+                  className="w-10 h-10 rounded-sm flex items-center justify-center transition-all duration-200"
                   style={{
                     background: "rgba(26,24,18,0.05)",
                     border: "0.5px solid rgba(26,24,18,0.1)",

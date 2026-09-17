@@ -98,10 +98,10 @@ export function HowItWorks() {
           }}
         >
           <p
-            className="text-[11px] tracking-[0.35em] uppercase mb-4"
+            className="text-[11px] tracking-[0.3em] uppercase mb-4"
             style={{
               fontFamily: "var(--font-sans)",
-              color: "rgba(26,24,18,0.25)",
+              color: "rgba(26,24,18,0.3)",
             }}
           >
             Cómo funciona el monitoreo con drones
@@ -179,7 +179,7 @@ export function HowItWorks() {
                         className="text-[10px] tracking-[0.25em] uppercase"
                         style={{
                           fontFamily: "var(--font-sans)",
-                          color: isActive ? "#0f7a4f" : "rgba(26,24,18,0.2)",
+                          color: isActive ? "#0f7a4f" : "rgba(26,24,18,0.42)",
                         }}
                       >
                         {step.number}
@@ -192,7 +192,7 @@ export function HowItWorks() {
                         fontSize: "20px",
                         color: isActive
                           ? "rgba(26,24,18,0.95)"
-                          : "rgba(26,24,18,0.55)",
+                          : "rgba(26,24,18,0.62)",
                         transition: "color 0.4s",
                       }}
                     >
@@ -202,7 +202,7 @@ export function HowItWorks() {
                       className="text-[11px] mt-0.5"
                       style={{
                         fontFamily: "var(--font-sans)",
-                        color: isActive ? "#0f7a4f" : "rgba(26,24,18,0.2)",
+                        color: isActive ? "#0f7a4f" : "rgba(26,24,18,0.5)",
                         transition: "color 0.4s",
                         fontStyle: "italic",
                       }}
@@ -253,7 +253,7 @@ export function HowItWorks() {
                               className="text-[9px] tracking-wider uppercase mt-0.5"
                               style={{
                                 fontFamily: "var(--font-sans)",
-                                color: "rgba(26,24,18,0.3)",
+                                color: "rgba(26,24,18,0.42)",
                               }}
                             >
                               {m.label}
@@ -281,9 +281,10 @@ export function HowItWorks() {
               className="h-full rounded-full"
               style={{
                 background: "#0f7a4f",
-                animation: isVisible && !isPaused
-                  ? `progressBar ${STEP_DURATION}ms linear forwards`
-                  : "none",
+                animation:
+                  isVisible && !isPaused
+                    ? `progressBar ${STEP_DURATION}ms linear forwards`
+                    : "none",
                 width: isPaused ? undefined : "0%",
               }}
             />

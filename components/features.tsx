@@ -112,7 +112,7 @@ export function Features() {
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-4">
           {/* Image 1 — large, 3 cols */}
           <div
-            className="lg:col-span-3 relative rounded-lg overflow-hidden group cursor-pointer transition-all duration-700"
+            className="lg:col-span-3 relative rounded-lg overflow-hidden group transition-all duration-700"
             style={{
               minHeight: "380px",
               opacity: isVisible ? 1 : 0,
@@ -169,7 +169,7 @@ export function Features() {
           <div className="lg:col-span-2 flex flex-col gap-4">
             {/* Image 2 */}
             <div
-              className="relative rounded-lg overflow-hidden group cursor-pointer flex-1 transition-all duration-700"
+              className="relative rounded-lg overflow-hidden group flex-1 transition-all duration-700"
               style={{
                 minHeight: "180px",
                 opacity: isVisible ? 1 : 0,

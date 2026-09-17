@@ -117,13 +117,12 @@ export function InstagramFeed() {
               href={post.href}
               target="_blank"
               rel="noopener noreferrer"
-              className={`group relative rounded-lg overflow-hidden transition-all duration-500 hover:-translate-y-1 hover:border-[rgba(15,122,79,0.3)] shadow-lg shadow-black/10 ${
+              className={`group relative rounded-lg overflow-hidden border-[0.5px] border-[rgba(26,24,18,0.08)] transition-all duration-500 hover:-translate-y-1 hover:border-[rgba(15,122,79,0.3)] shadow-lg shadow-black/10 ${
                 i === 0
                   ? "aspect-[4/5] sm:aspect-[4/9] sm:row-span-2"
                   : "aspect-square sm:aspect-[16/10]"
               }`}
               style={{
-                border: "0.5px solid rgba(26,24,18,0.08)",
                 opacity: isVisible ? 1 : 0,
                 transform: isVisible ? "translateY(0)" : "translateY(24px)",
                 transitionDelay: `${i * 100}ms`,
