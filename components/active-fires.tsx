@@ -1,4 +1,4 @@
-import { FireMap } from "@/components/ui/fire-map";
+import { FireMapLazy } from "@/components/ui/fire-map-lazy";
 
 // ponytail: Latin America bounding box (west,south,east,north) — Mexico's
 // northern border down to Cape Horn, wide enough to cover every country in
@@ -131,7 +131,7 @@ export async function ActiveFires() {
           className="rounded-lg p-4"
           style={{ border: "0.5px solid rgba(26,24,18,0.07)" }}
         >
-          <FireMap
+          <FireMapLazy
             points={sorted.map((f) => ({
               lat: f.lat,
               lng: f.lng,

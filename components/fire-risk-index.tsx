@@ -1,5 +1,5 @@
 import { Wind, Droplets, Thermometer } from "lucide-react";
-import { PatagoniaRiskMap } from "@/components/ui/patagonia-risk-map";
+import { PatagoniaRiskMapLazy } from "@/components/ui/patagonia-risk-map-lazy";
 
 // ponytail: kept in sync with RISK_EXPLAIN in patagonia-risk-map.tsx —
 // duplicated rather than imported since that component is a client boundary
@@ -190,7 +190,7 @@ export async function FireRiskIndex() {
           className="max-w-md mx-auto mb-10 rounded-lg p-4"
           style={{ border: "0.5px solid rgba(26,24,18,0.07)" }}
         >
-          <PatagoniaRiskMap points={points} />
+          <PatagoniaRiskMapLazy points={points} />
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">

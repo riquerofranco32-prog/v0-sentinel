@@ -15,7 +15,7 @@ export interface FirePoint {
   frp?: number;
 }
 
-interface FireMapProps {
+export interface FireMapProps {
   points?: FirePoint[];
   pointColor?: string;
 }
