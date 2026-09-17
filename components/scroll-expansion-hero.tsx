@@ -29,6 +29,13 @@ const ScrollExpandMedia = ({
 }: ScrollExpandMediaProps) => {
   const [scrollProgress, setScrollProgress] = useState(0);
   const [isMobileState, setIsMobileState] = useState(false);
+  // ponytail: the expanded box used to grow toward a fixed pixel target
+  // (~1550x800) tuned for ~1600px-wide screens. On anything wider than
+  // that, the box stalled far short of the viewport while the dark
+  // backdrop had already faded to transparent — leaving a growing cream
+  // gap around it for the whole rest of the scroll-jack. Tracking real
+  // viewport size lets the target grow with the screen instead.
+  const [viewport, setViewport] = useState({ width: 1920, height: 1080 });
   const pinZoneRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
@@ -41,8 +48,10 @@ const ScrollExpandMedia = ({
       if (window.innerWidth === lastWidth) return;
       lastWidth = window.innerWidth;
       setIsMobileState(window.innerWidth < 768);
+      setViewport({ width: window.innerWidth, height: window.innerHeight });
     };
     setIsMobileState(window.innerWidth < 768);
+    setViewport({ width: window.innerWidth, height: window.innerHeight });
     window.addEventListener("resize", checkIfMobile);
     return () => window.removeEventListener("resize", checkIfMobile);
   }, []);
@@ -112,8 +121,14 @@ const ScrollExpandMedia = ({
   }, []);
 
   const showContent = scrollProgress >= 0.85;
-  const mediaWidth = 300 + scrollProgress * (isMobileState ? 650 : 1250);
-  const mediaHeight = 400 + scrollProgress * (isMobileState ? 200 : 400);
+  // ponytail: grow toward a share of the actual viewport instead of a
+  // fixed pixel target, so the box reaches ~full-bleed on wide screens
+  // too instead of stalling and leaving a cream gap (see viewport state
+  // above).
+  const targetWidth = viewport.width * (isMobileState ? 0.94 : 0.96);
+  const targetHeight = viewport.height * (isMobileState ? 0.7 : 0.88);
+  const mediaWidth = 300 + scrollProgress * (targetWidth - 300);
+  const mediaHeight = 400 + scrollProgress * (targetHeight - 400);
   const textTranslateX = scrollProgress * (isMobileState ? 180 : 150);
 
   const firstWord = title ? title.split(" ")[0] : "";
@@ -121,7 +136,15 @@ const ScrollExpandMedia = ({
 
   return (
     <div className="relative">
-      <div ref={pinZoneRef} className="relative" style={{ height: "180vh" }}>
+      {/* ponytail: was 180vh — since the content section starts exactly at
+          this height in document flow, the total height IS the total
+          scroll needed before subhead+stats appear. 180vh meant ~0.8
+          viewport-heights of expand animation followed by another full
+          viewport-height of scrolling past an already-fully-expanded,
+          static video before any new content showed — the reported dead
+          gap. 145vh keeps a real expand animation but cuts that idle
+          pass-by by roughly a third. */}
+      <div ref={pinZoneRef} className="relative" style={{ height: "145vh" }}>
         <div className="sticky top-0 h-[100dvh] overflow-hidden">
           <motion.div
             className="absolute inset-0 z-0 h-full"
@@ -149,7 +172,12 @@ const ScrollExpandMedia = ({
                   height: `${mediaHeight}px`,
                   maxWidth: "95vw",
                   maxHeight: "85vh",
-                  boxShadow: "0px 0px 50px rgba(0, 0, 0, 0.4)",
+                  // ponytail: was a flat pure-black glow (0,0,0,0.4) — tinted
+                  // to the page's ink color instead, plus a thin light inset
+                  // edge, so the box reads as a considered framed card
+                  // rather than a default drop-shadow.
+                  boxShadow:
+                    "0 30px 70px -20px rgba(26,24,18,0.45), inset 0 0 0 1px rgba(240,234,216,0.08)",
                   // ponytail: this box resizes every scroll frame while
                   // pinned — contain keeps that layout/paint work scoped to
                   // itself instead of the browser re-checking ancestors.

@@ -97,7 +97,7 @@ export function InstagramFeed() {
             href="https://instagram.com/sentinel.arg"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-sm text-[13px] font-medium transition-all hover:-translate-y-0.5 w-fit"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-sm text-[13px] font-medium transition-all hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] w-fit"
             style={{
               fontFamily: "var(--font-sans)",
               background: "rgba(15,122,79,0.1)",

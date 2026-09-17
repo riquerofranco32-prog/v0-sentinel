@@ -58,7 +58,7 @@ export function Partners() {
           <span style={{ color: "#0f7a4f" }}>nos acompañan.</span>
         </h2>
         <p
-          className="text-[14px] max-w-lg mx-auto mb-14"
+          className="text-[13px] max-w-lg mx-auto mb-14"
           style={{
             fontFamily: "var(--font-sans)",
             fontWeight: 300,

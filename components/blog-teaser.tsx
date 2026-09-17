@@ -55,7 +55,7 @@ export function BlogTeaser() {
 
           <Link
             href="/blog"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-sm text-[13px] font-medium transition-all hover:-translate-y-0.5 w-fit"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-sm text-[13px] font-medium transition-all hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] w-fit"
             style={{
               fontFamily: "var(--font-sans)",
               border: "0.5px solid rgba(26,24,18,0.2)",

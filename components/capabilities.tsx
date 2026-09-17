@@ -300,7 +300,7 @@ export function Capabilities() {
                 border: "0.5px solid rgba(15,122,79,0.2)",
               }}
             >
-              <Satellite className="w-6 h-6" style={{ color: "#0f7a4f" }} />
+              <Satellite className="w-5 h-5" style={{ color: "#0f7a4f" }} />
             </div>
             <div>
               <h3

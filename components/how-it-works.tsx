@@ -265,7 +265,7 @@ export function HowItWorks() {
                               {m.value}
                             </div>
                             <div
-                              className="text-[9px] tracking-wider uppercase mt-0.5"
+                              className="text-[10px] tracking-wider uppercase mt-0.5"
                               style={{
                                 fontFamily: "var(--font-sans)",
                                 color: "rgba(26,24,18,0.42)",

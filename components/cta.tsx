@@ -70,7 +70,7 @@ export function CTA() {
         </h2>
 
         <p
-          className={`text-[15px] mb-12 transition-all duration-700 delay-200 ${isVisible ? "opacity-100" : "opacity-0"}`}
+          className={`text-[13px] mb-12 transition-all duration-700 delay-200 ${isVisible ? "opacity-100" : "opacity-0"}`}
           style={{
             fontFamily: "var(--font-sans)",
             fontWeight: 300,
@@ -117,7 +117,7 @@ export function CTA() {
             href="https://linktr.ee/sentinelarg"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-sm text-[13px] font-medium transition-all duration-200 bg-[#0f7a4f] text-[#faf7f0] hover:bg-[#0c6941] hover:-translate-y-0.5"
+            className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-sm text-[13px] font-medium transition-all duration-200 bg-[#0f7a4f] text-[#faf7f0] hover:bg-[#0c6941] hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98]"
             style={{ fontFamily: "var(--font-sans)", letterSpacing: "0.03em" }}
           >
             Solicitar reunión
@@ -126,7 +126,7 @@ export function CTA() {
 
           <a
             href="/#contacto"
-            className="inline-flex items-center justify-center px-8 py-4 rounded-sm text-[13px] font-light transition-all duration-200 border border-[rgba(26,24,18,0.12)] text-[rgba(26,24,18,0.65)] hover:border-[rgba(26,24,18,0.3)] hover:text-[rgba(26,24,18,0.9)]"
+            className="inline-flex items-center justify-center px-8 py-4 rounded-sm text-[13px] font-light transition-all duration-200 border border-[rgba(26,24,18,0.12)] text-[rgba(26,24,18,0.65)] hover:border-[rgba(26,24,18,0.3)] hover:text-[rgba(26,24,18,0.9)] active:scale-[0.98]"
             style={{ fontFamily: "var(--font-sans)" }}
           >
             Enviar mensaje

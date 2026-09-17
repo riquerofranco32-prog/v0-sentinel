@@ -86,7 +86,7 @@ export function Navbar() {
               href="https://linktr.ee/sentinelarg"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[12px] font-normal px-4 py-2 rounded-sm border transition-all duration-200"
+              className="text-[12px] font-normal px-4 py-2 rounded-sm border transition-all duration-200 active:scale-[0.98]"
               style={{
                 fontFamily: "var(--font-sans)",
                 borderColor: "rgba(26,24,18,0.18)",
@@ -156,7 +156,7 @@ export function Navbar() {
             target="_blank"
             rel="noopener noreferrer"
             tabIndex={isMobileMenuOpen ? 0 : -1}
-            className="block text-center text-[12px] font-medium px-5 py-2.5 border rounded-sm"
+            className="block text-center text-[12px] font-medium px-5 py-2.5 border rounded-sm transition-transform duration-150 active:scale-[0.98]"
             style={{
               fontFamily: "var(--font-sans)",
               borderColor: "rgba(26,24,18,0.2)",

@@ -142,7 +142,7 @@ export function Hero() {
           <div className="flex flex-col sm:flex-row gap-3 mt-10">
             <a
               href="#nosotros"
-              className="inline-flex items-center gap-2 px-7 py-3 rounded-sm text-[13px] font-medium transition-all hover:-translate-y-0.5"
+              className="inline-flex items-center gap-2 px-7 py-3 rounded-sm text-[13px] font-medium transition-all hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98]"
               style={{
                 fontFamily: "var(--font-sans)",
                 fontWeight: 500,

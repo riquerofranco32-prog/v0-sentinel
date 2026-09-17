@@ -207,7 +207,7 @@ export function Features() {
 
             {/* Info card */}
             <div
-              className="relative rounded-lg p-6 flex-1 overflow-hidden transition-all duration-700 group"
+              className="relative rounded-lg p-6 flex-1 overflow-hidden transition-all duration-700 group hover:-translate-y-1"
               style={{
                 background: "rgba(26,24,18,0.02)",
                 border: "0.5px solid rgba(26,24,18,0.07)",
