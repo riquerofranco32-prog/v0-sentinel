@@ -4,48 +4,52 @@ import { FaqSectionWithCategories } from "@/components/blocks/faq-with-categorie
 
 const faqs = [
   {
-    question:
-      "¿Cómo puede ayudar Sentinel en la detección de incendios forestales?",
-    answer:
-      "Utilizamos drones con cámaras térmicas e IA a bordo que analizan en tiempo real imágenes para identificar focos de calor con 98% de precisión, enviando alertas automáticas geolocalizadas.",
-    category: "Producto",
-  },
-  {
-    question:
-      "¿Cuál es la mejor solución para el monitoreo de incendios forestales?",
-    answer:
-      "Una solución de monitoreo de incendios forestales efectiva combina drones autónomos, cámaras térmicas e inteligencia artificial para vigilar el territorio de forma continua. Sentinel ofrece justamente eso: detección automática de focos en minutos, sin depender de reportes manuales.",
-    category: "Producto",
-  },
-  {
     question: "¿Cómo funciona el monitoreo con drones para prevenir incendios?",
     answer:
-      "Los drones sobrevuelan el territorio de forma programada con cámaras térmicas a bordo. Un modelo de IA analiza cada imagen en tiempo real, descarta falsos positivos y genera una alerta geolocalizada apenas confirma un foco de calor real, antes de que se convierta en un incendio incontrolable.",
+      "Drones autónomos con cámaras térmicas sobrevuelan el territorio de forma programada. Un modelo de IA analiza cada imagen en tiempo real, descarta falsos positivos y genera una alerta geolocalizada apenas confirma un foco de calor real, con 98% de precisión y antes de que se convierta en un incendio incontrolable.",
     category: "Producto",
   },
   {
-    question: "¿Qué instituciones pueden beneficiarse de Sentinel?",
+    question: "¿Y si la IA se equivoca y salta una falsa alarma?",
     answer:
-      "Municipios, bomberos, empresas forestales, parques nacionales, productores agropecuarios y cualquier organización que gestione grandes superficies de terreno.",
+      "Es la primera pregunta que hace cualquier brigada, y con razón: una alerta falsa cuesta tiempo y recursos. Por eso el modelo cruza cámara térmica, cámara óptica y coordenadas antes de confirmar un foco, y ese cruce es justamente lo que sostiene el 98% de precisión que medimos en campo.",
     category: "Producto",
+  },
+  {
+    question: "¿Cuánto cuesta implementar Sentinel?",
+    answer:
+      "No hay inversión inicial en equipos (CAPEX): el servicio se contrata como una suscripción sobre la cobertura que necesitás, no como una compra de drones. Arrancamos con un piloto acotado para que veas resultados antes de comprometerte a un contrato mayor.",
+    category: "Precio",
+  },
+  {
+    question: "¿Cuánto tarda en estar operativo en mi territorio?",
+    answer:
+      "Un piloto típico está en el aire y generando alertas en 4 a 8 semanas desde que arrancamos, sin obra ni infraestructura que instalar de tu lado. Nuestro equipo se encarga del despliegue de principio a fin.",
+    category: "Implementación",
   },
   {
     question: "¿Es difícil implementar Sentinel en mi región?",
     answer:
-      "No. Nuestra plataforma es cloud-based y se adapta a cualquier territorio. Solo necesitás acceso a internet y nuestro equipo se encarga del resto.",
+      "No. La plataforma es cloud-based y se adapta a cualquier territorio: bosque nativo, forestación productiva o campo abierto. Solo necesitás acceso a internet, el resto lo resuelve nuestro equipo.",
     category: "Implementación",
   },
   {
     question: "¿Necesito conocimientos técnicos para usar Sentinel?",
     answer:
-      "No. La interfaz está diseñada para ser intuitiva. Recibís alertas en tu dispositivo y podés tomar decisiones sin necesidad de ser un experto.",
+      "No. La interfaz está diseñada para ser intuitiva. Recibís alertas en tu dispositivo con la ubicación exacta del foco y podés decidir sin necesidad de ser un experto en drones ni en IA.",
     category: "Implementación",
   },
   {
     question: "¿Qué tipo de soporte ofrecen?",
     answer:
-      "Soporte 24/7 durante operaciones críticas, onboarding personalizado y actualizaciones continuas de los modelos de IA.",
+      "Soporte 24/7 durante operaciones críticas, onboarding personalizado para tu equipo y actualizaciones continuas de los modelos de IA a medida que suman más horas de vuelo sobre tu territorio.",
     category: "Soporte",
+  },
+  {
+    question: "¿Qué instituciones pueden beneficiarse de Sentinel?",
+    answer:
+      "Municipios, brigadas de bomberos, empresas forestales, parques nacionales, productores agropecuarios y cualquier organización que gestione grandes superficies de terreno.",
+    category: "Producto",
   },
   {
     question:

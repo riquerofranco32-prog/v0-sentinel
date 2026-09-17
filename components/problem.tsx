@@ -102,14 +102,13 @@ export function Problem() {
                   transitionDelay: "150ms",
                 }}
               >
-                No es solo bosque lo que se quema. Es el futuro de nuestras
-                economías.{" "}
+                No es solo bosque lo que se quema.{" "}
                 <span style={{ color: "rgba(26,24,18,0.85)", fontWeight: 400 }}>
                   Más de 1 millón de hectáreas perdidas en Corrientes.
                 </span>{" "}
-                Bosques milenarios desapareciendo en la Patagonia. No son solo
-                árboles: son hogares, biodiversidad única y el futuro económico
-                de nuestras provincias.
+                Bosques milenarios desapareciendo en la Patagonia. Detrás de
+                cada hectárea hay un hogar, una fuente de trabajo y una
+                biodiversidad que no vuelve a crecer en lo que dura una vida.
               </p>
 
               {/* Stats with counters */}

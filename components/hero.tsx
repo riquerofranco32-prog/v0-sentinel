@@ -113,11 +113,12 @@ export function Hero() {
               color: "rgba(26,24,18,0.6)",
             }}
           >
-            Tecnología aérea e inteligencia artificial para el{" "}
+            Drones autónomos con cámaras térmicas e IA vigilan tu territorio las
+            24 horas y avisan a{" "}
             <strong style={{ fontWeight: 500, color: "rgba(26,24,18,0.9)" }}>
-              monitoreo forestal continuo
+              municipios, brigadas y grandes propietarios
             </strong>{" "}
-            en la Patagonia.
+            apenas aparece un foco real, en la Patagonia.
           </p>
 
           <div className="flex items-center gap-6 sm:gap-10 mt-10">
