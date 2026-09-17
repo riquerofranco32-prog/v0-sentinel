@@ -10,13 +10,13 @@ const GLOBE_CONFIG: COBEOptions = {
   devicePixelRatio: 2,
   phi: 0,
   theta: 0.3,
-  dark: 1,
-  diffuse: 0.4,
+  dark: 0,
+  diffuse: 0.6,
   mapSamples: 16000,
-  mapBrightness: 6,
-  baseColor: [0.15, 0.18, 0.16],
-  markerColor: [148 / 255, 241 / 255, 190 / 255],
-  glowColor: [148 / 255, 241 / 255, 190 / 255],
+  mapBrightness: 4,
+  baseColor: [0.87, 0.84, 0.76],
+  markerColor: [15 / 255, 122 / 255, 79 / 255],
+  glowColor: [0.96, 0.94, 0.89],
   markers: [
     { location: [-41.1335, -71.3103], size: 0.12 }, // Bariloche / Patagonia
     { location: [-34.6037, -58.3816], size: 0.06 }, // CABA

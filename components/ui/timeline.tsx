@@ -48,22 +48,22 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
               <div
                 className="h-8 absolute left-3 md:left-3 w-8 rounded-full flex items-center justify-center"
                 style={{
-                  background: "#0c0b09",
-                  border: "0.5px solid rgba(148,241,190,0.3)",
+                  background: "#faf7f0",
+                  border: "0.5px solid rgba(15,122,79,0.3)",
                 }}
               >
                 <div
                   className="h-3 w-3 rounded-full motion-safe:animate-ping absolute"
-                  style={{ background: "#94f1be", opacity: 0.5 }}
+                  style={{ background: "#0f7a4f", opacity: 0.5 }}
                 />
                 <div
                   className="h-3 w-3 rounded-full relative"
-                  style={{ background: "#94f1be" }}
+                  style={{ background: "#0f7a4f" }}
                 />
               </div>
               <h3
                 className="hidden md:block text-lg md:pl-20 font-semibold"
-                style={{ color: "#94f1be" }}
+                style={{ color: "#0f7a4f" }}
               >
                 {item.title}
               </h3>
@@ -72,7 +72,7 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
             <div className="relative pl-16 pr-4 md:pl-4 w-full">
               <h3
                 className="md:hidden block text-base mb-2 text-left font-semibold"
-                style={{ color: "#94f1be" }}
+                style={{ color: "#0f7a4f" }}
               >
                 {item.title}
               </h3>
@@ -90,14 +90,14 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
             className="absolute inset-0"
             style={{
               background:
-                "linear-gradient(to bottom, transparent 0%, rgba(240,234,216,0.1) 10%, rgba(240,234,216,0.1) 90%, transparent 100%)",
+                "linear-gradient(to bottom, transparent 0%, rgba(26,24,18,0.1) 10%, rgba(26,24,18,0.1) 90%, transparent 100%)",
             }}
           />
           <motion.div
             style={{
               height: heightTransform,
               opacity: opacityTransform,
-              background: "#94f1be",
+              background: "#0f7a4f",
             }}
             className="absolute inset-x-0 top-0 w-px rounded-full"
           />

@@ -29,14 +29,14 @@ export function CTA() {
     <section
       ref={sectionRef}
       className="relative py-28 lg:py-36 overflow-hidden"
-      style={{ background: "#0c0b09" }}
+      style={{ background: "#faf7f0" }}
     >
       {/* Glow */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            "radial-gradient(ellipse at 50% 100%, rgba(148,241,190,0.08) 0%, transparent 60%)",
+            "radial-gradient(ellipse at 50% 100%, rgba(15,122,79,0.08) 0%, transparent 60%)",
         }}
       />
 
@@ -53,13 +53,13 @@ export function CTA() {
           style={{
             fontFamily: "var(--font-heading)",
             fontWeight: 800,
-            color: "rgba(240,234,216,0.92)",
+            color: "rgba(26,24,18,0.92)",
             lineHeight: 1.05,
           }}
         >
           Dejá que Sentinel vigile
           <br />
-          <span style={{ color: "#94f1be" }}>para que vos puedas actuar.</span>
+          <span style={{ color: "#0f7a4f" }}>para que vos puedas actuar.</span>
         </h2>
 
         <p
@@ -67,7 +67,7 @@ export function CTA() {
           style={{
             fontFamily: "var(--font-sans)",
             fontWeight: 300,
-            color: "rgba(240,234,216,0.4)",
+            color: "rgba(26,24,18,0.4)",
           }}
         >
           Drones autónomos con IA para detectar incendios antes de que sea
@@ -86,7 +86,7 @@ export function CTA() {
               {i > 0 && (
                 <div
                   className="hidden sm:block w-px h-3"
-                  style={{ background: "rgba(240,234,216,0.15)" }}
+                  style={{ background: "rgba(26,24,18,0.15)" }}
                 />
               )}
               <span
@@ -94,7 +94,7 @@ export function CTA() {
                 style={{
                   fontFamily: "var(--font-sans)",
                   fontWeight: 400,
-                  color: "rgba(240,234,216,0.55)",
+                  color: "rgba(26,24,18,0.55)",
                 }}
               >
                 {item}
@@ -110,7 +110,7 @@ export function CTA() {
             href="https://linktr.ee/sentinelarg"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-sm text-[13px] font-medium transition-all duration-200 bg-[#94f1be] text-[#0c0b09] hover:bg-[#aef4cf] hover:-translate-y-0.5"
+            className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-sm text-[13px] font-medium transition-all duration-200 bg-[#0f7a4f] text-[#faf7f0] hover:bg-[#0c6941] hover:-translate-y-0.5"
             style={{ fontFamily: "var(--font-sans)", letterSpacing: "0.03em" }}
           >
             Solicitar reunión
@@ -119,7 +119,7 @@ export function CTA() {
 
           <a
             href="/#contacto"
-            className="inline-flex items-center justify-center px-8 py-4 rounded-sm text-[13px] font-light transition-all duration-200 border border-[rgba(240,234,216,0.12)] text-[rgba(240,234,216,0.55)] hover:border-[rgba(240,234,216,0.3)] hover:text-[rgba(240,234,216,0.9)]"
+            className="inline-flex items-center justify-center px-8 py-4 rounded-sm text-[13px] font-light transition-all duration-200 border border-[rgba(26,24,18,0.12)] text-[rgba(26,24,18,0.55)] hover:border-[rgba(26,24,18,0.3)] hover:text-[rgba(26,24,18,0.9)]"
             style={{ fontFamily: "var(--font-sans)" }}
           >
             Enviar mensaje

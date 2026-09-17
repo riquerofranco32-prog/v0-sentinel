@@ -31,7 +31,7 @@ function ChecklistItem({
   return (
     <div
       ref={ref}
-      className="group flex gap-2.5 items-start rounded-md p-2 -m-2 transition-all duration-500 hover:bg-[rgba(148,241,190,0.05)]"
+      className="group flex gap-2.5 items-start rounded-md p-2 -m-2 transition-all duration-500 hover:bg-[rgba(15,122,79,0.05)]"
       style={{
         opacity: isVisible ? 1 : 0,
         transform: isVisible ? "translateX(0)" : "translateX(-12px)",
@@ -40,18 +40,18 @@ function ChecklistItem({
     >
       <CheckCircle
         className="w-4 h-4 flex-shrink-0 mt-0.5 transition-transform duration-300 group-hover:scale-110"
-        style={{ color: "#94f1be" }}
+        style={{ color: "#0f7a4f" }}
       />
       <div>
         <p
           className="text-xs md:text-sm"
-          style={{ color: "rgba(240,234,216,0.75)", fontWeight: 500 }}
+          style={{ color: "rgba(26,24,18,0.75)", fontWeight: 500 }}
         >
           {title}
         </p>
         <p
           className="text-[11px] md:text-xs mt-0.5 leading-relaxed"
-          style={{ color: "rgba(240,234,216,0.4)", fontWeight: 300 }}
+          style={{ color: "rgba(26,24,18,0.4)", fontWeight: 300 }}
         >
           {description}
         </p>
@@ -97,7 +97,7 @@ function CountUpStat({ value, label }: { value: number; label: string }) {
           fontFamily: "var(--font-heading)",
           fontWeight: 700,
           fontSize: "clamp(1.6rem, 3vw, 2.2rem)",
-          color: "rgba(240,234,216,0.92)",
+          color: "rgba(26,24,18,0.92)",
           lineHeight: 1,
         }}
       >
@@ -110,7 +110,7 @@ function CountUpStat({ value, label }: { value: number; label: string }) {
           fontWeight: 300,
           letterSpacing: "0.1em",
           textTransform: "uppercase",
-          color: "rgba(240,234,216,0.35)",
+          color: "rgba(26,24,18,0.35)",
           marginTop: "6px",
         }}
       >
@@ -127,7 +127,7 @@ const timelineData = [
       <div>
         <p
           className="text-xs md:text-sm mb-6 leading-relaxed"
-          style={{ color: "rgba(240,234,216,0.55)", fontWeight: 300 }}
+          style={{ color: "rgba(26,24,18,0.55)", fontWeight: 300 }}
         >
           Cinco competencias ganadas en 2025, de norte a sur del país.
         </p>
@@ -183,7 +183,7 @@ const timelineData = [
       <div>
         <p
           className="text-xs md:text-sm mb-6 leading-relaxed"
-          style={{ color: "rgba(240,234,216,0.55)", fontWeight: 300 }}
+          style={{ color: "rgba(26,24,18,0.55)", fontWeight: 300 }}
         >
           Reconocimiento fuera de Argentina y primer apoyo financiero.
         </p>
@@ -261,7 +261,7 @@ export function Awards() {
       ref={sectionRef}
       id="noticias"
       className="relative overflow-hidden"
-      style={{ background: "#0c0b09" }}
+      style={{ background: "#faf7f0" }}
     >
       {/* ── Foto de fondo completa ── */}
       <div
@@ -286,7 +286,7 @@ export function Awards() {
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(to bottom, rgba(12,11,9,0.3) 0%, transparent 40%, rgba(12,11,9,0.7) 80%, #0c0b09 100%)",
+              "linear-gradient(to bottom, rgba(12,11,9,0.3) 0%, transparent 40%, rgba(12,11,9,0.75) 80%, #faf7f0 100%)",
           }}
         />
         <div
@@ -342,7 +342,7 @@ export function Awards() {
         {/* Bottom counter */}
         <div
           className="flex justify-center gap-12 mt-4 pt-12 max-w-4xl mx-auto"
-          style={{ borderTop: "0.5px solid rgba(240,234,216,0.07)" }}
+          style={{ borderTop: "0.5px solid rgba(26,24,18,0.07)" }}
         >
           <CountUpStat value={11} label="reconocimientos" />
           <CountUpStat value={5} label="países" />
@@ -352,7 +352,7 @@ export function Awards() {
                 fontFamily: "var(--font-heading)",
                 fontWeight: 700,
                 fontSize: "clamp(1.6rem, 3vw, 2.2rem)",
-                color: "rgba(240,234,216,0.92)",
+                color: "rgba(26,24,18,0.92)",
                 lineHeight: 1,
               }}
             >
@@ -365,7 +365,7 @@ export function Awards() {
                 fontWeight: 300,
                 letterSpacing: "0.1em",
                 textTransform: "uppercase",
-                color: "rgba(240,234,216,0.35)",
+                color: "rgba(26,24,18,0.35)",
                 marginTop: "6px",
               }}
             >

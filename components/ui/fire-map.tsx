@@ -74,7 +74,7 @@ function formatDate(acqDate?: string, acqTime?: string) {
   return `${acqDate}${time ? ` · ${time}` : ""}`;
 }
 
-export function FireMap({ points = [], pointColor = "#f16b6b" }: FireMapProps) {
+export function FireMap({ points = [], pointColor = "#b83a3a" }: FireMapProps) {
   // ponytail: gates the infinite SMIL <animate> pulses below — starts false
   // to match SSR, then syncs on mount to avoid a hydration mismatch.
   const [reducedMotion, setReducedMotion] = useState(false);
@@ -171,7 +171,7 @@ export function FireMap({ points = [], pointColor = "#f16b6b" }: FireMapProps) {
   return (
     <div className="w-full">
       <div
-        className="w-full bg-[#0c0b09] rounded-lg relative font-sans"
+        className="w-full bg-[#f1ede3] rounded-lg relative font-sans"
         style={{ aspectRatio: `${WIDTH} / ${HEIGHT}` }}
       >
         <svg
@@ -185,10 +185,10 @@ export function FireMap({ points = [], pointColor = "#f16b6b" }: FireMapProps) {
               d={pathFor(feature)}
               fill={
                 feature.properties.name === selectedCountry
-                  ? "#f0ead812"
-                  : "#f0ead808"
+                  ? "#1a181212"
+                  : "#1a181208"
               }
-              stroke="rgba(240,234,216,0.2)"
+              stroke="rgba(26,24,18,0.2)"
               strokeWidth={0.75}
             />
           ))}
@@ -200,7 +200,7 @@ export function FireMap({ points = [], pointColor = "#f16b6b" }: FireMapProps) {
               y={label.y}
               textAnchor="middle"
               fontSize={selectedFeature ? 11 : 7}
-              fill="rgba(240,234,216,0.35)"
+              fill="rgba(26,24,18,0.35)"
               style={{ fontFamily: "var(--font-sans)" }}
             >
               {label.name}
@@ -291,7 +291,7 @@ export function FireMap({ points = [], pointColor = "#f16b6b" }: FireMapProps) {
               >
                 {frpIntensity(active.frp)}
                 {active.frp !== undefined && (
-                  <span style={{ color: "rgba(240,234,216,0.4)" }}>
+                  <span style={{ color: "rgba(240,234,216,0.5)" }}>
                     {" "}
                     · {active.frp.toFixed(0)} MW
                   </span>
@@ -301,7 +301,7 @@ export function FireMap({ points = [], pointColor = "#f16b6b" }: FireMapProps) {
             <p>Certeza del dato: {formatConfidence(active.confidence)}</p>
             <p>{formatDate(active.acqDate, active.acqTime)}</p>
             {hoursAgo(active.acqDate, active.acqTime) && (
-              <p style={{ color: "rgba(240,234,216,0.45)" }}>
+              <p style={{ color: "rgba(240,234,216,0.5)" }}>
                 {hoursAgo(active.acqDate, active.acqTime)}
               </p>
             )}
@@ -320,14 +320,12 @@ export function FireMap({ points = [], pointColor = "#f16b6b" }: FireMapProps) {
           style={{
             fontFamily: "var(--font-sans)",
             background: !selectedCountry
-              ? "rgba(148,241,190,0.12)"
+              ? "rgba(15,122,79,0.12)"
               : "transparent",
             border: `0.5px solid ${
-              !selectedCountry
-                ? "rgba(148,241,190,0.4)"
-                : "rgba(240,234,216,0.15)"
+              !selectedCountry ? "rgba(15,122,79,0.4)" : "rgba(26,24,18,0.15)"
             }`,
-            color: !selectedCountry ? "#94f1be" : "rgba(240,234,216,0.5)",
+            color: !selectedCountry ? "#0f7a4f" : "rgba(26,24,18,0.5)",
           }}
         >
           Toda la región
@@ -345,15 +343,15 @@ export function FireMap({ points = [], pointColor = "#f16b6b" }: FireMapProps) {
               fontFamily: "var(--font-sans)",
               background:
                 selectedCountry === name
-                  ? "rgba(148,241,190,0.12)"
+                  ? "rgba(15,122,79,0.12)"
                   : "transparent",
               border: `0.5px solid ${
                 selectedCountry === name
-                  ? "rgba(148,241,190,0.4)"
-                  : "rgba(240,234,216,0.15)"
+                  ? "rgba(15,122,79,0.4)"
+                  : "rgba(26,24,18,0.15)"
               }`,
               color:
-                selectedCountry === name ? "#94f1be" : "rgba(240,234,216,0.5)",
+                selectedCountry === name ? "#0f7a4f" : "rgba(26,24,18,0.5)",
             }}
           >
             {name} · {count}

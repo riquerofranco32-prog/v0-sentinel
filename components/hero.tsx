@@ -68,11 +68,11 @@ function AnimatedStat({
         style={{
           fontFamily: "var(--font-heading)",
           fontSize: "clamp(1.5rem, 3.5vw, 2rem)",
-          color: "rgba(240,234,216,0.95)",
+          color: "rgba(26,24,18,0.95)",
         }}
       >
         {count}
-        <span style={{ color: "#94f1be" }}> {suffix}</span>
+        <span style={{ color: "#0f7a4f" }}> {suffix}</span>
       </div>
       <div
         className="mt-1"
@@ -82,7 +82,7 @@ function AnimatedStat({
           fontWeight: 400,
           letterSpacing: "0.1em",
           textTransform: "uppercase",
-          color: "rgba(240,234,216,0.4)",
+          color: "rgba(26,24,18,0.4)",
         }}
       >
         {label}
@@ -110,11 +110,11 @@ export function Hero() {
               fontWeight: 300,
               fontSize: "16px",
               lineHeight: 1.75,
-              color: "rgba(240,234,216,0.6)",
+              color: "rgba(26,24,18,0.6)",
             }}
           >
             Tecnología aérea e inteligencia artificial para el{" "}
-            <strong style={{ fontWeight: 500, color: "rgba(240,234,216,0.9)" }}>
+            <strong style={{ fontWeight: 500, color: "rgba(26,24,18,0.9)" }}>
               monitoreo forestal continuo
             </strong>{" "}
             en la Patagonia.
@@ -126,7 +126,7 @@ export function Hero() {
                 {i > 0 && (
                   <div
                     className="w-px self-stretch"
-                    style={{ background: "rgba(240,234,216,0.1)" }}
+                    style={{ background: "rgba(26,24,18,0.1)" }}
                   />
                 )}
                 <AnimatedStat
@@ -146,9 +146,9 @@ export function Hero() {
                 fontFamily: "var(--font-sans)",
                 fontWeight: 500,
                 letterSpacing: "0.04em",
-                background: "rgba(148,241,190,0.1)",
-                border: "0.5px solid rgba(148,241,190,0.3)",
-                color: "#94f1be",
+                background: "rgba(15,122,79,0.1)",
+                border: "0.5px solid rgba(15,122,79,0.3)",
+                color: "#0f7a4f",
               }}
             >
               Conocer la plataforma
@@ -156,11 +156,11 @@ export function Hero() {
 
             <a
               href="#servicios"
-              className="inline-flex items-center justify-center px-7 py-3 rounded-sm text-[13px] font-light transition-all hover:-translate-y-0.5 hover:text-[rgba(240,234,216,0.85)]"
+              className="inline-flex items-center justify-center px-7 py-3 rounded-sm text-[13px] font-light transition-colors hover:text-[rgba(26,24,18,0.85)]"
               style={{
                 fontFamily: "var(--font-sans)",
                 fontWeight: 300,
-                color: "rgba(240,234,216,0.4)",
+                color: "rgba(26,24,18,0.4)",
               }}
             >
               Ver servicios

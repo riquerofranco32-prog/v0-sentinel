@@ -42,7 +42,7 @@ export function FaqSectionWithCategories({
     <section
       id="faq"
       className="py-24 lg:py-32"
-      style={{ background: "#0c0b09" }}
+      style={{ background: "#faf7f0" }}
     >
       <div className="max-w-3xl mx-auto px-6 lg:px-10">
         <div className="mb-10 text-center">
@@ -50,7 +50,7 @@ export function FaqSectionWithCategories({
             className="text-[11px] tracking-[0.3em] uppercase mb-5"
             style={{
               fontFamily: "var(--font-sans)",
-              color: "rgba(240,234,216,0.3)",
+              color: "rgba(26,24,18,0.3)",
             }}
           >
             Preguntas frecuentes
@@ -60,7 +60,7 @@ export function FaqSectionWithCategories({
             style={{
               fontFamily: "var(--font-heading)",
               fontWeight: 800,
-              color: "rgba(240,234,216,0.92)",
+              color: "rgba(26,24,18,0.92)",
               lineHeight: 1.1,
             }}
           >
@@ -72,7 +72,7 @@ export function FaqSectionWithCategories({
               style={{
                 fontFamily: "var(--font-sans)",
                 fontWeight: 300,
-                color: "rgba(240,234,216,0.45)",
+                color: "rgba(26,24,18,0.45)",
               }}
             >
               {description}
@@ -94,11 +94,11 @@ export function FaqSectionWithCategories({
                 className="px-4 py-1.5 rounded-full text-xs transition-all duration-200"
                 style={{
                   fontFamily: "var(--font-sans)",
-                  border: `0.5px solid ${active ? "rgba(148,241,190,0.4)" : "rgba(240,234,216,0.1)"}`,
+                  border: `0.5px solid ${active ? "rgba(15,122,79,0.4)" : "rgba(26,24,18,0.1)"}`,
                   background: active
-                    ? "rgba(148,241,190,0.08)"
-                    : "rgba(240,234,216,0.02)",
-                  color: active ? "#94f1be" : "rgba(240,234,216,0.5)",
+                    ? "rgba(15,122,79,0.08)"
+                    : "rgba(26,24,18,0.02)",
+                  color: active ? "#0f7a4f" : "rgba(26,24,18,0.5)",
                 }}
               >
                 {cat}
@@ -110,7 +110,7 @@ export function FaqSectionWithCategories({
         {/* Accordion */}
         <div
           className="border-t"
-          style={{ borderColor: "rgba(240,234,216,0.08)" }}
+          style={{ borderColor: "rgba(26,24,18,0.08)" }}
         >
           {filtered.map((faq, i) => {
             const isOpen = openIndex === i;
@@ -118,19 +118,19 @@ export function FaqSectionWithCategories({
               <div
                 key={faq.question}
                 className="border-b"
-                style={{ borderColor: "rgba(240,234,216,0.08)" }}
+                style={{ borderColor: "rgba(26,24,18,0.08)" }}
               >
                 <button
                   className="w-full flex items-start justify-between gap-4 py-6 text-left group"
                   onClick={() => setOpenIndex(isOpen ? null : i)}
                 >
                   <span
-                    className="text-[14px] font-medium leading-snug transition-colors duration-200 group-hover:text-[rgba(240,234,216,0.95)]"
+                    className="text-[14px] font-medium leading-snug transition-colors duration-200 group-hover:text-[rgba(26,24,18,0.95)]"
                     style={{
                       fontFamily: "var(--font-sans)",
                       color: isOpen
-                        ? "rgba(240,234,216,0.95)"
-                        : "rgba(240,234,216,0.7)",
+                        ? "rgba(26,24,18,0.95)"
+                        : "rgba(26,24,18,0.7)",
                     }}
                   >
                     {faq.question}
@@ -139,20 +139,20 @@ export function FaqSectionWithCategories({
                     className="flex-shrink-0 w-7 h-7 rounded-sm flex items-center justify-center mt-0.5 transition-all duration-200"
                     style={{
                       background: isOpen
-                        ? "rgba(148,241,190,0.12)"
-                        : "rgba(240,234,216,0.04)",
-                      border: `0.5px solid ${isOpen ? "rgba(148,241,190,0.35)" : "rgba(240,234,216,0.1)"}`,
+                        ? "rgba(15,122,79,0.12)"
+                        : "rgba(26,24,18,0.04)",
+                      border: `0.5px solid ${isOpen ? "rgba(15,122,79,0.35)" : "rgba(26,24,18,0.1)"}`,
                     }}
                   >
                     {isOpen ? (
                       <Minus
                         className="w-3.5 h-3.5"
-                        style={{ color: "#94f1be" }}
+                        style={{ color: "#0f7a4f" }}
                       />
                     ) : (
                       <Plus
                         className="w-3.5 h-3.5"
-                        style={{ color: "rgba(240,234,216,0.5)" }}
+                        style={{ color: "rgba(26,24,18,0.5)" }}
                       />
                     )}
                   </div>
@@ -169,7 +169,7 @@ export function FaqSectionWithCategories({
                       style={{
                         fontFamily: "var(--font-sans)",
                         fontWeight: 300,
-                        color: "rgba(240,234,216,0.5)",
+                        color: "rgba(26,24,18,0.5)",
                       }}
                     >
                       {faq.answer}
@@ -187,7 +187,7 @@ export function FaqSectionWithCategories({
               className="text-sm mb-4"
               style={{
                 fontFamily: "var(--font-sans)",
-                color: "rgba(240,234,216,0.4)",
+                color: "rgba(26,24,18,0.4)",
               }}
             >
               {contactInfo.title}
@@ -195,12 +195,12 @@ export function FaqSectionWithCategories({
             <button
               type="button"
               onClick={contactInfo.onContact}
-              className="inline-flex items-center gap-2 px-6 py-2.5 rounded-sm text-[13px] font-normal transition-all duration-200 hover:border-[rgba(148,241,190,0.5)] hover:text-[#94f1be]"
+              className="inline-flex items-center gap-2 px-6 py-2.5 rounded-sm text-[13px] font-normal transition-all duration-200 hover:border-[rgba(15,122,79,0.5)] hover:text-[#0f7a4f]"
               style={{
                 fontFamily: "var(--font-sans)",
-                background: "rgba(148,241,190,0.06)",
-                border: "0.5px solid rgba(148,241,190,0.25)",
-                color: "#94f1be",
+                background: "rgba(15,122,79,0.06)",
+                border: "0.5px solid rgba(15,122,79,0.25)",
+                color: "#0f7a4f",
               }}
             >
               {contactInfo.buttonText}

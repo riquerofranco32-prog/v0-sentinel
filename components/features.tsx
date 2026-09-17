@@ -22,7 +22,7 @@ export function Features() {
     <section
       ref={sectionRef}
       id="nosotros"
-      className="relative py-24 lg:py-32 bg-[#0c0b09] overflow-hidden"
+      className="relative py-24 lg:py-32 bg-[#faf7f0] overflow-hidden"
     >
       {/* Background glow */}
       <div
@@ -30,7 +30,7 @@ export function Features() {
         style={{
           opacity: isVisible ? 1 : 0,
           backgroundImage:
-            "radial-gradient(ellipse 70% 50% at 65% 55%, rgba(148,241,190,0.06) 0%, transparent 70%)",
+            "radial-gradient(ellipse 70% 50% at 65% 55%, rgba(15,122,79,0.06) 0%, transparent 70%)",
         }}
       />
 
@@ -45,7 +45,7 @@ export function Features() {
             className="absolute top-0 bottom-0 w-px"
             style={{
               left: `${(i + 1) * 12.5}%`,
-              background: "rgba(148,241,190,1)",
+              background: "rgba(15,122,79,1)",
             }}
           />
         ))}
@@ -55,7 +55,7 @@ export function Features() {
             className="absolute left-0 right-0 h-px"
             style={{
               top: `${(i + 1) * 16.6}%`,
-              background: "rgba(148,241,190,1)",
+              background: "rgba(15,122,79,1)",
             }}
           />
         ))}
@@ -68,7 +68,7 @@ export function Features() {
             className="text-[11px] tracking-[0.3em] uppercase mb-5 transition-all duration-700"
             style={{
               fontFamily: "var(--font-sans)",
-              color: "rgba(240,234,216,0.3)",
+              color: "rgba(26,24,18,0.3)",
               opacity: isVisible ? 1 : 0,
             }}
           >
@@ -80,30 +80,28 @@ export function Features() {
               style={{
                 fontFamily: "var(--font-heading)",
                 fontWeight: 800,
-                color: "rgba(240,234,216,0.92)",
+                color: "rgba(26,24,18,0.92)",
                 lineHeight: 1,
                 opacity: isVisible ? 1 : 0,
                 transform: isVisible ? "translateY(0)" : "translateY(16px)",
                 transitionDelay: "100ms",
               }}
             >
-              Nuestra <span style={{ color: "#94f1be" }}>solución.</span>
+              Nuestra <span style={{ color: "#0f7a4f" }}>solución.</span>
             </h2>
             <p
               className="max-w-xs text-[13px] leading-relaxed lg:pb-1 transition-all duration-700"
               style={{
                 fontFamily: "var(--font-sans)",
                 fontWeight: 300,
-                color: "rgba(240,234,216,0.4)",
+                color: "rgba(26,24,18,0.4)",
                 opacity: isVisible ? 1 : 0,
                 transitionDelay: "200ms",
               }}
             >
               Una plataforma integral que combina drones, satélites y sensores
               para el monitoreo ambiental,{" "}
-              <span
-                style={{ color: "rgba(240,234,216,0.75)", fontWeight: 400 }}
-              >
+              <span style={{ color: "rgba(26,24,18,0.75)", fontWeight: 400 }}>
                 pasando de una acción reactiva a una acción preventiva.
               </span>
             </p>
@@ -137,7 +135,7 @@ export function Features() {
               className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
               style={{
                 background:
-                  "linear-gradient(135deg, rgba(148,241,190,0.06) 0%, transparent 60%)",
+                  "linear-gradient(135deg, rgba(15,122,79,0.06) 0%, transparent 60%)",
               }}
             />
 
@@ -159,7 +157,7 @@ export function Features() {
                 className="text-[10px] tracking-wider opacity-0 group-hover:opacity-100 transition-all duration-300 translate-x-3 group-hover:translate-x-0"
                 style={{
                   fontFamily: "var(--font-sans)",
-                  color: "rgba(240,234,216,0.4)",
+                  color: "rgba(240,234,216,0.6)",
                 }}
               >
                 Detecta en minutos →
@@ -189,7 +187,7 @@ export function Features() {
               <div className="absolute inset-0 bg-gradient-to-t from-[#0c0b09]/75 via-transparent to-transparent" />
               <div
                 className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                style={{ background: "rgba(148,241,190,0.05)" }}
+                style={{ background: "rgba(15,122,79,0.05)" }}
               />
               <div className="absolute bottom-4 left-4">
                 <div
@@ -211,8 +209,8 @@ export function Features() {
             <div
               className="relative rounded-lg p-6 flex-1 overflow-hidden transition-all duration-700 group"
               style={{
-                background: "rgba(240,234,216,0.02)",
-                border: "0.5px solid rgba(240,234,216,0.07)",
+                background: "rgba(26,24,18,0.02)",
+                border: "0.5px solid rgba(26,24,18,0.07)",
                 minHeight: "160px",
                 opacity: isVisible ? 1 : 0,
                 transform: isVisible ? "translateY(0)" : "translateY(24px)",
@@ -223,15 +221,15 @@ export function Features() {
               <div
                 className="absolute top-0 left-0 w-6 h-6 pointer-events-none"
                 style={{
-                  borderTop: "1px solid rgba(148,241,190,0.4)",
-                  borderLeft: "1px solid rgba(148,241,190,0.4)",
+                  borderTop: "1px solid rgba(15,122,79,0.4)",
+                  borderLeft: "1px solid rgba(15,122,79,0.4)",
                 }}
               />
               <div
                 className="absolute bottom-0 right-0 w-6 h-6 pointer-events-none"
                 style={{
-                  borderBottom: "1px solid rgba(148,241,190,0.2)",
-                  borderRight: "1px solid rgba(148,241,190,0.2)",
+                  borderBottom: "1px solid rgba(15,122,79,0.2)",
+                  borderRight: "1px solid rgba(15,122,79,0.2)",
                 }}
               />
 
@@ -240,7 +238,7 @@ export function Features() {
                 className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
                 style={{
                   background:
-                    "radial-gradient(ellipse at 30% 50%, rgba(148,241,190,0.05), transparent 70%)",
+                    "radial-gradient(ellipse at 30% 50%, rgba(15,122,79,0.05), transparent 70%)",
                 }}
               />
 
@@ -248,7 +246,7 @@ export function Features() {
                 className="text-[11px] tracking-[0.2em] uppercase mb-3"
                 style={{
                   fontFamily: "var(--font-sans)",
-                  color: "rgba(240,234,216,0.25)",
+                  color: "rgba(26,24,18,0.25)",
                 }}
               >
                 Alcance
@@ -258,19 +256,15 @@ export function Features() {
                 style={{
                   fontFamily: "var(--font-sans)",
                   fontWeight: 300,
-                  color: "rgba(240,234,216,0.5)",
+                  color: "rgba(26,24,18,0.5)",
                 }}
               >
                 Cobertura desde{" "}
-                <span
-                  style={{ color: "rgba(240,234,216,0.85)", fontWeight: 400 }}
-                >
+                <span style={{ color: "rgba(26,24,18,0.85)", fontWeight: 400 }}>
                   Patagonia
                 </span>{" "}
                 hasta{" "}
-                <span
-                  style={{ color: "rgba(240,234,216,0.85)", fontWeight: 400 }}
-                >
+                <span style={{ color: "rgba(26,24,18,0.85)", fontWeight: 400 }}>
                   todo el país
                 </span>
                 . Drones autónomos, sensores IoT y satélites en red.
@@ -280,13 +274,13 @@ export function Features() {
               <div className="flex items-center gap-2 mt-5">
                 <div
                   className="w-1.5 h-1.5 rounded-full"
-                  style={{ background: "#94f1be" }}
+                  style={{ background: "#0f7a4f" }}
                 />
                 <span
                   className="text-[11px] font-light tracking-wide"
                   style={{
                     fontFamily: "var(--font-sans)",
-                    color: "rgba(240,234,216,0.45)",
+                    color: "rgba(26,24,18,0.45)",
                   }}
                 >
                   Sistema activo en territorio

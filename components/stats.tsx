@@ -9,35 +9,35 @@ const stats = [
     value: 98,
     suffix: "%",
     label: "Precisión en detección",
-    accent: "#d99a5a",
+    accent: "#8a5a1f",
   },
   {
     icon: Clock,
     value: 60,
     suffix: "%",
     label: "Reducción en tiempo de respuesta",
-    accent: "#94f1be",
+    accent: "#0f7a4f",
   },
   {
     icon: Trees,
     value: 300,
     suffix: " ha",
     label: "Cobertura por vuelo",
-    accent: "#94f1be",
+    accent: "#0f7a4f",
   },
   {
     icon: Trophy,
     value: 700,
     suffix: "+",
     label: "Propuestas superadas (BNA 2025)",
-    accent: "#94f1be",
+    accent: "#0f7a4f",
   },
   {
     icon: Star,
     value: 11,
     suffix: "",
     label: "Reconocimientos obtenidos",
-    accent: "#e8c97d",
+    accent: "#8a5a1f",
   },
 ];
 
@@ -104,7 +104,7 @@ export function Stats() {
     <section
       ref={sectionRef}
       className="relative py-20 lg:py-28 overflow-hidden"
-      style={{ background: "#0c0b09" }}
+      style={{ background: "#faf7f0" }}
     >
       {/* Glow */}
       <div
@@ -118,7 +118,7 @@ export function Stats() {
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-10">
         <div
           className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-px"
-          style={{ background: "rgba(240,234,216,0.05)" }}
+          style={{ background: "rgba(26,24,18,0.05)" }}
         >
           {stats.map((stat, i) => (
             <div
@@ -126,7 +126,7 @@ export function Stats() {
               className={`flex flex-col items-center justify-center py-12 px-6 text-center transition-all duration-700 group ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
               style={{
                 transitionDelay: `${i * 100}ms`,
-                background: "#0c0b09",
+                background: "#faf7f0",
               }}
             >
               {/* Icon */}
@@ -159,7 +159,7 @@ export function Stats() {
                 style={{
                   fontFamily: "var(--font-sans)",
                   fontWeight: 300,
-                  color: "rgba(240,234,216,0.4)",
+                  color: "rgba(26,24,18,0.4)",
                 }}
               >
                 {stat.label}

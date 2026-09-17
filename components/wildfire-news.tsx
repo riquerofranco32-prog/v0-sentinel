@@ -60,7 +60,7 @@ export async function WildfireNews() {
   return (
     <section
       className="relative py-20 lg:py-28"
-      style={{ background: "#0c0b09" }}
+      style={{ background: "#faf7f0" }}
     >
       <div className="max-w-5xl mx-auto px-6 lg:px-10">
         <h2
@@ -68,13 +68,13 @@ export async function WildfireNews() {
           style={{
             fontFamily: "var(--font-heading)",
             fontWeight: 800,
-            color: "rgba(240,234,216,0.92)",
+            color: "rgba(26,24,18,0.92)",
             lineHeight: 1.1,
           }}
         >
           <Newspaper
             className="w-7 h-7 shrink-0 hidden sm:block"
-            style={{ color: "#94f1be" }}
+            style={{ color: "#0f7a4f" }}
           />
           Noticias sobre incendios forestales, al día.
         </h2>
@@ -88,8 +88,8 @@ export async function WildfireNews() {
               rel="noopener noreferrer"
               className="group flex flex-col overflow-hidden rounded-lg transition-all duration-300 hover:-translate-y-0.5"
               style={{
-                background: "rgba(240,234,216,0.02)",
-                border: "0.5px solid rgba(240,234,216,0.07)",
+                background: "rgba(26,24,18,0.02)",
+                border: "0.5px solid rgba(26,24,18,0.07)",
               }}
             >
               <div
@@ -98,11 +98,11 @@ export async function WildfireNews() {
                   aspectRatio: "16/9",
                   background: `radial-gradient(circle at 30% 30%, ${
                     [
-                      "rgba(241,107,107,0.16)",
-                      "rgba(217,154,90,0.16)",
-                      "rgba(148,241,190,0.14)",
+                      "rgba(184,58,58,0.16)",
+                      "rgba(138,90,31,0.16)",
+                      "rgba(15,122,79,0.14)",
                     ][i % 3]
-                  }, rgba(12,11,9,0.6))`,
+                  }, rgba(26,24,18,0.06))`,
                 }}
               >
                 {item.image ? (
@@ -118,7 +118,7 @@ export async function WildfireNews() {
                     <Flame
                       className="w-8 h-8"
                       style={{
-                        color: ["#f16b6b", "#d99a5a", "#94f1be"][i % 3],
+                        color: ["#b83a3a", "#8a5a1f", "#0f7a4f"][i % 3],
                         opacity: 0.85,
                       }}
                     />
@@ -133,16 +133,16 @@ export async function WildfireNews() {
                 />
                 <ArrowUpRight
                   className="absolute top-3 right-3 w-4 h-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                  style={{ color: "rgba(240,234,216,0.7)" }}
+                  style={{ color: "rgba(255,255,255,0.85)" }}
                 />
               </div>
               <div className="p-4 flex-1 flex flex-col justify-between">
                 <p
-                  className="text-[14px] leading-snug mb-3 line-clamp-3 transition-colors group-hover:text-[rgba(240,234,216,0.95)]"
+                  className="text-[14px] leading-snug mb-3 line-clamp-3 transition-colors group-hover:text-[rgba(26,24,18,0.95)]"
                   style={{
                     fontFamily: "var(--font-sans)",
                     fontWeight: 400,
-                    color: "rgba(240,234,216,0.8)",
+                    color: "rgba(26,24,18,0.8)",
                   }}
                 >
                   {item.title}
@@ -151,7 +151,7 @@ export async function WildfireNews() {
                   className="text-[11px]"
                   style={{
                     fontFamily: "var(--font-sans)",
-                    color: "rgba(240,234,216,0.3)",
+                    color: "rgba(26,24,18,0.3)",
                   }}
                 >
                   {item.source} · {relativeTime(item.publishedAt)}
@@ -165,7 +165,7 @@ export async function WildfireNews() {
           className="text-[10px] mt-6"
           style={{
             fontFamily: "var(--font-sans)",
-            color: "rgba(240,234,216,0.2)",
+            color: "rgba(26,24,18,0.2)",
           }}
         >
           Fuente: GNews. Los enlaces abren la nota original en el medio que la

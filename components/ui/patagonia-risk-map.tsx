@@ -84,7 +84,7 @@ export function PatagoniaRiskMap({ points }: { points: RiskPoint[] }) {
 
   return (
     <div
-      className="w-full bg-[#0c0b09] rounded-lg relative font-sans"
+      className="w-full bg-[#f1ede3] rounded-lg relative font-sans"
       style={{ aspectRatio: `${WIDTH} / ${HEIGHT}` }}
     >
       <svg
@@ -96,8 +96,8 @@ export function PatagoniaRiskMap({ points }: { points: RiskPoint[] }) {
           <path
             key={feature.properties.name}
             d={pathFor(feature)}
-            fill="#f0ead808"
-            stroke="rgba(240,234,216,0.2)"
+            fill="#1a181208"
+            stroke="rgba(26,24,18,0.2)"
             strokeWidth={0.75}
           />
         ))}
@@ -130,7 +130,7 @@ export function PatagoniaRiskMap({ points }: { points: RiskPoint[] }) {
                 y={y - 14}
                 textAnchor="middle"
                 fontSize={9}
-                fill="rgba(240,234,216,0.55)"
+                fill="rgba(26,24,18,0.55)"
                 style={{ fontFamily: "var(--font-sans)" }}
               >
                 {point.name}
@@ -152,7 +152,7 @@ export function PatagoniaRiskMap({ points }: { points: RiskPoint[] }) {
           >
             {activePoint.name} · {activePoint.label}
           </p>
-          <p className="mb-2" style={{ color: "rgba(240,234,216,0.65)" }}>
+          <p className="mb-2" style={{ color: "rgba(240,234,216,0.75)" }}>
             {RISK_EXPLAIN[activePoint.label]}
           </p>
           <p>{Math.round(activePoint.temperature)}°C</p>

@@ -47,13 +47,13 @@ export function InstagramFeed() {
     <section
       ref={sectionRef}
       className="relative py-24 lg:py-32 overflow-hidden"
-      style={{ background: "#0c0b09" }}
+      style={{ background: "#faf7f0" }}
     >
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            "radial-gradient(ellipse 70% 50% at 50% 0%, rgba(148,241,190,0.05) 0%, transparent 70%)",
+            "radial-gradient(ellipse 70% 50% at 50% 0%, rgba(15,122,79,0.05) 0%, transparent 70%)",
         }}
       />
 
@@ -71,25 +71,23 @@ export function InstagramFeed() {
               style={{
                 fontFamily: "var(--font-heading)",
                 fontWeight: 800,
-                color: "rgba(240,234,216,0.92)",
+                color: "rgba(26,24,18,0.92)",
                 lineHeight: 1,
               }}
             >
-              Seguinos en <span style={{ color: "#94f1be" }}>Instagram.</span>
+              Seguinos en <span style={{ color: "#0f7a4f" }}>Instagram.</span>
             </h2>
             <p
               className="max-w-md text-[13px] leading-relaxed"
               style={{
                 fontFamily: "var(--font-sans)",
                 fontWeight: 300,
-                color: "rgba(240,234,216,0.4)",
+                color: "rgba(26,24,18,0.4)",
               }}
             >
               Prevenimos incendios y generamos datos ambientales, el detrás de
               escena de Sentinel contado por el equipo.{" "}
-              <span
-                style={{ color: "rgba(240,234,216,0.75)", fontWeight: 400 }}
-              >
+              <span style={{ color: "rgba(26,24,18,0.75)", fontWeight: 400 }}>
                 +1.000 seguidores.
               </span>
             </p>
@@ -102,9 +100,9 @@ export function InstagramFeed() {
             className="inline-flex items-center gap-2 px-6 py-3 rounded-sm text-[13px] font-medium transition-all hover:-translate-y-0.5 w-fit"
             style={{
               fontFamily: "var(--font-sans)",
-              background: "rgba(148,241,190,0.1)",
-              border: "0.5px solid rgba(148,241,190,0.3)",
-              color: "#94f1be",
+              background: "rgba(15,122,79,0.1)",
+              border: "0.5px solid rgba(15,122,79,0.3)",
+              color: "#0f7a4f",
             }}
           >
             <Instagram className="w-4 h-4" />
@@ -119,13 +117,13 @@ export function InstagramFeed() {
               href={post.href}
               target="_blank"
               rel="noopener noreferrer"
-              className={`group relative rounded-lg overflow-hidden transition-all duration-500 hover:-translate-y-1 hover:border-[rgba(148,241,190,0.3)] shadow-lg shadow-black/40 ${
+              className={`group relative rounded-lg overflow-hidden transition-all duration-500 hover:-translate-y-1 hover:border-[rgba(15,122,79,0.3)] shadow-lg shadow-black/10 ${
                 i === 0
                   ? "aspect-[4/5] sm:aspect-[4/9] sm:row-span-2"
                   : "aspect-square sm:aspect-[16/10]"
               }`}
               style={{
-                border: "0.5px solid rgba(240,234,216,0.08)",
+                border: "0.5px solid rgba(26,24,18,0.08)",
                 opacity: isVisible ? 1 : 0,
                 transform: isVisible ? "translateY(0)" : "translateY(24px)",
                 transitionDelay: `${i * 100}ms`,
@@ -138,9 +136,9 @@ export function InstagramFeed() {
                 sizes="(max-width: 640px) 100vw, 33vw"
                 className="object-cover transition-transform duration-700 group-hover:scale-[1.05]"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0c0b09]/90 via-[#0c0b09]/20 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
 
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-[#0c0b09]/40" />
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/30" />
 
               <div className="absolute bottom-0 left-0 right-0 p-5">
                 <div
@@ -150,7 +148,10 @@ export function InstagramFeed() {
                   <Heart className="w-3.5 h-3.5" fill="currentColor" />
                   <span
                     className="text-[11px]"
-                    style={{ fontFamily: "var(--font-sans)" }}
+                    style={{
+                      fontFamily: "var(--font-sans)",
+                      color: "rgba(240,234,216,0.9)",
+                    }}
                   >
                     {post.likes}
                   </span>
@@ -160,7 +161,7 @@ export function InstagramFeed() {
                   style={{
                     fontFamily: "var(--font-sans)",
                     fontWeight: 300,
-                    color: "rgba(240,234,216,0.75)",
+                    color: "rgba(240,234,216,0.85)",
                   }}
                 >
                   {post.caption}

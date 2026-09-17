@@ -51,7 +51,7 @@ export function Team() {
       ref={sectionRef}
       id="equipo"
       className="relative w-full overflow-hidden py-24 lg:py-32"
-      style={{ background: "#0c0b09" }}
+      style={{ background: "#faf7f0" }}
     >
       <div className="relative z-10 mx-auto max-w-6xl px-6 lg:px-10">
         <div className="mx-auto mb-16 flex max-w-2xl flex-col items-center text-center">
@@ -60,7 +60,7 @@ export function Team() {
               fontFamily: "var(--font-heading)",
               fontWeight: 700,
               fontSize: "clamp(1.8rem, 4vw, 2.8rem)",
-              color: "rgba(240,234,216,0.95)",
+              color: "rgba(26,24,18,0.95)",
               lineHeight: 1.15,
             }}
           >
@@ -73,7 +73,7 @@ export function Team() {
               fontWeight: 300,
               fontSize: "15px",
               lineHeight: 1.7,
-              color: "rgba(240,234,216,0.45)",
+              color: "rgba(26,24,18,0.45)",
             }}
           >
             Cuatro ingenieros de la Patagonia con un objetivo común: que ningún
@@ -98,10 +98,10 @@ export function Team() {
                 href={member.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group relative flex overflow-hidden rounded-xl transition-all duration-500 shadow-[0_20px_40px_-20px_rgba(0,0,0,0.6)] hover:-translate-y-1.5 hover:scale-[1.02] hover:rotate-0 hover:shadow-[0_20px_50px_-15px_rgba(148,241,190,0.35)]"
+                className="group relative flex overflow-hidden rounded-xl transition-all duration-500 shadow-[0_20px_40px_-20px_rgba(26,24,18,0.2)] hover:-translate-y-1.5 hover:scale-[1.02] hover:rotate-0 hover:shadow-[0_20px_50px_-15px_rgba(15,122,79,0.35)]"
                 style={{
                   aspectRatio: "9/16",
-                  border: "0.5px solid rgba(240,234,216,0.1)",
+                  border: "0.5px solid rgba(26,24,18,0.1)",
                 }}
               >
                 {/* member.image is a pre-designed card (name, role, bio
@@ -121,11 +121,11 @@ export function Team() {
                   }}
                 >
                   <span
-                    className="inline-flex items-center gap-1.5 px-3 py-1 rounded-sm text-[11px] font-normal transition-all duration-200 group-hover:bg-[#94f1be] group-hover:text-[#0c0b09]"
+                    className="inline-flex items-center gap-1.5 px-3 py-1 rounded-sm text-[11px] font-normal transition-all duration-200 group-hover:bg-[#0f7a4f] group-hover:text-[#faf7f0]"
                     style={{
                       fontFamily: "var(--font-sans)",
                       color: "#94f1be",
-                      background: "rgba(148,241,190,0.1)",
+                      background: "rgba(148,241,190,0.12)",
                       border: "0.5px solid rgba(148,241,190,0.3)",
                     }}
                   >

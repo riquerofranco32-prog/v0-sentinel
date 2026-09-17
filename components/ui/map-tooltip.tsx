@@ -36,7 +36,7 @@ export function MapTooltip({
         fontFamily: "var(--font-sans)",
         background: "rgba(14,13,11,0.96)",
         border,
-        color: "rgba(240,234,216,0.8)",
+        color: "rgba(240,234,216,0.85)",
         backdropFilter: "blur(10px)",
         boxShadow: "0 12px 28px rgba(0,0,0,0.45)",
       }}

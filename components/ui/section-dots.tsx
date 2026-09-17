@@ -55,8 +55,8 @@ export function SectionDots() {
               style={{
                 fontFamily: "var(--font-sans)",
                 background: "rgba(12,11,9,0.92)",
-                border: "0.5px solid rgba(240,234,216,0.15)",
-                color: "rgba(240,234,216,0.8)",
+                border: "0.5px solid rgba(26,24,18,0.15)",
+                color: "rgba(240,234,216,0.9)",
                 backdropFilter: "blur(6px)",
               }}
             >
@@ -67,8 +67,8 @@ export function SectionDots() {
               style={{
                 width: isActive ? 8 : 6,
                 height: isActive ? 8 : 6,
-                background: isActive ? "#94f1be" : "rgba(240,234,216,0.25)",
-                boxShadow: isActive ? "0 0 8px #94f1be" : "none",
+                background: isActive ? "#0f7a4f" : "rgba(26,24,18,0.25)",
+                boxShadow: isActive ? "0 0 8px #0f7a4f" : "none",
               }}
             />
           </a>

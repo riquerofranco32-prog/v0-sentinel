@@ -51,7 +51,7 @@ const Footer = dynamic(() =>
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[#0c0b09]">
+    <main className="min-h-screen bg-[#faf7f0]">
       <ScrollProgress />
       <SectionDots />
       <Navbar />

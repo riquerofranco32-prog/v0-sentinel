@@ -28,23 +28,32 @@ export function Navbar() {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         isScrolled
-          ? "bg-[#0c0b09]/95 backdrop-blur-xl border-b border-white/5"
+          ? "bg-[#faf7f0]/95 backdrop-blur-xl border-b border-white/5"
           : "bg-transparent"
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-10">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
+          {/* ponytail: logoo.png's wordmark is light-on-transparent (built
+              for the old dark theme), so it needs a dark backing plate to
+              stay legible now that the page around it is light. No dark
+              logo variant exists in /public to swap in instead. */}
           <a href="/#inicio" className="flex items-center gap-3 group">
-            <Image
-              src="/logoo.png"
-              alt="Sentinel Logo"
-              width={140}
-              height={32}
-              priority
-              className="h-8 object-contain"
-              style={{ width: "auto" }}
-            />
+            <div
+              className="flex items-center rounded-md px-3 py-1.5"
+              style={{ background: "#0c0b09" }}
+            >
+              <Image
+                src="/logoo.png"
+                alt="Sentinel Logo"
+                width={140}
+                height={32}
+                priority
+                className="h-6 object-contain"
+                style={{ width: "auto" }}
+              />
+            </div>
           </a>
 
           {/* Desktop Nav */}
@@ -56,13 +65,13 @@ export function Navbar() {
                 className="text-[13px] font-light transition-colors duration-200"
                 style={{
                   fontFamily: "var(--font-sans)",
-                  color: "rgba(240,234,216,0.5)",
+                  color: "rgba(26,24,18,0.5)",
                 }}
                 onMouseEnter={(e) =>
-                  (e.currentTarget.style.color = "rgba(240,234,216,0.95)")
+                  (e.currentTarget.style.color = "rgba(26,24,18,0.95)")
                 }
                 onMouseLeave={(e) =>
-                  (e.currentTarget.style.color = "rgba(240,234,216,0.5)")
+                  (e.currentTarget.style.color = "rgba(26,24,18,0.5)")
                 }
               >
                 {link.label}
@@ -79,20 +88,20 @@ export function Navbar() {
               className="text-[12px] font-normal px-4 py-2 rounded-sm border transition-all duration-200"
               style={{
                 fontFamily: "var(--font-sans)",
-                borderColor: "rgba(240,234,216,0.18)",
-                color: "rgba(240,234,216,0.85)",
-                background: "rgba(240,234,216,0.03)",
+                borderColor: "rgba(26,24,18,0.18)",
+                color: "rgba(26,24,18,0.85)",
+                background: "rgba(26,24,18,0.03)",
                 letterSpacing: "0.04em",
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.borderColor = "rgba(148,241,190,0.5)";
-                e.currentTarget.style.color = "#94f1be";
-                e.currentTarget.style.background = "rgba(148,241,190,0.06)";
+                e.currentTarget.style.borderColor = "rgba(15,122,79,0.5)";
+                e.currentTarget.style.color = "#0f7a4f";
+                e.currentTarget.style.background = "rgba(15,122,79,0.06)";
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.borderColor = "rgba(240,234,216,0.18)";
-                e.currentTarget.style.color = "rgba(240,234,216,0.85)";
-                e.currentTarget.style.background = "rgba(240,234,216,0.03)";
+                e.currentTarget.style.borderColor = "rgba(26,24,18,0.18)";
+                e.currentTarget.style.color = "rgba(26,24,18,0.85)";
+                e.currentTarget.style.background = "rgba(26,24,18,0.03)";
               }}
             >
               Solicitar reunión
@@ -101,7 +110,7 @@ export function Navbar() {
 
           {/* Mobile toggle */}
           <button
-            className="md:hidden text-[#f0ead8] p-2"
+            className="md:hidden text-[#1a1812] p-2"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle menu"
           >
@@ -120,7 +129,7 @@ export function Navbar() {
           isMobileMenuOpen ? "max-h-[400px]" : "max-h-0"
         }`}
       >
-        <div className="bg-[#0c0b09]/98 backdrop-blur-xl border-t border-white/5 px-6 py-5 space-y-5">
+        <div className="bg-[#faf7f0]/98 backdrop-blur-xl border-t border-white/5 px-6 py-5 space-y-5">
           {navLinks.map((link) => (
             <a
               key={link.href}
@@ -128,7 +137,7 @@ export function Navbar() {
               className="block text-[13px] font-light"
               style={{
                 fontFamily: "var(--font-sans)",
-                color: "rgba(240,234,216,0.55)",
+                color: "rgba(26,24,18,0.55)",
               }}
               onClick={() => setIsMobileMenuOpen(false)}
             >
@@ -142,8 +151,8 @@ export function Navbar() {
             className="block text-center text-[12px] font-medium px-5 py-2.5 border rounded-sm"
             style={{
               fontFamily: "var(--font-sans)",
-              borderColor: "rgba(240,234,216,0.2)",
-              color: "rgba(240,234,216,0.8)",
+              borderColor: "rgba(26,24,18,0.2)",
+              color: "rgba(26,24,18,0.8)",
               letterSpacing: "0.06em",
             }}
           >

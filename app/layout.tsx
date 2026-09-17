@@ -78,7 +78,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0c0b09",
+  themeColor: "#faf7f0",
 };
 
 const organizationJsonLd = {
@@ -155,7 +155,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${inter.variable} ${plusJakarta.variable} font-sans antialiased bg-[#0c0b09] text-[#f0ead8]`}
+        className={`${inter.variable} ${plusJakarta.variable} font-sans antialiased bg-[#faf7f0] text-[#1a1812]`}
       >
         {children}
         <Analytics />

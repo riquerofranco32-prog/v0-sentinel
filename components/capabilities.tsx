@@ -57,13 +57,13 @@ export function Capabilities() {
       ref={sectionRef}
       id="capacidades"
       className="relative py-24 lg:py-32 overflow-hidden"
-      style={{ background: "#0c0b09" }}
+      style={{ background: "#faf7f0" }}
     >
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            "radial-gradient(ellipse 70% 50% at 35% 45%, rgba(148,241,190,0.05) 0%, transparent 70%)",
+            "radial-gradient(ellipse 70% 50% at 35% 45%, rgba(15,122,79,0.05) 0%, transparent 70%)",
         }}
       />
 
@@ -79,7 +79,7 @@ export function Capabilities() {
             className="text-[11px] tracking-[0.3em] uppercase mb-5"
             style={{
               fontFamily: "var(--font-sans)",
-              color: "rgba(240,234,216,0.3)",
+              color: "rgba(26,24,18,0.3)",
             }}
           >
             La solución a incendios forestales
@@ -89,11 +89,11 @@ export function Capabilities() {
             style={{
               fontFamily: "var(--font-heading)",
               fontWeight: 800,
-              color: "rgba(240,234,216,0.92)",
+              color: "rgba(26,24,18,0.92)",
               lineHeight: 1,
             }}
           >
-            Todo lo que <span style={{ color: "#94f1be" }}>Sentinel</span> hace
+            Todo lo que <span style={{ color: "#0f7a4f" }}>Sentinel</span> hace
             por vos.
           </h2>
         </div>
@@ -105,8 +105,8 @@ export function Capabilities() {
             className="group relative rounded-lg p-8 overflow-hidden transition-all duration-700 hover:-translate-y-1 lg:col-span-2 lg:row-span-2 flex flex-col justify-between"
             style={{
               background:
-                "linear-gradient(160deg, rgba(148,241,190,0.06) 0%, rgba(240,234,216,0.02) 60%)",
-              border: "0.5px solid rgba(148,241,190,0.2)",
+                "linear-gradient(160deg, rgba(15,122,79,0.06) 0%, rgba(26,24,18,0.02) 60%)",
+              border: "0.5px solid rgba(15,122,79,0.2)",
               minHeight: "280px",
               opacity: isVisible ? 1 : 0,
               transform: isVisible ? "translateY(0)" : "translateY(24px)",
@@ -117,29 +117,29 @@ export function Capabilities() {
               className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
               style={{
                 background:
-                  "radial-gradient(ellipse at 20% 10%, rgba(148,241,190,0.1), transparent 70%)",
+                  "radial-gradient(ellipse at 20% 10%, rgba(15,122,79,0.1), transparent 70%)",
               }}
             />
 
             {/* radar sweep — a quiet visual signature for the flagship card */}
             <div
               className="absolute -right-10 -bottom-10 w-56 h-56 rounded-full pointer-events-none"
-              style={{ border: "0.5px solid rgba(148,241,190,0.12)" }}
+              style={{ border: "0.5px solid rgba(15,122,79,0.12)" }}
             >
               <div
                 className="absolute inset-6 rounded-full"
-                style={{ border: "0.5px solid rgba(148,241,190,0.12)" }}
+                style={{ border: "0.5px solid rgba(15,122,79,0.12)" }}
               />
               <div
                 className="absolute inset-12 rounded-full"
-                style={{ border: "0.5px solid rgba(148,241,190,0.12)" }}
+                style={{ border: "0.5px solid rgba(15,122,79,0.12)" }}
               />
               {!reducedMotion && (
                 <div
                   className="absolute inset-0 rounded-full animate-spin group-hover:[animation-play-state:paused]"
                   style={{
                     background:
-                      "conic-gradient(from 0deg, rgba(148,241,190,0.25), transparent 25%)",
+                      "conic-gradient(from 0deg, rgba(15,122,79,0.25), transparent 25%)",
                     animationDuration: "6s",
                   }}
                 />
@@ -149,13 +149,13 @@ export function Capabilities() {
             <div className="relative">
               <Thermometer
                 className="w-9 h-9 mb-6"
-                style={{ color: "#94f1be" }}
+                style={{ color: "#0f7a4f" }}
               />
               <p
                 className="text-[11px] tracking-[0.2em] uppercase mb-3"
                 style={{
                   fontFamily: "var(--font-sans)",
-                  color: "#94f1be",
+                  color: "#0f7a4f",
                 }}
               >
                 Capacidad principal
@@ -165,7 +165,7 @@ export function Capabilities() {
                 style={{
                   fontFamily: "var(--font-heading)",
                   fontWeight: 800,
-                  color: "rgba(240,234,216,0.95)",
+                  color: "rgba(26,24,18,0.95)",
                   lineHeight: 1.15,
                 }}
               >
@@ -176,7 +176,7 @@ export function Capabilities() {
                 style={{
                   fontFamily: "var(--font-sans)",
                   fontWeight: 300,
-                  color: "rgba(240,234,216,0.5)",
+                  color: "rgba(26,24,18,0.5)",
                 }}
               >
                 Cámaras térmicas a bordo y modelos de visión computacional que
@@ -192,7 +192,7 @@ export function Capabilities() {
                     fontFamily: "var(--font-heading)",
                     fontWeight: 800,
                     fontSize: "22px",
-                    color: "rgba(240,234,216,0.92)",
+                    color: "rgba(26,24,18,0.92)",
                   }}
                 >
                   8 min
@@ -201,7 +201,7 @@ export function Capabilities() {
                   className="text-[10px] uppercase tracking-wide"
                   style={{
                     fontFamily: "var(--font-sans)",
-                    color: "rgba(240,234,216,0.35)",
+                    color: "rgba(26,24,18,0.35)",
                   }}
                 >
                   Tiempo de detección
@@ -213,7 +213,7 @@ export function Capabilities() {
                     fontFamily: "var(--font-heading)",
                     fontWeight: 800,
                     fontSize: "22px",
-                    color: "rgba(240,234,216,0.92)",
+                    color: "rgba(26,24,18,0.92)",
                   }}
                 >
                   98%
@@ -222,7 +222,7 @@ export function Capabilities() {
                   className="text-[10px] uppercase tracking-wide"
                   style={{
                     fontFamily: "var(--font-sans)",
-                    color: "rgba(240,234,216,0.35)",
+                    color: "rgba(26,24,18,0.35)",
                   }}
                 >
                   Precisión
@@ -236,8 +236,8 @@ export function Capabilities() {
               key={cap.title}
               className="group relative rounded-lg p-6 overflow-hidden transition-all duration-700 hover:-translate-y-1"
               style={{
-                background: "rgba(240,234,216,0.02)",
-                border: "0.5px solid rgba(240,234,216,0.07)",
+                background: "rgba(26,24,18,0.02)",
+                border: "0.5px solid rgba(26,24,18,0.07)",
                 opacity: isVisible ? 1 : 0,
                 transform: isVisible ? "translateY(0)" : "translateY(24px)",
                 transitionDelay: `${100 + i * 90}ms`,
@@ -247,13 +247,13 @@ export function Capabilities() {
                 className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
                 style={{
                   background:
-                    "radial-gradient(ellipse at 30% 20%, rgba(148,241,190,0.07), transparent 70%)",
+                    "radial-gradient(ellipse at 30% 20%, rgba(15,122,79,0.07), transparent 70%)",
                 }}
               />
 
               <cap.icon
                 className="w-5 h-5 mb-4 transition-transform duration-300 group-hover:scale-110"
-                style={{ color: "#94f1be" }}
+                style={{ color: "#0f7a4f" }}
               />
 
               <h3
@@ -261,7 +261,7 @@ export function Capabilities() {
                 style={{
                   fontFamily: "var(--font-heading)",
                   fontWeight: 700,
-                  color: "rgba(240,234,216,0.92)",
+                  color: "rgba(26,24,18,0.92)",
                   lineHeight: 1.2,
                 }}
               >
@@ -273,7 +273,7 @@ export function Capabilities() {
                 style={{
                   fontFamily: "var(--font-sans)",
                   fontWeight: 300,
-                  color: "rgba(240,234,216,0.45)",
+                  color: "rgba(26,24,18,0.45)",
                 }}
               >
                 {cap.description}
@@ -286,8 +286,8 @@ export function Capabilities() {
           <div
             className="group relative rounded-lg p-6 overflow-hidden transition-all duration-700 hover:-translate-y-1 lg:col-span-2 flex items-center gap-6"
             style={{
-              background: "rgba(240,234,216,0.02)",
-              border: "0.5px solid rgba(240,234,216,0.07)",
+              background: "rgba(26,24,18,0.02)",
+              border: "0.5px solid rgba(26,24,18,0.07)",
               opacity: isVisible ? 1 : 0,
               transform: isVisible ? "translateY(0)" : "translateY(24px)",
               transitionDelay: "460ms",
@@ -296,11 +296,11 @@ export function Capabilities() {
             <div
               className="w-14 h-14 rounded-full flex items-center justify-center shrink-0"
               style={{
-                background: "rgba(148,241,190,0.08)",
-                border: "0.5px solid rgba(148,241,190,0.2)",
+                background: "rgba(15,122,79,0.08)",
+                border: "0.5px solid rgba(15,122,79,0.2)",
               }}
             >
-              <Satellite className="w-6 h-6" style={{ color: "#94f1be" }} />
+              <Satellite className="w-6 h-6" style={{ color: "#0f7a4f" }} />
             </div>
             <div>
               <h3
@@ -308,7 +308,7 @@ export function Capabilities() {
                 style={{
                   fontFamily: "var(--font-heading)",
                   fontWeight: 700,
-                  color: "rgba(240,234,216,0.92)",
+                  color: "rgba(26,24,18,0.92)",
                 }}
               >
                 Cobertura satelital y drones
@@ -318,7 +318,7 @@ export function Capabilities() {
                 style={{
                   fontFamily: "var(--font-sans)",
                   fontWeight: 300,
-                  color: "rgba(240,234,216,0.45)",
+                  color: "rgba(26,24,18,0.45)",
                 }}
               >
                 Red combinada de drones autónomos y satélites, siempre en vuelo

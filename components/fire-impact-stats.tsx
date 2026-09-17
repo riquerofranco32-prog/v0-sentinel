@@ -73,23 +73,23 @@ export async function FireImpactStats() {
   return (
     <section
       className="relative py-20 lg:py-28 overflow-hidden"
-      style={{ background: "#0c0b09" }}
+      style={{ background: "#faf7f0" }}
     >
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            "radial-gradient(ellipse at 50% 0%, rgba(241,107,107,0.08) 0%, transparent 60%)",
+            "radial-gradient(ellipse at 50% 0%, rgba(184,58,58,0.08) 0%, transparent 60%)",
         }}
       />
       <div className="relative z-10 max-w-5xl mx-auto px-6 lg:px-10">
         <div className="flex items-center gap-2 mb-4">
-          <Satellite className="w-3.5 h-3.5" style={{ color: "#f16b6b" }} />
+          <Satellite className="w-3.5 h-3.5" style={{ color: "#b83a3a" }} />
           <span
             className="text-[11px]"
             style={{
               fontFamily: "var(--font-sans)",
-              color: "rgba(240,234,216,0.35)",
+              color: "rgba(26,24,18,0.35)",
             }}
           >
             Datos satelitales NASA FIRMS
@@ -100,7 +100,7 @@ export async function FireImpactStats() {
           style={{
             fontFamily: "var(--font-heading)",
             fontWeight: 800,
-            color: "rgba(240,234,216,0.92)",
+            color: "rgba(26,24,18,0.92)",
             lineHeight: 1.1,
           }}
         >
@@ -109,28 +109,28 @@ export async function FireImpactStats() {
 
         <div
           className="grid sm:grid-cols-2 gap-px"
-          style={{ background: "rgba(240,234,216,0.05)" }}
+          style={{ background: "rgba(26,24,18,0.05)" }}
         >
           {stats.map((stat, i) => (
             <div
               key={i}
               className="flex flex-col items-start p-8"
-              style={{ background: "#0c0b09" }}
+              style={{ background: "#faf7f0" }}
             >
               <div
                 className="w-10 h-10 rounded-lg flex items-center justify-center mb-5"
                 style={{
-                  background: "rgba(241,107,107,0.1)",
-                  border: "0.5px solid rgba(241,107,107,0.3)",
+                  background: "rgba(184,58,58,0.1)",
+                  border: "0.5px solid rgba(184,58,58,0.3)",
                 }}
               >
-                <stat.icon className="w-5 h-5" style={{ color: "#f16b6b" }} />
+                <stat.icon className="w-5 h-5" style={{ color: "#b83a3a" }} />
               </div>
               <div
                 className="text-4xl sm:text-5xl font-extrabold mb-2 tabular-nums"
                 style={{
                   fontFamily: "var(--font-heading)",
-                  color: "#f16b6b",
+                  color: "#b83a3a",
                 }}
               >
                 <AnimatedNumber value={stat.value} />
@@ -140,7 +140,7 @@ export async function FireImpactStats() {
                 style={{
                   fontFamily: "var(--font-sans)",
                   fontWeight: 300,
-                  color: "rgba(240,234,216,0.4)",
+                  color: "rgba(26,24,18,0.4)",
                 }}
               >
                 {stat.label}
@@ -153,7 +153,7 @@ export async function FireImpactStats() {
           className="text-[10px] mt-6"
           style={{
             fontFamily: "var(--font-sans)",
-            color: "rgba(240,234,216,0.2)",
+            color: "rgba(26,24,18,0.2)",
           }}
         >
           Fuente: NASA FIRMS (VIIRS_SNPP_NRT), detecciones satelitales de calor

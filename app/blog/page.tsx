@@ -28,25 +28,25 @@ export default function BlogIndex() {
   );
 
   return (
-    <main className="min-h-screen bg-[#0c0b09]">
+    <main className="min-h-screen bg-[#faf7f0]">
       <ScrollProgress />
       <Navbar />
 
-      <section className="relative pt-40 pb-20 lg:pt-48 lg:pb-28 px-6 lg:px-10 bg-[#0c0b09]">
+      <section className="relative pt-40 pb-20 lg:pt-48 lg:pb-28 px-6 lg:px-10 bg-[#faf7f0]">
         <div className="max-w-5xl mx-auto">
           {/* Breadcrumb */}
           <nav
             className="flex items-center gap-2 mb-6 text-[12px]"
             style={{
               fontFamily: "var(--font-sans)",
-              color: "rgba(240,234,216,0.45)",
+              color: "rgba(26,24,18,0.45)",
             }}
           >
-            <Link href="/" className="hover:text-[#94f1be] transition-colors">
+            <Link href="/" className="hover:text-[#0f7a4f] transition-colors">
               Inicio
             </Link>
             <span className="text-[10px] opacity-40">/</span>
-            <span className="font-light" style={{ color: "rgba(240,234,216,0.75)" }}>
+            <span className="font-light" style={{ color: "rgba(26,24,18,0.75)" }}>
               Blog
             </span>
           </nav>
@@ -55,7 +55,7 @@ export default function BlogIndex() {
             className="text-[11px] tracking-[0.3em] uppercase mb-5"
             style={{
               fontFamily: "var(--font-sans)",
-              color: "rgba(240,234,216,0.3)",
+              color: "rgba(26,24,18,0.3)",
             }}
           >
             Artículos y Publicaciones
@@ -65,12 +65,12 @@ export default function BlogIndex() {
             style={{
               fontFamily: "var(--font-heading)",
               fontWeight: 800,
-              color: "rgba(240,234,216,0.92)",
+              color: "rgba(26,24,18,0.92)",
               lineHeight: 1,
             }}
           >
             Ideas sobre{" "}
-            <span style={{ color: "#94f1be" }}>monitoreo forestal</span> e
+            <span style={{ color: "#0f7a4f" }}>monitoreo forestal</span> e
             inteligencia territorial.
           </h1>
 
@@ -79,10 +79,10 @@ export default function BlogIndex() {
               <Link
                 key={post.slug}
                 href={`/blog/${post.slug}`}
-                className="group flex flex-col rounded-lg overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:border-[rgba(148,241,190,0.3)]"
+                className="group flex flex-col rounded-lg overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:border-[rgba(15,122,79,0.3)]"
                 style={{
-                  background: "rgba(240,234,216,0.02)",
-                  border: "0.5px solid rgba(240,234,216,0.08)",
+                  background: "rgba(26,24,18,0.02)",
+                  border: "0.5px solid rgba(26,24,18,0.08)",
                 }}
               >
                 <div className="relative w-full overflow-hidden" style={{ aspectRatio: "4/3" }}>
@@ -93,7 +93,7 @@ export default function BlogIndex() {
                     sizes="(max-width: 768px) 100vw, 33vw"
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0c0b09]/90 via-transparent to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent" />
                 </div>
                 <div className="p-6 flex-1 flex flex-col justify-between">
                   <div>
@@ -101,7 +101,7 @@ export default function BlogIndex() {
                       className="text-[11px] mb-2 font-normal"
                       style={{
                         fontFamily: "var(--font-sans)",
-                        color: "rgba(148,241,190,0.8)",
+                        color: "rgba(15,122,79,0.8)",
                       }}
                     >
                       {new Date(post.publishedAt).toLocaleDateString("es-AR", {
@@ -111,10 +111,10 @@ export default function BlogIndex() {
                       })}
                     </p>
                     <h2
-                      className="text-lg mb-3 leading-snug font-bold transition-colors duration-200 group-hover:text-[#94f1be]"
+                      className="text-lg mb-3 leading-snug font-bold transition-colors duration-200 group-hover:text-[#0f7a4f]"
                       style={{
                         fontFamily: "var(--font-heading)",
-                        color: "rgba(240,234,216,0.92)",
+                        color: "rgba(26,24,18,0.92)",
                       }}
                     >
                       {post.title}
@@ -124,7 +124,7 @@ export default function BlogIndex() {
                       style={{
                         fontFamily: "var(--font-sans)",
                         fontWeight: 300,
-                        color: "rgba(240,234,216,0.5)",
+                        color: "rgba(26,24,18,0.5)",
                       }}
                     >
                       {post.excerpt}

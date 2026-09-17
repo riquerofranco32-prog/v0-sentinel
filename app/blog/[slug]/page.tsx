@@ -94,7 +94,7 @@ export default async function BlogPostPage({
   const minutes = readingTime(post);
 
   return (
-    <main className="min-h-screen bg-[#0c0b09]">
+    <main className="min-h-screen bg-[#faf7f0]">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
@@ -118,9 +118,9 @@ export default async function BlogPostPage({
             priority
             sizes="100vw"
             className="object-cover"
-            style={{ filter: "brightness(0.6)" }}
+            style={{ filter: "brightness(0.85) saturate(0.9)" }}
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0c0b09] via-[#0c0b09]/30 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#faf7f0] via-[#faf7f0]/70 to-transparent" />
         </div>
 
         <div className="max-w-3xl mx-auto px-6 lg:px-10 -mt-16 relative z-10">
@@ -129,20 +129,23 @@ export default async function BlogPostPage({
             className="flex items-center gap-2 mb-6 text-[12px]"
             style={{
               fontFamily: "var(--font-sans)",
-              color: "rgba(240,234,216,0.45)",
+              color: "rgba(26,24,18,0.45)",
             }}
           >
-            <Link href="/" className="hover:text-[#94f1be] transition-colors">
+            <Link href="/" className="hover:text-[#0f7a4f] transition-colors">
               Inicio
             </Link>
             <span className="text-[10px] opacity-40">/</span>
-            <Link href="/blog" className="hover:text-[#94f1be] transition-colors">
+            <Link
+              href="/blog"
+              className="hover:text-[#0f7a4f] transition-colors"
+            >
               Blog
             </Link>
             <span className="text-[10px] opacity-40">/</span>
             <span
               className="truncate max-w-[180px] sm:max-w-xs font-light"
-              style={{ color: "rgba(240,234,216,0.75)" }}
+              style={{ color: "rgba(26,24,18,0.75)" }}
             >
               {post.title}
             </span>
@@ -152,7 +155,7 @@ export default async function BlogPostPage({
             className="text-[11px] mb-4"
             style={{
               fontFamily: "var(--font-sans)",
-              color: "rgba(240,234,216,0.35)",
+              color: "rgba(26,24,18,0.35)",
             }}
           >
             {new Date(post.publishedAt).toLocaleDateString("es-AR", {
@@ -169,7 +172,7 @@ export default async function BlogPostPage({
             style={{
               fontFamily: "var(--font-heading)",
               fontWeight: 800,
-              color: "rgba(240,234,216,0.95)",
+              color: "rgba(26,24,18,0.95)",
               lineHeight: 1.15,
             }}
           >
@@ -184,7 +187,7 @@ export default async function BlogPostPage({
                     className="text-xl sm:text-2xl mb-4 font-semibold"
                     style={{
                       fontFamily: "var(--font-heading)",
-                      color: "rgba(240,234,216,0.92)",
+                      color: "rgba(26,24,18,0.92)",
                     }}
                   >
                     {block.heading}
@@ -197,7 +200,7 @@ export default async function BlogPostPage({
                     style={{
                       fontFamily: "var(--font-sans)",
                       fontWeight: 300,
-                      color: "rgba(240,234,216,0.65)",
+                      color: "rgba(26,24,18,0.65)",
                     }}
                   >
                     {p}
@@ -207,15 +210,15 @@ export default async function BlogPostPage({
                   <blockquote
                     className="my-6 pl-6 py-2 rounded-r-lg"
                     style={{
-                      borderLeft: "2px solid #94f1be",
-                      background: "rgba(148,241,190,0.03)",
+                      borderLeft: "2px solid #0f7a4f",
+                      background: "rgba(15,122,79,0.03)",
                     }}
                   >
                     <p
                       className="text-xl sm:text-2xl leading-snug font-medium italic"
                       style={{
                         fontFamily: "var(--font-heading)",
-                        color: "rgba(240,234,216,0.9)",
+                        color: "rgba(26,24,18,0.9)",
                       }}
                     >
                       {post.pullQuote}
@@ -228,8 +231,11 @@ export default async function BlogPostPage({
 
           <Link
             href={post.relatedLink.href}
-            className="inline-flex items-center gap-2 mb-16 text-[13px] font-normal transition-colors hover:text-[#94f1be]"
-            style={{ fontFamily: "var(--font-sans)", color: "rgba(148,241,190,0.85)" }}
+            className="inline-flex items-center gap-2 mb-16 text-[13px] font-normal transition-colors hover:text-[#0f7a4f]"
+            style={{
+              fontFamily: "var(--font-sans)",
+              color: "rgba(15,122,79,0.85)",
+            }}
           >
             {post.relatedLink.label}
             <ArrowRight className="w-3.5 h-3.5" />
@@ -238,15 +244,15 @@ export default async function BlogPostPage({
           <div
             className="rounded-lg p-8 mb-20 text-center"
             style={{
-              background: "rgba(240,234,216,0.02)",
-              border: "0.5px solid rgba(148,241,190,0.25)",
+              background: "rgba(26,24,18,0.02)",
+              border: "0.5px solid rgba(15,122,79,0.25)",
             }}
           >
             <p
               className="text-lg mb-5 font-semibold"
               style={{
                 fontFamily: "var(--font-heading)",
-                color: "rgba(240,234,216,0.92)",
+                color: "rgba(26,24,18,0.92)",
               }}
             >
               ¿Querés monitoreo continuo en tu territorio?
@@ -258,9 +264,9 @@ export default async function BlogPostPage({
               className="inline-flex items-center gap-2 px-7 py-3 rounded-sm text-[13px] font-medium transition-all duration-200 hover:-translate-y-0.5"
               style={{
                 fontFamily: "var(--font-sans)",
-                background: "rgba(148,241,190,0.12)",
-                border: "0.5px solid rgba(148,241,190,0.35)",
-                color: "#94f1be",
+                background: "rgba(15,122,79,0.12)",
+                border: "0.5px solid rgba(15,122,79,0.35)",
+                color: "#0f7a4f",
               }}
             >
               Solicitar una reunión
@@ -274,7 +280,7 @@ export default async function BlogPostPage({
                 className="text-[11px] tracking-[0.25em] uppercase mb-6"
                 style={{
                   fontFamily: "var(--font-sans)",
-                  color: "rgba(240,234,216,0.3)",
+                  color: "rgba(26,24,18,0.3)",
                 }}
               >
                 Seguí leyendo
@@ -286,8 +292,8 @@ export default async function BlogPostPage({
                     href={`/blog/${r.slug}`}
                     className="group rounded-lg p-5 transition-all duration-300 hover:-translate-y-0.5"
                     style={{
-                      background: "rgba(240,234,216,0.02)",
-                      border: "0.5px solid rgba(240,234,216,0.07)",
+                      background: "rgba(26,24,18,0.02)",
+                      border: "0.5px solid rgba(26,24,18,0.07)",
                     }}
                   >
                     <p
@@ -295,7 +301,7 @@ export default async function BlogPostPage({
                       style={{
                         fontFamily: "var(--font-heading)",
                         fontWeight: 700,
-                        color: "rgba(240,234,216,0.85)",
+                        color: "rgba(26,24,18,0.85)",
                       }}
                     >
                       {r.title}
@@ -305,7 +311,7 @@ export default async function BlogPostPage({
                       style={{
                         fontFamily: "var(--font-sans)",
                         fontWeight: 300,
-                        color: "rgba(240,234,216,0.4)",
+                        color: "rgba(26,24,18,0.4)",
                       }}
                     >
                       {r.excerpt}

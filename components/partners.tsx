@@ -42,7 +42,7 @@ export function Partners() {
     <section
       ref={sectionRef}
       className="relative py-20 lg:py-28 overflow-hidden"
-      style={{ background: "#0c0b09" }}
+      style={{ background: "#faf7f0" }}
     >
       <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-10 text-center">
         <h2
@@ -50,19 +50,19 @@ export function Partners() {
           style={{
             fontFamily: "var(--font-heading)",
             fontWeight: 800,
-            color: "rgba(240,234,216,0.92)",
+            color: "rgba(26,24,18,0.92)",
             lineHeight: 1.1,
           }}
         >
           Instituciones que{" "}
-          <span style={{ color: "#94f1be" }}>nos acompañan.</span>
+          <span style={{ color: "#0f7a4f" }}>nos acompañan.</span>
         </h2>
         <p
           className="text-[14px] max-w-lg mx-auto mb-14"
           style={{
             fontFamily: "var(--font-sans)",
             fontWeight: 300,
-            color: "rgba(240,234,216,0.4)",
+            color: "rgba(26,24,18,0.4)",
           }}
         >
           Universidades, cámaras y organizaciones que respaldaron a Sentinel en
@@ -80,7 +80,7 @@ export function Partners() {
           {logos.map((logo, i) => (
             <div
               key={logo.id}
-              className="flex items-center justify-center p-3 h-16 w-full rounded-lg transition-all duration-300 hover:bg-[rgba(240,234,216,0.03)] group"
+              className="flex items-center justify-center p-3 h-16 w-full rounded-lg transition-all duration-300 hover:bg-[rgba(26,24,18,0.03)] group"
             >
               <img
                 src={logo.image}
@@ -89,7 +89,7 @@ export function Partners() {
                 loading="lazy"
                 className="max-h-9 max-w-[100px] w-auto object-contain transition-all duration-300 group-hover:scale-105 opacity-60 group-hover:opacity-100"
                 style={{
-                  filter: "grayscale(100%) brightness(0) invert(1)",
+                  filter: "grayscale(100%) brightness(0)",
                   transitionDelay: `${i * 20}ms`,
                 }}
               />

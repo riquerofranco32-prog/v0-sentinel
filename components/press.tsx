@@ -17,7 +17,7 @@ export function Press() {
     <section
       id="prensa"
       className="relative py-24 lg:py-32"
-      style={{ background: "#0c0b09" }}
+      style={{ background: "#faf7f0" }}
     >
       <div className="max-w-6xl mx-auto px-6 lg:px-10">
         <h2
@@ -25,22 +25,22 @@ export function Press() {
           style={{
             fontFamily: "var(--font-heading)",
             fontWeight: 800,
-            color: "rgba(240,234,216,0.92)",
+            color: "rgba(26,24,18,0.92)",
             lineHeight: 1.1,
           }}
         >
           <Newspaper
             className="w-7 h-7 shrink-0 hidden sm:block"
-            style={{ color: "#94f1be" }}
+            style={{ color: "#0f7a4f" }}
           />
-          Dónde <span style={{ color: "#94f1be" }}>salimos en los medios.</span>
+          Dónde <span style={{ color: "#0f7a4f" }}>salimos en los medios.</span>
         </h2>
         <p
           className="text-[13px] mb-10 max-w-xl"
           style={{
             fontFamily: "var(--font-sans)",
             fontWeight: 300,
-            color: "rgba(240,234,216,0.4)",
+            color: "rgba(26,24,18,0.4)",
           }}
         >
           Medios y organizaciones que ya cubrieron el proyecto.
@@ -79,10 +79,10 @@ function PressCard({
       href={mention.url}
       target="_blank"
       rel="noopener noreferrer"
-      className="group relative flex flex-col overflow-hidden rounded-lg transition-all duration-300 hover:-translate-y-1 hover:border-[rgba(148,241,190,0.3)]"
+      className="group relative flex flex-col overflow-hidden rounded-lg transition-all duration-300 hover:-translate-y-1 hover:border-[rgba(15,122,79,0.3)]"
       style={{
-        background: "rgba(240,234,216,0.02)",
-        border: "0.5px solid rgba(240,234,216,0.08)",
+        background: "rgba(26,24,18,0.02)",
+        border: "0.5px solid rgba(26,24,18,0.08)",
       }}
     >
       <div
@@ -90,7 +90,7 @@ function PressCard({
         style={{
           aspectRatio: large ? "16/9" : "4/3",
           background:
-            "linear-gradient(135deg, rgba(148,241,190,0.08), rgba(12,11,9,0.4))",
+            "linear-gradient(135deg, rgba(15,122,79,0.1), rgba(26,24,18,0.05))",
         }}
       >
         {mention.image ? (
@@ -105,7 +105,7 @@ function PressCard({
           <div className="absolute inset-0 flex items-center justify-center">
             <Newspaper
               className="w-8 h-8"
-              style={{ color: "rgba(148,241,190,0.25)" }}
+              style={{ color: "rgba(15,122,79,0.25)" }}
             />
           </div>
         )}
@@ -131,7 +131,7 @@ function PressCard({
           </span>
           <ArrowUpRight
             className="w-4 h-4 flex-shrink-0 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-            style={{ color: "rgba(240,234,216,0.6)" }}
+            style={{ color: "rgba(255,255,255,0.85)" }}
           />
         </div>
       </div>
@@ -146,7 +146,7 @@ function PressCard({
           style={{
             fontFamily: "var(--font-heading)",
             fontWeight: 700,
-            color: "rgba(240,234,216,0.9)",
+            color: "rgba(26,24,18,0.9)",
           }}
         >
           {mention.title}
@@ -156,7 +156,7 @@ function PressCard({
             className="text-[11px] mt-3"
             style={{
               fontFamily: "var(--font-sans)",
-              color: "rgba(240,234,216,0.3)",
+              color: "rgba(26,24,18,0.3)",
             }}
           >
             {formatDate(mention.date)}

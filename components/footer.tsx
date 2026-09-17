@@ -51,18 +51,19 @@ export function Footer() {
     <footer
       id="contacto"
       className="relative overflow-hidden"
-      style={{ background: "#0c0b09" }}
+      style={{ background: "#faf7f0" }}
     >
       {/* Top border gradient */}
       <div
         className="absolute top-0 left-0 right-0 h-px"
         style={{
           background:
-            "linear-gradient(to right, transparent, rgba(148,241,190,0.35), transparent)",
+            "linear-gradient(to right, transparent, rgba(15,122,79,0.35), transparent)",
         }}
       />
 
-      {/* Foto de fondo */}
+      {/* Foto de fondo: muy sutil, como textura, para que el texto oscuro
+          del footer siga siendo legible sobre un fondo claro. */}
       <div className="absolute inset-0">
         <Image
           src="/fot.jpg"
@@ -70,7 +71,7 @@ export function Footer() {
           fill
           sizes="100vw"
           className="object-cover object-center"
-          style={{ opacity: 0.35 }}
+          style={{ opacity: 0.08, filter: "saturate(0.6)" }}
           priority={false}
         />
         {/* Degradado superior */}
@@ -78,15 +79,7 @@ export function Footer() {
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(to bottom, rgba(12,11,9,0.85) 0%, rgba(12,11,9,0.3) 40%, transparent 70%)",
-          }}
-        />
-        {/* Degradado inferior */}
-        <div
-          className="absolute inset-0"
-          style={{
-            background:
-              "linear-gradient(to top, rgba(12,11,9,0.9) 0%, rgba(12,11,9,0.4) 30%, transparent 60%)",
+              "linear-gradient(to bottom, rgba(250,247,240,0.92) 0%, rgba(250,247,240,0.6) 40%, rgba(250,247,240,0.3) 70%, rgba(250,247,240,0.3) 100%)",
           }}
         />
       </div>
@@ -98,7 +91,7 @@ export function Footer() {
             fontFamily: "var(--font-heading)",
             fontWeight: 800,
             fontSize: "18vw",
-            color: "rgba(240,234,216,0.02)",
+            color: "rgba(26,24,18,0.02)",
             letterSpacing: "0.1em",
             whiteSpace: "nowrap",
           }}
@@ -111,15 +104,20 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 lg:gap-8 mb-14">
           {/* Brand */}
           <div className="lg:col-span-2">
-            {/* Logo PNG con fondo transparente */}
-            <div className="mb-5">
+            {/* Logo PNG con fondo transparente; logoo.png is light-on-
+                transparent (built for the old dark theme), so it gets a
+                dark backing plate to stay legible on the new light footer. */}
+            <div
+              className="mb-5 inline-flex items-center rounded-md px-3 py-2"
+              style={{ background: "#0c0b09" }}
+            >
               <Image
                 src="/logoo.png"
                 alt="Sentinel"
                 width={150}
                 height={40}
                 className="object-contain"
-                style={{ height: "36px", width: "auto" }}
+                style={{ height: "30px", width: "auto" }}
               />
             </div>
 
@@ -128,7 +126,7 @@ export function Footer() {
               style={{
                 fontFamily: "var(--font-sans)",
                 fontWeight: 300,
-                color: "rgba(240,234,216,0.4)",
+                color: "rgba(26,24,18,0.4)",
               }}
             >
               Tecnología aérea e inteligencia artificial para la detección
@@ -139,17 +137,17 @@ export function Footer() {
               <a
                 href="mailto:sentinelproyecto@gmail.com"
                 className="flex items-center gap-2.5 w-fit transition-colors duration-200"
-                style={{ color: "rgba(240,234,216,0.45)" }}
+                style={{ color: "rgba(26,24,18,0.45)" }}
                 onMouseEnter={(e) =>
-                  (e.currentTarget.style.color = "rgba(240,234,216,0.8)")
+                  (e.currentTarget.style.color = "rgba(26,24,18,0.8)")
                 }
                 onMouseLeave={(e) =>
-                  (e.currentTarget.style.color = "rgba(240,234,216,0.45)")
+                  (e.currentTarget.style.color = "rgba(26,24,18,0.45)")
                 }
               >
                 <Mail
                   className="w-3.5 h-3.5 flex-shrink-0"
-                  style={{ color: "#94f1be", opacity: 0.7 }}
+                  style={{ color: "#0f7a4f", opacity: 0.7 }}
                 />
                 <span
                   className="text-[12px]"
@@ -161,14 +159,14 @@ export function Footer() {
               <div className="flex items-center gap-2.5">
                 <MapPin
                   className="w-3.5 h-3.5 flex-shrink-0"
-                  style={{ color: "#94f1be", opacity: 0.7 }}
+                  style={{ color: "#0f7a4f", opacity: 0.7 }}
                 />
                 <span
                   className="text-[12px]"
                   style={{
                     fontFamily: "var(--font-sans)",
                     fontWeight: 300,
-                    color: "rgba(240,234,216,0.45)",
+                    color: "rgba(26,24,18,0.45)",
                   }}
                 >
                   San Rafael, Mendoza, Argentina
@@ -186,19 +184,19 @@ export function Footer() {
                   aria-label={s.label}
                   className="w-8 h-8 rounded-sm flex items-center justify-center transition-all duration-200"
                   style={{
-                    background: "rgba(240,234,216,0.05)",
-                    border: "0.5px solid rgba(240,234,216,0.1)",
-                    color: "rgba(240,234,216,0.4)",
+                    background: "rgba(26,24,18,0.05)",
+                    border: "0.5px solid rgba(26,24,18,0.1)",
+                    color: "rgba(26,24,18,0.4)",
                   }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.borderColor = "rgba(148,241,190,0.4)";
-                    e.currentTarget.style.color = "#94f1be";
-                    e.currentTarget.style.background = "rgba(148,241,190,0.08)";
+                    e.currentTarget.style.borderColor = "rgba(15,122,79,0.4)";
+                    e.currentTarget.style.color = "#0f7a4f";
+                    e.currentTarget.style.background = "rgba(15,122,79,0.08)";
                   }}
                   onMouseLeave={(e) => {
-                    e.currentTarget.style.borderColor = "rgba(240,234,216,0.1)";
-                    e.currentTarget.style.color = "rgba(240,234,216,0.4)";
-                    e.currentTarget.style.background = "rgba(240,234,216,0.05)";
+                    e.currentTarget.style.borderColor = "rgba(26,24,18,0.1)";
+                    e.currentTarget.style.color = "rgba(26,24,18,0.4)";
+                    e.currentTarget.style.background = "rgba(26,24,18,0.05)";
                   }}
                 >
                   {s.icon}
@@ -214,7 +212,7 @@ export function Footer() {
                 className="text-[11px] tracking-[0.2em] uppercase mb-5"
                 style={{
                   fontFamily: "var(--font-sans)",
-                  color: "rgba(240,234,216,0.25)",
+                  color: "rgba(26,24,18,0.25)",
                 }}
               >
                 {section}
@@ -228,13 +226,13 @@ export function Footer() {
                       style={{
                         fontFamily: "var(--font-sans)",
                         fontWeight: 300,
-                        color: "rgba(240,234,216,0.4)",
+                        color: "rgba(26,24,18,0.4)",
                       }}
                       onMouseEnter={(e) =>
-                        (e.currentTarget.style.color = "rgba(240,234,216,0.8)")
+                        (e.currentTarget.style.color = "rgba(26,24,18,0.8)")
                       }
                       onMouseLeave={(e) =>
-                        (e.currentTarget.style.color = "rgba(240,234,216,0.4)")
+                        (e.currentTarget.style.color = "rgba(26,24,18,0.4)")
                       }
                     >
                       {link.label}
@@ -249,7 +247,7 @@ export function Footer() {
         {/* Bottom */}
         <div
           className="pt-8 border-t flex flex-col sm:flex-row items-center justify-between gap-4"
-          style={{ borderColor: "rgba(240,234,216,0.08)" }}
+          style={{ borderColor: "rgba(26,24,18,0.08)" }}
         >
           <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2 sm:gap-3 text-center sm:text-left">
             <p
@@ -257,7 +255,7 @@ export function Footer() {
               style={{
                 fontFamily: "var(--font-sans)",
                 fontWeight: 300,
-                color: "rgba(240,234,216,0.4)",
+                color: "rgba(26,24,18,0.4)",
               }}
             >
               © {new Date().getFullYear()} Sentinel. Todos los derechos
@@ -265,7 +263,7 @@ export function Footer() {
             </p>
             <span
               className="hidden sm:inline text-[10px]"
-              style={{ color: "rgba(240,234,216,0.2)" }}
+              style={{ color: "rgba(26,24,18,0.2)" }}
             >
               •
             </span>
@@ -274,7 +272,7 @@ export function Footer() {
               style={{
                 fontFamily: "var(--font-sans)",
                 fontWeight: 300,
-                color: "rgba(240,234,216,0.3)",
+                color: "rgba(26,24,18,0.3)",
               }}
             >
               Monitoreo y Alerta Temprana de Incendios
@@ -291,11 +289,11 @@ export function Footer() {
               style={{
                 fontFamily: "var(--font-sans)",
                 fontWeight: 300,
-                color: "rgba(240,234,216,0.45)",
+                color: "rgba(26,24,18,0.45)",
               }}
             >
               <span>Creado por</span>
-              <span className="font-medium text-[#94f1be] group-hover:underline underline-offset-4 decoration-[#94f1be]/50 transition-all inline-flex items-center gap-1">
+              <span className="font-medium text-[#0f7a4f] group-hover:underline underline-offset-4 decoration-[#0f7a4f]/50 transition-all inline-flex items-center gap-1">
                 Se7en Dev
                 <svg
                   className="w-3 h-3 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 opacity-70 group-hover:opacity-100"

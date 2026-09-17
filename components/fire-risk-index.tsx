@@ -54,10 +54,10 @@ function riskLevel(r: Reading): { label: string; color: string } {
   else if (r.windSpeed > 25) score += 2;
   else if (r.windSpeed > 15) score += 1;
 
-  if (score >= 8) return { label: "Extremo", color: "#f16b6b" };
+  if (score >= 8) return { label: "Extremo", color: "#b83a3a" };
   if (score >= 6) return { label: "Alto", color: "#f1b46b" };
   if (score >= 3) return { label: "Moderado", color: "#f1e06b" };
-  return { label: "Bajo", color: "#94f1be" };
+  return { label: "Bajo", color: "#0f7a4f" };
 }
 
 const RISK_RANK: Record<string, number> = {
@@ -112,13 +112,13 @@ export async function FireRiskIndex() {
   return (
     <section
       className="relative py-24 lg:py-32 overflow-hidden"
-      style={{ background: "#0c0b09" }}
+      style={{ background: "#faf7f0" }}
     >
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            "radial-gradient(ellipse 70% 50% at 50% 0%, rgba(148,241,190,0.05) 0%, transparent 70%)",
+            "radial-gradient(ellipse 70% 50% at 50% 0%, rgba(15,122,79,0.05) 0%, transparent 70%)",
         }}
       />
 
@@ -126,13 +126,13 @@ export async function FireRiskIndex() {
         <div className="flex items-center gap-2 mb-5">
           <span
             className="w-1.5 h-1.5 rounded-full"
-            style={{ background: "#94f1be", boxShadow: "0 0 8px #94f1be" }}
+            style={{ background: "#0f7a4f", boxShadow: "0 0 8px #0f7a4f" }}
           />
           <p
             className="text-[11px] tracking-[0.3em] uppercase"
             style={{
               fontFamily: "var(--font-sans)",
-              color: "rgba(240,234,216,0.3)",
+              color: "rgba(26,24,18,0.3)",
             }}
           >
             Datos en vivo
@@ -144,11 +144,11 @@ export async function FireRiskIndex() {
             style={{
               fontFamily: "var(--font-heading)",
               fontWeight: 800,
-              color: "rgba(240,234,216,0.92)",
+              color: "rgba(26,24,18,0.92)",
               lineHeight: 1,
             }}
           >
-            Riesgo de incendio, <span style={{ color: "#94f1be" }}>hoy.</span>
+            Riesgo de incendio, <span style={{ color: "#0f7a4f" }}>hoy.</span>
           </h2>
           <div
             className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-sm mb-1"
@@ -174,13 +174,13 @@ export async function FireRiskIndex() {
           style={{
             fontFamily: "var(--font-sans)",
             fontWeight: 300,
-            color: "rgba(240,234,216,0.4)",
+            color: "rgba(26,24,18,0.4)",
           }}
         >
           Índice estimado a partir de temperatura, humedad y viento en tiempo
           real, la misma clase de variables que alimenta nuestros modelos de
           detección.{" "}
-          <span style={{ color: "rgba(240,234,216,0.6)" }}>
+          <span style={{ color: "rgba(26,24,18,0.6)" }}>
             {RISK_EXPLAIN[overall.label]}
           </span>{" "}
           Tocá un punto del mapa para ver el detalle de cada localidad.
@@ -188,7 +188,7 @@ export async function FireRiskIndex() {
 
         <div
           className="max-w-md mx-auto mb-10 rounded-lg p-4"
-          style={{ border: "0.5px solid rgba(240,234,216,0.07)" }}
+          style={{ border: "0.5px solid rgba(26,24,18,0.07)" }}
         >
           <PatagoniaRiskMap points={points} />
         </div>
@@ -199,10 +199,10 @@ export async function FireRiskIndex() {
             return (
               <div
                 key={r.location.name}
-                className="relative overflow-hidden rounded-lg p-6 transition-all duration-300 hover:-translate-y-0.5 hover:border-[rgba(240,234,216,0.14)]"
+                className="relative overflow-hidden rounded-lg p-6 transition-all duration-300 hover:-translate-y-0.5 hover:border-[rgba(26,24,18,0.14)]"
                 style={{
-                  background: "rgba(240,234,216,0.02)",
-                  border: "0.5px solid rgba(240,234,216,0.08)",
+                  background: "rgba(26,24,18,0.02)",
+                  border: "0.5px solid rgba(26,24,18,0.08)",
                 }}
               >
                 <div
@@ -215,7 +215,7 @@ export async function FireRiskIndex() {
                       className="text-[15px] mb-0.5 font-semibold"
                       style={{
                         fontFamily: "var(--font-heading)",
-                        color: "rgba(240,234,216,0.92)",
+                        color: "rgba(26,24,18,0.92)",
                       }}
                     >
                       {r.location.name}
@@ -224,7 +224,7 @@ export async function FireRiskIndex() {
                       className="text-[11px]"
                       style={{
                         fontFamily: "var(--font-sans)",
-                        color: "rgba(240,234,216,0.35)",
+                        color: "rgba(26,24,18,0.35)",
                       }}
                     >
                       {r.location.province}
@@ -254,13 +254,13 @@ export async function FireRiskIndex() {
                   </div>
                 </div>
 
-                <div className="space-y-2.5 pt-3 border-t border-[rgba(240,234,216,0.06)]">
+                <div className="space-y-2.5 pt-3 border-t border-[rgba(26,24,18,0.06)]">
                   <div className="flex items-center justify-between text-[12px]">
                     <span
                       className="flex items-center gap-2"
                       style={{
                         fontFamily: "var(--font-sans)",
-                        color: "rgba(240,234,216,0.4)",
+                        color: "rgba(26,24,18,0.4)",
                       }}
                     >
                       <Thermometer className="w-3.5 h-3.5 opacity-70" />
@@ -270,7 +270,7 @@ export async function FireRiskIndex() {
                       className="font-medium tabular-nums"
                       style={{
                         fontFamily: "var(--font-sans)",
-                        color: "rgba(240,234,216,0.85)",
+                        color: "rgba(26,24,18,0.85)",
                       }}
                     >
                       {Math.round(r.temperature)}°C
@@ -281,7 +281,7 @@ export async function FireRiskIndex() {
                       className="flex items-center gap-2"
                       style={{
                         fontFamily: "var(--font-sans)",
-                        color: "rgba(240,234,216,0.4)",
+                        color: "rgba(26,24,18,0.4)",
                       }}
                     >
                       <Droplets className="w-3.5 h-3.5 opacity-70" />
@@ -291,7 +291,7 @@ export async function FireRiskIndex() {
                       className="font-medium tabular-nums"
                       style={{
                         fontFamily: "var(--font-sans)",
-                        color: "rgba(240,234,216,0.85)",
+                        color: "rgba(26,24,18,0.85)",
                       }}
                     >
                       {Math.round(r.humidity)}%
@@ -302,7 +302,7 @@ export async function FireRiskIndex() {
                       className="flex items-center gap-2"
                       style={{
                         fontFamily: "var(--font-sans)",
-                        color: "rgba(240,234,216,0.4)",
+                        color: "rgba(26,24,18,0.4)",
                       }}
                     >
                       <Wind className="w-3.5 h-3.5 opacity-70" />
@@ -312,7 +312,7 @@ export async function FireRiskIndex() {
                       className="font-medium tabular-nums"
                       style={{
                         fontFamily: "var(--font-sans)",
-                        color: "rgba(240,234,216,0.85)",
+                        color: "rgba(26,24,18,0.85)",
                       }}
                     >
                       {Math.round(r.windSpeed)} km/h
@@ -328,7 +328,7 @@ export async function FireRiskIndex() {
           className="text-[10px] mt-6"
           style={{
             fontFamily: "var(--font-sans)",
-            color: "rgba(240,234,216,0.2)",
+            color: "rgba(26,24,18,0.2)",
           }}
         >
           Fuente: Open-Meteo. Índice ilustrativo, no reemplaza el sistema de

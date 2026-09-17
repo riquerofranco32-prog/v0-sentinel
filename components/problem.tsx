@@ -41,7 +41,7 @@ export function Problem() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative bg-[#0c0b09]">
+    <section ref={sectionRef} className="relative bg-[#faf7f0]">
       {/* Hero image */}
       <div className="relative h-[60vh] min-h-[400px] overflow-hidden">
         <Image
@@ -61,8 +61,8 @@ export function Problem() {
             className="inline-flex items-center gap-2 px-3 py-1 rounded-sm text-[11px] font-medium tracking-[0.18em] uppercase mb-4 transition-all duration-700"
             style={{
               fontFamily: "var(--font-sans)",
-              background: "rgba(241,107,107,0.1)",
-              border: "0.5px solid rgba(241,107,107,0.28)",
+              background: "rgba(241,107,107,0.15)",
+              border: "0.5px solid rgba(241,107,107,0.35)",
               color: "#f16b6b",
               opacity: isVisible ? 1 : 0,
             }}
@@ -96,7 +96,7 @@ export function Problem() {
                 style={{
                   fontFamily: "var(--font-sans)",
                   fontWeight: 300,
-                  color: "rgba(240,234,216,0.55)",
+                  color: "rgba(26,24,18,0.55)",
                   opacity: isVisible ? 1 : 0,
                   transform: isVisible ? "translateY(0)" : "translateY(16px)",
                   transitionDelay: "150ms",
@@ -104,9 +104,7 @@ export function Problem() {
               >
                 No es solo bosque lo que se quema. Es el futuro de nuestras
                 economías.{" "}
-                <span
-                  style={{ color: "rgba(240,234,216,0.85)", fontWeight: 400 }}
-                >
+                <span style={{ color: "rgba(26,24,18,0.85)", fontWeight: 400 }}>
                   Más de 1 millón de hectáreas perdidas en Corrientes.
                 </span>{" "}
                 Bosques milenarios desapareciendo en la Patagonia. No son solo
@@ -153,7 +151,7 @@ export function Problem() {
                         left: 0,
                         width: "2px",
                         height: "100%",
-                        background: "rgba(148,241,190,0.5)",
+                        background: "rgba(15,122,79,0.5)",
                       }}
                     />
                     <div
@@ -162,7 +160,7 @@ export function Problem() {
                         fontWeight: 800,
                         fontSize: "clamp(24px, 3.5vw, 36px)",
                         lineHeight: 1,
-                        color: "rgba(240,234,216,0.95)",
+                        color: "rgba(26,24,18,0.95)",
                         letterSpacing: "-0.03em",
                         marginBottom: "6px",
                       }}
@@ -176,7 +174,7 @@ export function Problem() {
                         textTransform: "uppercase",
                         fontFamily: "var(--font-sans)",
                         fontWeight: 400,
-                        color: "rgba(240,234,216,0.4)",
+                        color: "rgba(26,24,18,0.4)",
                       }}
                     >
                       {stat.label}
@@ -213,14 +211,14 @@ export function Problem() {
                     className="flex gap-4 items-start py-4"
                     style={{
                       borderBottom:
-                        i < 2 ? "0.5px solid rgba(240,234,216,0.06)" : "none",
+                        i < 2 ? "0.5px solid rgba(26,24,18,0.06)" : "none",
                     }}
                   >
                     <div
                       style={{
                         width: "6px",
                         height: "6px",
-                        background: "#94f1be",
+                        background: "#0f7a4f",
                         borderRadius: "50%",
                         marginTop: "6px",
                         flexShrink: 0,
@@ -233,7 +231,7 @@ export function Problem() {
                           fontSize: "14px",
                           fontFamily: "var(--font-sans)",
                           fontWeight: 500,
-                          color: "rgba(240,234,216,0.85)",
+                          color: "rgba(26,24,18,0.85)",
                           marginBottom: "3px",
                         }}
                       >
@@ -244,7 +242,7 @@ export function Problem() {
                           fontSize: "13px",
                           fontFamily: "var(--font-sans)",
                           fontWeight: 300,
-                          color: "rgba(240,234,216,0.45)",
+                          color: "rgba(26,24,18,0.45)",
                           lineHeight: 1.5,
                         }}
                       >
@@ -266,7 +264,7 @@ export function Problem() {
               >
                 <a
                   href="#servicios"
-                  className="group inline-flex items-center gap-2 px-7 py-3 text-[13px] font-medium rounded-sm transition-all duration-200 border border-[rgba(148,241,190,0.35)] bg-[rgba(148,241,190,0.1)] text-[#94f1be] hover:bg-[#94f1be] hover:text-[#0c0b09] hover:-translate-y-0.5"
+                  className="group inline-flex items-center gap-2 px-7 py-3 text-[13px] font-medium rounded-sm transition-all duration-200 border border-[rgba(15,122,79,0.35)] bg-[rgba(15,122,79,0.1)] text-[#0f7a4f] hover:bg-[#0f7a4f] hover:text-[#faf7f0] hover:-translate-y-0.5"
                   style={{ fontFamily: "var(--font-sans)" }}
                 >
                   Ver cómo lo resolvemos

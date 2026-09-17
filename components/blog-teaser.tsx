@@ -29,7 +29,7 @@ export function BlogTeaser() {
     <section
       ref={sectionRef}
       className="relative py-24 lg:py-32 overflow-hidden"
-      style={{ background: "#0c0b09" }}
+      style={{ background: "#faf7f0" }}
     >
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-10">
         <div
@@ -45,11 +45,11 @@ export function BlogTeaser() {
               style={{
                 fontFamily: "var(--font-heading)",
                 fontWeight: 800,
-                color: "rgba(240,234,216,0.92)",
+                color: "rgba(26,24,18,0.92)",
                 lineHeight: 1,
               }}
             >
-              Últimas <span style={{ color: "#94f1be" }}>notas.</span>
+              Últimas <span style={{ color: "#0f7a4f" }}>notas.</span>
             </h2>
           </div>
 
@@ -58,8 +58,8 @@ export function BlogTeaser() {
             className="inline-flex items-center gap-2 px-6 py-3 rounded-sm text-[13px] font-medium transition-all hover:-translate-y-0.5 w-fit"
             style={{
               fontFamily: "var(--font-sans)",
-              border: "0.5px solid rgba(240,234,216,0.2)",
-              color: "rgba(240,234,216,0.8)",
+              border: "0.5px solid rgba(26,24,18,0.2)",
+              color: "rgba(26,24,18,0.8)",
             }}
           >
             Ver todas las notas
@@ -74,8 +74,8 @@ export function BlogTeaser() {
               href={`/blog/${posts[0].slug}`}
               className="group lg:col-span-3 flex flex-col overflow-hidden rounded-lg transition-all duration-300 hover:-translate-y-1"
               style={{
-                background: "rgba(240,234,216,0.02)",
-                border: "0.5px solid rgba(240,234,216,0.07)",
+                background: "rgba(26,24,18,0.02)",
+                border: "0.5px solid rgba(26,24,18,0.07)",
                 opacity: isVisible ? 1 : 0,
                 transform: isVisible ? "translateY(0)" : "translateY(24px)",
               }}
@@ -91,7 +91,7 @@ export function BlogTeaser() {
                   sizes="(max-width: 1024px) 100vw, 60vw"
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0c0b09]/90 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent" />
               </div>
               <div className="p-6 flex-1 flex flex-col justify-between">
                 <div>
@@ -99,7 +99,7 @@ export function BlogTeaser() {
                     className="text-[11px] mb-2 font-normal"
                     style={{
                       fontFamily: "var(--font-sans)",
-                      color: "rgba(148,241,190,0.8)",
+                      color: "rgba(15,122,79,0.8)",
                     }}
                   >
                     {new Date(posts[0].publishedAt).toLocaleDateString(
@@ -108,11 +108,11 @@ export function BlogTeaser() {
                     )}
                   </p>
                   <h3
-                    className="text-xl mb-2.5 leading-snug transition-colors duration-200 group-hover:text-[#94f1be]"
+                    className="text-xl mb-2.5 leading-snug transition-colors duration-200 group-hover:text-[#0f7a4f]"
                     style={{
                       fontFamily: "var(--font-heading)",
                       fontWeight: 700,
-                      color: "rgba(240,234,216,0.92)",
+                      color: "rgba(26,24,18,0.92)",
                     }}
                   >
                     {posts[0].title}
@@ -122,18 +122,18 @@ export function BlogTeaser() {
                     style={{
                       fontFamily: "var(--font-sans)",
                       fontWeight: 300,
-                      color: "rgba(240,234,216,0.45)",
+                      color: "rgba(26,24,18,0.45)",
                     }}
                   >
                     {posts[0].excerpt}
                   </p>
                 </div>
-                <div className="mt-4 pt-3 border-t border-[rgba(240,234,216,0.06)] flex items-center justify-between">
+                <div className="mt-4 pt-3 border-t border-[rgba(26,24,18,0.06)] flex items-center justify-between">
                   <span
-                    className="text-[11px] font-normal group-hover:text-[#94f1be] transition-colors flex items-center gap-1"
+                    className="text-[11px] font-normal group-hover:text-[#0f7a4f] transition-colors flex items-center gap-1"
                     style={{
                       fontFamily: "var(--font-sans)",
-                      color: "rgba(240,234,216,0.4)",
+                      color: "rgba(26,24,18,0.4)",
                     }}
                   >
                     Leer artículo
@@ -145,7 +145,7 @@ export function BlogTeaser() {
           )}
 
           {/* Remaining posts as a compact list, two-fifths width */}
-          <div className="lg:col-span-2 flex flex-col divide-y divide-[rgba(240,234,216,0.06)]">
+          <div className="lg:col-span-2 flex flex-col divide-y divide-[rgba(26,24,18,0.06)]">
             {posts.slice(1).map((post, i) => (
               <Link
                 key={post.slug}
@@ -161,7 +161,7 @@ export function BlogTeaser() {
                   className="text-[11px] mb-1.5 font-normal"
                   style={{
                     fontFamily: "var(--font-sans)",
-                    color: "rgba(148,241,190,0.8)",
+                    color: "rgba(15,122,79,0.8)",
                   }}
                 >
                   {new Date(post.publishedAt).toLocaleDateString("es-AR", {
@@ -171,20 +171,20 @@ export function BlogTeaser() {
                   })}
                 </p>
                 <h3
-                  className="text-base mb-1.5 leading-snug transition-colors duration-200 group-hover:text-[#94f1be]"
+                  className="text-base mb-1.5 leading-snug transition-colors duration-200 group-hover:text-[#0f7a4f]"
                   style={{
                     fontFamily: "var(--font-heading)",
                     fontWeight: 700,
-                    color: "rgba(240,234,216,0.92)",
+                    color: "rgba(26,24,18,0.92)",
                   }}
                 >
                   {post.title}
                 </h3>
                 <span
-                  className="text-[11px] font-normal group-hover:text-[#94f1be] transition-colors flex items-center gap-1"
+                  className="text-[11px] font-normal group-hover:text-[#0f7a4f] transition-colors flex items-center gap-1"
                   style={{
                     fontFamily: "var(--font-sans)",
-                    color: "rgba(240,234,216,0.4)",
+                    color: "rgba(26,24,18,0.4)",
                   }}
                 >
                   Leer artículo
