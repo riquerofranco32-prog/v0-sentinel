@@ -49,6 +49,7 @@ export async function generateMetadata({
       card: "summary_large_image",
       title: post.title,
       description: post.excerpt,
+      images: [`${siteUrl}${post.coverImage}`],
     },
   };
 }
@@ -113,7 +114,7 @@ export default async function BlogPostPage({
         >
           <Image
             src={post.coverImage}
-            alt=""
+            alt={post.title}
             fill
             priority
             sizes="100vw"

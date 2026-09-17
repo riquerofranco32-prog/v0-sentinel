@@ -86,7 +86,7 @@ export function BlogTeaser() {
               >
                 <Image
                   src={posts[0].coverImage}
-                  alt=""
+                  alt={posts[0].title}
                   fill
                   sizes="(max-width: 1024px) 100vw, 60vw"
                   className="object-cover transition-transform duration-500 group-hover:scale-105"

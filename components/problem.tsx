@@ -303,7 +303,7 @@ export function Problem() {
                 >
                   <Image
                     src={src}
-                    alt=""
+                    alt={`Incendio forestal en la Patagonia argentina ${i + 1}`}
                     fill
                     sizes="(max-width: 1024px) 50vw, 25vw"
                     className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"

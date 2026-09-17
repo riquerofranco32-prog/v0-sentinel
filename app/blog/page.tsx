@@ -46,7 +46,10 @@ export default function BlogIndex() {
               Inicio
             </Link>
             <span className="text-[10px] opacity-40">/</span>
-            <span className="font-light" style={{ color: "rgba(26,24,18,0.75)" }}>
+            <span
+              className="font-light"
+              style={{ color: "rgba(26,24,18,0.75)" }}
+            >
               Blog
             </span>
           </nav>
@@ -85,10 +88,13 @@ export default function BlogIndex() {
                   border: "0.5px solid rgba(26,24,18,0.08)",
                 }}
               >
-                <div className="relative w-full overflow-hidden" style={{ aspectRatio: "4/3" }}>
+                <div
+                  className="relative w-full overflow-hidden"
+                  style={{ aspectRatio: "4/3" }}
+                >
                   <Image
                     src={post.coverImage}
-                    alt=""
+                    alt={post.title}
                     fill
                     sizes="(max-width: 768px) 100vw, 33vw"
                     className="object-cover transition-transform duration-500 group-hover:scale-105"

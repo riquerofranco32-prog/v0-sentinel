@@ -108,6 +108,14 @@ const organizationJsonLd = {
   award: ["ILAN Awards 2025", "Premio Sadosky 2025", "JIJE 2025"],
 };
 
+const websiteJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "Sentinel Technologies",
+  url: siteUrl,
+  inLanguage: "es-AR",
+};
+
 const productJsonLd = {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
@@ -148,6 +156,10 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(organizationJsonLd),
           }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
         />
         <script
           type="application/ld+json"

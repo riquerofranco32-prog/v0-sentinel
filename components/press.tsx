@@ -97,7 +97,7 @@ function PressCard({
           // eslint-disable-next-line @next/next/no-img-element
           <img
             src={encodeURI(mention.image)}
-            alt=""
+            alt={`${mention.outlet}: ${mention.title}`}
             loading="lazy"
             className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
           />
