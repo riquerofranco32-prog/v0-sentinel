@@ -98,6 +98,21 @@ const organizationJsonLd = {
     "https://instagram.com/sentinel.arg",
     "https://linktr.ee/sentinelarg",
   ],
+  contactPoint: [
+    {
+      "@type": "ContactPoint",
+      email: "sentinelproyecto@gmail.com",
+      contactType: "customer service",
+      areaServed: "AR",
+      availableLanguage: ["es"],
+    },
+  ],
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "San Rafael",
+    addressRegion: "Mendoza",
+    addressCountry: "AR",
+  },
   knowsAbout: [
     "Wildfire Detection",
     "Drone Technology",
