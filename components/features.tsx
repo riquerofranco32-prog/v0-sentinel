@@ -1,7 +1,36 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import Image from "next/image";
+import {
+  Flame,
+  Radar,
+  Satellite,
+  BellRing,
+  PlaneTakeoff,
+  Thermometer,
+} from "lucide-react";
+
+const flow = [
+  { icon: Flame, label: "Detectar" },
+  { icon: Radar, label: "Verificar / Descubrir" },
+  { icon: Satellite, label: "Contextualizar" },
+  { icon: BellRing, label: "Alertar" },
+];
+
+const monitoring = [
+  {
+    icon: PlaneTakeoff,
+    text: "Patrullas térmicas diarias con verificación automatizada.",
+  },
+  {
+    icon: Thermometer,
+    text: "Sensores que identifican anomalías térmicas y picos de calor en la fuente.",
+  },
+  {
+    icon: Satellite,
+    text: "Feed satelital para contexto de macro-riesgo y mapeo horario.",
+  },
+];
 
 export function Features() {
   const [isVisible, setIsVisible] = useState(false);
@@ -110,98 +139,99 @@ export function Features() {
 
         {/* ── MAIN GRID ── */}
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-4">
-          {/* Image 1 — large, 3 cols */}
+          {/* Flow card — large, 3 cols */}
           <div
-            className="lg:col-span-3 relative rounded-lg overflow-hidden group transition-all duration-700"
+            className="lg:col-span-3 relative rounded-lg p-8 overflow-hidden transition-all duration-700 flex flex-col justify-center"
             style={{
+              background:
+                "linear-gradient(160deg, rgba(15,122,79,0.06) 0%, rgba(26,24,18,0.02) 60%)",
+              border: "0.5px solid rgba(15,122,79,0.2)",
               minHeight: "380px",
               opacity: isVisible ? 1 : 0,
               transform: isVisible ? "translateY(0)" : "translateY(24px)",
               transitionDelay: "500ms",
             }}
           >
-            <Image
-              src="/features-d.jpg"
-              alt="Sistema Sentinel"
-              fill
-              sizes="(max-width: 1024px) 100vw, 60vw"
-              className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
-            />
-
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0c0b09]/80 via-[#0c0b09]/10 to-transparent" />
-
-            {/* Hover tint */}
-            <div
-              className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-              style={{
-                background:
-                  "linear-gradient(135deg, rgba(15,122,79,0.06) 0%, transparent 60%)",
-              }}
-            />
-
-            {/* Bottom */}
-            <div className="absolute bottom-5 left-5 right-5 flex items-end justify-between">
-              <div
-                className="px-3 py-1.5 rounded-sm text-[10px] tracking-widest uppercase"
-                style={{
-                  fontFamily: "var(--font-sans)",
-                  background: "rgba(20,74,52,0.75)",
-                  border: "0.5px solid rgba(148,241,190,0.3)",
-                  color: "#94f1be",
-                  backdropFilter: "blur(6px)",
-                }}
-              >
-                Sistema Sentinel
-              </div>
-              <div
-                className="text-[10px] tracking-wider opacity-0 group-hover:opacity-100 transition-all duration-300 translate-x-3 group-hover:translate-x-0"
-                style={{
-                  fontFamily: "var(--font-sans)",
-                  color: "rgba(240,234,216,0.6)",
-                }}
-              >
-                Detecta en minutos →
-              </div>
+            <p
+              className="text-[11px] tracking-[0.2em] uppercase mb-8"
+              style={{ fontFamily: "var(--font-sans)", color: "#0f7a4f" }}
+            >
+              Cómo protegemos tu territorio
+            </p>
+            <div className="flex flex-col sm:flex-row items-start gap-6 sm:gap-2">
+              {flow.map((step) => (
+                <div
+                  key={step.label}
+                  className="flex items-center gap-3 sm:flex-col sm:items-center sm:text-center sm:flex-1"
+                >
+                  <div
+                    className="w-12 h-12 rounded-full flex items-center justify-center shrink-0 sm:mb-3"
+                    style={{
+                      background: "rgba(15,122,79,0.08)",
+                      border: "0.5px solid rgba(15,122,79,0.3)",
+                    }}
+                  >
+                    <step.icon
+                      className="w-5 h-5"
+                      style={{ color: "#0f7a4f" }}
+                    />
+                  </div>
+                  <p
+                    className="text-[13px]"
+                    style={{
+                      fontFamily: "var(--font-heading)",
+                      fontWeight: 700,
+                      color: "rgba(26,24,18,0.85)",
+                    }}
+                  >
+                    {step.label}
+                  </p>
+                </div>
+              ))}
             </div>
           </div>
 
           {/* Right column */}
           <div className="lg:col-span-2 flex flex-col gap-4">
-            {/* Image 2 */}
+            {/* Monitoring card */}
             <div
-              className="relative rounded-lg overflow-hidden group flex-1 transition-all duration-700"
+              className="relative rounded-lg p-6 flex-1 overflow-hidden transition-all duration-700"
               style={{
-                minHeight: "180px",
+                background: "rgba(26,24,18,0.02)",
+                border: "0.5px solid rgba(26,24,18,0.07)",
                 opacity: isVisible ? 1 : 0,
                 transform: isVisible ? "translateY(0)" : "translateY(24px)",
                 transitionDelay: "620ms",
               }}
             >
-              <Image
-                src="/features-dd.jpg"
-                alt="Cobertura integral"
-                fill
-                sizes="(max-width: 1024px) 100vw, 40vw"
-                className="object-cover transition-transform duration-700 group-hover:scale-[1.05]"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0c0b09]/75 via-transparent to-transparent" />
-              <div
-                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                style={{ background: "rgba(15,122,79,0.05)" }}
-              />
-              <div className="absolute bottom-4 left-4">
-                <div
-                  className="px-3 py-1.5 rounded-sm text-[10px] tracking-widest uppercase"
-                  style={{
-                    fontFamily: "var(--font-sans)",
-                    background: "rgba(20,74,52,0.75)",
-                    border: "0.5px solid rgba(148,241,190,0.3)",
-                    color: "#94f1be",
-                    backdropFilter: "blur(6px)",
-                  }}
-                >
-                  Cobertura integral
-                </div>
+              <p
+                className="text-[11px] tracking-[0.2em] uppercase mb-4"
+                style={{
+                  fontFamily: "var(--font-sans)",
+                  color: "rgba(26,24,18,0.25)",
+                }}
+              >
+                Monitoreo constante de la zona
+              </p>
+              <div className="flex flex-col gap-3">
+                {monitoring.map((item) => (
+                  <div key={item.text} className="flex items-start gap-3">
+                    <item.icon
+                      className="w-4 h-4 mt-0.5 shrink-0"
+                      style={{ color: "#0f7a4f" }}
+                    />
+                    <p
+                      className="text-[12px] leading-relaxed"
+                      style={{
+                        fontFamily: "var(--font-sans)",
+                        fontWeight: 300,
+                        color: "rgba(26,24,18,0.5)",
+                      }}
+                    >
+                      {item.text}
+                    </p>
+                  </div>
+                ))}
               </div>
             </div>
 
