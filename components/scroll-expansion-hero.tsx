@@ -29,6 +29,11 @@ const ScrollExpandMedia = ({
 }: ScrollExpandMediaProps) => {
   const [scrollProgress, setScrollProgress] = useState(0);
   const [isMobileState, setIsMobileState] = useState(false);
+  // ponytail: the scroll-jack (resize-on-scroll, translating text) is a
+  // vestibular trigger and drives no real content change, only the box
+  // reaching its final size - collapse straight to that final state and
+  // skip the pinned scroll runway entirely for reduced-motion users.
+  const [reducedMotion, setReducedMotion] = useState(false);
   // ponytail: the expanded box used to grow toward a fixed pixel target
   // (~1550x800) tuned for ~1600px-wide screens. On anything wider than
   // that, the box stalled far short of the viewport while the dark
@@ -37,6 +42,15 @@ const ScrollExpandMedia = ({
   // viewport size lets the target grow with the screen instead.
   const [viewport, setViewport] = useState({ width: 1920, height: 1080 });
   const pinZoneRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const query = window.matchMedia("(prefers-reduced-motion: reduce)");
+    setReducedMotion(query.matches);
+    const onChange = (e: MediaQueryListEvent): void =>
+      setReducedMotion(e.matches);
+    query.addEventListener("change", onChange);
+    return () => query.removeEventListener("change", onChange);
+  }, []);
 
   useEffect(() => {
     // ponytail: mobile browsers fire "resize" when the address bar
@@ -62,6 +76,10 @@ const ScrollExpandMedia = ({
   // momentum, keyboard scroll and anchor-link navigation, and felt "stuck"
   // to real users. This never blocks native scrolling — it just reads it.
   useEffect(() => {
+    if (reducedMotion) {
+      setScrollProgress(1);
+      return;
+    }
     // ponytail: cache the pin zone's document-relative top once (on mount
     // and on resize) instead of calling getBoundingClientRect() on every
     // scroll frame. That call forces a synchronous layout flush right after
@@ -118,7 +136,7 @@ const ScrollExpandMedia = ({
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onResize);
     };
-  }, []);
+  }, [reducedMotion]);
 
   const showContent = scrollProgress >= 0.85;
   // ponytail: grow toward a share of the actual viewport instead of a
@@ -144,8 +162,14 @@ const ScrollExpandMedia = ({
           static video before any new content showed — the reported dead
           gap. 145vh keeps a real expand animation but cuts that idle
           pass-by by roughly a third. */}
-      <div ref={pinZoneRef} className="relative" style={{ height: "145vh" }}>
-        <div className="sticky top-0 h-[100dvh] overflow-hidden">
+      <div
+        ref={pinZoneRef}
+        className="relative"
+        style={{ height: reducedMotion ? "100dvh" : "145vh" }}
+      >
+        <div
+          className={`${reducedMotion ? "relative" : "sticky top-0"} h-[100dvh] overflow-hidden`}
+        >
           <motion.div
             className="absolute inset-0 z-0 h-full"
             initial={false}
