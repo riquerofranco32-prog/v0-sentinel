@@ -67,7 +67,6 @@ export function Problem() {
               opacity: isVisible ? 1 : 0,
             }}
           >
-            <span className="w-1.5 h-1.5 rounded-full bg-[#f16b6b]" />
             Emergencia territorial
           </div>
           <h2
