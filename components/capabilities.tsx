@@ -311,7 +311,7 @@ export function Capabilities() {
                   color: "rgba(26,24,18,0.92)",
                 }}
               >
-                Cobertura satelital y drones
+                Cobertura satelital, con drones en expansión
               </h3>
               <p
                 className="text-[12px] leading-relaxed"
@@ -321,8 +321,8 @@ export function Capabilities() {
                   color: "rgba(26,24,18,0.45)",
                 }}
               >
-                Red combinada de drones autónomos y satélites, siempre en vuelo
-                sobre el territorio.
+                Datos satelitales sobre todo el territorio hoy, sumando sensores
+                y drones autónomos de forma progresiva.
               </p>
             </div>
           </div>

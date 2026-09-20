@@ -8,12 +8,12 @@ const steps = [
     icon: Satellite,
     number: "01",
     title: "Identificación",
-    tagline: "Vigilancia permanente desde el aire",
+    tagline: "Vigilancia permanente desde el satélite",
     description:
-      "Drones autónomos y satélites capturan datos térmicos, ópticos e infrarrojos en tiempo real. Cobertura 24/7 sobre territorios de difícil acceso.",
+      "Datos satelitales, geoespaciales y de sensores en tiempo real. Cobertura 24/7 sobre territorios de difícil acceso, sumando sensores y drones de forma progresiva.",
     metrics: [
       { label: "Cobertura", value: "24/7" },
-      { label: "Resolución", value: "5cm" },
+      { label: "Fuentes", value: "Satelital" },
     ],
   },
   {
@@ -122,7 +122,7 @@ export function HowItWorks() {
               color: "rgba(26,24,18,0.3)",
             }}
           >
-            Cómo funciona el monitoreo con drones
+            Cómo funciona Sentinel Cloud
           </p>
           <h2
             style={{

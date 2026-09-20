@@ -101,7 +101,7 @@ export function Features() {
               opacity: isVisible ? 1 : 0,
             }}
           >
-            Monitoreo de incendios forestales con drones
+            Sentinel Cloud: inteligencia territorial para incendios forestales
           </p>
           <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
             <h2
@@ -128,8 +128,8 @@ export function Features() {
                 transitionDelay: "200ms",
               }}
             >
-              Una plataforma integral que combina drones, satélites y sensores
-              para el monitoreo ambiental,{" "}
+              Una plataforma integral que combina datos satelitales, información
+              geoespacial e IA, y suma sensores y drones de forma progresiva,{" "}
               <span style={{ color: "rgba(26,24,18,0.75)", fontWeight: 400 }}>
                 pasando de una acción reactiva a una acción preventiva.
               </span>
@@ -297,15 +297,12 @@ export function Features() {
                 <span style={{ color: "rgba(26,24,18,0.85)", fontWeight: 400 }}>
                   todo el país
                 </span>
-                . Drones autónomos, sensores IoT y satélites en red.
+                . Satélites, geoespacial e IA hoy, sensores y drones se suman de
+                forma progresiva.
               </p>
 
               {/* Status */}
               <div className="flex items-center gap-2 mt-5">
-                <div
-                  className="w-1.5 h-1.5 rounded-full"
-                  style={{ background: "#0f7a4f" }}
-                />
                 <span
                   className="text-[11px] font-light tracking-wide"
                   style={{
@@ -313,7 +310,7 @@ export function Features() {
                     color: "rgba(26,24,18,0.45)",
                   }}
                 >
-                  Sistema activo en territorio
+                  Sentinel Cloud en desarrollo y validación en territorio
                 </span>
               </div>
             </div>

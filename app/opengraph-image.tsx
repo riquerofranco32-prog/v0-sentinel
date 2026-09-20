@@ -80,7 +80,7 @@ export default async function Image() {
           display: "flex",
         }}
       >
-        Detección temprana de incendios con drones e IA
+        Detección temprana de incendios con satélites e IA
       </div>
     </div>,
     { ...size },

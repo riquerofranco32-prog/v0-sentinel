@@ -16,9 +16,10 @@ const inter = Inter({
 });
 
 const siteUrl = "https://www.sentineltech.com.ar";
-const title = "Monitoreo de Incendios Forestales con Drones e IA | Sentinel";
+const title =
+  "Sentinel Cloud: Detección Temprana de Incendios Forestales con IA | Sentinel";
 const description =
-  "Sentinel: la solución a incendios forestales. Monitoreo de incendios con drones autónomos e IA. Detección en minutos para Patagonia y Argentina.";
+  "Sentinel Cloud integra datos satelitales, información geoespacial e inteligencia artificial para detectar incendios forestales a tiempo, con expansión progresiva a sensores y drones. Patagonia y Argentina.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -28,16 +29,16 @@ export const metadata: Metadata = {
   },
   description,
   keywords: [
+    "Sentinel Cloud",
+    "detección temprana de incendios forestales",
+    "monitoreo satelital de incendios",
+    "inteligencia artificial incendios forestales",
     "monitoreo de incendios",
-    "monitoreo de incendios forestales",
     "solución a incendios forestales",
-    "soluciones a incendios",
-    "monitoreo con drones",
-    "incendios forestales",
-    "detección incendios forestales",
     "prevención incendios Patagonia",
+    "monitoreo geoespacial ambiental",
+    "monitoreo con drones",
     "drones monitoreo ambiental",
-    "inteligencia artificial incendios",
     "Sentinel Technologies Argentina",
     "monitoreo Río Negro",
     "wildfire detection Argentina",
@@ -115,10 +116,12 @@ const organizationJsonLd = {
   },
   knowsAbout: [
     "Wildfire Detection",
-    "Drone Technology",
+    "Satellite Data Analysis",
     "Artificial Intelligence",
+    "Geospatial Intelligence",
     "Environmental Monitoring",
     "Forest Fire Prevention",
+    "Drone Technology",
   ],
   award: ["ILAN Awards 2025", "Premio Sadosky 2025", "JIJE 2025"],
 };

@@ -77,7 +77,7 @@ export function CTA() {
             color: "rgba(26,24,18,0.62)",
           }}
         >
-          Drones autónomos con IA para detectar incendios antes de que sea
+          Satélites, geoespacial e IA para detectar incendios antes de que sea
           demasiado tarde.
         </p>
 

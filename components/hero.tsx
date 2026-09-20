@@ -5,8 +5,8 @@ import ScrollExpandMedia from "./scroll-expansion-hero";
 
 const stats = [
   { target: 8, suffix: "min", label: "Tiempo detección" },
-  { target: 300, suffix: "ha", label: "Cobertura por vuelo" },
-  { target: 98, suffix: "%", label: "Precisión de detección" },
+  { target: 24, suffix: "h", label: "Monitoreo continuo" },
+  { target: 98, suffix: "%", label: "Precisión objetivo" },
 ];
 
 const CLOUDINARY_CLOUD = "djqq3fxou";
@@ -100,7 +100,7 @@ export function Hero() {
         posterSrc="/aaa-poster.webp"
         bgImageSrc="/aaa.jpg"
         title="Detectamos incendios en minutos, no en horas"
-        date="Sistema activo · Patagonia"
+        date="Sentinel Cloud · Patagonia"
         scrollToExpand="Desplazate para expandir"
       >
         <div className="flex flex-col items-center text-center max-w-3xl mx-auto">
@@ -113,12 +113,13 @@ export function Hero() {
               color: "rgba(26,24,18,0.6)",
             }}
           >
-            Drones autónomos con cámaras térmicas e IA vigilan tu territorio las
-            24 horas y avisan a{" "}
+            Sentinel Cloud cruza datos satelitales, información geoespacial e IA
+            para vigilar tu territorio y avisar a{" "}
             <strong style={{ fontWeight: 500, color: "rgba(26,24,18,0.9)" }}>
               municipios, brigadas y grandes propietarios
             </strong>{" "}
-            apenas aparece un foco real, en la Patagonia.
+            apenas aparece un foco real, con sensores y drones sumándose de
+            forma progresiva.
           </p>
 
           <div className="flex items-center gap-6 sm:gap-10 mt-10">
