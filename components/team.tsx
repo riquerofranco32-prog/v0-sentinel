@@ -6,27 +6,35 @@ import { Linkedin } from "lucide-react";
 
 const teamMembers = [
   {
-    image: "/GANAMOS-3.jpg",
+    image: "/team-lautaro.jpg",
     name: "Lautaro Silva",
+    degree: "Ingeniero Industrial",
     role: "CEO | Founder",
+    bio: "Liderazgo en estrategia, desarrollo de productos y asociaciones.",
     linkedin: "https://www.linkedin.com/in/lautaro-silva-0188781a2/",
   },
   {
-    image: "/GANAMOS-2.jpg",
+    image: "/team-franco.jpg",
     name: "Franco Riquero",
+    degree: "Tec. Elec | Ingeniero Industrial",
     role: "CDO | Co-Founder",
+    bio: "Sensores, IA, datos y hoja de ruta de I+D.",
     linkedin: "https://www.linkedin.com/in/franco-riquero-117492355/",
   },
   {
-    image: "/GANAMOS-1.jpg",
+    image: "/team-alexis.jpg",
     name: "Alexis Ramundo",
+    degree: "Tec. Elec | Ingeniero en Sistemas",
     role: "CTO | Co-Founder",
+    bio: "Liderazgo técnico. Desarrollo de software y gestión de sistemas.",
     linkedin: "https://www.linkedin.com/in/alexisramundo-dev/",
   },
   {
-    image: "/GANAMOS.jpg",
+    image: "/team-martin.jpg",
     name: "Martín Toledano",
+    degree: "Tec. Elec | Ingeniero Industrial",
     role: "CFO | Co-Founder",
+    bio: "Modelo de negocio, precios y asociaciones industriales.",
     linkedin: "https://www.linkedin.com/in/martin-toledano-804a69264/",
   },
 ];
@@ -85,27 +93,19 @@ export function Team() {
           {teamMembers.map((member, i) => (
             <div
               key={member.name}
-              className="transition-all duration-700"
+              className="group flex flex-col overflow-hidden rounded-lg transition-all duration-700 hover:-translate-y-1.5"
               style={{
+                background: "rgba(26,24,18,0.02)",
+                border: "0.5px solid rgba(26,24,18,0.08)",
                 opacity: isVisible ? 1 : 0,
-                transform: isVisible
-                  ? `translateY(0) rotate(${i % 2 === 0 ? "-0.6deg" : "0.6deg"})`
-                  : "translateY(24px) rotate(0deg)",
+                transform: isVisible ? "translateY(0)" : "translateY(24px)",
                 transitionDelay: `${i * 100}ms`,
               }}
             >
-              <a
-                href={member.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group relative flex overflow-hidden rounded-lg transition-all duration-500 shadow-[0_20px_40px_-20px_rgba(26,24,18,0.2)] hover:-translate-y-1.5 hover:scale-[1.02] hover:rotate-0 hover:shadow-[0_20px_50px_-15px_rgba(15,122,79,0.35)]"
-                style={{
-                  aspectRatio: "9/16",
-                  border: "0.5px solid rgba(26,24,18,0.1)",
-                }}
+              <div
+                className="relative w-full overflow-hidden"
+                style={{ aspectRatio: "4/5" }}
               >
-                {/* member.image is a pre-designed card (name, role, bio
-                  already baked in) — shown full, no HTML caption on top */}
                 <Image
                   src={member.image}
                   alt={`${member.name}, ${member.role}`}
@@ -113,27 +113,64 @@ export function Team() {
                   sizes="(max-width: 1024px) 45vw, 22vw"
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
                 />
-                <div
-                  className="absolute inset-x-0 bottom-0 flex items-center justify-center py-3.5 transition-all duration-300"
+              </div>
+
+              <div className="flex flex-1 flex-col p-4">
+                <h3
+                  className="text-[15px]"
                   style={{
-                    background:
-                      "linear-gradient(to bottom, transparent 0%, rgba(12,11,9,0.85) 80%)",
+                    fontFamily: "var(--font-heading)",
+                    fontWeight: 700,
+                    color: "rgba(26,24,18,0.92)",
                   }}
                 >
-                  <span
-                    className="inline-flex items-center gap-1.5 px-3 py-1 rounded-sm text-[11px] font-normal transition-all duration-200 group-hover:bg-[#0f7a4f] group-hover:text-[#faf7f0]"
-                    style={{
-                      fontFamily: "var(--font-sans)",
-                      color: "#94f1be",
-                      background: "rgba(148,241,190,0.12)",
-                      border: "0.5px solid rgba(148,241,190,0.3)",
-                    }}
-                  >
-                    <Linkedin className="w-3 h-3" />
-                    LinkedIn
-                  </span>
-                </div>
-              </a>
+                  {member.name}
+                </h3>
+                <p
+                  className="text-[11px] mt-0.5"
+                  style={{
+                    fontFamily: "var(--font-sans)",
+                    color: "rgba(26,24,18,0.4)",
+                  }}
+                >
+                  {member.degree}
+                </p>
+                <p
+                  className="text-[12px] mt-2 font-medium"
+                  style={{
+                    fontFamily: "var(--font-sans)",
+                    color: "#0f7a4f",
+                  }}
+                >
+                  {member.role}
+                </p>
+                <p
+                  className="text-[12px] leading-relaxed mt-2 flex-1"
+                  style={{
+                    fontFamily: "var(--font-sans)",
+                    fontWeight: 300,
+                    color: "rgba(26,24,18,0.5)",
+                  }}
+                >
+                  {member.bio}
+                </p>
+
+                <a
+                  href={member.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-4 inline-flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-sm text-[11px] font-medium transition-all duration-200 self-start"
+                  style={{
+                    fontFamily: "var(--font-sans)",
+                    color: "#0f7a4f",
+                    background: "rgba(15,122,79,0.08)",
+                    border: "0.5px solid rgba(15,122,79,0.3)",
+                  }}
+                >
+                  <Linkedin className="w-3 h-3" />
+                  LinkedIn
+                </a>
+              </div>
             </div>
           ))}
         </div>
