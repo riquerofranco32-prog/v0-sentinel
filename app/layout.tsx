@@ -86,7 +86,7 @@ const organizationJsonLd = {
   "@type": "Organization",
   name: "Sentinel Technologies",
   url: siteUrl,
-  logo: `${siteUrl}/logoo.png`,
+  logo: `${siteUrl}/apple-icon.png`,
   description,
   areaServed: [
     { "@type": "AdministrativeArea", name: "Neuquén" },
