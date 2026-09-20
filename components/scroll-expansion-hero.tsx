@@ -154,7 +154,7 @@ const ScrollExpandMedia = ({
           >
             <Image
               src={bgImageSrc}
-              alt="Background"
+              alt=""
               fill
               priority
               sizes="100vw"

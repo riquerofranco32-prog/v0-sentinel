@@ -104,7 +104,8 @@ export function Problem() {
               >
                 No es solo bosque lo que se quema.{" "}
                 <span style={{ color: "rgba(26,24,18,0.85)", fontWeight: 400 }}>
-                  Más de 1 millón de hectáreas perdidas en Corrientes.
+                  Más de 1 millón de hectáreas perdidas en incendios forestales
+                  en Argentina en los últimos años.
                 </span>{" "}
                 Bosques milenarios desapareciendo en la Patagonia. Detrás de
                 cada hectárea hay un hogar, una fuente de trabajo y una
