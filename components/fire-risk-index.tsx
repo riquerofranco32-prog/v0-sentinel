@@ -187,7 +187,7 @@ export async function FireRiskIndex() {
         </p>
 
         <div
-          className="max-w-md mx-auto mb-10 rounded-lg p-4"
+          className="max-w-xl mx-auto mb-10 rounded-lg p-4"
           style={{ border: "0.5px solid rgba(26,24,18,0.07)" }}
         >
           <PatagoniaRiskMapLazy points={points} />

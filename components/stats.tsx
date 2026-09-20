@@ -3,41 +3,41 @@
 import { useEffect, useRef, useState } from "react";
 import { Flame, Clock, Trees, Trophy, Star } from "lucide-react";
 
+// ponytail: single accent for every stat — the per-icon brown/green split
+// here used to carry no meaning (same metric type, different color for no
+// reason), which read as arbitrary rather than as a signal.
+const ACCENT = "#0f7a4f";
+
 const stats = [
   {
     icon: Flame,
     value: 98,
     suffix: "%",
     label: "Precisión en detección",
-    accent: "#8a5a1f",
   },
   {
     icon: Clock,
     value: 60,
     suffix: "%",
     label: "Reducción en tiempo de respuesta",
-    accent: "#0f7a4f",
   },
   {
     icon: Trees,
     value: 300,
     suffix: " ha",
     label: "Cobertura por vuelo",
-    accent: "#0f7a4f",
   },
   {
     icon: Trophy,
     value: 700,
     suffix: "+",
     label: "Propuestas superadas (BNA 2025)",
-    accent: "#0f7a4f",
   },
   {
     icon: Star,
     value: 11,
     suffix: "",
     label: "Reconocimientos obtenidos",
-    accent: "#8a5a1f",
   },
 ];
 
@@ -133,11 +133,11 @@ export function Stats() {
               <div
                 className="w-10 h-10 rounded-lg flex items-center justify-center mb-5 transition-transform duration-300 group-hover:scale-110"
                 style={{
-                  background: `${stat.accent}15`,
-                  border: `0.5px solid ${stat.accent}30`,
+                  background: `${ACCENT}15`,
+                  border: `0.5px solid ${ACCENT}30`,
                 }}
               >
-                <stat.icon className="w-5 h-5" style={{ color: stat.accent }} />
+                <stat.icon className="w-5 h-5" style={{ color: ACCENT }} />
               </div>
 
               {/* Number */}
@@ -149,7 +149,7 @@ export function Stats() {
                   value={stat.value}
                   suffix={stat.suffix}
                   isVisible={isVisible}
-                  accent={stat.accent}
+                  accent={ACCENT}
                 />
               </div>
 
@@ -168,7 +168,7 @@ export function Stats() {
               {/* Bottom accent */}
               <div
                 className="mt-5 w-8 h-px transition-all duration-300 group-hover:w-16"
-                style={{ background: stat.accent, opacity: 0.4 }}
+                style={{ background: ACCENT, opacity: 0.4 }}
               />
             </div>
           ))}

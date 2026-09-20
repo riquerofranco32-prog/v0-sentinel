@@ -91,7 +91,7 @@ export function Footer() {
             fontFamily: "var(--font-heading)",
             fontWeight: 800,
             fontSize: "18vw",
-            color: "rgba(26,24,18,0.02)",
+            color: "rgba(26,24,18,0.05)",
             letterSpacing: "0.1em",
             whiteSpace: "nowrap",
           }}

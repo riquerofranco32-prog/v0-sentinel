@@ -142,14 +142,11 @@ export function Hero() {
           <div className="flex flex-col sm:flex-row gap-3 mt-10">
             <a
               href="#nosotros"
-              className="inline-flex items-center gap-2 px-7 py-3 rounded-sm text-[13px] font-medium transition-all hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98]"
+              className="inline-flex items-center gap-2 px-7 py-3 rounded-sm text-[13px] font-medium transition-all border border-[rgba(15,122,79,0.3)] bg-[rgba(15,122,79,0.1)] text-[#0f7a4f] hover:bg-[#0f7a4f] hover:text-[#faf7f0] hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98]"
               style={{
                 fontFamily: "var(--font-sans)",
                 fontWeight: 500,
                 letterSpacing: "0.04em",
-                background: "rgba(15,122,79,0.1)",
-                border: "0.5px solid rgba(15,122,79,0.3)",
-                color: "#0f7a4f",
               }}
             >
               Conocer la plataforma
