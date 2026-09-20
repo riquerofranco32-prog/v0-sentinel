@@ -53,10 +53,13 @@ export default function Home() {
   return (
     <>
       <ScrollProgress />
-      <SectionDots />
       <header>
         <Navbar />
       </header>
+      {/* ponytail: rendered after the header, not before, so keyboard tab
+          order reaches the real nav before this fixed floating aid - it's
+          visually independent of DOM position either way. */}
+      <SectionDots />
       <main id="main-content" className="min-h-screen bg-[#faf7f0]">
         <Hero />
         <Problem />
