@@ -48,9 +48,11 @@ export function HowItWorks() {
   const [isVisible, setIsVisible] = useState(false);
   const [activeStep, setActiveStep] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
-  const [isTabHidden, setIsTabHidden] = useState(
-    () => typeof document !== "undefined" && document.hidden,
-  );
+  // ponytail: starts false to match SSR (no `document` on the server) —
+  // syncing the real value happens in the effect below, after hydration,
+  // instead of in the initializer, which caused a hydration mismatch for
+  // anyone who opened the page in a background tab.
+  const [isTabHidden, setIsTabHidden] = useState(false);
   const [progressKey, setProgressKey] = useState(0);
   const sectionRef = useRef<HTMLElement>(null);
 
@@ -72,6 +74,7 @@ export function HowItWorks() {
   // existing "left viewport" signal to reuse without adding a second observer.
   useEffect(() => {
     const handleVisibilityChange = () => setIsTabHidden(document.hidden);
+    handleVisibilityChange();
     document.addEventListener("visibilitychange", handleVisibilityChange);
     return () =>
       document.removeEventListener("visibilitychange", handleVisibilityChange);
