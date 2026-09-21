@@ -1,4 +1,4 @@
-import { ArrowUpRight, Flame, Newspaper } from "lucide-react";
+import { ArrowUpRight, Flame } from "lucide-react";
 
 const QUERY = "incendios forestales Argentina";
 const MAX_ITEMS = 6;
@@ -50,11 +50,13 @@ function relativeTime(publishedAt: string): string {
   return `hace ${Math.round(hours / 24)} d`;
 }
 
+const ACCENTS = ["#b83a3a", "#8a5a1f", "#0f7a4f"];
+
 export async function WildfireNews() {
   const news = await fetchWildfireNews();
 
   // ponytail: no key or feed unreachable -> hide the section rather than
-  // show broken/empty cards.
+  // show broken/empty rows.
   if (!news || news.length === 0) return null;
 
   return (
@@ -62,9 +64,9 @@ export async function WildfireNews() {
       className="relative py-20 lg:py-28"
       style={{ background: "#faf7f0" }}
     >
-      <div className="max-w-5xl mx-auto px-6 lg:px-10">
+      <div className="max-w-4xl mx-auto px-6 lg:px-10">
         <h2
-          className="text-3xl sm:text-4xl lg:text-5xl mb-10 max-w-2xl flex items-center gap-3"
+          className="text-3xl sm:text-4xl lg:text-5xl mb-4 max-w-2xl"
           style={{
             fontFamily: "var(--font-heading)",
             fontWeight: 800,
@@ -72,97 +74,110 @@ export async function WildfireNews() {
             lineHeight: 1.1,
           }}
         >
-          <Newspaper
-            className="w-7 h-7 shrink-0 hidden sm:block"
-            style={{ color: "#0f7a4f" }}
-          />
-          Noticias sobre incendios forestales, al día.
+          Noticias sobre <span style={{ color: "#0f7a4f" }}>incendios</span>{" "}
+          forestales, al día.
         </h2>
+        <p
+          className="text-[13px] mb-12 max-w-xl"
+          style={{
+            fontFamily: "var(--font-sans)",
+            fontWeight: 300,
+            color: "rgba(26,24,18,0.4)",
+          }}
+        >
+          Cobertura reciente de otros medios sobre el problema que Sentinel
+          existe para resolver.
+        </p>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {news.map((item, i) => (
-            <a
-              key={i}
-              href={item.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group flex flex-col overflow-hidden rounded-lg transition-all duration-300 hover:-translate-y-0.5"
-              style={{
-                background: "rgba(26,24,18,0.02)",
-                border: "0.5px solid rgba(26,24,18,0.07)",
-              }}
-            >
-              <div
-                className="relative overflow-hidden"
+        <div>
+          {news.map((item, i) => {
+            const accent = ACCENTS[i % ACCENTS.length];
+            return (
+              <a
+                key={i}
+                href={item.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center gap-5 py-5"
                 style={{
-                  aspectRatio: "16/9",
-                  background: `radial-gradient(circle at 30% 30%, ${
-                    [
-                      "rgba(184,58,58,0.16)",
-                      "rgba(138,90,31,0.16)",
-                      "rgba(15,122,79,0.14)",
-                    ][i % 3]
-                  }, rgba(26,24,18,0.06))`,
+                  borderBottom:
+                    i < news.length - 1
+                      ? "0.5px solid rgba(26,24,18,0.08)"
+                      : "none",
                 }}
               >
-                {item.image ? (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img
-                    src={item.image}
-                    alt={item.title}
-                    loading="lazy"
-                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                ) : (
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <Flame
-                      className="w-8 h-8"
-                      style={{
-                        color: ["#b83a3a", "#8a5a1f", "#0f7a4f"][i % 3],
-                        opacity: 0.85,
-                      }}
-                    />
-                  </div>
-                )}
+                <span
+                  className="hidden sm:block shrink-0 tabular-nums"
+                  style={{
+                    fontFamily: "var(--font-heading)",
+                    fontWeight: 800,
+                    fontSize: "22px",
+                    color: "rgba(26,24,18,0.15)",
+                    width: "36px",
+                  }}
+                >
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+
                 <div
-                  className="absolute inset-0"
+                  className="relative shrink-0 overflow-hidden rounded-md"
                   style={{
-                    background:
-                      "linear-gradient(to top, rgba(12,11,9,0.9) 0%, transparent 55%)",
+                    width: "88px",
+                    height: "64px",
+                    background: `radial-gradient(circle at 30% 30%, ${accent}22, rgba(26,24,18,0.06))`,
                   }}
-                />
+                >
+                  {item.image ? (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img
+                      src={item.image}
+                      alt={item.title}
+                      loading="lazy"
+                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    />
+                  ) : (
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <Flame
+                        className="w-5 h-5"
+                        style={{ color: accent, opacity: 0.85 }}
+                      />
+                    </div>
+                  )}
+                </div>
+
+                <div className="flex-1 min-w-0">
+                  <p
+                    className="text-[14px] sm:text-[15px] leading-snug line-clamp-2 transition-colors group-hover:text-[#0f7a4f]"
+                    style={{
+                      fontFamily: "var(--font-sans)",
+                      fontWeight: 500,
+                      color: "rgba(26,24,18,0.85)",
+                    }}
+                  >
+                    {item.title}
+                  </p>
+                  <p
+                    className="text-[11px] mt-1.5"
+                    style={{
+                      fontFamily: "var(--font-sans)",
+                      color: "rgba(26,24,18,0.35)",
+                    }}
+                  >
+                    {item.source} · {relativeTime(item.publishedAt)}
+                  </p>
+                </div>
+
                 <ArrowUpRight
-                  className="absolute top-3 right-3 w-4 h-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                  style={{ color: "rgba(255,255,255,0.85)" }}
+                  className="w-4 h-4 shrink-0 transition-all duration-200 opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                  style={{ color: "rgba(26,24,18,0.4)" }}
                 />
-              </div>
-              <div className="p-4 flex-1 flex flex-col justify-between">
-                <p
-                  className="text-[14px] leading-snug mb-3 line-clamp-3 transition-colors group-hover:text-[rgba(26,24,18,0.95)]"
-                  style={{
-                    fontFamily: "var(--font-sans)",
-                    fontWeight: 400,
-                    color: "rgba(26,24,18,0.8)",
-                  }}
-                >
-                  {item.title}
-                </p>
-                <p
-                  className="text-[11px]"
-                  style={{
-                    fontFamily: "var(--font-sans)",
-                    color: "rgba(26,24,18,0.3)",
-                  }}
-                >
-                  {item.source} · {relativeTime(item.publishedAt)}
-                </p>
-              </div>
-            </a>
-          ))}
+              </a>
+            );
+          })}
         </div>
 
         <p
-          className="text-[10px] mt-6"
+          className="text-[10px] mt-8"
           style={{
             fontFamily: "var(--font-sans)",
             color: "rgba(26,24,18,0.42)",

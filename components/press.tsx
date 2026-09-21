@@ -1,59 +1,111 @@
-import { ArrowUpRight, Newspaper } from "lucide-react";
+"use client";
+
+import { useRef } from "react";
+import { ArrowLeft, ArrowRight, ArrowUpRight, Newspaper } from "lucide-react";
 import { pressMentions } from "@/lib/press-mentions";
 import { formatDate } from "@/lib/format-date";
 
 export function Press() {
-  const [featured, ...rest] = pressMentions;
+  const trackRef = useRef<HTMLDivElement>(null);
+
+  const scrollByCard = (dir: 1 | -1) => {
+    trackRef.current?.scrollBy({ left: dir * 380, behavior: "smooth" });
+  };
 
   return (
     <section
       id="prensa"
-      className="relative py-20 lg:py-24"
+      className="relative py-20 lg:py-24 overflow-hidden"
       style={{ background: "#faf7f0" }}
     >
       <div className="max-w-6xl mx-auto px-6 lg:px-10">
-        <h2
-          className="text-3xl sm:text-4xl lg:text-5xl mb-4 max-w-2xl flex items-center gap-3"
-          style={{
-            fontFamily: "var(--font-heading)",
-            fontWeight: 800,
-            color: "rgba(26,24,18,0.92)",
-            lineHeight: 1.1,
-          }}
-        >
-          <Newspaper
-            className="w-7 h-7 shrink-0 hidden sm:block"
-            style={{ color: "#0f7a4f" }}
-          />
-          Dónde <span style={{ color: "#0f7a4f" }}>salimos en los medios.</span>
-        </h2>
-        <p
-          className="text-[13px] mb-10 max-w-xl"
-          style={{
-            fontFamily: "var(--font-sans)",
-            fontWeight: 300,
-            color: "rgba(26,24,18,0.4)",
-          }}
-        >
-          Medios y organizaciones que ya cubrieron el proyecto.
-        </p>
+        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-10">
+          <div>
+            <h2
+              className="text-3xl sm:text-4xl lg:text-5xl mb-4 max-w-2xl flex items-center gap-3"
+              style={{
+                fontFamily: "var(--font-heading)",
+                fontWeight: 800,
+                color: "rgba(26,24,18,0.92)",
+                lineHeight: 1.1,
+              }}
+            >
+              <Newspaper
+                className="w-7 h-7 shrink-0 hidden sm:block"
+                style={{ color: "#0f7a4f" }}
+              />
+              Dónde{" "}
+              <span style={{ color: "#0f7a4f" }}>salimos en los medios.</span>
+            </h2>
+            <p
+              className="text-[13px] max-w-xl"
+              style={{
+                fontFamily: "var(--font-sans)",
+                fontWeight: 300,
+                color: "rgba(26,24,18,0.4)",
+              }}
+            >
+              Medios y organizaciones que ya cubrieron el proyecto.
+            </p>
+          </div>
 
-        <div className="grid md:grid-cols-2 gap-4">
-          <PressCard mention={featured} large />
-          <div className="grid sm:grid-cols-2 gap-4">
-            {rest.slice(0, 4).map((m, i) => (
-              <PressCard key={i} mention={m} />
-            ))}
+          <div className="hidden sm:flex items-center gap-2 shrink-0">
+            <button
+              type="button"
+              onClick={() => scrollByCard(-1)}
+              aria-label="Anterior"
+              className="w-9 h-9 rounded-full flex items-center justify-center transition-all hover:-translate-y-0.5 active:scale-95"
+              style={{
+                border: "0.5px solid rgba(26,24,18,0.15)",
+                color: "rgba(26,24,18,0.6)",
+              }}
+            >
+              <ArrowLeft className="w-4 h-4" />
+            </button>
+            <button
+              type="button"
+              onClick={() => scrollByCard(1)}
+              aria-label="Siguiente"
+              className="w-9 h-9 rounded-full flex items-center justify-center transition-all hover:-translate-y-0.5 active:scale-95"
+              style={{
+                border: "0.5px solid rgba(26,24,18,0.15)",
+                color: "rgba(26,24,18,0.6)",
+              }}
+            >
+              <ArrowRight className="w-4 h-4" />
+            </button>
           </div>
         </div>
+      </div>
 
-        {rest.length > 4 && (
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
-            {rest.slice(4).map((m, i) => (
-              <PressCard key={i} mention={m} />
-            ))}
-          </div>
-        )}
+      <div className="relative">
+        <div
+          ref={trackRef}
+          className="scrollbar-hide flex gap-4 overflow-x-auto px-6 lg:px-10"
+          style={{
+            scrollSnapType: "x mandatory",
+            scrollPadding: "0 24px",
+          }}
+        >
+          {pressMentions.map((m, i) => (
+            <PressCard key={i} mention={m} featured={i === 0} />
+          ))}
+          {/* trailing spacer so the last card can snap fully into view */}
+          <div className="shrink-0 w-2 lg:w-6" aria-hidden />
+        </div>
+
+        <div
+          className="pointer-events-none absolute inset-y-0 left-0 w-10 sm:w-24"
+          style={{
+            background: "linear-gradient(to right, #faf7f0, transparent)",
+          }}
+        />
+        <div
+          className="pointer-events-none absolute inset-y-0 right-0 w-10 sm:w-24"
+          style={{
+            background: "linear-gradient(to left, #faf7f0, transparent)",
+          }}
+        />
       </div>
     </section>
   );
@@ -61,25 +113,27 @@ export function Press() {
 
 function PressCard({
   mention,
-  large = false,
+  featured = false,
 }: {
   mention: (typeof pressMentions)[number];
-  large?: boolean;
+  featured?: boolean;
 }) {
   return (
     <a
       href={mention.url}
       target="_blank"
       rel="noopener noreferrer"
-      className="group relative flex flex-col overflow-hidden rounded-lg border-[0.5px] border-[rgba(26,24,18,0.08)] transition-all duration-300 hover:-translate-y-1 hover:border-[rgba(15,122,79,0.3)]"
+      className="group relative shrink-0 flex flex-col overflow-hidden rounded-lg border-[0.5px] border-[rgba(26,24,18,0.08)] transition-all duration-300 hover:-translate-y-1 hover:border-[rgba(15,122,79,0.3)]"
       style={{
         background: "rgba(26,24,18,0.02)",
+        width: featured ? "min(85vw, 460px)" : "min(75vw, 320px)",
+        scrollSnapAlign: "start",
       }}
     >
       <div
         className="relative w-full overflow-hidden"
         style={{
-          aspectRatio: large ? "16/9" : "4/3",
+          aspectRatio: featured ? "16/10" : "4/3",
           background:
             "linear-gradient(135deg, rgba(15,122,79,0.1), rgba(26,24,18,0.05))",
         }}
@@ -130,7 +184,7 @@ function PressCard({
       <div className="p-4 flex-1 flex flex-col justify-between">
         <p
           className={
-            large
+            featured
               ? "text-[16px] leading-snug line-clamp-3"
               : "text-[13px] leading-snug line-clamp-2"
           }
