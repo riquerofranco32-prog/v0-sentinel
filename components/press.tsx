@@ -54,7 +54,7 @@ export function Press() {
               type="button"
               onClick={() => scrollByCard(-1)}
               aria-label="Anterior"
-              className="w-9 h-9 rounded-full flex items-center justify-center transition-all hover:-translate-y-0.5 active:scale-95"
+              className="w-10 h-10 rounded-full flex items-center justify-center transition-all hover:-translate-y-0.5 active:scale-95"
               style={{
                 border: "0.5px solid rgba(26,24,18,0.15)",
                 color: "rgba(26,24,18,0.6)",
@@ -66,7 +66,7 @@ export function Press() {
               type="button"
               onClick={() => scrollByCard(1)}
               aria-label="Siguiente"
-              className="w-9 h-9 rounded-full flex items-center justify-center transition-all hover:-translate-y-0.5 active:scale-95"
+              className="w-10 h-10 rounded-full flex items-center justify-center transition-all hover:-translate-y-0.5 active:scale-95"
               style={{
                 border: "0.5px solid rgba(26,24,18,0.15)",
                 color: "rgba(26,24,18,0.6)",

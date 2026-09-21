@@ -302,11 +302,20 @@ export function HowItWorks() {
                 style={{
                   background: "#0f7a4f",
                   transformOrigin: "left",
-                  animation:
-                    isVisible && !isPaused && !isTabHidden
-                      ? `progressBar ${STEP_DURATION}ms linear forwards`
-                      : "none",
-                  transform: isPaused || isTabHidden ? undefined : "scaleX(0)",
+                  // ponytail: pause via the animation shorthand's play-state
+                  // (freezes in place) instead of toggling animation-name to
+                  // "none" — removing the animation entirely dropped the
+                  // inline transform too, so hovering to pause snapped the
+                  // bar to full width instead of holding its progress.
+                  // Play-state is folded into the shorthand rather than set
+                  // via the separate animationPlayState property, since React
+                  // warns about mixing a shorthand with its longhand.
+                  animation: isVisible
+                    ? `progressBar ${STEP_DURATION}ms linear forwards ${
+                        isPaused || isTabHidden ? "paused" : "running"
+                      }`
+                    : "none",
+                  transform: isVisible ? undefined : "scaleX(0)",
                 }}
               />
             </div>

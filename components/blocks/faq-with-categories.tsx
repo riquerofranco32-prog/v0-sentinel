@@ -93,7 +93,7 @@ export function FaqSectionWithCategories({
                   setActiveCategory(cat);
                   setOpenIndex(null);
                 }}
-                className="px-4 py-1.5 rounded-full text-xs transition-all duration-200"
+                className="px-4 py-2 rounded-full text-xs transition-all duration-200"
                 style={{
                   fontFamily: "var(--font-sans)",
                   border: `0.5px solid ${active ? "rgba(15,122,79,0.4)" : "rgba(26,24,18,0.1)"}`,
