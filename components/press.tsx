@@ -1,14 +1,6 @@
 import { ArrowUpRight, Newspaper } from "lucide-react";
 import { pressMentions } from "@/lib/press-mentions";
-
-function formatDate(date: string): string {
-  if (!date) return "";
-  return new Date(date).toLocaleDateString("es-AR", {
-    day: "numeric",
-    month: "short",
-    year: "numeric",
-  });
-}
+import { formatDate } from "@/lib/format-date";
 
 export function Press() {
   const [featured, ...rest] = pressMentions;

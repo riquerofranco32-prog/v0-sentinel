@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { blogPosts } from "@/lib/blog-posts";
+import { formatDate } from "@/lib/format-date";
 
 export function BlogTeaser() {
   const [isVisible, setIsVisible] = useState(false);
@@ -102,10 +103,7 @@ export function BlogTeaser() {
                       color: "rgba(15,122,79,0.8)",
                     }}
                   >
-                    {new Date(posts[0].publishedAt).toLocaleDateString(
-                      "es-AR",
-                      { day: "numeric", month: "short", year: "numeric" },
-                    )}
+                    {formatDate(posts[0].publishedAt)}
                   </p>
                   <h3
                     className="text-xl mb-2.5 leading-snug transition-colors duration-200 group-hover:text-[#0f7a4f]"
@@ -164,11 +162,7 @@ export function BlogTeaser() {
                     color: "rgba(15,122,79,0.8)",
                   }}
                 >
-                  {new Date(post.publishedAt).toLocaleDateString("es-AR", {
-                    day: "numeric",
-                    month: "short",
-                    year: "numeric",
-                  })}
+                  {formatDate(post.publishedAt)}
                 </p>
                 <h3
                   className="text-base mb-1.5 leading-snug transition-colors duration-200 group-hover:text-[#0f7a4f]"

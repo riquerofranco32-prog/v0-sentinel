@@ -1,17 +1,13 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import ScrollExpandMedia from "./scroll-expansion-hero";
+import SmoothScrollHero from "@/components/ui/smooth-scroll-hero";
 
 const stats = [
   { target: 8, suffix: "min", label: "Tiempo detección" },
   { target: 24, suffix: "h", label: "Monitoreo continuo" },
   { target: 98, suffix: "%", label: "Precisión objetivo" },
 ];
-
-const CLOUDINARY_CLOUD = "djqq3fxou";
-const VIDEO_PUBLIC_ID = "13851-252799027_gbm6no";
-const VIDEO_URL = `https://res.cloudinary.com/${CLOUDINARY_CLOUD}/video/upload/q_auto:low,w_1280,vc_h264,fl_progressive/${VIDEO_PUBLIC_ID}.mp4`;
 
 function useCountUp(target: number, isVisible: boolean, duration = 1800) {
   const [count, setCount] = useState(0);
@@ -68,11 +64,11 @@ function AnimatedStat({
         style={{
           fontFamily: "var(--font-heading)",
           fontSize: "clamp(1.5rem, 3.5vw, 2rem)",
-          color: "rgba(26,24,18,0.95)",
+          color: "rgba(240,234,216,0.95)",
         }}
       >
         {count}
-        <span style={{ color: "#0f7a4f" }}> {suffix}</span>
+        <span style={{ color: "#94f1be" }}> {suffix}</span>
       </div>
       <div
         className="mt-1"
@@ -82,7 +78,7 @@ function AnimatedStat({
           fontWeight: 400,
           letterSpacing: "0.1em",
           textTransform: "uppercase",
-          color: "rgba(26,24,18,0.4)",
+          color: "rgba(240,234,216,0.55)",
         }}
       >
         {label}
@@ -94,28 +90,53 @@ function AnimatedStat({
 export function Hero() {
   return (
     <div id="inicio">
-      <ScrollExpandMedia
-        mediaType="video"
-        mediaSrc={VIDEO_URL}
-        posterSrc="/aaa-poster.webp"
-        bgImageSrc="/aaa.jpg"
-        title="Detectamos incendios en minutos, no en horas"
-        date="Sentinel Cloud · Patagonia"
-        scrollToExpand="Desplazate para expandir"
+      <SmoothScrollHero
+        scrollHeight={900}
+        desktopImage="/hero-forest.avif"
+        mobileImage="/hero-forest.avif"
       >
         <div className="flex flex-col items-center text-center max-w-3xl mx-auto">
+          <div
+            className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-[11px] font-medium tracking-wider uppercase mb-6"
+            style={{
+              background: "rgba(12,11,9,0.6)",
+              border: "0.5px solid rgba(148,241,190,0.3)",
+              backdropFilter: "blur(8px)",
+              color: "#94f1be",
+              fontFamily: "var(--font-sans)",
+            }}
+          >
+            <span className="w-1.5 h-1.5 rounded-full bg-[#94f1be]" />
+            Sentinel Cloud · Patagonia
+          </div>
+
+          <h1
+            className="font-extrabold tracking-[-0.03em] text-4xl sm:text-5xl lg:text-6xl mb-6"
+            style={{
+              fontFamily: "var(--font-heading)",
+              lineHeight: 1.05,
+              color: "rgba(240,234,216,0.95)",
+            }}
+          >
+            Detectamos{" "}
+            <span style={{ color: "#94f1be" }}>incendios en minutos</span>, no
+            en horas
+          </h1>
+
           <p
             style={{
               fontFamily: "var(--font-sans)",
               fontWeight: 300,
               fontSize: "16px",
               lineHeight: 1.75,
-              color: "rgba(26,24,18,0.6)",
+              color: "rgba(240,234,216,0.75)",
             }}
           >
             Sentinel Cloud cruza datos satelitales, información geoespacial e IA
             para vigilar tu territorio y avisar a{" "}
-            <strong style={{ fontWeight: 500, color: "rgba(26,24,18,0.9)" }}>
+            <strong
+              style={{ fontWeight: 500, color: "rgba(240,234,216,0.98)" }}
+            >
               municipios, brigadas y grandes propietarios
             </strong>{" "}
             apenas aparece un foco real, con sensores y drones sumándose de
@@ -128,7 +149,7 @@ export function Hero() {
                 {i > 0 && (
                   <div
                     className="w-px self-stretch"
-                    style={{ background: "rgba(26,24,18,0.1)" }}
+                    style={{ background: "rgba(240,234,216,0.15)" }}
                   />
                 )}
                 <AnimatedStat
@@ -143,7 +164,7 @@ export function Hero() {
           <div className="flex flex-col sm:flex-row gap-3 mt-10">
             <a
               href="#nosotros"
-              className="inline-flex items-center gap-2 px-7 py-3 rounded-sm text-[13px] font-medium transition-all border border-[rgba(15,122,79,0.3)] bg-[rgba(15,122,79,0.1)] text-[#0f7a4f] hover:bg-[#0f7a4f] hover:text-[#faf7f0] hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98]"
+              className="inline-flex items-center gap-2 px-7 py-3 rounded-full text-[13px] font-medium transition-all bg-[#94f1be] text-[#0c0b09] hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98]"
               style={{
                 fontFamily: "var(--font-sans)",
                 fontWeight: 500,
@@ -155,18 +176,18 @@ export function Hero() {
 
             <a
               href="#servicios"
-              className="inline-flex items-center justify-center px-7 py-3 rounded-sm text-[13px] font-light transition-colors hover:text-[rgba(26,24,18,0.85)]"
+              className="inline-flex items-center justify-center px-7 py-3 rounded-full text-[13px] font-light transition-colors border border-[rgba(240,234,216,0.25)] hover:border-[rgba(240,234,216,0.5)]"
               style={{
                 fontFamily: "var(--font-sans)",
                 fontWeight: 300,
-                color: "rgba(26,24,18,0.4)",
+                color: "rgba(240,234,216,0.85)",
               }}
             >
               Ver servicios
             </a>
           </div>
         </div>
-      </ScrollExpandMedia>
+      </SmoothScrollHero>
     </div>
   );
 }

@@ -7,6 +7,7 @@ import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { ScrollProgress } from "@/components/scroll-progress";
 import { blogPosts, getBlogPost, type BlogPost } from "@/lib/blog-posts";
+import { formatDate } from "@/lib/format-date";
 
 const siteUrl = "https://www.sentineltech.com.ar";
 
@@ -159,11 +160,7 @@ export default async function BlogPostPage({
               color: "rgba(26,24,18,0.35)",
             }}
           >
-            {new Date(post.publishedAt).toLocaleDateString("es-AR", {
-              day: "numeric",
-              month: "long",
-              year: "numeric",
-            })}
+            {formatDate(post.publishedAt, "long")}
             {" · "}
             {minutes} min de lectura
           </p>

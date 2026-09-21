@@ -2,6 +2,7 @@
 
 import { Mail, MapPin, MessageCircle } from "lucide-react";
 import Image from "next/image";
+import { SentinelLogo } from "@/components/sentinel-logo";
 
 const footerLinks = {
   Producto: [
@@ -104,21 +105,11 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 lg:gap-8 mb-14">
           {/* Brand */}
           <div className="lg:col-span-2">
-            {/* Logo PNG con fondo transparente; logoo.png is light-on-
-                transparent (built for the old dark theme), so it gets a
-                dark backing plate to stay legible on the new light footer. */}
             <div
-              className="mb-5 inline-flex items-center rounded-md px-3 py-2"
-              style={{ background: "#0c0b09" }}
+              className="mb-5 inline-flex items-center"
+              style={{ color: "rgba(26,24,18,0.92)" }}
             >
-              <Image
-                src="/logoo.png"
-                alt="Sentinel"
-                width={150}
-                height={40}
-                className="object-contain"
-                style={{ height: "30px", width: "auto" }}
-              />
+              <SentinelLogo className="h-6 w-auto" />
             </div>
 
             <p

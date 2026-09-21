@@ -1,8 +1,8 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Image from "next/image";
 import { Menu, X } from "lucide-react";
+import { SentinelLogo } from "@/components/sentinel-logo";
 
 const navLinks = [
   { href: "/#inicio", label: "Inicio" },
@@ -36,25 +36,12 @@ export function Navbar() {
       <div className="max-w-7xl mx-auto px-6 lg:px-10">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
-          {/* ponytail: logoo.png's wordmark is light-on-transparent (built
-              for the old dark theme), so it needs a dark backing plate to
-              stay legible now that the page around it is light. No dark
-              logo variant exists in /public to swap in instead. */}
-          <a href="/#inicio" className="flex items-center gap-3 group">
-            <div
-              className="flex items-center rounded-md px-3 py-1.5"
-              style={{ background: "#0c0b09" }}
-            >
-              <Image
-                src="/logoo.png"
-                alt="Sentinel Logo"
-                width={140}
-                height={32}
-                priority
-                className="h-6 object-contain"
-                style={{ width: "auto" }}
-              />
-            </div>
+          <a
+            href="/#inicio"
+            className="flex items-center"
+            style={{ color: "rgba(26,24,18,0.92)" }}
+          >
+            <SentinelLogo className="h-5 w-auto" />
           </a>
 
           {/* Desktop Nav */}
@@ -86,23 +73,18 @@ export function Navbar() {
               href="https://linktr.ee/sentinelarg"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[12px] font-normal px-4 py-2 rounded-sm border transition-all duration-200 active:scale-[0.98]"
+              className="text-[12px] font-medium px-5 py-2.5 rounded-full transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98]"
               style={{
                 fontFamily: "var(--font-sans)",
-                borderColor: "rgba(26,24,18,0.18)",
-                color: "rgba(26,24,18,0.85)",
-                background: "rgba(26,24,18,0.03)",
+                color: "#faf7f0",
+                background: "#0c0b09",
                 letterSpacing: "0.04em",
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.borderColor = "rgba(15,122,79,0.5)";
-                e.currentTarget.style.color = "#0f7a4f";
-                e.currentTarget.style.background = "rgba(15,122,79,0.06)";
+                e.currentTarget.style.background = "#0f7a4f";
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.borderColor = "rgba(26,24,18,0.18)";
-                e.currentTarget.style.color = "rgba(26,24,18,0.85)";
-                e.currentTarget.style.background = "rgba(26,24,18,0.03)";
+                e.currentTarget.style.background = "#0c0b09";
               }}
             >
               Solicitar reunión

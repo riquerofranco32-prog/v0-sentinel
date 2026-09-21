@@ -1,8 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import Image from "next/image";
-import { Linkedin } from "lucide-react";
+import { ImageAccordion } from "@/components/ui/image-accordion";
 
 const teamMembers = [
   {
@@ -89,90 +88,21 @@ export function Team() {
           </p>
         </div>
 
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-5">
-          {teamMembers.map((member, i) => (
-            <div
-              key={member.name}
-              className="group flex flex-col overflow-hidden rounded-lg transition-all duration-700 hover:-translate-y-1.5"
-              style={{
-                background: "rgba(26,24,18,0.02)",
-                border: "0.5px solid rgba(26,24,18,0.08)",
-                opacity: isVisible ? 1 : 0,
-                transform: isVisible ? "translateY(0)" : "translateY(24px)",
-                transitionDelay: `${i * 100}ms`,
-              }}
-            >
-              <div
-                className="relative w-full overflow-hidden"
-                style={{ aspectRatio: "4/5" }}
-              >
-                <Image
-                  src={member.image}
-                  alt={`${member.name}, ${member.role}`}
-                  fill
-                  sizes="(max-width: 1024px) 45vw, 22vw"
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-              </div>
-
-              <div className="flex flex-1 flex-col p-4">
-                <h3
-                  className="text-[15px]"
-                  style={{
-                    fontFamily: "var(--font-heading)",
-                    fontWeight: 700,
-                    color: "rgba(26,24,18,0.92)",
-                  }}
-                >
-                  {member.name}
-                </h3>
-                <p
-                  className="text-[11px] mt-0.5"
-                  style={{
-                    fontFamily: "var(--font-sans)",
-                    color: "rgba(26,24,18,0.4)",
-                  }}
-                >
-                  {member.degree}
-                </p>
-                <p
-                  className="text-[12px] mt-2 font-medium"
-                  style={{
-                    fontFamily: "var(--font-sans)",
-                    color: "#0f7a4f",
-                  }}
-                >
-                  {member.role}
-                </p>
-                <p
-                  className="text-[12px] leading-relaxed mt-2 flex-1"
-                  style={{
-                    fontFamily: "var(--font-sans)",
-                    fontWeight: 300,
-                    color: "rgba(26,24,18,0.5)",
-                  }}
-                >
-                  {member.bio}
-                </p>
-
-                <a
-                  href={member.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-4 inline-flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-sm text-[11px] font-medium transition-all duration-200 self-start"
-                  style={{
-                    fontFamily: "var(--font-sans)",
-                    color: "#0f7a4f",
-                    background: "rgba(15,122,79,0.08)",
-                    border: "0.5px solid rgba(15,122,79,0.3)",
-                  }}
-                >
-                  <Linkedin className="w-3 h-3" />
-                  LinkedIn
-                </a>
-              </div>
-            </div>
-          ))}
+        <div
+          style={{
+            opacity: isVisible ? 1 : 0,
+            transform: isVisible ? "translateY(0)" : "translateY(24px)",
+            transition: "opacity 0.7s, transform 0.7s",
+          }}
+        >
+          <ImageAccordion
+            items={teamMembers.map((member) => ({
+              image: member.image,
+              title: member.name,
+              description: member.role,
+              href: member.linkedin,
+            }))}
+          />
         </div>
       </div>
     </section>

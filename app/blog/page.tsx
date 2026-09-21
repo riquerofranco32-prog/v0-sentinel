@@ -5,6 +5,7 @@ import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { ScrollProgress } from "@/components/scroll-progress";
 import { blogPosts } from "@/lib/blog-posts";
+import { formatDate } from "@/lib/format-date";
 
 const siteUrl = "https://www.sentineltech.com.ar";
 
@@ -114,14 +115,7 @@ export default function BlogIndex() {
                           color: "rgba(15,122,79,0.8)",
                         }}
                       >
-                        {new Date(post.publishedAt).toLocaleDateString(
-                          "es-AR",
-                          {
-                            day: "numeric",
-                            month: "long",
-                            year: "numeric",
-                          },
-                        )}
+                        {formatDate(post.publishedAt, "long")}
                       </p>
                       <h2
                         className="text-lg mb-3 leading-snug font-bold transition-colors duration-200 group-hover:text-[#0f7a4f]"

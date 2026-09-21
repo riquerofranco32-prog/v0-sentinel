@@ -112,13 +112,15 @@ html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-/* ponytail: safety net against a stray fixed-width/negative-margin element
-   causing horizontal scroll on narrow viewports — doesn't change layout of
-   anything that already fits. */
-html,
-body {
+  /* ponytail: safety net against a stray fixed-width/negative-margin
+     element causing horizontal scroll on narrow viewports — doesn't change
+     layout of anything that already fits. Kept off `body` on purpose: an
+     x-only overflow value on body makes Chrome compute its overflow-y as
+     `auto` (the CSS overflow-computed-value rule), turning body into its
+     own scroll container and breaking `position: sticky` for every
+     descendant (they stick to body's box instead of the viewport).
+     `html` doesn't have that problem since it's already the page's real
+     scrolling element. */
   overflow-x: hidden;
 }
 
