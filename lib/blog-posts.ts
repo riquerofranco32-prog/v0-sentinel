@@ -32,12 +32,12 @@ export const blogPosts: BlogPost[] = [
       label: "Cómo funciona el sistema de detección de Sentinel",
     },
     pullQuote:
-      "La diferencia entre esos tres escenarios no es la cantidad de recursos disponibles — es cuánto tiempo pasó entre que el fuego empezó y alguien se enteró.",
+      "La diferencia entre esos tres escenarios no es la cantidad de recursos disponibles: es cuánto tiempo pasó entre que el fuego empezó y alguien se enteró.",
     body: [
       {
         paragraphs: [
-          "Un incendio forestal no crece de forma lineal. En sus primeros minutos es un foco puntual que un solo brigadista puede sofocar con herramientas manuales. Treinta minutos después, con viento y vegetación seca de por medio, ya es un frente de varios metros que necesita una dotación completa. Dos horas después puede ser incontrolable. La diferencia entre esos tres escenarios no es la cantidad de recursos disponibles — es cuánto tiempo pasó entre que el fuego empezó y alguien se enteró.",
-          "El método de detección más extendido en Argentina sigue siendo el mismo desde hace décadas: alguien lo ve (un puestero, un turista, un guardaparque) y lo reporta por teléfono o radio. Ese reporte depende de que haya alguien cerca, de que tenga señal, y de que la información llegue a la persona correcta. En la Patagonia, con distancias enormes y baja densidad poblacional, ese proceso puede tardar horas — el tiempo exacto que el fuego necesita para dejar de ser manejable.",
+          "Un incendio forestal no crece de forma lineal. En sus primeros minutos es un foco puntual que un solo brigadista puede sofocar con herramientas manuales. Treinta minutos después, con viento y vegetación seca de por medio, ya es un frente de varios metros que necesita una dotación completa. Dos horas después puede ser incontrolable. La diferencia entre esos tres escenarios no es la cantidad de recursos disponibles: es cuánto tiempo pasó entre que el fuego empezó y alguien se enteró.",
+          "El método de detección más extendido en Argentina sigue siendo el mismo desde hace décadas: alguien lo ve (un puestero, un turista, un guardaparque) y lo reporta por teléfono o radio. Ese reporte depende de que haya alguien cerca, de que tenga señal, y de que la información llegue a la persona correcta. En la Patagonia, con distancias enormes y baja densidad poblacional, ese proceso puede tardar horas: el tiempo exacto que el fuego necesita para dejar de ser manejable.",
         ],
       },
       {
@@ -74,11 +74,11 @@ export const blogPosts: BlogPost[] = [
       label: "Conocé la plataforma de Sentinel",
     },
     pullQuote:
-      "Pasar de reaccionar a predecir no es una frase de marketing — es literalmente la diferencia entre gestionar el riesgo y sufrirlo.",
+      "Pasar de reaccionar a predecir no es una frase de marketing: es literalmente la diferencia entre gestionar el riesgo y sufrirlo.",
     body: [
       {
         paragraphs: [
-          "Un campo productivo, un monte forestal o un establecimiento ganadero representan años — a veces generaciones — de inversión y trabajo acumulado. Un incendio puede destruir esa inversión en horas. Lo que separa a los productores que logran proteger su patrimonio de los que lo pierden no es la suerte: es cuánto tiempo antes se enteraron de que algo estaba pasando en su territorio.",
+          "Un campo productivo, un monte forestal o un establecimiento ganadero representan años, a veces generaciones, de inversión y trabajo acumulado. Un incendio puede destruir esa inversión en horas. Lo que separa a los productores que logran proteger su patrimonio de los que lo pierden no es la suerte: es cuánto tiempo antes se enteraron de que algo estaba pasando en su territorio.",
           "La gestión tradicional de este riesgo es reactiva por diseño: se actúa después de que el fuego ya es visible, ya sea porque alguien lo reportó o porque el humo se ve desde la ruta. Para cuando el productor se entera, ya perdió la ventana en la que una intervención rápida hubiera cambiado el resultado.",
         ],
       },
@@ -93,8 +93,8 @@ export const blogPosts: BlogPost[] = [
       {
         heading: "Datos precisos por hectárea, sin infraestructura compleja",
         paragraphs: [
-          "Uno de los obstáculos históricos para este tipo de monitoreo en el sector agropecuario y forestal era la infraestructura: torres de vigilancia, personal dedicado, conectividad satelital costosa. Sentinel funciona como una plataforma cloud que no requiere que el productor instale nada complejo en el campo — el sistema aporta la cobertura aérea y el análisis, y el productor recibe alertas accionables en su dispositivo.",
-          "El resultado no es solo prevención de incendios: es un registro histórico de datos ambientales por hectárea (focos de calor, patrones estacionales, zonas de mayor riesgo) que permite planificar, no solo reaccionar. Pasar de reaccionar a predecir no es una frase de marketing — es literalmente la diferencia entre gestionar el riesgo y sufrirlo.",
+          "Uno de los obstáculos históricos para este tipo de monitoreo en el sector agropecuario y forestal era la infraestructura: torres de vigilancia, personal dedicado, conectividad satelital costosa. Sentinel funciona como una plataforma cloud que no requiere que el productor instale nada complejo en el campo. El sistema aporta la cobertura aérea y el análisis, y el productor recibe alertas accionables en su dispositivo.",
+          "El resultado no es solo prevención de incendios: es un registro histórico de datos ambientales por hectárea (focos de calor, patrones estacionales, zonas de mayor riesgo) que permite planificar, no solo reaccionar. Pasar de reaccionar a predecir no es una frase de marketing: es literalmente la diferencia entre gestionar el riesgo y sufrirlo.",
         ],
       },
     ],
@@ -128,15 +128,15 @@ export const blogPosts: BlogPost[] = [
       {
         heading: "La amenaza que no se ve es la que se puede prevenir",
         paragraphs: [
-          "La inteligencia territorial — el uso de drones autónomos, cámaras térmicas y modelos de IA para vigilar el territorio de forma continua — existe exactamente para atacar esa amenaza invisible. No reemplaza a los brigadistas ni a los organismos de respuesta: les da la información que necesitan minutos después de que el riesgo aparece, en lugar de horas después de que el daño ya es irreversible.",
+          "La inteligencia territorial (el uso de drones autónomos, cámaras térmicas y modelos de IA para vigilar el territorio de forma continua) existe exactamente para atacar esa amenaza invisible. No reemplaza a los brigadistas ni a los organismos de respuesta: les da la información que necesitan minutos después de que el riesgo aparece, en lugar de horas después de que el daño ya es irreversible.",
           "Esto cambia la naturaleza del trabajo de prevención. En lugar de esperar reportes ciudadanos o depender de guardaparques cubriendo territorios enormes, un sistema de monitoreo continuo identifica anomalías térmicas y picos de riesgo antes de que se conviertan en un incendio activo, permitiendo intervenir cuando todavía es una intervención simple.",
         ],
       },
       {
         heading: "Lo que se salva cuando la prevención funciona",
         paragraphs: [
-          "Los bosques nativos de la Patagonia — cipreses, araucarias, lengas — tardan décadas o siglos en alcanzar el tamaño que el fuego destruye en horas. No es solo madera: es hábitat de fauna única, regulación hídrica de cuencas enteras, y la base económica de comunidades que dependen del turismo, la forestación y la ganadería. Ese es el costo real cuando la prevención llega tarde.",
-          "En Sentinel, la misión no es apagar incendios — es evitar que existan como emergencias descontroladas. Usar innovación para salvar bosques significa, en la práctica, ganarle al fuego la única batalla que realmente importa: la del tiempo.",
+          "Los bosques nativos de la Patagonia (cipreses, araucarias, lengas) tardan décadas o siglos en alcanzar el tamaño que el fuego destruye en horas. No es solo madera: es hábitat de fauna única, regulación hídrica de cuencas enteras, y la base económica de comunidades que dependen del turismo, la forestación y la ganadería. Ese es el costo real cuando la prevención llega tarde.",
+          "En Sentinel, la misión no es apagar incendios: es evitar que existan como emergencias descontroladas. Usar innovación para salvar bosques significa, en la práctica, ganarle al fuego la única batalla que realmente importa: la del tiempo.",
         ],
       },
     ],
@@ -159,25 +159,25 @@ export const blogPosts: BlogPost[] = [
       label: "Ver todas las capacidades de Sentinel",
     },
     pullQuote:
-      "Una cámara fija vigila un punto. Un dron autónomo vigila un territorio — y eso cambia por completo qué tan rápido se detecta un foco fuera de su campo de visión.",
+      "Una cámara fija vigila un punto. Un dron autónomo vigila un territorio, y eso cambia por completo qué tan rápido se detecta un foco fuera de su campo de visión.",
     body: [
       {
         paragraphs: [
           "Durante años, la respuesta tecnológica al problema de la vigilancia forestal fueron las torres con cámaras fijas: mástiles altos, cámaras térmicas apuntando a un sector del territorio, y un operador humano (o un algoritmo simple) mirando el feed. Funcionan, pero tienen una limitación estructural que no se resuelve con más cámaras: cada torre solo ve lo que está dentro de su línea de visión directa.",
-          "En terrenos montañosos o con cobertura boscosa densa — la norma en la Patagonia — eso significa zonas ciegas permanentes detrás de cada loma, cada bosque cerrado, cada quebrada. Cubrir un territorio grande con este modelo requiere multiplicar torres, cada una con su costo de instalación, mantenimiento y conectividad.",
+          "En terrenos montañosos o con cobertura boscosa densa, la norma en la Patagonia, eso significa zonas ciegas permanentes detrás de cada loma, cada bosque cerrado, cada quebrada. Cubrir un territorio grande con este modelo requiere multiplicar torres, cada una con su costo de instalación, mantenimiento y conectividad.",
         ],
       },
       {
         heading: "Qué resuelve un dron autónomo que una torre no puede",
         paragraphs: [
           "Un dron autónomo no depende de una línea de visión fija: recorre rutas programadas, cubre el territorio de forma dinámica y puede redirigirse hacia una zona de interés en minutos. Donde una torre ve un punto, la red de drones de Sentinel cubre un área completa de forma sistemática, sin los puntos ciegos estructurales del modelo de vigilancia fija.",
-          "Esto no vuelve obsoletas a las cámaras fijas — en sitios de altísimo tránsito o riesgo constante, siguen teniendo sentido como complemento. Pero como estrategia principal de cobertura territorial extensa, el techo de las torres fijas es real: no importa cuántas cámaras agregues, seguís vigilando puntos, no territorio.",
+          "Esto no vuelve obsoletas a las cámaras fijas: en sitios de altísimo tránsito o riesgo constante, siguen teniendo sentido como complemento. Pero como estrategia principal de cobertura territorial extensa, el techo de las torres fijas es real: no importa cuántas cámaras agregues, seguís vigilando puntos, no territorio.",
         ],
       },
       {
         heading: "El otro factor: qué tan rápido se verifica una alerta",
         paragraphs: [
-          "Una cámara fija que detecta humo genera una alerta que un humano tiene que revisar y confirmar — un cuello de botella que se agrava cuando hay múltiples cámaras y pocos operadores disponibles. El sistema de Sentinel usa visión computacional entrenada específicamente para descartar falsos positivos (neblina, polvo, reflejos) antes de que la alerta llegue a una persona, recortando el tiempo entre detección y confirmación de minutos u horas a segundos.",
+          "Una cámara fija que detecta humo genera una alerta que un humano tiene que revisar y confirmar: un cuello de botella que se agrava cuando hay múltiples cámaras y pocos operadores disponibles. El sistema de Sentinel usa visión computacional entrenada específicamente para descartar falsos positivos (neblina, polvo, reflejos) antes de que la alerta llegue a una persona, recortando el tiempo entre detección y confirmación de minutos u horas a segundos.",
           "La pregunta que importa no es solo '¿lo vimos?' sino '¿cuánto tardamos en confirmar que era real y avisar a quien tiene que actuar?'. Ahí es donde la combinación de cobertura dinámica más IA de verificación marca la diferencia frente a un modelo de cámaras fijas y revisión manual.",
         ],
       },
@@ -207,14 +207,14 @@ export const blogPosts: BlogPost[] = [
       {
         paragraphs: [
           "Cuando se habla del costo de un incendio forestal, la conversación suele quedarse en lo más visible: hectáreas quemadas. Pero esa cifra es solo la punta del iceberg. Está el costo de la respuesta de emergencia (aviones hidrantes, brigadas, combustible, horas de trabajo), el costo productivo (pasturas, forestación comercial, infraestructura rural destruida), y el costo ambiental de largo plazo, que no tiene una factura pero sí un impacto medible: pérdida de biodiversidad, erosión de suelo, alteración de cuencas hídricas que tardan años o décadas en recuperarse.",
-          "Ese último punto es el que más se subestima. Un bosque nativo patagónico no se replanta como un cultivo: un ciprés o una araucaria pueden tardar entre 50 y 300 años en alcanzar su tamaño adulto. El 'costo' de esas hectáreas no se recupera en la próxima temporada — se recupera, si acaso, en la próxima generación.",
+          "Ese último punto es el que más se subestima. Un bosque nativo patagónico no se replanta como un cultivo: un ciprés o una araucaria pueden tardar entre 50 y 300 años en alcanzar su tamaño adulto. El 'costo' de esas hectáreas no se recupera en la próxima temporada. Se recupera, si acaso, en la próxima generación.",
         ],
       },
       {
         heading: "Por qué la prevención es matemáticamente más barata",
         paragraphs: [
-          "La lógica económica de la prevención es simple pero se ignora seguido: cuanto antes se detecta un foco, menor es el recurso necesario para controlarlo, y esa relación no es lineal — crece de forma exponencial con el tiempo. Un foco de dos hectáreas se apaga con una cuadrilla y unas horas de trabajo. El mismo foco, ocho horas después, puede necesitar múltiples aviones hidrantes, semanas de operativo y una superficie cien veces mayor.",
-          "Monitorear un territorio de forma continua con drones y IA tiene un costo previsible y recurrente — es, en esencia, un seguro operativo. Combatir un incendio que escaló por falta de detección temprana tiene un costo impredecible que puede multiplicar ese gasto muchas veces, sin garantía de que alcance para contener el daño.",
+          "La lógica económica de la prevención es simple pero se ignora seguido: cuanto antes se detecta un foco, menor es el recurso necesario para controlarlo, y esa relación no es lineal: crece de forma exponencial con el tiempo. Un foco de dos hectáreas se apaga con una cuadrilla y unas horas de trabajo. El mismo foco, ocho horas después, puede necesitar múltiples aviones hidrantes, semanas de operativo y una superficie cien veces mayor.",
+          "Monitorear un territorio de forma continua con drones y IA tiene un costo previsible y recurrente: es, en esencia, un seguro operativo. Combatir un incendio que escaló por falta de detección temprana tiene un costo impredecible que puede multiplicar ese gasto muchas veces, sin garantía de que alcance para contener el daño.",
         ],
       },
       {
@@ -249,20 +249,20 @@ export const blogPosts: BlogPost[] = [
     body: [
       {
         paragraphs: [
-          "Cuando alguien escucha 'monitoreo con drones' suele imaginarse un equipo pilotando un dron manualmente sobre el monte, mirando una pantalla. Esa imagen está desactualizada. El monitoreo de incendios forestales que realmente funciona a escala no depende de un piloto mirando una pantalla — depende de una operación programada, repetible y verificada por IA, con intervención humana solo cuando hay algo real que decidir.",
+          "Cuando alguien escucha 'monitoreo con drones' suele imaginarse un equipo pilotando un dron manualmente sobre el monte, mirando una pantalla. Esa imagen está desactualizada. El monitoreo de incendios forestales que realmente funciona a escala no depende de un piloto mirando una pantalla. Depende de una operación programada, repetible y verificada por IA, con intervención humana solo cuando hay algo real que decidir.",
           "Vale la pena desarmar el proceso paso a paso, porque ahí es donde se nota la diferencia entre un dron como juguete caro y un sistema de monitoreo como infraestructura de prevención.",
         ],
       },
       {
         heading: "Paso 1: rutas de vuelo programadas, no vuelos manuales",
         paragraphs: [
-          "El territorio a cubrir se divide en zonas de riesgo, priorizadas según vegetación, historial de focos y accesibilidad para brigadas. Los drones vuelan esas rutas en horarios programados — no depende de que alguien decida 'hoy toca sobrevolar tal sector'. Esa regularidad es lo que convierte un sobrevuelo puntual en monitoreo continuo.",
+          "El territorio a cubrir se divide en zonas de riesgo, priorizadas según vegetación, historial de focos y accesibilidad para brigadas. Los drones vuelan esas rutas en horarios programados: no depende de que alguien decida 'hoy toca sobrevolar tal sector'. Esa regularidad es lo que convierte un sobrevuelo puntual en monitoreo continuo.",
         ],
       },
       {
         heading: "Paso 2: cámaras térmicas, no cámaras de video comunes",
         paragraphs: [
-          "Un foco de calor incipiente muchas veces no es visible a simple vista todavía — puede estar bajo cobertura vegetal o recién empezando. Las cámaras térmicas detectan la firma de temperatura, no la imagen visible, lo que permite identificar un principio de incendio antes de que produzca humo visible desde el aire o desde tierra.",
+          "Un foco de calor incipiente muchas veces no es visible a simple vista todavía: puede estar bajo cobertura vegetal o recién empezando. Las cámaras térmicas detectan la firma de temperatura, no la imagen visible, lo que permite identificar un principio de incendio antes de que produzca humo visible desde el aire o desde tierra.",
         ],
       },
       {
@@ -270,13 +270,13 @@ export const blogPosts: BlogPost[] = [
           "Paso 3: IA que filtra falsos positivos antes de alertar a un humano",
         paragraphs: [
           "Esta es la parte que más diferencia a un sistema de monitoreo de incendios serio de uno amateur. No toda fuente de calor es un incendio: rocas calentadas por el sol, maquinaria agrícola, quemas controladas autorizadas. Un modelo de IA entrenado con miles de casos reales descarta automáticamente esos falsos positivos, para que la alerta que llega a un humano sea, con altísima probabilidad, un foco real.",
-          "Sin ese filtro, un sistema de monitoreo con drones satura de alertas falsas a quien tiene que decidir — y termina generando el mismo problema que quería resolver: gente ignorando avisos.",
+          "Sin ese filtro, un sistema de monitoreo con drones satura de alertas falsas a quien tiene que decidir, y termina generando el mismo problema que quería resolver: gente ignorando avisos.",
         ],
       },
       {
         heading: "Paso 4: alerta geolocalizada a quien puede actuar",
         paragraphs: [
-          "Confirmado el foco, el sistema genera una alerta con coordenadas exactas que llega directo a bomberos, brigadas o al equipo de gestión del territorio — no a una bandeja de entrada que alguien revisa cada tanto. En Sentinel, ese circuito completo (vuelo, detección, verificación, alerta) corre en menos de 5 minutos desde que aparece el foco.",
+          "Confirmado el foco, el sistema genera una alerta con coordenadas exactas que llega directo a bomberos, brigadas o al equipo de gestión del territorio, no a una bandeja de entrada que alguien revisa cada tanto. En Sentinel, ese circuito completo (vuelo, detección, verificación, alerta) corre en menos de 5 minutos desde que aparece el foco.",
         ],
       },
     ],
@@ -300,7 +300,7 @@ export const blogPosts: BlogPost[] = [
       label: "Conocé la solución de Sentinel de punta a punta",
     },
     pullQuote:
-      "Una solución a incendios forestales no es un producto — es un circuito completo: detectar, verificar, alertar y aprender de cada temporada.",
+      "Una solución a incendios forestales no es un producto: es un circuito completo: detectar, verificar, alertar y aprender de cada temporada.",
     body: [
       {
         paragraphs: [
@@ -322,7 +322,7 @@ export const blogPosts: BlogPost[] = [
       {
         heading: "3. Alertas que llegan a quien decide, en minutos",
         paragraphs: [
-          "Detectar un foco y no avisar a tiempo a quien puede actuar es lo mismo que no detectarlo. La alerta tiene que ser automática, geolocalizada y llegar directo a bomberos, brigadas o al gestor del territorio — sin pasos manuales intermedios que agreguen minutos que no sobran.",
+          "Detectar un foco y no avisar a tiempo a quien puede actuar es lo mismo que no detectarlo. La alerta tiene que ser automática, geolocalizada y llegar directo a bomberos, brigadas o al gestor del territorio, sin pasos manuales intermedios que agreguen minutos que no sobran.",
         ],
       },
       {

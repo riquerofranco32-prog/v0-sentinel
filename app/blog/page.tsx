@@ -82,8 +82,65 @@ export default function BlogIndex() {
               inteligencia territorial.
             </h1>
 
+            {/* Featured — most recent post gets real weight instead of
+                sitting in the grid as just another identical tile. */}
+            {posts[0] && (
+              <Link
+                href={`/blog/${posts[0].slug}`}
+                className="group grid sm:grid-cols-2 gap-6 sm:gap-10 items-center rounded-lg overflow-hidden mb-14 transition-all duration-300"
+                style={{
+                  background: "rgba(26,24,18,0.02)",
+                  border: "0.5px solid rgba(26,24,18,0.08)",
+                }}
+              >
+                <div
+                  className="relative w-full overflow-hidden"
+                  style={{ aspectRatio: "16/11" }}
+                >
+                  <Image
+                    src={posts[0].coverImage}
+                    alt={posts[0].title}
+                    fill
+                    sizes="(max-width: 640px) 100vw, 50vw"
+                    priority
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                </div>
+                <div className="p-6 sm:p-0 sm:pr-10">
+                  <p
+                    className="text-[11px] mb-3 font-normal"
+                    style={{
+                      fontFamily: "var(--font-sans)",
+                      color: "rgba(15,122,79,0.8)",
+                    }}
+                  >
+                    Última nota · {formatDate(posts[0].publishedAt, "long")}
+                  </p>
+                  <h2
+                    className="text-2xl sm:text-3xl mb-4 leading-snug font-bold transition-colors duration-200 group-hover:text-[#0f7a4f]"
+                    style={{
+                      fontFamily: "var(--font-heading)",
+                      color: "rgba(26,24,18,0.92)",
+                    }}
+                  >
+                    {posts[0].title}
+                  </h2>
+                  <p
+                    className="text-[14px] leading-relaxed line-clamp-3"
+                    style={{
+                      fontFamily: "var(--font-sans)",
+                      fontWeight: 300,
+                      color: "rgba(26,24,18,0.5)",
+                    }}
+                  >
+                    {posts[0].excerpt}
+                  </p>
+                </div>
+              </Link>
+            )}
+
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {posts.map((post) => (
+              {posts.slice(1).map((post) => (
                 <Link
                   key={post.slug}
                   href={`/blog/${post.slug}`}
