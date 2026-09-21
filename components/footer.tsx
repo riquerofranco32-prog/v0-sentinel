@@ -1,7 +1,6 @@
 "use client";
 
 import { Mail, MapPin, MessageCircle, Instagram, Linkedin } from "lucide-react";
-import Image from "next/image";
 import { SentinelLogo } from "@/components/sentinel-logo";
 
 const footerLinks = {
@@ -44,38 +43,33 @@ export function Footer() {
     <footer
       id="contacto"
       className="relative overflow-hidden"
-      style={{ background: "#faf7f0" }}
+      style={{ background: "#0c0b09" }}
     >
-      {/* Top border gradient */}
+      {/* Top border gradient — same green-fade seam used elsewhere as a
+          section boundary. */}
       <div
         className="absolute top-0 left-0 right-0 h-px"
         style={{
           background:
-            "linear-gradient(to right, transparent, rgba(15,122,79,0.35), transparent)",
+            "linear-gradient(to right, transparent, rgba(148,241,190,0.35), transparent)",
         }}
       />
 
-      {/* Foto de fondo: muy sutil, como textura, para que el texto oscuro
-          del footer siga siendo legible sobre un fondo claro. */}
-      <div className="absolute inset-0">
-        <Image
-          src="/fot.jpg"
-          alt=""
-          fill
-          sizes="100vw"
-          className="object-cover object-center"
-          style={{ opacity: 0.08, filter: "saturate(0.6)" }}
-          priority={false}
-        />
-        {/* Degradado superior */}
-        <div
-          className="absolute inset-0"
-          style={{
-            background:
-              "linear-gradient(to bottom, rgba(250,247,240,0.92) 0%, rgba(250,247,240,0.6) 40%, rgba(250,247,240,0.3) 70%, rgba(250,247,240,0.3) 100%)",
-          }}
-        />
-      </div>
+      {/* dot-grid coverage texture — echoes the satellite card in
+          capabilities.tsx, ties the closing section back to the brand's
+          "always watching" idea instead of a flat dark panel. */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          backgroundImage:
+            "radial-gradient(rgba(148,241,190,0.08) 1px, transparent 1px)",
+          backgroundSize: "22px 22px",
+          maskImage:
+            "radial-gradient(ellipse 70% 60% at 50% 0%, black 0%, transparent 75%)",
+          WebkitMaskImage:
+            "radial-gradient(ellipse 70% 60% at 50% 0%, black 0%, transparent 75%)",
+        }}
+      />
 
       {/* Watermark */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden select-none">
@@ -84,7 +78,7 @@ export function Footer() {
             fontFamily: "var(--font-heading)",
             fontWeight: 800,
             fontSize: "18vw",
-            color: "rgba(26,24,18,0.05)",
+            color: "rgba(148,241,190,0.04)",
             letterSpacing: "0.1em",
             whiteSpace: "nowrap",
           }}
@@ -97,11 +91,29 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 lg:gap-8 mb-14">
           {/* Brand */}
           <div className="lg:col-span-2">
-            <div
-              className="mb-5 inline-flex items-center"
-              style={{ color: "rgba(26,24,18,0.92)" }}
-            >
+            <div className="mb-4">
               <SentinelLogo className="h-6 w-auto" />
+            </div>
+
+            {/* Live status — the one honest, on-brand use of a status dot:
+                this company's whole promise is "always watching." */}
+            <div
+              className="inline-flex items-center gap-2 px-3 py-1 rounded-full mb-6"
+              style={{
+                background: "rgba(148,241,190,0.08)",
+                border: "0.5px solid rgba(148,241,190,0.25)",
+              }}
+            >
+              <span
+                className="w-1.5 h-1.5 rounded-full animate-pulse-slow"
+                style={{ background: "#94f1be" }}
+              />
+              <span
+                className="text-[10px] tracking-[0.15em] uppercase"
+                style={{ fontFamily: "var(--font-sans)", color: "#94f1be" }}
+              >
+                Sentinel Cloud operativo
+              </span>
             </div>
 
             <p
@@ -109,7 +121,7 @@ export function Footer() {
               style={{
                 fontFamily: "var(--font-sans)",
                 fontWeight: 300,
-                color: "rgba(26,24,18,0.62)",
+                color: "rgba(240,234,216,0.55)",
               }}
             >
               Tecnología aérea e inteligencia artificial para la detección
@@ -120,17 +132,17 @@ export function Footer() {
               <a
                 href="mailto:sentinelproyecto@gmail.com"
                 className="flex items-center gap-2.5 w-fit transition-colors duration-200"
-                style={{ color: "rgba(26,24,18,0.65)" }}
+                style={{ color: "rgba(240,234,216,0.6)" }}
                 onMouseEnter={(e) =>
-                  (e.currentTarget.style.color = "rgba(26,24,18,0.8)")
+                  (e.currentTarget.style.color = "rgba(240,234,216,0.85)")
                 }
                 onMouseLeave={(e) =>
-                  (e.currentTarget.style.color = "rgba(26,24,18,0.65)")
+                  (e.currentTarget.style.color = "rgba(240,234,216,0.6)")
                 }
               >
                 <Mail
                   className="w-3.5 h-3.5 flex-shrink-0"
-                  style={{ color: "#0f7a4f", opacity: 0.7 }}
+                  style={{ color: "#94f1be", opacity: 0.8 }}
                 />
                 <span
                   className="text-[12px]"
@@ -142,14 +154,14 @@ export function Footer() {
               <div className="flex items-center gap-2.5">
                 <MapPin
                   className="w-3.5 h-3.5 flex-shrink-0"
-                  style={{ color: "#0f7a4f", opacity: 0.7 }}
+                  style={{ color: "#94f1be", opacity: 0.8 }}
                 />
                 <span
                   className="text-[12px]"
                   style={{
                     fontFamily: "var(--font-sans)",
                     fontWeight: 300,
-                    color: "rgba(26,24,18,0.65)",
+                    color: "rgba(240,234,216,0.6)",
                   }}
                 >
                   San Rafael, Mendoza, Argentina
@@ -165,21 +177,22 @@ export function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={s.label}
-                  className="w-10 h-10 rounded-sm flex items-center justify-center transition-all duration-200"
+                  className="w-10 h-10 rounded-full flex items-center justify-center transition-all duration-200"
                   style={{
-                    background: "rgba(26,24,18,0.05)",
-                    border: "0.5px solid rgba(26,24,18,0.1)",
-                    color: "rgba(26,24,18,0.55)",
+                    background: "rgba(240,234,216,0.05)",
+                    border: "0.5px solid rgba(240,234,216,0.15)",
+                    color: "rgba(240,234,216,0.6)",
                   }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.borderColor = "rgba(15,122,79,0.4)";
-                    e.currentTarget.style.color = "#0f7a4f";
-                    e.currentTarget.style.background = "rgba(15,122,79,0.08)";
+                    e.currentTarget.style.borderColor = "rgba(148,241,190,0.4)";
+                    e.currentTarget.style.color = "#94f1be";
+                    e.currentTarget.style.background = "rgba(148,241,190,0.08)";
                   }}
                   onMouseLeave={(e) => {
-                    e.currentTarget.style.borderColor = "rgba(26,24,18,0.1)";
-                    e.currentTarget.style.color = "rgba(26,24,18,0.55)";
-                    e.currentTarget.style.background = "rgba(26,24,18,0.05)";
+                    e.currentTarget.style.borderColor =
+                      "rgba(240,234,216,0.15)";
+                    e.currentTarget.style.color = "rgba(240,234,216,0.6)";
+                    e.currentTarget.style.background = "rgba(240,234,216,0.05)";
                   }}
                 >
                   {s.icon}
@@ -195,7 +208,7 @@ export function Footer() {
                 className="text-[11px] tracking-[0.2em] uppercase mb-5"
                 style={{
                   fontFamily: "var(--font-sans)",
-                  color: "rgba(26,24,18,0.25)",
+                  color: "rgba(240,234,216,0.3)",
                 }}
               >
                 {section}
@@ -209,13 +222,13 @@ export function Footer() {
                       style={{
                         fontFamily: "var(--font-sans)",
                         fontWeight: 300,
-                        color: "rgba(26,24,18,0.62)",
+                        color: "rgba(240,234,216,0.6)",
                       }}
                       onMouseEnter={(e) =>
-                        (e.currentTarget.style.color = "rgba(26,24,18,0.8)")
+                        (e.currentTarget.style.color = "#94f1be")
                       }
                       onMouseLeave={(e) =>
-                        (e.currentTarget.style.color = "rgba(26,24,18,0.62)")
+                        (e.currentTarget.style.color = "rgba(240,234,216,0.6)")
                       }
                     >
                       {link.label}
@@ -230,7 +243,7 @@ export function Footer() {
         {/* Bottom */}
         <div
           className="pt-8 border-t flex flex-col sm:flex-row items-center justify-between gap-4"
-          style={{ borderColor: "rgba(26,24,18,0.08)" }}
+          style={{ borderColor: "rgba(240,234,216,0.08)" }}
         >
           <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2 sm:gap-3 text-center sm:text-left">
             <p
@@ -238,7 +251,7 @@ export function Footer() {
               style={{
                 fontFamily: "var(--font-sans)",
                 fontWeight: 300,
-                color: "rgba(26,24,18,0.6)",
+                color: "rgba(240,234,216,0.5)",
               }}
             >
               © {new Date().getFullYear()} Sentinel. Todos los derechos
@@ -246,7 +259,7 @@ export function Footer() {
             </p>
             <span
               className="hidden sm:inline text-[10px]"
-              style={{ color: "rgba(26,24,18,0.3)" }}
+              style={{ color: "rgba(240,234,216,0.25)" }}
             >
               •
             </span>
@@ -255,7 +268,7 @@ export function Footer() {
               style={{
                 fontFamily: "var(--font-sans)",
                 fontWeight: 300,
-                color: "rgba(26,24,18,0.55)",
+                color: "rgba(240,234,216,0.45)",
               }}
             >
               Monitoreo y Alerta Temprana de Incendios
@@ -272,11 +285,11 @@ export function Footer() {
               style={{
                 fontFamily: "var(--font-sans)",
                 fontWeight: 300,
-                color: "rgba(26,24,18,0.65)",
+                color: "rgba(240,234,216,0.55)",
               }}
             >
               <span>Creado por</span>
-              <span className="font-medium text-[#0f7a4f] group-hover:underline underline-offset-4 decoration-[#0f7a4f]/50 transition-all inline-flex items-center gap-1">
+              <span className="font-medium text-[#94f1be] group-hover:underline underline-offset-4 decoration-[#94f1be]/50 transition-all inline-flex items-center gap-1">
                 Se7en Dev
                 <svg
                   className="w-3 h-3 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 opacity-70 group-hover:opacity-100"

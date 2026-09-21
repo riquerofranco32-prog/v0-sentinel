@@ -15,6 +15,7 @@ const steps = [
       { label: "Cobertura", value: "24/7" },
       { label: "Fuentes", value: "Satelital" },
     ],
+    readout: "> escaneando territorio... cobertura 24/7",
   },
   {
     icon: Cpu,
@@ -27,6 +28,7 @@ const steps = [
       { label: "Precisión", value: "98%" },
       { label: "Latencia", value: "<3s" },
     ],
+    readout: "> confianza del modelo: 98.2%",
   },
   {
     icon: Zap,
@@ -39,6 +41,7 @@ const steps = [
       { label: "Velocidad respuesta", value: "+60%" },
       { label: "Detección", value: "<8min" },
     ],
+    readout: "> alerta enviada -> brigada zona norte",
   },
 ];
 
@@ -372,6 +375,31 @@ export function HowItWorks() {
                   >
                     {step.title}
                   </h3>
+
+                  {/* live readout — reads as the system reporting status
+                      for this step, not a static caption */}
+                  <div
+                    className="mt-5 px-3 py-2 rounded-sm"
+                    style={{
+                      background: "rgba(148,241,190,0.06)",
+                      border: "0.5px solid rgba(148,241,190,0.2)",
+                    }}
+                  >
+                    <span
+                      key={step.number}
+                      className="animate-typewriter text-[12px]"
+                      style={
+                        {
+                          fontFamily: "var(--font-mono, monospace)",
+                          color: "#94f1be",
+                          "--typewriter-width": `${step.readout.length}ch`,
+                          "--typewriter-steps": step.readout.length,
+                        } as React.CSSProperties
+                      }
+                    >
+                      {step.readout}
+                    </span>
+                  </div>
                 </div>
               );
             })()}
