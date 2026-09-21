@@ -43,7 +43,7 @@ export function Problem() {
   return (
     <section ref={sectionRef} className="relative bg-[#faf7f0]">
       {/* Hero image */}
-      <div className="relative h-[60vh] min-h-[400px] overflow-hidden">
+      <div className="relative h-[68vh] min-h-[460px] overflow-hidden">
         <Image
           src="/a3.jpg"
           alt="Bomberos enfrentando incendio forestal en la Patagonia"
@@ -81,6 +81,72 @@ export function Problem() {
           >
             Hoy la Patagonia duele.
           </h2>
+
+          {/* Stats live on the photo itself instead of boxed cards below it
+              - a HUD reading on the emergency, not a stat block bolted on
+              after the fact. */}
+          <div
+            className="flex items-center gap-6 sm:gap-10 mt-8 pt-6 transition-all duration-700"
+            style={{
+              borderTop: "0.5px solid rgba(240,234,216,0.2)",
+              opacity: isVisible ? 1 : 0,
+              transform: isVisible ? "translateY(0)" : "translateY(16px)",
+              transitionDelay: "250ms",
+            }}
+          >
+            {[
+              {
+                display:
+                  hectareas >= 1000000
+                    ? "1M+"
+                    : hectareas >= 1000
+                      ? `${Math.floor(hectareas / 1000)}K`
+                      : String(hectareas),
+                label: "Hectáreas quemadas",
+              },
+              { display: `${causa}%`, label: "Causa humana" },
+              { display: "∞", label: "Daño a fauna" },
+            ].map((stat, i) => (
+              <div
+                key={stat.label}
+                className="flex items-center gap-6 sm:gap-10"
+              >
+                {i > 0 && (
+                  <div
+                    className="hidden sm:block w-px self-stretch"
+                    style={{ background: "rgba(240,234,216,0.15)" }}
+                  />
+                )}
+                <div>
+                  <div
+                    style={{
+                      fontFamily: "var(--font-heading)",
+                      fontWeight: 800,
+                      fontSize: "clamp(22px, 3vw, 32px)",
+                      lineHeight: 1,
+                      color: "rgba(240,234,216,0.95)",
+                      letterSpacing: "-0.03em",
+                    }}
+                  >
+                    {stat.display}
+                  </div>
+                  <div
+                    className="mt-1"
+                    style={{
+                      fontSize: "10px",
+                      letterSpacing: "0.15em",
+                      textTransform: "uppercase",
+                      fontFamily: "var(--font-sans)",
+                      fontWeight: 400,
+                      color: "rgba(240,234,216,0.5)",
+                    }}
+                  >
+                    {stat.label}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 
@@ -110,77 +176,6 @@ export function Problem() {
                 cada hectárea hay un hogar, una fuente de trabajo y una
                 biodiversidad que no vuelve a crecer en lo que dura una vida.
               </p>
-
-              {/* Stats with counters */}
-              <div
-                className="grid grid-cols-3 gap-2 sm:gap-4 mb-12 transition-all duration-700"
-                style={{
-                  opacity: isVisible ? 1 : 0,
-                  transform: isVisible ? "translateY(0)" : "translateY(16px)",
-                  transitionDelay: "250ms",
-                }}
-              >
-                {[
-                  {
-                    display:
-                      hectareas >= 1000000
-                        ? "1M+"
-                        : hectareas >= 1000
-                          ? `${Math.floor(hectareas / 1000)}K`
-                          : String(hectareas),
-                    label: "Hectáreas quemadas",
-                  },
-                  {
-                    display: `${causa}%`,
-                    label: "Causa humana",
-                  },
-                  {
-                    display: "∞",
-                    label: "Daño a fauna",
-                  },
-                ].map((stat) => (
-                  <div
-                    key={stat.label}
-                    className="relative overflow-hidden tech-card rounded-lg p-3 sm:p-5"
-                  >
-                    <div
-                      style={{
-                        position: "absolute",
-                        top: 0,
-                        left: 0,
-                        width: "2px",
-                        height: "100%",
-                        background: "rgba(15,122,79,0.5)",
-                      }}
-                    />
-                    <div
-                      style={{
-                        fontFamily: "var(--font-heading)",
-                        fontWeight: 800,
-                        fontSize: "clamp(24px, 3.5vw, 36px)",
-                        lineHeight: 1,
-                        color: "rgba(26,24,18,0.95)",
-                        letterSpacing: "-0.03em",
-                        marginBottom: "6px",
-                      }}
-                    >
-                      {stat.display}
-                    </div>
-                    <div
-                      style={{
-                        fontSize: "10px",
-                        letterSpacing: "0.15em",
-                        textTransform: "uppercase",
-                        fontFamily: "var(--font-sans)",
-                        fontWeight: 400,
-                        color: "rgba(26,24,18,0.4)",
-                      }}
-                    >
-                      {stat.label}
-                    </div>
-                  </div>
-                ))}
-              </div>
 
               {/* Problem list */}
               <div
