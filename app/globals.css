@@ -174,6 +174,30 @@ html {
   animation: map-tooltip-in 0.15s ease-out;
 }
 
+/* traveling signal dot for the "Detectar -> Alertar" flow connector -
+   motivated by the content (shows data moving through the pipeline in
+   order), not decoration for its own sake. */
+@keyframes flow-pulse {
+  0% {
+    left: 0%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    left: 100%;
+    opacity: 0;
+  }
+}
+
+.animate-flow-pulse {
+  animation: flow-pulse 3.2s ease-in-out infinite;
+}
+
 .card-hover:hover {
   transform: translateY(-2px);
   box-shadow: 0 8px 30px -8px rgba(15, 122, 79, 0.15);

@@ -138,182 +138,246 @@ export function HowItWorks() {
           </h2>
         </div>
 
-        {/* Steps */}
-        <div className="relative max-w-3xl mx-auto">
-          <div
-            className="absolute left-[27px] top-8 bottom-8 w-px hidden lg:block"
-            style={{ background: "rgba(26,24,18,0.08)" }}
-          />
+        <div className="grid lg:grid-cols-5 gap-10 items-start max-w-5xl mx-auto">
+          {/* Steps */}
+          <div className="relative lg:col-span-3">
+            <div
+              className="absolute left-[27px] top-8 bottom-8 w-px hidden lg:block"
+              style={{ background: "rgba(26,24,18,0.08)" }}
+            />
 
-          <div className="space-y-4">
-            {steps.map((step, i) => {
-              const isActive = activeStep === i;
-              return (
-                <div
-                  key={step.number}
-                  className="relative flex gap-6 cursor-pointer transition-all duration-500"
-                  style={{
-                    opacity: isVisible ? 1 : 0,
-                    transform: isVisible
-                      ? "translateX(0)"
-                      : "translateX(-20px)",
-                    transitionDelay: `${i * 140}ms`,
-                  }}
-                  onClick={() => {
-                    setActiveStep(i);
-                    setProgressKey((k) => k + 1);
-                  }}
-                >
-                  {/* Step circle */}
+            <div className="space-y-4">
+              {steps.map((step, i) => {
+                const isActive = activeStep === i;
+                return (
                   <div
-                    className="relative z-10 flex-shrink-0 w-14 h-14 rounded-full flex items-center justify-center transition-all duration-500"
+                    key={step.number}
+                    className="relative flex gap-6 cursor-pointer transition-all duration-500"
                     style={{
-                      background: isActive
-                        ? "rgba(15,122,79,0.12)"
-                        : "rgba(26,24,18,0.03)",
-                      border: `1.5px solid ${isActive ? "#0f7a4f" : "rgba(26,24,18,0.1)"}`,
+                      opacity: isVisible ? 1 : 0,
+                      transform: isVisible
+                        ? "translateX(0)"
+                        : "translateX(-20px)",
+                      transitionDelay: `${i * 140}ms`,
+                    }}
+                    onClick={() => {
+                      setActiveStep(i);
+                      setProgressKey((k) => k + 1);
                     }}
                   >
-                    <step.icon
-                      className="w-5 h-5 transition-all duration-300"
-                      style={{
-                        color: isActive ? "#0f7a4f" : "rgba(26,24,18,0.3)",
-                      }}
-                    />
-                  </div>
-
-                  {/* Content card */}
-                  <div
-                    className="flex-1 rounded-lg p-6 transition-all duration-500"
-                    style={{
-                      background: isActive
-                        ? "rgba(15,122,79,0.05)"
-                        : "rgba(26,24,18,0.02)",
-                      border: `0.5px solid ${isActive ? "rgba(15,122,79,0.2)" : "rgba(26,24,18,0.06)"}`,
-                    }}
-                  >
-                    <div className="flex items-center gap-2 mb-1">
-                      <span
-                        className="text-[10px] tracking-[0.25em] uppercase"
-                        style={{
-                          fontFamily: "var(--font-sans)",
-                          color: isActive ? "#0f7a4f" : "rgba(26,24,18,0.42)",
-                        }}
-                      >
-                        {step.number}
-                      </span>
-                    </div>
-                    <h3
-                      style={{
-                        fontFamily: "var(--font-heading)",
-                        fontWeight: 800,
-                        fontSize: "20px",
-                        color: isActive
-                          ? "rgba(26,24,18,0.95)"
-                          : "rgba(26,24,18,0.62)",
-                        transition: "color 0.4s",
-                      }}
-                    >
-                      {step.title}
-                    </h3>
-                    <p
-                      className="text-[11px] mt-0.5"
-                      style={{
-                        fontFamily: "var(--font-sans)",
-                        color: isActive ? "#0f7a4f" : "rgba(26,24,18,0.5)",
-                        transition: "color 0.4s",
-                        fontStyle: "italic",
-                      }}
-                    >
-                      {step.tagline}
-                    </p>
-
-                    {/* Expandable body */}
+                    {/* Step circle */}
                     <div
-                      className="overflow-hidden transition-all duration-500"
+                      className="relative z-10 flex-shrink-0 w-14 h-14 rounded-full flex items-center justify-center transition-all duration-500"
                       style={{
-                        maxHeight: isActive ? "200px" : "0px",
-                        opacity: isActive ? 1 : 0,
+                        background: isActive
+                          ? "rgba(15,122,79,0.12)"
+                          : "rgba(26,24,18,0.03)",
+                        border: `1.5px solid ${isActive ? "#0f7a4f" : "rgba(26,24,18,0.1)"}`,
                       }}
                     >
-                      <p
-                        className="text-[13px] leading-relaxed mb-4 mt-3"
+                      <step.icon
+                        className="w-5 h-5 transition-all duration-300"
                         style={{
-                          fontFamily: "var(--font-sans)",
-                          fontWeight: 300,
-                          color: "rgba(26,24,18,0.5)",
+                          color: isActive ? "#0f7a4f" : "rgba(26,24,18,0.3)",
+                        }}
+                      />
+                    </div>
+
+                    {/* Content card */}
+                    <div
+                      className="flex-1 rounded-lg p-6 transition-all duration-500"
+                      style={{
+                        background: isActive
+                          ? "rgba(15,122,79,0.05)"
+                          : "rgba(26,24,18,0.02)",
+                        border: `0.5px solid ${isActive ? "rgba(15,122,79,0.2)" : "rgba(26,24,18,0.06)"}`,
+                      }}
+                    >
+                      <div className="flex items-center gap-2 mb-1">
+                        <span
+                          className="text-[10px] tracking-[0.25em] uppercase"
+                          style={{
+                            fontFamily: "var(--font-sans)",
+                            color: isActive ? "#0f7a4f" : "rgba(26,24,18,0.42)",
+                          }}
+                        >
+                          {step.number}
+                        </span>
+                      </div>
+                      <h3
+                        style={{
+                          fontFamily: "var(--font-heading)",
+                          fontWeight: 800,
+                          fontSize: "20px",
+                          color: isActive
+                            ? "rgba(26,24,18,0.95)"
+                            : "rgba(26,24,18,0.62)",
+                          transition: "color 0.4s",
                         }}
                       >
-                        {step.description}
+                        {step.title}
+                      </h3>
+                      <p
+                        className="text-[11px] mt-0.5"
+                        style={{
+                          fontFamily: "var(--font-sans)",
+                          color: isActive ? "#0f7a4f" : "rgba(26,24,18,0.5)",
+                          transition: "color 0.4s",
+                          fontStyle: "italic",
+                        }}
+                      >
+                        {step.tagline}
                       </p>
-                      <div className="flex gap-4">
-                        {step.metrics.map((m) => (
-                          <div
-                            key={m.label}
-                            className="px-3 py-2 rounded-sm"
-                            style={{
-                              background: "rgba(15,122,79,0.06)",
-                              border: "0.5px solid rgba(15,122,79,0.15)",
-                            }}
-                          >
+
+                      {/* Expandable body */}
+                      <div
+                        className="overflow-hidden transition-all duration-500"
+                        style={{
+                          maxHeight: isActive ? "200px" : "0px",
+                          opacity: isActive ? 1 : 0,
+                        }}
+                      >
+                        <p
+                          className="text-[13px] leading-relaxed mb-4 mt-3"
+                          style={{
+                            fontFamily: "var(--font-sans)",
+                            fontWeight: 300,
+                            color: "rgba(26,24,18,0.5)",
+                          }}
+                        >
+                          {step.description}
+                        </p>
+                        <div className="flex gap-4">
+                          {step.metrics.map((m) => (
                             <div
+                              key={m.label}
+                              className="px-3 py-2 rounded-sm"
                               style={{
-                                fontFamily: "var(--font-heading)",
-                                fontWeight: 700,
-                                fontSize: "16px",
-                                color: "#0f7a4f",
-                                lineHeight: 1,
+                                background: "rgba(15,122,79,0.06)",
+                                border: "0.5px solid rgba(15,122,79,0.15)",
                               }}
                             >
-                              {m.value}
+                              <div
+                                style={{
+                                  fontFamily: "var(--font-heading)",
+                                  fontWeight: 700,
+                                  fontSize: "16px",
+                                  color: "#0f7a4f",
+                                  lineHeight: 1,
+                                }}
+                              >
+                                {m.value}
+                              </div>
+                              <div
+                                className="text-[10px] tracking-wider uppercase mt-0.5"
+                                style={{
+                                  fontFamily: "var(--font-sans)",
+                                  color: "rgba(26,24,18,0.42)",
+                                }}
+                              >
+                                {m.label}
+                              </div>
                             </div>
-                            <div
-                              className="text-[10px] tracking-wider uppercase mt-0.5"
-                              style={{
-                                fontFamily: "var(--font-sans)",
-                                color: "rgba(26,24,18,0.42)",
-                              }}
-                            >
-                              {m.label}
-                            </div>
-                          </div>
-                        ))}
+                          ))}
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              );
-            })}
-          </div>
+                );
+              })}
+            </div>
 
-          {/* Progress bar — resets each cycle with progressKey */}
-          <div
-            className="mt-8 ml-[70px] h-px rounded-full overflow-hidden transition-all duration-700"
-            style={{
-              background: "rgba(26,24,18,0.06)",
-              opacity: isVisible ? 1 : 0,
-            }}
-          >
+            {/* Progress bar — resets each cycle with progressKey */}
             <div
-              key={progressKey}
-              className="h-full w-full rounded-full"
+              className="mt-8 ml-[70px] h-px rounded-full overflow-hidden transition-all duration-700"
               style={{
-                background: "#0f7a4f",
-                transformOrigin: "left",
-                animation:
-                  isVisible && !isPaused && !isTabHidden
-                    ? `progressBar ${STEP_DURATION}ms linear forwards`
-                    : "none",
-                transform: isPaused || isTabHidden ? undefined : "scaleX(0)",
+                background: "rgba(26,24,18,0.06)",
+                opacity: isVisible ? 1 : 0,
               }}
-            />
-          </div>
-          <style>{`
+            >
+              <div
+                key={progressKey}
+                className="h-full w-full rounded-full"
+                style={{
+                  background: "#0f7a4f",
+                  transformOrigin: "left",
+                  animation:
+                    isVisible && !isPaused && !isTabHidden
+                      ? `progressBar ${STEP_DURATION}ms linear forwards`
+                      : "none",
+                  transform: isPaused || isTabHidden ? undefined : "scaleX(0)",
+                }}
+              />
+            </div>
+            <style>{`
             @keyframes progressBar {
               from { transform: scaleX(0); }
               to   { transform: scaleX(1); }
             }
           `}</style>
+          </div>
+
+          {/* Visual companion — mirrors whichever step is active instead of
+            leaving the right half of the section empty on desktop. */}
+          <div
+            className="hidden lg:flex lg:col-span-2 flex-col items-center justify-center rounded-lg p-10 transition-all duration-700"
+            style={{
+              background: "#0c0b09",
+              border: "0.5px solid rgba(148,241,190,0.15)",
+              minHeight: "360px",
+              opacity: isVisible ? 1 : 0,
+              transform: isVisible ? "translateY(0)" : "translateY(16px)",
+            }}
+          >
+            {(() => {
+              const step = steps[activeStep];
+              return (
+                <div
+                  key={step.number}
+                  className="animate-fade-in-up flex flex-col items-center text-center"
+                >
+                  <div
+                    className="relative w-28 h-28 rounded-full flex items-center justify-center mb-6"
+                    style={{
+                      background: "rgba(148,241,190,0.08)",
+                      border: "1px solid rgba(148,241,190,0.3)",
+                    }}
+                  >
+                    <span
+                      className="absolute inset-0 rounded-full animate-ping"
+                      style={{
+                        background: "rgba(148,241,190,0.15)",
+                        animationDuration: "2.5s",
+                      }}
+                    />
+                    <step.icon
+                      className="relative w-11 h-11"
+                      style={{ color: "#94f1be" }}
+                    />
+                  </div>
+                  <p
+                    className="text-[11px] tracking-[0.25em] uppercase mb-2"
+                    style={{
+                      fontFamily: "var(--font-sans)",
+                      color: "#94f1be",
+                    }}
+                  >
+                    {step.number} / 03
+                  </p>
+                  <h3
+                    style={{
+                      fontFamily: "var(--font-heading)",
+                      fontWeight: 800,
+                      fontSize: "24px",
+                      color: "rgba(240,234,216,0.95)",
+                    }}
+                  >
+                    {step.title}
+                  </h3>
+                </div>
+              );
+            })()}
+          </div>
         </div>
       </div>
     </section>

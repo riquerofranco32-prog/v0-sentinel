@@ -158,16 +158,41 @@ export function Features() {
             >
               Cómo protegemos tu territorio
             </p>
-            <div className="flex flex-col sm:flex-row items-start gap-6 sm:gap-2">
-              {flow.map((step) => (
+            <div className="relative flex flex-col sm:flex-row items-start gap-6 sm:gap-2">
+              {/* connector: only meaningful once icons sit in a row */}
+              <div
+                className="hidden sm:block absolute top-6 pointer-events-none"
+                style={{
+                  left: "24px",
+                  right: "24px",
+                  height: "1px",
+                  background: "rgba(15,122,79,0.15)",
+                }}
+              >
+                <div
+                  className="absolute top-1/2 w-2 h-2 rounded-full animate-flow-pulse"
+                  style={{
+                    marginTop: "-4px",
+                    background: "#0f7a4f",
+                    boxShadow: "0 0 8px rgba(15,122,79,0.6)",
+                  }}
+                />
+              </div>
+
+              {flow.map((step, i) => (
                 <div
                   key={step.label}
-                  className="flex items-center gap-3 sm:flex-col sm:items-center sm:text-center sm:flex-1"
+                  className="relative flex items-center gap-3 sm:flex-col sm:items-center sm:text-center sm:flex-1 transition-all duration-700"
+                  style={{
+                    opacity: isVisible ? 1 : 0,
+                    transform: isVisible ? "translateY(0)" : "translateY(12px)",
+                    transitionDelay: `${600 + i * 120}ms`,
+                  }}
                 >
                   <div
-                    className="w-12 h-12 rounded-full flex items-center justify-center shrink-0 sm:mb-3"
+                    className="relative z-10 w-12 h-12 rounded-full flex items-center justify-center shrink-0 sm:mb-3"
                     style={{
-                      background: "rgba(15,122,79,0.08)",
+                      background: "#faf7f0",
                       border: "0.5px solid rgba(15,122,79,0.3)",
                     }}
                   >

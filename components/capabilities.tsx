@@ -281,34 +281,54 @@ export function Capabilities() {
             </div>
           ))}
 
-          {/* Wide banner — horizontal layout instead of the vertical
-              icon-on-top pattern used everywhere else on the page. */}
+          {/* Wide banner — horizontal layout, and the only cell in the grid
+              with a real background pattern instead of flat cream, so the
+              bento doesn't read as six identical white-on-white tiles. */}
           <div
             className="group relative rounded-lg p-6 overflow-hidden transition-all duration-700 hover:-translate-y-1 lg:col-span-2 flex items-center gap-6"
             style={{
-              background: "rgba(26,24,18,0.02)",
-              border: "0.5px solid rgba(26,24,18,0.07)",
+              background:
+                "radial-gradient(circle at 85% 30%, rgba(15,122,79,0.08), transparent 60%), #0c0b09",
+              border: "0.5px solid rgba(15,122,79,0.2)",
               opacity: isVisible ? 1 : 0,
               transform: isVisible ? "translateY(0)" : "translateY(24px)",
               transitionDelay: "460ms",
             }}
           >
+            {/* dot-grid "coverage map" texture */}
             <div
-              className="w-14 h-14 rounded-full flex items-center justify-center shrink-0"
+              className="absolute inset-0 pointer-events-none"
               style={{
-                background: "rgba(15,122,79,0.08)",
-                border: "0.5px solid rgba(15,122,79,0.2)",
+                backgroundImage:
+                  "radial-gradient(rgba(148,241,190,0.35) 1px, transparent 1px)",
+                backgroundSize: "16px 16px",
+                maskImage:
+                  "radial-gradient(ellipse 80% 100% at 75% 50%, black 0%, transparent 70%)",
+                WebkitMaskImage:
+                  "radial-gradient(ellipse 80% 100% at 75% 50%, black 0%, transparent 70%)",
+              }}
+            />
+
+            <div
+              className="relative z-10 w-14 h-14 rounded-full flex items-center justify-center shrink-0"
+              style={{
+                background: "rgba(148,241,190,0.1)",
+                border: "0.5px solid rgba(148,241,190,0.3)",
               }}
             >
-              <Satellite className="w-5 h-5" style={{ color: "#0f7a4f" }} />
+              <Satellite className="w-5 h-5" style={{ color: "#94f1be" }} />
+              <span
+                className="absolute inline-flex h-2 w-2 rounded-full animate-ping"
+                style={{ top: "-2px", right: "-2px", background: "#94f1be" }}
+              />
             </div>
-            <div>
+            <div className="relative z-10">
               <h3
                 className="text-[15px] mb-1"
                 style={{
                   fontFamily: "var(--font-heading)",
                   fontWeight: 700,
-                  color: "rgba(26,24,18,0.92)",
+                  color: "rgba(240,234,216,0.95)",
                 }}
               >
                 Cobertura satelital, con drones en expansión
@@ -318,7 +338,7 @@ export function Capabilities() {
                 style={{
                   fontFamily: "var(--font-sans)",
                   fontWeight: 300,
-                  color: "rgba(26,24,18,0.45)",
+                  color: "rgba(240,234,216,0.55)",
                 }}
               >
                 Datos satelitales sobre todo el territorio hoy, sumando sensores
