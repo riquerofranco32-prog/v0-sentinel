@@ -90,255 +90,181 @@ export function Features() {
         ))}
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 lg:px-10">
-        {/* ── HEADER ── */}
-        <div className="mb-16">
-          <p
-            className="text-[11px] tracking-[0.3em] uppercase mb-5 transition-all duration-700"
-            style={{
-              fontFamily: "var(--font-sans)",
-              color: "rgba(26,24,18,0.3)",
-              opacity: isVisible ? 1 : 0,
-            }}
-          >
-            Sentinel Cloud: inteligencia territorial para incendios forestales
-          </p>
-          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
-            <h2
-              className="text-4xl sm:text-5xl lg:text-6xl transition-all duration-700"
-              style={{
-                fontFamily: "var(--font-heading)",
-                fontWeight: 800,
-                color: "rgba(26,24,18,0.92)",
-                lineHeight: 1,
-                opacity: isVisible ? 1 : 0,
-                transform: isVisible ? "translateY(0)" : "translateY(16px)",
-                transitionDelay: "100ms",
-              }}
-            >
-              Nuestra <span style={{ color: "#0f7a4f" }}>solución.</span>
-            </h2>
-            <p
-              className="max-w-xs text-[13px] leading-relaxed lg:pb-1 transition-all duration-700"
-              style={{
-                fontFamily: "var(--font-sans)",
-                fontWeight: 300,
-                color: "rgba(26,24,18,0.4)",
-                opacity: isVisible ? 1 : 0,
-                transitionDelay: "200ms",
-              }}
-            >
-              Una plataforma integral que combina datos satelitales, información
-              geoespacial e IA, y suma sensores y drones de forma progresiva,{" "}
-              <span style={{ color: "rgba(26,24,18,0.75)", fontWeight: 400 }}>
-                pasando de una acción reactiva a una acción preventiva.
-              </span>
-            </p>
-          </div>
-        </div>
+      <div className="relative max-w-4xl mx-auto px-6 lg:px-10 text-center">
+        {/* ── HEADER — stacked, no split-header box ── */}
+        <p
+          className="text-[11px] tracking-[0.3em] uppercase mb-5 transition-all duration-700"
+          style={{
+            fontFamily: "var(--font-sans)",
+            color: "rgba(26,24,18,0.3)",
+            opacity: isVisible ? 1 : 0,
+          }}
+        >
+          Sentinel Cloud: inteligencia territorial para incendios forestales
+        </p>
+        <h2
+          className="text-4xl sm:text-5xl lg:text-6xl mb-6 transition-all duration-700"
+          style={{
+            fontFamily: "var(--font-heading)",
+            fontWeight: 800,
+            color: "rgba(26,24,18,0.92)",
+            lineHeight: 1,
+            opacity: isVisible ? 1 : 0,
+            transform: isVisible ? "translateY(0)" : "translateY(16px)",
+            transitionDelay: "100ms",
+          }}
+        >
+          Nuestra <span style={{ color: "#0f7a4f" }}>solución.</span>
+        </h2>
+        <p
+          className="max-w-2xl mx-auto text-[15px] leading-relaxed transition-all duration-700"
+          style={{
+            fontFamily: "var(--font-sans)",
+            fontWeight: 300,
+            color: "rgba(26,24,18,0.55)",
+            opacity: isVisible ? 1 : 0,
+            transitionDelay: "200ms",
+          }}
+        >
+          Una plataforma integral que combina datos satelitales, información
+          geoespacial e IA, con cobertura desde{" "}
+          <span style={{ color: "rgba(26,24,18,0.85)", fontWeight: 400 }}>
+            Patagonia hasta todo el país
+          </span>
+          , sumando sensores y drones de forma progresiva.{" "}
+          <span style={{ color: "rgba(26,24,18,0.85)", fontWeight: 400 }}>
+            De una acción reactiva a una acción preventiva.
+          </span>
+        </p>
+      </div>
 
-        {/* ── MAIN GRID ── */}
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-4">
-          {/* Flow card — large, 3 cols */}
+      {/* ── PIPELINE — full width, no card boundary ── */}
+      <div className="relative max-w-5xl mx-auto px-6 lg:px-10 mt-16 lg:mt-20">
+        <div className="relative flex flex-col sm:flex-row items-start gap-10 sm:gap-2">
+          {/* connector */}
           <div
-            className="lg:col-span-3 relative rounded-lg p-8 overflow-hidden transition-all duration-700 flex flex-col justify-center"
+            className="hidden sm:block absolute top-8 pointer-events-none"
             style={{
-              background:
-                "linear-gradient(160deg, rgba(15,122,79,0.06) 0%, rgba(26,24,18,0.02) 60%)",
-              border: "0.5px solid rgba(15,122,79,0.2)",
-              minHeight: "380px",
-              opacity: isVisible ? 1 : 0,
-              transform: isVisible ? "translateY(0)" : "translateY(24px)",
-              transitionDelay: "500ms",
+              left: "32px",
+              right: "32px",
+              height: "1px",
+              background: "rgba(15,122,79,0.18)",
             }}
           >
-            <p
-              className="text-[11px] tracking-[0.2em] uppercase mb-8"
-              style={{ fontFamily: "var(--font-sans)", color: "#0f7a4f" }}
+            <div
+              className="absolute top-1/2 w-2.5 h-2.5 rounded-full animate-flow-pulse"
+              style={{
+                marginTop: "-5px",
+                background: "#0f7a4f",
+                boxShadow: "0 0 10px rgba(15,122,79,0.6)",
+              }}
+            />
+          </div>
+
+          {flow.map((step, i) => (
+            <div
+              key={step.label}
+              className="relative flex items-center gap-4 sm:flex-col sm:items-center sm:text-center sm:flex-1 transition-all duration-700"
+              style={{
+                opacity: isVisible ? 1 : 0,
+                transform: isVisible ? "translateY(0)" : "translateY(12px)",
+                transitionDelay: `${400 + i * 120}ms`,
+              }}
             >
-              Cómo protegemos tu territorio
-            </p>
-            <div className="relative flex flex-col sm:flex-row items-start gap-6 sm:gap-2">
-              {/* connector: only meaningful once icons sit in a row */}
               <div
-                className="hidden sm:block absolute top-6 pointer-events-none"
+                className="relative z-10 w-16 h-16 rounded-full flex items-center justify-center shrink-0 sm:mb-4"
                 style={{
-                  left: "24px",
-                  right: "24px",
-                  height: "1px",
-                  background: "rgba(15,122,79,0.15)",
+                  background: "#faf7f0",
+                  border: "1px solid rgba(15,122,79,0.3)",
+                  boxShadow: "0 4px 16px rgba(15,122,79,0.08)",
                 }}
               >
-                <div
-                  className="absolute top-1/2 w-2 h-2 rounded-full animate-flow-pulse"
-                  style={{
-                    marginTop: "-4px",
-                    background: "#0f7a4f",
-                    boxShadow: "0 0 8px rgba(15,122,79,0.6)",
-                  }}
-                />
+                <step.icon className="w-6 h-6" style={{ color: "#0f7a4f" }} />
               </div>
-
-              {flow.map((step, i) => (
-                <div
-                  key={step.label}
-                  className="relative flex items-center gap-3 sm:flex-col sm:items-center sm:text-center sm:flex-1 transition-all duration-700"
+              <div>
+                <span
+                  className="block text-[10px] tracking-[0.2em] uppercase mb-1"
                   style={{
-                    opacity: isVisible ? 1 : 0,
-                    transform: isVisible ? "translateY(0)" : "translateY(12px)",
-                    transitionDelay: `${600 + i * 120}ms`,
+                    fontFamily: "var(--font-sans)",
+                    color: "rgba(26,24,18,0.3)",
                   }}
                 >
-                  <div
-                    className="relative z-10 w-12 h-12 rounded-full flex items-center justify-center shrink-0 sm:mb-3"
-                    style={{
-                      background: "#faf7f0",
-                      border: "0.5px solid rgba(15,122,79,0.3)",
-                    }}
-                  >
-                    <step.icon
-                      className="w-5 h-5"
-                      style={{ color: "#0f7a4f" }}
-                    />
-                  </div>
-                  <p
-                    className="text-[13px]"
-                    style={{
-                      fontFamily: "var(--font-heading)",
-                      fontWeight: 700,
-                      color: "rgba(26,24,18,0.85)",
-                    }}
-                  >
-                    {step.label}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Right column */}
-          <div className="lg:col-span-2 flex flex-col gap-4">
-            {/* Monitoring card */}
-            <div
-              className="relative rounded-lg p-6 flex-1 overflow-hidden transition-all duration-700"
-              style={{
-                background: "rgba(26,24,18,0.02)",
-                border: "0.5px solid rgba(26,24,18,0.07)",
-                opacity: isVisible ? 1 : 0,
-                transform: isVisible ? "translateY(0)" : "translateY(24px)",
-                transitionDelay: "620ms",
-              }}
-            >
-              <p
-                className="text-[11px] tracking-[0.2em] uppercase mb-4"
-                style={{
-                  fontFamily: "var(--font-sans)",
-                  color: "rgba(26,24,18,0.25)",
-                }}
-              >
-                Monitoreo constante de la zona
-              </p>
-              <div className="flex flex-col gap-3">
-                {monitoring.map((item) => (
-                  <div key={item.text} className="flex items-start gap-3">
-                    <item.icon
-                      className="w-4 h-4 mt-0.5 shrink-0"
-                      style={{ color: "#0f7a4f" }}
-                    />
-                    <p
-                      className="text-[12px] leading-relaxed"
-                      style={{
-                        fontFamily: "var(--font-sans)",
-                        fontWeight: 300,
-                        color: "rgba(26,24,18,0.5)",
-                      }}
-                    >
-                      {item.text}
-                    </p>
-                  </div>
-                ))}
+                  0{i + 1}
+                </span>
+                <p
+                  className="text-[15px]"
+                  style={{
+                    fontFamily: "var(--font-heading)",
+                    fontWeight: 700,
+                    color: "rgba(26,24,18,0.88)",
+                  }}
+                >
+                  {step.label}
+                </p>
               </div>
             </div>
+          ))}
+        </div>
+      </div>
 
-            {/* Info card */}
+      {/* ── SUPPORTING FACTS — inline pills, not boxed cards ── */}
+      <div className="relative max-w-4xl mx-auto px-6 lg:px-10 mt-16 lg:mt-20">
+        <div
+          className="flex flex-wrap justify-center gap-3 transition-all duration-700"
+          style={{
+            opacity: isVisible ? 1 : 0,
+            transform: isVisible ? "translateY(0)" : "translateY(16px)",
+            transitionDelay: "900ms",
+          }}
+        >
+          {monitoring.map((item) => (
             <div
-              className="relative rounded-lg p-6 flex-1 overflow-hidden transition-all duration-700 group hover:-translate-y-1"
+              key={item.text}
+              className="flex items-center gap-2.5 px-4 py-2.5 rounded-full"
               style={{
-                background: "rgba(26,24,18,0.02)",
-                border: "0.5px solid rgba(26,24,18,0.07)",
-                minHeight: "160px",
-                opacity: isVisible ? 1 : 0,
-                transform: isVisible ? "translateY(0)" : "translateY(24px)",
-                transitionDelay: "740ms",
+                background: "rgba(26,24,18,0.03)",
+                border: "0.5px solid rgba(26,24,18,0.08)",
               }}
             >
-              {/* Corner accents */}
-              <div
-                className="absolute top-0 left-0 w-6 h-6 pointer-events-none"
-                style={{
-                  borderTop: "1px solid rgba(15,122,79,0.4)",
-                  borderLeft: "1px solid rgba(15,122,79,0.4)",
-                }}
+              <item.icon
+                className="w-3.5 h-3.5 shrink-0"
+                style={{ color: "#0f7a4f" }}
               />
-              <div
-                className="absolute bottom-0 right-0 w-6 h-6 pointer-events-none"
-                style={{
-                  borderBottom: "1px solid rgba(15,122,79,0.2)",
-                  borderRight: "1px solid rgba(15,122,79,0.2)",
-                }}
-              />
-
-              {/* Hover glow */}
-              <div
-                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
-                style={{
-                  background:
-                    "radial-gradient(ellipse at 30% 50%, rgba(15,122,79,0.05), transparent 70%)",
-                }}
-              />
-
               <p
-                className="text-[11px] tracking-[0.2em] uppercase mb-3"
-                style={{
-                  fontFamily: "var(--font-sans)",
-                  color: "rgba(26,24,18,0.25)",
-                }}
-              >
-                Alcance
-              </p>
-              <p
-                className="text-[13px] leading-relaxed"
+                className="text-[12px] leading-snug"
                 style={{
                   fontFamily: "var(--font-sans)",
                   fontWeight: 300,
-                  color: "rgba(26,24,18,0.5)",
+                  color: "rgba(26,24,18,0.55)",
                 }}
               >
-                Cobertura desde{" "}
-                <span style={{ color: "rgba(26,24,18,0.85)", fontWeight: 400 }}>
-                  Patagonia
-                </span>{" "}
-                hasta{" "}
-                <span style={{ color: "rgba(26,24,18,0.85)", fontWeight: 400 }}>
-                  todo el país
-                </span>
-                . Satélites, geoespacial e IA hoy, sensores y drones se suman de
-                forma progresiva.
+                {item.text}
               </p>
-
-              {/* Status */}
-              <div className="flex items-center gap-2 mt-5">
-                <span
-                  className="text-[11px] font-light tracking-wide"
-                  style={{
-                    fontFamily: "var(--font-sans)",
-                    color: "rgba(26,24,18,0.45)",
-                  }}
-                >
-                  Sentinel Cloud en desarrollo y validación en territorio
-                </span>
-              </div>
             </div>
+          ))}
+        </div>
+
+        <div
+          className="flex justify-center mt-8 transition-all duration-700"
+          style={{
+            opacity: isVisible ? 1 : 0,
+            transitionDelay: "1000ms",
+          }}
+        >
+          <div className="inline-flex items-center gap-2">
+            <span
+              className="w-1.5 h-1.5 rounded-full animate-pulse-slow"
+              style={{ background: "#0f7a4f" }}
+            />
+            <span
+              className="text-[11px] tracking-wide"
+              style={{
+                fontFamily: "var(--font-sans)",
+                color: "rgba(26,24,18,0.4)",
+              }}
+            >
+              Sentinel Cloud en desarrollo y validación en territorio
+            </span>
           </div>
         </div>
       </div>

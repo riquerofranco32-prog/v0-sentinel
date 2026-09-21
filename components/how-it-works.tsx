@@ -183,16 +183,10 @@ export function HowItWorks() {
                       />
                     </div>
 
-                    {/* Content card */}
-                    <div
-                      className="flex-1 rounded-lg p-6 transition-all duration-500"
-                      style={{
-                        background: isActive
-                          ? "rgba(15,122,79,0.05)"
-                          : "rgba(26,24,18,0.02)",
-                        border: `0.5px solid ${isActive ? "rgba(15,122,79,0.2)" : "rgba(26,24,18,0.06)"}`,
-                      }}
-                    >
+                    {/* Content — plain, no card boundary; the circle +
+                        connecting line already read as a timeline, a boxed
+                        background around the text was redundant framing. */}
+                    <div className="flex-1 pt-3 pb-2">
                       <div className="flex items-center gap-2 mb-1">
                         <span
                           className="text-[10px] tracking-[0.25em] uppercase"
@@ -247,35 +241,39 @@ export function HowItWorks() {
                         >
                           {step.description}
                         </p>
-                        <div className="flex gap-4">
-                          {step.metrics.map((m) => (
+                        <div className="flex items-center gap-5">
+                          {step.metrics.map((m, mi) => (
                             <div
                               key={m.label}
-                              className="px-3 py-2 rounded-sm"
-                              style={{
-                                background: "rgba(15,122,79,0.06)",
-                                border: "0.5px solid rgba(15,122,79,0.15)",
-                              }}
+                              className="flex items-center gap-5"
                             >
-                              <div
-                                style={{
-                                  fontFamily: "var(--font-heading)",
-                                  fontWeight: 700,
-                                  fontSize: "16px",
-                                  color: "#0f7a4f",
-                                  lineHeight: 1,
-                                }}
-                              >
-                                {m.value}
-                              </div>
-                              <div
-                                className="text-[10px] tracking-wider uppercase mt-0.5"
-                                style={{
-                                  fontFamily: "var(--font-sans)",
-                                  color: "rgba(26,24,18,0.42)",
-                                }}
-                              >
-                                {m.label}
+                              {mi > 0 && (
+                                <div
+                                  className="w-px h-8"
+                                  style={{ background: "rgba(15,122,79,0.15)" }}
+                                />
+                              )}
+                              <div>
+                                <div
+                                  style={{
+                                    fontFamily: "var(--font-heading)",
+                                    fontWeight: 700,
+                                    fontSize: "16px",
+                                    color: "#0f7a4f",
+                                    lineHeight: 1,
+                                  }}
+                                >
+                                  {m.value}
+                                </div>
+                                <div
+                                  className="text-[10px] tracking-wider uppercase mt-0.5"
+                                  style={{
+                                    fontFamily: "var(--font-sans)",
+                                    color: "rgba(26,24,18,0.42)",
+                                  }}
+                                >
+                                  {m.label}
+                                </div>
                               </div>
                             </div>
                           ))}
