@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { Marquee } from "@/components/ui/marquee";
 
 const logos = [
   { id: "uba", description: "UBA", image: "/uba-logo.png" },
@@ -24,27 +24,12 @@ const logos = [
 ];
 
 export function Partners() {
-  const [isVisible, setIsVisible] = useState(false);
-  const sectionRef = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) setIsVisible(true);
-      },
-      { threshold: 0.05, rootMargin: "0px 0px 200px 0px" },
-    );
-    if (sectionRef.current) observer.observe(sectionRef.current);
-    return () => observer.disconnect();
-  }, []);
-
   return (
     <section
-      ref={sectionRef}
       className="relative py-20 lg:py-28 overflow-hidden"
       style={{ background: "#faf7f0" }}
     >
-      <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-10 text-center">
+      <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-10 text-center mb-14">
         <h2
           className="text-3xl sm:text-4xl mb-4"
           style={{
@@ -58,7 +43,7 @@ export function Partners() {
           <span style={{ color: "#0f7a4f" }}>nos acompañan.</span>
         </h2>
         <p
-          className="text-[13px] max-w-lg mx-auto mb-14"
+          className="text-[13px] max-w-lg mx-auto"
           style={{
             fontFamily: "var(--font-sans)",
             fontWeight: 300,
@@ -69,33 +54,39 @@ export function Partners() {
           su camino desde una idea universitaria hasta una plataforma en
           producción.
         </p>
+      </div>
 
-        <div
-          className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-7 gap-6 sm:gap-8 items-center justify-items-center transition-all duration-700 max-w-5xl mx-auto"
-          style={{
-            opacity: isVisible ? 1 : 0,
-            transform: isVisible ? "translateY(0)" : "translateY(16px)",
-          }}
-        >
-          {logos.map((logo, i) => (
+      <div className="relative">
+        <Marquee pauseOnHover className="[--duration:35s]">
+          {logos.map((logo) => (
             <div
               key={logo.id}
-              className="flex items-center justify-center p-3 h-16 w-full rounded-lg transition-all duration-300 hover:bg-[rgba(26,24,18,0.03)] group"
+              className="flex items-center justify-center h-16 w-[140px] shrink-0"
             >
               <img
                 src={logo.image}
                 alt={logo.description}
                 title={logo.description}
                 loading="lazy"
-                className="max-h-9 max-w-[100px] w-auto object-contain transition-all duration-300 group-hover:scale-105 opacity-60 group-hover:opacity-100"
-                style={{
-                  filter: "grayscale(100%) brightness(0)",
-                  transitionDelay: `${i * 20}ms`,
-                }}
+                className="max-h-9 max-w-[100px] w-auto object-contain transition-all duration-300 hover:scale-105 opacity-60 hover:opacity-100"
+                style={{ filter: "grayscale(100%) brightness(0)" }}
               />
             </div>
           ))}
-        </div>
+        </Marquee>
+        {/* edge fade so logos don't hard-cut against the page background */}
+        <div
+          className="pointer-events-none absolute inset-y-0 left-0 w-24 sm:w-40"
+          style={{
+            background: "linear-gradient(to right, #faf7f0, transparent)",
+          }}
+        />
+        <div
+          className="pointer-events-none absolute inset-y-0 right-0 w-24 sm:w-40"
+          style={{
+            background: "linear-gradient(to left, #faf7f0, transparent)",
+          }}
+        />
       </div>
     </section>
   );
