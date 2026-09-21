@@ -8,7 +8,7 @@ export function Press() {
   return (
     <section
       id="prensa"
-      className="relative py-24 lg:py-32"
+      className="relative py-20 lg:py-24"
       style={{ background: "#faf7f0" }}
     >
       <div className="max-w-6xl mx-auto px-6 lg:px-10">

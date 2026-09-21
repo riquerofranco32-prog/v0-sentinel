@@ -85,7 +85,7 @@ export function Problem() {
       </div>
 
       {/* Contenido */}
-      <div className="py-20 lg:py-28">
+      <div className="py-16 lg:py-20">
         <div className="max-w-7xl mx-auto px-6 lg:px-10">
           <div className="grid lg:grid-cols-2 gap-16 items-start">
             {/* Left */}

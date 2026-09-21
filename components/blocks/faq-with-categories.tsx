@@ -41,7 +41,7 @@ export function FaqSectionWithCategories({
   return (
     <section
       id="faq"
-      className="py-24 lg:py-32"
+      className="py-20 lg:py-24"
       style={{ background: "#faf7f0" }}
     >
       <div className="max-w-3xl mx-auto px-6 lg:px-10">

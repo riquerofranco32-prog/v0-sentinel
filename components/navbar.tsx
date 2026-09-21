@@ -24,6 +24,12 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // ponytail: the hero is now a full-bleed dark photo, so the transparent
+  // (not-scrolled) nav sits directly on top of it - dark ink text would be
+  // unreadable there. Switch to cream text until the nav gets its solid
+  // backdrop.
+  const inkColor = isScrolled ? "rgba(26,24,18," : "rgba(250,247,240,";
+
   return (
     <nav
       aria-label="Navegación principal"
@@ -38,8 +44,8 @@ export function Navbar() {
           {/* Logo */}
           <a
             href="/#inicio"
-            className="flex items-center"
-            style={{ color: "rgba(26,24,18,0.92)" }}
+            className="flex items-center transition-colors duration-500"
+            style={{ color: `${inkColor}0.92)` }}
           >
             <SentinelLogo className="h-5 w-auto" />
           </a>
@@ -50,16 +56,16 @@ export function Navbar() {
               <a
                 key={link.href}
                 href={link.href}
-                className="text-[13px] font-light transition-colors duration-200"
+                className="text-[13px] font-light transition-colors duration-500"
                 style={{
                   fontFamily: "var(--font-sans)",
-                  color: "rgba(26,24,18,0.65)",
+                  color: `${inkColor}0.7)`,
                 }}
                 onMouseEnter={(e) =>
-                  (e.currentTarget.style.color = "rgba(26,24,18,0.95)")
+                  (e.currentTarget.style.color = `${inkColor}1)`)
                 }
                 onMouseLeave={(e) =>
-                  (e.currentTarget.style.color = "rgba(26,24,18,0.65)")
+                  (e.currentTarget.style.color = `${inkColor}0.7)`)
                 }
               >
                 {link.label}
@@ -94,7 +100,8 @@ export function Navbar() {
           {/* Mobile toggle */}
           <button
             type="button"
-            className="md:hidden text-[#1a1812] p-2.5 -mr-2.5"
+            className="md:hidden p-2.5 -mr-2.5 transition-colors duration-500"
+            style={{ color: `${inkColor}0.92)` }}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label={isMobileMenuOpen ? "Cerrar menú" : "Abrir menú"}
             aria-expanded={isMobileMenuOpen}

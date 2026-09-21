@@ -57,7 +57,7 @@ export function Team() {
     <section
       ref={sectionRef}
       id="equipo"
-      className="relative w-full overflow-hidden py-24 lg:py-32"
+      className="relative w-full overflow-hidden py-20 lg:py-24"
       style={{ background: "#faf7f0" }}
     >
       <div className="relative z-10 mx-auto max-w-6xl px-6 lg:px-10">

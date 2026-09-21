@@ -111,7 +111,7 @@ export async function FireRiskIndex() {
 
   return (
     <section
-      className="relative py-24 lg:py-32 overflow-hidden"
+      className="relative py-20 lg:py-24 overflow-hidden"
       style={{ background: "#faf7f0" }}
     >
       <div

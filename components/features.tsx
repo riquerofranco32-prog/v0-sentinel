@@ -51,7 +51,7 @@ export function Features() {
     <section
       ref={sectionRef}
       id="nosotros"
-      className="relative py-24 lg:py-32 bg-[#faf7f0] overflow-hidden"
+      className="relative py-20 lg:py-24 bg-[#faf7f0] overflow-hidden"
     >
       {/* Background glow */}
       <div

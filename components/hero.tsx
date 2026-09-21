@@ -94,6 +94,8 @@ export function Hero() {
         scrollHeight={900}
         desktopImage="/hero-forest.avif"
         mobileImage="/hero-forest.avif"
+        initialClipPercentage={0}
+        finalClipPercentage={100}
       >
         <div className="flex flex-col items-center text-center max-w-3xl mx-auto">
           <div
